@@ -1,0 +1,49 @@
+{
+  "create": {
+    "name": "itemAvailable",
+    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA<\/mj-title>\r\n    <mj-include path=\"styles\" \/>\r\n  <\/mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" \/>\r\n        <mj-text css-class=\"section-title\" padding-bottom=\"50px\">\r\n          [[tags.itemAvailable_Title]]\r\n        <\/mj-text>\r\n        <mj-image padding=\"0 0 23px\" width=\"240px\" css-class=\"product-img\" src=\"[[productPictureUrl]]\" href=\"[[productUrl]]\" \/>\r\n        <mj-text css-class=\"product-size\">\r\n          [[productSize]]\r\n        <\/mj-text>\r\n        <mj-text text-transform=\"uppercase\">\r\n            <a href=\"[[productUrl]]\" style=\"color:#000; text-decoration:none\">\r\n              [[productShortDescription]]\r\n            <\/a>\r\n        <\/mj-text>\r\n        <mj-text color=\"#7f7f7f\">\r\n          [[productSku]]\r\n        <\/mj-text>\r\n        <mj-text css-class=\"header-text\" padding-top=\"50px\">\r\n          <p>[[tags.itemAvailable_skuAvailable]]<\/p>\r\n        <\/mj-text>\r\n        <mj-button background-color=\"#000000\" color=\"#FFFFFF\" text-transform=\"uppercase\" href=\"[[productUrl]]\" padding=\"0 0 20px\">\r\n          [[tags.itemAvailable_Button]]\r\n        <\/mj-button>\r\n        <mj-divider padding-top=\"38px\" \/>\r\n      <\/mj-column>\r\n    <\/mj-section>\r\n    <!-- Secci\u00F3n 2 footer -->\r\n    <mj-include path=\"footer\" \/>\r\n  <\/mj-body>\r\n<\/mjml>\r\n",
+    "version": "3",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [
+      "zaraLogo",
+      "productPictureUrl",
+      "productUrl",
+      "productSize",
+      "productSku",
+      "productShortDescription"
+    ],
+    "optionalParameters": [],
+    "blocks": ["styles", "footer"]
+  },
+  "render": {
+    "parameters": {
+      "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
+      "productPictureUrl": "https://static.zara.net/photos///2018/V/0/1/p/4437/095/251/2/w/1024/4437095251_1_1_1.jpg?ts=1526465637157",
+      "productUrl": "https://www.zara.com/es/es/mujer-prendas-exterior-l1184.html?utm_source=notification&utm_medium=email&utm_term=0304622162005-V2016&utm_campaign=comingsoon&utm_content=description&ssts=20160504101611#osk=904cb2e44f3bc606cbf6cfd7326c6974f8436f6328895f086528e18a26dc9e2b&ci=3572048",
+      "productSize": "s",
+      "productSku": "4437/095",
+      "productShortDescription": "Blusa PERFORADOS BORDADOS VOLANTES",
+      "footer": {
+        "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+        "facebookUrl": "https://www.facebook.com/Zara",
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
+        "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
+        "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+        "youtubeUrl": "http://www.youtube.com/zara",
+        "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+        "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+        "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+        "instagramUrl": "https://www.instagram.com/zara/",
+        "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
+        "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+        "helpUrl": "https://www.zara.com/es/es/help",
+        "iosAppUrl": "https://itunes.apple.com/app/id547951480",
+        "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+        "twitterUrl": "https://twitter.com/ZARA"
+      }
+    },
+    "locale": "es_ES"
+  }
+}
