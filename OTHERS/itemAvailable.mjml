@@ -1,0 +1,38 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title" padding-bottom="50px">
+          [[tags.itemAvailable_Title]]
+        </mj-text>
+        <mj-image padding="0 0 23px" width="240px" css-class="product-img" src="[[productPictureUrl]]" href="[[productUrl]]" />
+        <mj-text css-class="product-size">
+          [[productSize]]
+        </mj-text>
+        <mj-text text-transform="uppercase">
+            <a href="[[productUrl]]" style="color:#000; text-decoration:none">
+              [[productShortDescription]]
+            </a>
+        </mj-text>
+        <mj-text color="#7f7f7f">
+          [[productSku]]
+        </mj-text>
+        <mj-text css-class="header-text" padding-top="50px">
+          <p>[[tags.itemAvailable_skuAvailable]]</p>
+        </mj-text>
+        <mj-button background-color="#000000" color="#FFFFFF" text-transform="uppercase" href="[[productUrl]]" padding="0 0 20px">
+          [[tags.itemAvailable_Button]]
+        </mj-button>
+        <mj-divider padding-top="38px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
