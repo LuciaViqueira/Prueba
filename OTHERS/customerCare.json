@@ -1,0 +1,19 @@
+{
+  "create": {
+    "name": "customerCare",
+    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA</mj-title>\r\n    <mj-include path=\"styles\" />\r\n  </mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png\" padding-top=\"100px\" padding-bottom=\"10px\" />\r\n        <mj-text css-class=\"section-title\" padding-bottom=\"50px\">\r\n          [[title]]\r\n        </mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n          [[& body]]\r\n        </mj-text>\r\n      </mj-column>\r\n    </mj-section>\r\n  </mj-body>\r\n</mjml>\r\n",
+    "version": "9",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": ["title", "body"],
+    "optionalParameters": [],
+    "blocks": ["styles"]
+  },
+  "render": {
+    "parameters": {
+      "title": "Hola:",
+      "body": "<p>Gracias por haber realizado tu compra en Zara.</p>\r\n<p>Nos ponemos en contacto contigo en relaci\u00F3n a la recogida de tu pedido 52180405762.</p>\r\n<p>Seg\u00FAn nuestra informaci\u00F3n, Seur no ha conseguido efectuar la recogida debido a un error en la direcci\u00F3n.</p>\r\n<p>Para aportar una soluci\u00F3n, puedes ponerte en contacto con Seur en el tel\u00E9fono 902 101 010 facilitando el n\u00FAmero de la recogida 9167451.</p>\r\n<p>Gracias y un saludo.</p>\r\n<p>Equipo de Atenci\u00F3n al Cliente de Zara</p>"
+    },
+    "locale": "es_ES"
+  }
+}
