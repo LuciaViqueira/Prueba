@@ -1,4 +1,3 @@
-
 <mj-section>
   <mj-column>
     <mj-text css-class="section-title" padding-bottom="23px">
@@ -35,7 +34,7 @@
       [[this.description]]
     </mj-text>
     <mj-text color="#7f7f7f">
-      [[this.color]] [[this.reference]]
+      [[this.color]] [[substring this.reference 0 1]]/[[substring this.reference 1 5]]/[[substring this.reference 5 8]]/[[substring this.reference 8 11]]/[[substring this.reference 11 13]]
     </mj-text>
     <mj-text css-class="product-unit">
       [[this.units]]
