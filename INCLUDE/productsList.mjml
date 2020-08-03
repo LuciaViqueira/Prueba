@@ -34,7 +34,7 @@
       [[this.description]]
     </mj-text>
     <mj-text color="#7f7f7f">
-      [[this.color]] [[substring this.reference 0 1]]/[[substring this.reference 1 5]]/[[substring this.reference 5 8]]/[[substring this.reference 8 11]]/[[substring this.reference 11 13]]
+      [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
     </mj-text>
     <mj-text css-class="product-unit">
       [[this.units]]
