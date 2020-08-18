@@ -31,7 +31,9 @@
       </mj-column>
     </mj-section>
     <!-- Sección 2 refundAddress -->
-    <mj-include path="refundAddress" />
+    <mj-raw>[[#if rma.isHome]]</mj-raw>
+      <mj-include path="refundAddress" />
+    <mj-raw>[[/if]]</mj-raw>
     <!-- Sección 3 productsList -->
     <mj-include path="productsList" />
     <!-- Sección 4 footer -->

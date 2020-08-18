@@ -1,0 +1,103 @@
+{
+  "create": {
+    "name": "returnRequested",
+    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA</mj-title>\r\n    <mj-include path=\"styles\" />\r\n  </mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" />\r\n        <mj-text css-class=\"section-title\">\r\n          [[tags.returnRequested_acceptedRequestTitle]]\r\n        </mj-text>\r\n        <mj-text padding-top=\"23px\" padding-bottom=\"62px\" css-class=\"order-number\">\r\n          [[tags.returnRequested_orderNumberText]]\r\n        </mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n          <p>\r\n            [[#if rma.isDropoff]]\r\n              [[tags.returnRequested_dropOffDescription]]\r\n            [[/if]]\r\n            [[#if rma.isHome]]\r\n              [[tags.returnRequested_homeDescription]]\r\n            [[/if]]\r\n          </p>\r\n          [[#if rma.isDropoff]]\r\n            <p>[[tags.returnRequested_officeDelivery]]</p>\r\n          [[/if]]\r\n        </mj-text>\r\n        <mj-divider padding-top=\"20px\" />\r\n      </mj-column>\r\n    </mj-section>\r\n    <!-- Secci\u00F3n 2 refundAddress -->\r\n    <mj-raw>[[#if rma.isHome]]</mj-raw>\r\n      <mj-include path=\"refundAddress\" />\r\n    <mj-raw>[[/if]]</mj-raw>\r\n    <!-- Secci\u00F3n 3 productsList -->\r\n    <mj-include path=\"productsList\" />\r\n    <!-- Secci\u00F3n 4 footer -->\r\n    <mj-include path=\"footer\" />\r\n  </mj-body>\r\n</mjml>",
+    "version": "17",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": ["zaraLogo"],
+    "optionalParameters": [
+      "address.address",
+      "address.city",
+      "address.companyName",
+      "address.country",
+      "address.district",
+      "address.fullName",
+      "address.mobile",
+      "address.phone",
+      "address.state",
+      "address.zipCode",
+      "footer.androidAppUrl",
+      "footer.appleStoreImg",
+      "footer.facebookImg",
+      "footer.facebookUrl",
+      "footer.helpUrl",
+      "footer.instagramImg",
+      "footer.instagramUrl",
+      "footer.iosAppUrl",
+      "footer.pinterestImg",
+      "footer.pinterestUrl",
+      "footer.playStoreImg",
+      "footer.privacyPolicy",
+      "footer.termsAndConditions",
+      "footer.twitterImg",
+      "footer.twitterUrl",
+      "footer.youtubeImg",
+      "footer.youtubeUrl",
+      "order.orderId",
+      "rma.isDropoff",
+      "rma.isHome",
+      "rma.items.color",
+      "rma.items.imageUrl",
+      "rma.items.reference",
+      "rma.items.size",
+      "rma.items.sizeDescription",
+      "rma.items.description",
+      "rma.items.units",
+      "rma.numProducts"
+    ],
+    "blocks": ["refundAddress", "productsList", "footer", "styles"]
+  },
+  "render": {
+    "parameters": {
+      "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
+      "address": {
+        "country": "España",
+        "fullName": "Adrián Teijeiro",
+        "address": "Calle Falsa",
+        "zipCode": "15002",
+        "city": "Coruña",
+        "state": "Coruña",
+        "mobile": "607181721"
+      },
+      "rma": {
+        "numProducts": 1,
+        "isHome": false,
+        "isDropoff": true,
+        "items": [
+          {
+            "sku": "0239823340104",
+            "units": 1,
+            "size": "M",
+            "color": "Negro",
+            "description": "Blusa",
+            "imageUrl": "https://static.zara.net/photos///2018/V/0/1/p/4437/095/251/2/w/1024/4437095251_1_1_1.jpg?ts=1526465637157"
+          }
+        ]
+      },
+      "order": {
+        "orderId": "987654321"
+      },
+      "footer": {
+        "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+        "facebookUrl": "https://www.facebook.com/Zara",
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
+        "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
+        "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+        "youtubeUrl": "http://www.youtube.com/zara",
+        "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+        "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+        "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+        "instagramUrl": "https://www.instagram.com/zara/",
+        "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
+        "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+        "helpUrl": "https://www.zara.com/es/es/help",
+        "iosAppUrl": "https://itunes.apple.com/app/id547951480",
+        "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+        "twitterUrl": "https://twitter.com/ZARA"
+      }
+    },
+    "locale": "es_ES"
+  }
+}
