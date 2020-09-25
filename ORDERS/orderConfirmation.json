@@ -1,0 +1,128 @@
+{
+  "create": {
+    "name": "orderConfirmation",
+    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA<\/mj-title>\r\n    <mj-include path=\"styles\" \/>\r\n  <\/mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" \/>\r\n        <mj-text css-class=\"section-title\">\r\n            Gracias por tu compra\r\n        <\/mj-text>\r\n        <mj-text padding-top=\"23px\" padding-bottom=\"62px\" css-class=\"order-number\">\r\n            Pedido N\u00BA XXXXX\r\n        <\/mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n        \r\n        <\/mj-text>\r\n        <mj-divider padding-top=\"20px\" \/>\r\n      <\/mj-column>\r\n    <\/mj-section>\r\n\r\n    <!-- Secci\u00F3n 3 productsList -->\r\n    <mj-include path=\"productListConfirmation\" \/>\r\n    <!-- Secci\u00F3n 4 footer -->\r\n    <mj-include path=\"footer\" \/>\r\n  <\/mj-body>\r\n<\/mjml>\r\n",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [
+      "zaraLogo",
+      "numProducts",
+      "numSuborders",
+      "eventType"
+    ],
+    "optionalParameters": [
+      "suborders.suborderId",
+      "suborders.items.imageUrl",
+      "suborders.items.color",
+      "suborders.items.size",
+      "suborders.items.sizeDescription",
+      "suborders.items.sku",
+      "suborders.items.units",
+      "suborders.items.description",
+      "suborders.items.isPantone",
+      "suborders.items.isCustom",
+      "suborders.items.itemCustomizations.embroideryText",
+      "suborders.items.itemCustomizations.embroideryArea",
+      "suborders.items.itemCustomizations.embroideryFont",
+      "suborders.items.itemCustomizations.embroideryColor",
+      "suborders.items.itemCustomizations.serviceCost",
+      "suborders.giftCards.description",
+      "suborders.giftCards.from",
+      "suborders.giftCards.imageUrl",
+      "suborders.giftCards.price",
+      "suborders.giftCards.receiverPhone",
+      "suborders.virtualGiftCards.description",
+      "suborders.virtualGiftCards.deliveryDate",
+      "suborders.virtualGiftCards.from",
+      "suborders.virtualGiftCards.imageUrl",
+      "suborders.virtualGiftCards.price",
+      "suborders.virtualGiftCards.receiverEmail",
+      "footer.androidAppUrl",
+      "footer.appleStoreImg",
+      "footer.facebookImg",
+      "footer.facebookUrl",
+      "footer.helpUrl",
+      "footer.instagramImg",
+      "footer.instagramUrl",
+      "footer.iosAppUrl",
+      "footer.pinterestImg",
+      "footer.pinterestUrl",
+      "footer.playStoreImg",
+      "footer.privacyPolicy",
+      "footer.termsAndConditions",
+      "footer.twitterImg",
+      "footer.twitterUrl",
+      "footer.youtubeImg",
+      "footer.youtubeUrl"
+    ],
+    "blocks": ["styles", "footer", "productListConfirmation"]
+  },
+  "render": {
+    "parameters": {
+      "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
+      "numProducts": 3,
+      "numSuborders": 2,
+      "eventType": "OrderConfirmation",
+      "suborders": [
+        {
+          "suborderId": "12345",
+          "items": [
+            {
+              "description": "Blazer VESTIDO ESTAMPADO PAISLEY",
+              "reference": "2761/846",
+              "size": "m",
+              "sizeDescription": "250x100x20",
+              "units": 1,
+              "amount": "59,95 eur",
+              "color": "Multicolor",
+              "imageUrl": "https://static.zara.net/photos///2020/I/0/1/p/2850/202/800/2/w/805/2850202800_6_1_1.jpg?ts=1591088934566",
+              "isPantone": true,
+              "isCustom": true,
+              "itemCustomizations": [
+                {
+                  "embroideryColor": "Azul",
+                  "embroideryArea": "Pantalón",
+                  "embroideryFont": "Arial",
+                  "embroideryText": "Winter is coming",
+                  "serviceCost": "3 EUR"
+                }
+              ]
+            },
+            {
+              "description": "Blazer VESTIDO ESTAMPADO PAISLEY 2",
+              "reference": "2761/846",
+              "size": "m",
+              "units": "1",
+              "amount": "59,95 eur",
+              "color": "Multicolor",
+              "imageUrl": "https://static.zara.net/photos///2018/V/0/1/p/2761/846/330/4/w/1024/2761846330_1_1_1.jpg"
+            }
+          ],
+          "giftCards": [],
+          "virtualGiftCards": []
+        }
+      ],
+      "footer": {
+        "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+        "facebookUrl": "https://www.facebook.com/Zara",
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
+        "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
+        "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+        "youtubeUrl": "http://www.youtube.com/zara",
+        "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+        "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+        "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+        "instagramUrl": "https://www.instagram.com/zara/",
+        "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
+        "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+        "helpUrl": "https://www.zara.com/es/es/help",
+        "iosAppUrl": "https://itunes.apple.com/app/id547951480",
+        "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+        "twitterUrl": "https://twitter.com/ZARA"
+      }
+    },
+    "locale": "es_ES"
+  }
+}

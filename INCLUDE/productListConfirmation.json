@@ -1,0 +1,40 @@
+{
+  "create": {
+    "name": "productListConfirmation",
+    "body": "",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": ["numProducts", "numSuborders", "eventType"],
+    "optionalParameters": [
+      "suborders.suborderId",
+      "suborders.items.imageUrl",
+      "suborders.items.color",
+      "suborders.items.size",
+      "suborders.items.sizeDescription",
+      "suborders.items.sku",
+      "suborders.items.units",
+      "suborders.items.description",
+      "suborders.items.isPantone",
+      "suborders.items.isCustom",
+      "suborders.items.itemCustomizations.embroideryText",
+      "suborders.items.itemCustomizations.embroideryArea",
+      "suborders.items.itemCustomizations.embroideryFont",
+      "suborders.items.itemCustomizations.embroideryColor",
+      "suborders.items.itemCustomizations.serviceCost",
+      "suborders.giftCards.description",
+      "suborders.giftCards.from",
+      "suborders.giftCards.imageUrl",
+      "suborders.giftCards.price",
+      "suborders.giftCards.receiverPhone",
+      "suborders.virtualGiftCards.description",
+      "suborders.virtualGiftCards.deliveryDate",
+      "suborders.virtualGiftCards.from",
+      "suborders.virtualGiftCards.imageUrl",
+      "suborders.virtualGiftCards.price",
+      "suborders.virtualGiftCards.receiverEmail"
+    ],
+    "blocks": []
+  },
+  "render": {}
+}

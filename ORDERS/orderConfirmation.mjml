@@ -1,0 +1,29 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+            Gracias por tu compra
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+            Pedido Nº XXXXX
+        </mj-text>
+        <mj-text css-class="header-text">
+        
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 3 productsList -->
+    <mj-include path="productListConfirmation" />
+    <!-- Sección 4 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
