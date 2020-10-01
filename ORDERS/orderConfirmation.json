@@ -1,18 +1,21 @@
 {
   "create": {
     "name": "orderConfirmation",
-    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA<\/mj-title>\r\n    <mj-include path=\"styles\" \/>\r\n  <\/mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" \/>\r\n        <mj-text css-class=\"section-title\">\r\n            Gracias por tu compra\r\n        <\/mj-text>\r\n        <mj-text padding-top=\"23px\" padding-bottom=\"62px\" css-class=\"order-number\">\r\n            Pedido N\u00BA XXXXX\r\n        <\/mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n        \r\n        <\/mj-text>\r\n        <mj-divider padding-top=\"20px\" \/>\r\n      <\/mj-column>\r\n    <\/mj-section>\r\n\r\n    <!-- Secci\u00F3n 3 productsList -->\r\n    <mj-include path=\"productListConfirmation\" \/>\r\n    <!-- Secci\u00F3n 4 footer -->\r\n    <mj-include path=\"footer\" \/>\r\n  <\/mj-body>\r\n<\/mjml>\r\n",
-    "version": "1",
+    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA</mj-title>\r\n    <mj-include path=\"styles\" />\r\n  </mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" />\r\n        <mj-text css-class=\"section-title\">\r\n            Gracias por tu compra\r\n        </mj-text>\r\n        <mj-text padding-top=\"23px\" padding-bottom=\"62px\" css-class=\"order-number\">\r\n            Pedido N\u00BA XXXXX\r\n        </mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n        \r\n        </mj-text>\r\n        <mj-divider padding-top=\"20px\" />\r\n      </mj-column>\r\n    </mj-section>\r\n\r\n    <!-- Secci\u00F3n 3 productsList -->\r\n    <mj-include path=\"productListConfirmation\" />\r\n    <!-- Secci\u00F3n 4 footer -->\r\n    <mj-include path=\"footer\" />\r\n  </mj-body>\r\n</mjml>",
+    "version": "8",
     "tags": [],
     "channel": "MAIL",
     "requiredParameters": [
       "zaraLogo",
       "numProducts",
       "numSuborders",
-      "eventType"
+      "eventType",
+      "isSplitted",
+      "showSubordersInfo"
     ],
     "optionalParameters": [
       "suborders.suborderId",
+      "suborders.cancelDate",
       "suborders.items.imageUrl",
       "suborders.items.color",
       "suborders.items.size",
@@ -64,20 +67,23 @@
       "numProducts": 3,
       "numSuborders": 2,
       "eventType": "OrderConfirmation",
+      "isSplitted": true,
+      "showSubordersInfo": true,
       "suborders": [
         {
           "suborderId": "12345",
+          "cancelDate": "12/10/2020",
           "items": [
             {
               "description": "Blazer VESTIDO ESTAMPADO PAISLEY",
-              "reference": "2761/846",
+              "sku": "0239823340104",
               "size": "m",
               "sizeDescription": "250x100x20",
               "units": 1,
-              "amount": "59,95 eur",
+              "price": "59,95 eur",
               "color": "Multicolor",
               "imageUrl": "https://static.zara.net/photos///2020/I/0/1/p/2850/202/800/2/w/805/2850202800_6_1_1.jpg?ts=1591088934566",
-              "isPantone": true,
+              "isPantone": false,
               "isCustom": true,
               "itemCustomizations": [
                 {
@@ -90,17 +96,40 @@
               ]
             },
             {
-              "description": "Blazer VESTIDO ESTAMPADO PAISLEY 2",
-              "reference": "2761/846",
-              "size": "m",
-              "units": "1",
-              "amount": "59,95 eur",
-              "color": "Multicolor",
-              "imageUrl": "https://static.zara.net/photos///2018/V/0/1/p/2761/846/330/4/w/1024/2761846330_1_1_1.jpg"
+              "description": "Blusa PERFORADOS BORDADOS VOLANTES",
+              "sku": "0239823340104",
+              "size": "s",
+              "sizeDescription": "",
+              "units": 2,
+              "price": "25,95 eur",
+              "color": "Blanco roto",
+              "imageUrl": "https://static.zara.net/photos///2018/V/0/1/p/4437/095/251/2/w/1024/4437095251_1_1_1.jpg?ts=1526465637157"
             }
           ],
-          "giftCards": [],
+          "giftCards": [
+            {
+              "description": "Tarjeta regalo",
+              "from": "EnsiLabs",
+              "receiverPhone": "666555444",
+              "price": "40 eur",
+              "imageUrl": "https://static.zara.net/photos///9999/I/5/3/p/0000/000/001/2/w/400/0000000001_2_1_1.jpg?ts=1509988235998"
+            }
+          ],
           "virtualGiftCards": []
+        },
+        {
+          "suborderId": "54321",
+          "items": [
+            {
+              "description": "VESTIDO ESTAMPADO ALAMARES",
+              "sku": "9639853340306",
+              "size": "m",
+              "units": "1",
+              "price": "35,00 eur",
+              "color": "Negro",
+              "imageUrl": "https://static.zara.net/photos///2020/I/0/1/p/8496/061/800/2/w/1712/8496061800_6_2_1.jpg?ts=1600098741289"
+            }
+          ]
         }
       ],
       "footer": {

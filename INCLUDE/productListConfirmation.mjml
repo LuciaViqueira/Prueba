@@ -11,9 +11,25 @@
         [[#neq numProducts 1]]
           [[tags.productListConfirmation_multipleItemText]]
         [[/neq]]
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.productListConfirmation_shipmentsNumberText]]
+        [[/and]]
     </mj-text>
     <mj-raw>
         [[#each suborders]]
+    </mj-raw>
+    <mj-text text-transform="uppercase" padding-bottom="10px">
+      <strong>
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
+        [[/and]]
+        [[#if this.cancelDate]]
+          - [[tags.productListConfirmation_cancelDateText]]
+        [[/if]]
+      </strong>
+    </mj-text>
+
+    <mj-raw>
             [[#each this.items]]
     </mj-raw>
     <mj-raw>
@@ -89,7 +105,7 @@
     ## Tarjeta regalo
     ####################################
     <mj-raw>
-        [[#each this.giftCards)]]
+        [[#each this.giftCards]]
     </mj-raw>
         <mj-raw>
             [[#if this.imageUrl]]
@@ -103,7 +119,7 @@
         </mj-text>
         <mj-text>
           <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_fromText]]</span>: [[this.from]]</div>
-          <div style="text-transform: uppercase;">[[tags.productListConfirmation_receiverPhone]]: [[this.receiverPhone]]</div>
+          <div style="text-transform: uppercase;">[[tags.productListConfirmation_receiverPhoneText]]: [[this.receiverPhone]]</div>
         </mj-text>
         <mj-text css-class="product-unit">
           1
