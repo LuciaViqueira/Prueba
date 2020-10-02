@@ -8,12 +8,16 @@
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png" padding-top="100px" padding-bottom="10px" />
-        <mj-text css-class="section-title" padding-bottom="50px">
+        <mj-text css-class="section-title" padding-bottom="25px">
           [[title]]
         </mj-text>
-        <mj-text css-class="header-text">
+        <mj-text css-class="header-text" padding-bottom="25px">
           [[& body]]
         </mj-text>
+        <mj-text font-weight="bold" container-background-color="black" color="white" padding="2px">
+          [[footer]]
+        </mj-text>
+        <mj-spacer height="25px" />
       </mj-column>
     </mj-section>
   </mj-body>
