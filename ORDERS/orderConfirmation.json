@@ -2,7 +2,7 @@
   "create": {
     "name": "orderConfirmation",
     "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA</mj-title>\r\n    <mj-include path=\"styles\" />\r\n  </mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" />\r\n        <mj-text css-class=\"section-title\">\r\n            Gracias por tu compra\r\n        </mj-text>\r\n        <mj-text padding-top=\"23px\" padding-bottom=\"62px\" css-class=\"order-number\">\r\n            Pedido N\u00BA XXXXX\r\n        </mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n        \r\n        </mj-text>\r\n        <mj-divider padding-top=\"20px\" />\r\n      </mj-column>\r\n    </mj-section>\r\n\r\n    <!-- Secci\u00F3n 3 productsList -->\r\n    <mj-include path=\"productListConfirmation\" />\r\n    <!-- Secci\u00F3n 4 footer -->\r\n    <mj-include path=\"footer\" />\r\n  </mj-body>\r\n</mjml>",
-    "version": "8",
+    "version": "9",
     "tags": [],
     "channel": "MAIL",
     "requiredParameters": [
@@ -10,10 +10,10 @@
       "numProducts",
       "numSuborders",
       "eventType",
-      "isSplitted",
-      "showSubordersInfo"
+      "isSplitted"
     ],
     "optionalParameters": [
+      "showSubordersInfo",
       "suborders.suborderId",
       "suborders.cancelDate",
       "suborders.items.imageUrl",
