@@ -13,7 +13,10 @@
         <p>
           [[this.paymentMethod]]
           [[#if this.last4]]
-            **** **** **** [[this.last4]]
+            [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+            [[#eq last4Characters "4"]]
+              **** **** **** [[this.last4]]
+            [[/eq]]
           [[/if]]
           <br />
           [[#assign "numPayments"]][[#size paymentInfo]][[/size]][[/assign]]
