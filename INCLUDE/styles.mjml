@@ -163,6 +163,7 @@
 }
 
 .payment-price {
+    text-align: right !important;
     word-break: break-word !important;
 }
 

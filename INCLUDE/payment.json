@@ -1,0 +1,32 @@
+{
+  "create": {
+    "name": "payment",
+    "body": "<mj-section>\r\n  <mj-column>\r\n    <mj-text css-class=\"section-title\" padding-bottom=\"47px\">\r\n      [[tags.payment_title]]\r\n    <\/mj-text>\r\n    <mj-text padding-bottom=\"30px\" css-class=\"payment-methods\">\r\n      [[#each paymentInfo]]\r\n        [[#if this.cardHolderName]]\r\n          <p class=\"payment-name\">\r\n            [[this.cardHolderName]]\r\n          <\/p>\r\n        [[\/if]]\r\n        <p>\r\n          [[this.paymentMethod]]\r\n          [[#if this.last4]]\r\n            [[#assign \"last4Characters\"]][[#size this.last4]][[\/size]][[\/assign]]\r\n            [[#eq last4Characters \"4\"]]\r\n              **** **** **** [[this.last4]]\r\n            [[\/eq]]\r\n          [[\/if]]\r\n          <br \/>\r\n          [[#assign \"numPayments\"]][[#size paymentInfo]][[\/size]][[\/assign]]\r\n          [[#neq numPayments \"1\"]]      \r\n            [[this.amount]]\r\n          [[\/neq]]\r\n        <\/p>\r\n      [[\/each]]\r\n    <\/mj-text>\r\n    <mj-table css-class=\"payment-table\">\r\n      <tr>\r\n        <td>[[tags.payment_totalProductsAmountText]]<\/td>\r\n        <td class=\"payment-price\">[[totalProductsAmount]]<\/td>\r\n      <\/tr>\r\n      <tr>\r\n        <td>[[tags.payment_deliveryCostText]]<\/td>\r\n        <td class=\"payment-price\">[[deliveryCost]]<\/td>\r\n      <\/tr>\r\n      [[#if customizationAdjustment]]\r\n        <tr>\r\n          <td>[[tags.payment_customizationAdjustmentText]]<\/td>\r\n          <td class=\"payment-price\">[[customizationAdjustment]]<\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n   \r\n     [[#if shippingDisccount]]\r\n        <tr>\r\n          <td>[[tags.payment_shippingDisccountText]]<\/td>\r\n          <td class=\"payment-price\">[[shippingDisccount]]<\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      [[#if totalVatDiscounts]]\r\n        <tr>\r\n          <td>[[tags.payment_totalVatDiscountsText]]<\/td>\r\n          <td class=\"payment-price\">[[totalVatDiscounts]]<\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      [[#if employeeDisccounts]]\r\n        <tr>\r\n          <td>[[tags.payment_employeeDisccountsText]]<\/td>\r\n          <td class=\"payment-price\">[[employeeDisccounts]]<\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      [[#if disccounts]]\r\n        <tr>\r\n          <td>[[tags.payment_disccountsText]]<\/td>\r\n          <td class=\"payment-price\">[[disccounts]]<\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      [[#if subtotal]]\r\n        <tr>\r\n          <td><strong>[[tags.payment_subtotalText]]<\/strong><\/td>\r\n          <td class=\"payment-price\"><strong>[[subtotal]]<\/strong><\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      \r\n      [[#if salesTax]]\r\n        <tr>\r\n          <td>\r\n            <strong>[[tags.payment_salesTaxText]]<\/strong>\r\n          <\/td>\r\n          <td class=\"payment-price\">\r\n            <strong>[[salesTax]]<\/strong>\r\n          <\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      [[#eq dutyType \"DDP\"]]\r\n        <tr>\r\n          <td>\r\n            [[tags.payment_totalDutyText]]\r\n          <\/td>\r\n          <td class=\"payment-price\">[[totalDuty]]<\/td>\r\n        <\/tr>\r\n      [[\/eq]]\r\n      [[#if giftCardDiscounts]]\r\n        <tr>\r\n          <td>[[tags.payment_giftCardDiscountsText]]<\/td>\r\n          <td class=\"payment-price\">[[giftCardDiscounts]]<\/td>\r\n        <\/tr>\r\n      [[\/if]]\r\n      <tr class=\"payment-total\">\r\n        <td>[[tags.payment_totalAmountText]]<\/td>\r\n        <td class=\"payment-price\">[[totalAmount]]<\/td>\r\n      <\/tr>\r\n      [[#eq dutyType \"DAP\"]]\r\n        <tr>\r\n          <td class=\"payment-price\" colspan=\"2\">\r\n            <span class=\"payment-include-tax-label\">[[tags.payment_dutyTypeDAPText]]<\/span>\r\n          <\/td>\r\n        <\/tr>\r\n      [[else]]\r\n        [[#eq dutyType \"DDP\"]]\r\n        [[else]]\r\n          <tr>\r\n            <td class=\"payment-price\" colspan=\"2\">\r\n              <span class=\"payment-include-tax-label\">[[tags.payment_includeTaxText]]<\/span>\r\n            <\/td>\r\n          <\/tr>\r\n        [[\/eq]]\r\n      [[\/eq]]\r\n    <\/mj-table>\r\n    <mj-divider padding-top=\"50px\" \/>\r\n  <\/mj-column>\r\n<\/mj-section>",
+    "version": "23",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [
+      "paymentInfo",
+      "totalProductsAmount",
+      "deliveryCost",
+      "totalAmount"
+    ],
+    "optionalParameters": [
+      "paymentInfo.cardHolderName",
+      "paymentInfo.paymentMethod",
+      "paymentInfo.last4",
+      "customizationAdjustment",
+      "shippingDisccount",
+      "totalVatDiscounts",
+      "employeeDisccounts",
+      "disccounts",
+      "subtotal",
+      "salesTax",
+      "dutyType",
+      "totalDuty",
+      "giftCardDiscounts"
+    ],
+    "blocks": []
+  },
+  "render": {}
+}

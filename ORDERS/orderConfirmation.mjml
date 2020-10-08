@@ -21,9 +21,10 @@
       </mj-column>
     </mj-section>
 
-    <!-- Sección 3 productsList -->
     <mj-include path="productListConfirmation" />
-    <!-- Sección 4 footer -->
+    
+    <mj-include path="payment" />
+    
     <mj-include path="footer" />
   </mj-body>
 </mjml>

@@ -1,0 +1,123 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="47px">
+      [[tags.payment_title]]
+    </mj-text>
+    <mj-text padding-bottom="30px" css-class="payment-methods">
+      [[#each paymentInfo]]
+        [[#if this.cardHolderName]]
+          <p class="payment-name">
+            [[this.cardHolderName]]
+          </p>
+        [[/if]]
+        <p>
+          [[this.paymentMethod]]
+          [[#if this.last4]]
+            [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+            [[#eq last4Characters "4"]]
+              **** **** **** [[this.last4]]
+            [[/eq]]
+          [[/if]]
+          <br />
+          [[#assign "numPayments"]][[#size paymentInfo]][[/size]][[/assign]]
+          [[#neq numPayments "1"]]      
+            [[this.amount]]
+          [[/neq]]
+        </p>
+      [[/each]]
+    </mj-text>
+    <mj-table css-class="payment-table">
+      <tr>
+        <td>[[tags.payment_totalProductsAmountText]]</td>
+        <td class="payment-price">[[totalProductsAmount]]</td>
+      </tr>
+      <tr>
+        <td>[[tags.payment_deliveryCostText]]</td>
+        <td class="payment-price">[[deliveryCost]]</td>
+      </tr>
+      [[#if customizationAdjustment]]
+        <tr>
+          <td>[[tags.payment_customizationAdjustmentText]]</td>
+          <td class="payment-price">[[customizationAdjustment]]</td>
+        </tr>
+      [[/if]]
+   
+     [[#if shippingDisccount]]
+        <tr>
+          <td>[[tags.payment_shippingDisccountText]]</td>
+          <td class="payment-price">[[shippingDisccount]]</td>
+        </tr>
+      [[/if]]
+      [[#if totalVatDiscounts]]
+        <tr>
+          <td>[[tags.payment_totalVatDiscountsText]]</td>
+          <td class="payment-price">[[totalVatDiscounts]]</td>
+        </tr>
+      [[/if]]
+      [[#if employeeDisccounts]]
+        <tr>
+          <td>[[tags.payment_employeeDisccountsText]]</td>
+          <td class="payment-price">[[employeeDisccounts]]</td>
+        </tr>
+      [[/if]]
+      [[#if disccounts]]
+        <tr>
+          <td>[[tags.payment_disccountsText]]</td>
+          <td class="payment-price">[[disccounts]]</td>
+        </tr>
+      [[/if]]
+      [[#if subtotal]]
+        <tr>
+          <td><strong>[[tags.payment_subtotalText]]</strong></td>
+          <td class="payment-price"><strong>[[subtotal]]</strong></td>
+        </tr>
+      [[/if]]
+      
+      [[#if salesTax]]
+        <tr>
+          <td>
+            <strong>[[tags.payment_salesTaxText]]</strong>
+          </td>
+          <td class="payment-price">
+            <strong>[[salesTax]]</strong>
+          </td>
+        </tr>
+      [[/if]]
+      [[#eq dutyType "DDP"]]
+        <tr>
+          <td>
+            [[tags.payment_totalDutyText]]
+          </td>
+          <td class="payment-price">[[totalDuty]]</td>
+        </tr>
+      [[/eq]]
+      [[#if giftCardDiscounts]]
+        <tr>
+          <td>[[tags.payment_giftCardDiscountsText]]</td>
+          <td class="payment-price">[[giftCardDiscounts]]</td>
+        </tr>
+      [[/if]]
+      <tr class="payment-total">
+        <td>[[tags.payment_totalAmountText]]</td>
+        <td class="payment-price">[[totalAmount]]</td>
+      </tr>
+      [[#eq dutyType "DAP"]]
+        <tr>
+          <td class="payment-price" colspan="2">
+            <span class="payment-include-tax-label">[[tags.payment_dutyTypeDAPText]]</span>
+          </td>
+        </tr>
+      [[else]]
+        [[#eq dutyType "DDP"]]
+        [[else]]
+          <tr>
+            <td class="payment-price" colspan="2">
+              <span class="payment-include-tax-label">[[tags.payment_includeTaxText]]</span>
+            </td>
+          </tr>
+        [[/eq]]
+      [[/eq]]
+    </mj-table>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>
