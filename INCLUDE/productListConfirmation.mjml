@@ -1,7 +1,11 @@
 <mj-section>
   <mj-column>
     <mj-text css-class="section-title" padding-bottom="23px">
-      [[tags.productListConfirmation_productListTitle]]
+      [[#eq eventType "ReturnRequestDifferentOrders"]]
+        [[tags.productListConfirmation_productListTitleReturnRequest]]
+      [[else]]
+        [[tags.productListConfirmation_productListTitle]]
+      [[/eq]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
         [[numProducts]]
@@ -12,8 +16,13 @@
           [[tags.productListConfirmation_multipleItemText]]
         [[/neq]]
         [[#and isSplitted showSubordersInfo]]
-          [[tags.productListConfirmation_shipmentsNumberText]]
+          [[#eq eventType "ReturnRequestDifferentOrders"]]
+            [[tags.productListConfirmation_shipmentsNumberText]]
+          [[/eq]]
         [[/and]]
+        [[#eq eventType "ReturnRequestDifferentOrders"]]
+          [[tags.productListConfirmation_ordersNumberText]]
+        [[/eq]]
     </mj-text>
     <mj-raw>
         [[#each suborders]]
@@ -23,6 +32,9 @@
         [[#and isSplitted showSubordersInfo]]
           [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
         [[/and]]
+        [[#eq eventType "ReturnRequestDifferentOrders"]]
+          [[tags.productListConfirmation_orderText]] [[this.orderId]]
+        [[/eq]]
         [[#if this.cancelDate]]
           - [[tags.productListConfirmation_cancelDateText]]
         [[/if]]
