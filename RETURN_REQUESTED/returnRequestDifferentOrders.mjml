@@ -4,6 +4,10 @@
     <mj-include path="styles" />
   </mj-head>
   <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnTitle"]]true[[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>

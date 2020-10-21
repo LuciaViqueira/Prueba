@@ -1,11 +1,11 @@
 <mj-section>
   <mj-column>
     <mj-text css-class="section-title" padding-bottom="23px">
-      [[#eq eventType "ReturnRequestDifferentOrders"]]
+      [[#if returnTitle]]
         [[tags.productListConfirmation_productListTitleReturnRequest]]
       [[else]]
         [[tags.productListConfirmation_productListTitle]]
-      [[/eq]]
+      [[/if]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
         [[numProducts]]
