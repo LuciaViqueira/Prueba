@@ -1,0 +1,46 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnTitle"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.returnRequestDifferentOrders_acceptedRequestTitle]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[tags.returnRequestDifferentOrders_orderNumberText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          <p>
+            [[#if isDropoff]]
+              [[tags.returnRequestDifferentOrders_dropOffDescription]]
+            [[/if]]
+            [[#if isHome]]
+              [[tags.returnRequestDifferentOrders_homeDescription]]
+            [[/if]]
+          </p>
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
+          [[/if]]
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 refundAddress -->
+    <mj-raw>[[#if isHome]]</mj-raw>
+      <mj-include path="refundAddress" />
+    <mj-raw>[[/if]]</mj-raw>
+    <!-- Sección 3 productsList -->
+    <mj-include path="productListConfirmation" />
+    <!-- Sección 4 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
