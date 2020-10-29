@@ -1,0 +1,34 @@
+{
+  "create": {
+    "name": "shipping",
+    "body": "",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": [
+      "isFastSint",
+      "hasRelatedSuborders",
+      "shippingInfo.orderDeliveredDate",
+      "shippingInfo.shippingMethod",
+      "shippingInfo.shippingMethodDescription",
+      "shippingInfo.isSignRequided",
+      "shippingInfo.signHasBeenRequired",
+      "addressInfo.dropPointName",
+      "addressInfo.storeName",
+      "addressInfo.companyName",
+      "addressInfo.address",
+      "addressInfo.zipCode",
+      "addressInfo.city",
+      "addressInfo.country",
+      "addressInfo.state",
+      "addressInfo.district",
+      "addressInfo.phone",
+      "addressInfo.mobile",
+      "suborders.suborderDeliveredDate",
+      "suborders.cancelDate"
+    ],
+    "blocks": []
+  },
+  "render": {}
+}

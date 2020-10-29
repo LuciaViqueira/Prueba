@@ -20,7 +20,9 @@
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
-
+    
+    <mj-include path="shipping" />
+    
     <mj-include path="productListConfirmation" />
     
     <mj-include path="payment" />

@@ -1,8 +1,8 @@
 {
   "create": {
     "name": "orderConfirmation",
-    "body": "<mjml>\r\n  <mj-head>\r\n    <mj-title>ZARA</mj-title>\r\n    <mj-include path=\"styles\" />\r\n  </mj-head>\r\n  <mj-body width=\"854px\">\r\n    <!-- Secci\u00F3n 1 cabecera -->\r\n    <mj-section>\r\n      <mj-column>\r\n        <mj-image width=\"149px\" src=\"[[zaraLogo]]\" padding-top=\"100px\" padding-bottom=\"10px\" />\r\n        <mj-text css-class=\"section-title\">\r\n            Gracias por tu compra\r\n        </mj-text>\r\n        <mj-text padding-top=\"23px\" padding-bottom=\"62px\" css-class=\"order-number\">\r\n            Pedido N\u00BA XXXXX\r\n        </mj-text>\r\n        <mj-text css-class=\"header-text\">\r\n        \r\n        </mj-text>\r\n        <mj-divider padding-top=\"20px\" />\r\n      </mj-column>\r\n    </mj-section>\r\n\r\n    <mj-include path=\"productListConfirmation\" />\r\n    \r\n    <mj-include path=\"payment\" />\r\n    \r\n    <mj-include path=\"footer\" />\r\n  </mj-body>\r\n</mjml>",
-    "version": "32",
+    "body": "",
+    "version": "38",
     "tags": [],
     "channel": "MAIL",
     "requiredParameters": [
@@ -20,6 +20,7 @@
       "showSubordersInfo",
       "suborders.suborderId",
       "suborders.cancelDate",
+      "suborders.suborderDeliveredDate",
       "suborders.items.imageUrl",
       "suborders.items.color",
       "suborders.items.size",
@@ -74,9 +75,33 @@
       "salesTax",
       "dutyType",
       "totalDuty",
-      "giftCardDiscounts"
+      "giftCardDiscounts",
+      "isFastSint",
+      "hasRelatedSuborders",
+      "shippingInfo.orderDeliveredDate",
+      "shippingInfo.shippingMethod",
+      "shippingInfo.shippingMethodDescription",
+      "shippingInfo.isSignRequided",
+      "shippingInfo.signHasBeenRequired",
+      "addressInfo.dropPointName",
+      "addressInfo.storeName",
+      "addressInfo.companyName",
+      "addressInfo.address",
+      "addressInfo.zipCode",
+      "addressInfo.city",
+      "addressInfo.country",
+      "addressInfo.state",
+      "addressInfo.district",
+      "addressInfo.phone",
+      "addressInfo.mobile"
     ],
-    "blocks": ["styles", "footer", "productListConfirmation", "payment"]
+    "blocks": [
+      "styles",
+      "footer",
+      "productListConfirmation",
+      "payment",
+      "shipping"
+    ]
   },
   "render": {
     "parameters": {
@@ -85,9 +110,33 @@
       "numSuborders": 2,
       "eventType": "OrderConfirmation",
       "isSplitted": false,
+      "isFastSint": true,
+      "hasRelatedSuborders": false,
+      "shippingInfo": {
+        "orderDeliveredDate": "VIERNES 10",
+        "shippingMethod": "SEUR",
+        "shippingMethodDescription": "TE ENVIAREMOS EL PEDIDO CUANDO SE RESTABLEZCA LA SITUACIÓN HABITUAL",
+        "isSignRequided": true,
+        "signHasBeenRequired": true
+      },
+      "addressInfo": {
+        "dropPointName": "DROP POINT",
+        "storeName": "TIENDA DE ZARA",
+        "companyName": "EnsiLabs",
+        "address": "Rúa Juan Flórez, 64-66",
+        "zipCode": "15005",
+        "city": "A Coruña",
+        "country": "España",
+        "state": "ESTADO",
+        "district": "DISTRICTO",
+        "phone": "981332211",
+        "mobile": "666555444"
+      },
       "suborders": [
         {
           "suborderId": "12345",
+          "suborderDeliveredDate": "MARTES 12 - 14:00",
+          "cancelDate": "",
           "items": [
             {
               "description": "Blazer VESTIDO ESTAMPADO PAISLEY",
