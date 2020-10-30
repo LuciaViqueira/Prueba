@@ -1,0 +1,104 @@
+ <mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="47px">
+      [[#if returnShippingTitle]]
+        [[tags.shipping_returnShippingTitle]]
+      [[else]]
+        [[#if isFastSint]]
+          [[tags.shipping_fastSintTitle]]
+        [[else]]
+          [[tags.shipping_title]]
+        [[/if]]
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="send-time-received">
+      [[#if hasRelatedSuborders]]
+        [[shippingInfo.shippingMethod]]
+      [[else]]
+        [[#each suborders]]
+          <div>
+            [[#and isSplitted showSubordersInfo]]
+              [[tags.shipping_shippingNumberText]][[this.suborderId]]:
+            [[/and]]
+            [[#if this.cancelDate]]
+              [[tags.shipping_cancelledText]]
+            [[else]]
+              [[#if this.suborderDeliveredDate]]
+                [[this.suborderDeliveredDate]]
+              [[else]]
+                [[#if shippingInfo.orderDeliveredDate]]
+                  [[shippingInfo.orderDeliveredDate]]
+                [[else]]
+                  [[shippingInfo.shippingMethod]]
+                [[/if]]
+              [[/if]]
+            [[/if]]
+          </div>
+        [[/each]]
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="send-time-description">
+      <div>
+        [[#if shippingInfo.shippingMethodDescription]]
+          [[shippingInfo.shippingMethodDescription]]
+        [[/if]]
+      </div>
+    </mj-text>
+    
+    <mj-text css-class="address-text">
+      [[#if addressInfo.dropPointName]]
+        <div>[[addressInfo.dropPointName]]</div>
+      [[/if]]
+      [[#if addressInfo.storeName]]
+        <div>[[addressInfo.storeName]]</div>
+      [[/if]]
+      [[#if addressInfo.companyName]]
+        <div>[[addressInfo.companyName]]</div>
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="address-text">
+      [[addressInfo.address]]<br/>
+      [[#if addressInfo.district]]
+        [[addressInfo.district]] <br/>
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="address-text">
+      [[#if addressInfo.zipCode]]
+        [[addressInfo.zipCode]]
+      [[/if]]
+      [[#if addressInfo.city]]
+        [[addressInfo.city]]
+      [[/if]]
+      [[#if addressInfo.state]]
+        [[addressInfo.state]]
+      [[/if]]
+      [[addressInfo.country]]
+    </mj-text>
+    <mj-text>
+      [[#if addressInfo.phone]]
+        [[tags.shipping_phoneText]]:
+        [[addressInfo.phone]]
+        <br/>
+      [[/if]]
+      [[#if addressInfo.mobile]]
+      [[tags.shipping_mobileText]]:
+        [[addressInfo.mobile]]
+      [[/if]]
+      <br/>
+    </mj-text>
+    <mj-text css-class="address-sign-text">
+      [[#if shippingInfo.isSignRequided]]
+        <p>
+          [[tags.shipping_signText]]: 
+          [[#if shippingInfo.signHasBeenRequired]]
+            [[tags.shipping_signTextYes]]
+          [[else]]
+            [[tags.shipping_signTextNo]]
+          [[/if]]
+        </p>
+      [[/if]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-divider/>
+  </mj-column>
+</mj-section>
