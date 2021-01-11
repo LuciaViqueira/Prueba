@@ -2,13 +2,10 @@
   "create": {
     "name": "productListConfirmation",
     "body": "",
-    "version": "8",
+    "version": "1",
     "tags": [],
     "channel": "MAIL",
-    "requiredParameters": [
-      "numProducts",
-      "eventType"
-    ],
+    "requiredParameters": ["numProducts"],
     "optionalParameters": [
       "numSuborders",
       "isSplitted",

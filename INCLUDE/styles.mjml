@@ -22,7 +22,7 @@
 
 .send-time > div {
     line-height: 19px !important;
-    margin-bottom: 23px;
+    margin-bottom: 48px;
     font-weight: bold;
     text-transform: uppercase;
 }
