@@ -30,8 +30,8 @@
         [[#and isSplitted showSubordersInfo]]
           [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
         [[/and]]
-        [[#if this.orderId]]
-          [[tags.productListConfirmation_orderText]] [[this.orderId]]
+        [[#if showMultiOrderId]]
+          [[tags.productListConfirmation_orderText]] [[this.suborderId]]
         [[/if]]
         [[#if this.cancelDate]]
           - [[tags.productListConfirmation_cancelDateText]]
@@ -97,10 +97,10 @@
       [[this.units]]
     </mj-text>
     <mj-text color="#959595" css-class="product-unit-label">
-        [[#eq this.units 1]]
+        [[#eq this.units "1"]]
             [[tags.productListConfirmation_singleUnitText]]
         [[/eq]]
-        [[#neq this.units 1]]
+        [[#neq this.units "1"]]
             [[tags.productListConfirmation_multipleUnitsText]]
         [[/neq]]
     </mj-text>

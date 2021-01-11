@@ -7,6 +7,7 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "returnTitle"]]true[[/assign]]
+      [[#assign "showMultiOrderId"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -34,10 +35,6 @@
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
-    <!-- Sección 2 refundAddress -->
-    <mj-raw>[[#if isHome]]</mj-raw>
-      <mj-include path="refundAddress" />
-    <mj-raw>[[/if]]</mj-raw>
     <!-- Sección 3 productsList -->
     <mj-include path="productListConfirmation" />
     <!-- Sección 4 footer -->

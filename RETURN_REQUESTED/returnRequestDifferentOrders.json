@@ -5,26 +5,10 @@
     "version": "1",
     "tags": [],
     "channel": "MAIL",
-    "requiredParameters": [
-      "zaraLogo",
-      "numProducts",
-      "numOrders",
-      "eventType",
-      "requestId"
-    ],
+    "requiredParameters": ["zaraLogo", "numProducts", "numOrders", "requestId"],
     "optionalParameters": [
       "isDropoff",
       "isHome",
-      "address.address",
-      "address.city",
-      "address.companyName",
-      "address.country",
-      "address.district",
-      "address.fullName",
-      "address.mobile",
-      "address.phone",
-      "address.state",
-      "address.zipCode",
       "footer.androidAppUrl",
       "footer.appleStoreImg",
       "footer.facebookImg",
@@ -71,7 +55,7 @@
       "suborders.virtualGiftCards.price",
       "suborders.virtualGiftCards.receiverEmail"
     ],
-    "blocks": ["refundAddress", "productListConfirmation", "footer", "styles"]
+    "blocks": ["productListConfirmation", "footer", "styles"]
   },
   "render": {
     "parameters": {
@@ -89,7 +73,6 @@
       "isDropoff": true,
       "numProducts": 3,
       "numOrders": 2,
-      "eventType": "ReturnRequestDifferentOrders",
       "requestId": "134654",
       "suborders": [
         {

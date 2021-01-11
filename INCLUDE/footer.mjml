@@ -1,9 +1,9 @@
 <mj-section padding-top="41px" padding-bottom="125px">
   <mj-column>
     <mj-text css-class="footer-link">
-      <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
+      <a href="[[footer.termsAndConditions]]">[[tags.purchaseConditionsText]]</a>
     </mj-text>
-    <mj-text css-class="footer-link"> <a href="[[footer.policyUrl]]">[[tags.policyText]]</a> </mj-text>
+    <mj-text css-class="footer-link"> <a href="[[footer.privacyPolicy]]">[[tags.policyText]]</a> </mj-text>
     <mj-text css-class="footer-link"> <a href="[[footer.helpUrl]]">[[tags.helpText]]</a> </mj-text>
     <mj-text padding-top="60px"> [[tags.downloadAppText]] </mj-text>
     <mj-table padding="22px 0 63px" css-class="download-apps">
