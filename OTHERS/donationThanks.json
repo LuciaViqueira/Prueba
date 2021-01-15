@@ -1,24 +1,13 @@
 {
   "create": {
-    "name": "returnRequested",
+    "name": "donationThanks",
     "body": "",
     "version": "1",
     "tags": [],
     "channel": "MAIL",
-    "requiredParameters": ["zaraLogo"],
+    "requiredParameters": [],
     "optionalParameters": [
-      "address.address",
-      "address.city",
-      "address.companyName",
-      "address.country",
-      "address.district",
-      "address.fullName",
-      "address.mobile",
-      "address.phone",
-      "address.state",
-      "address.zipCode",
       "footer.androidAppUrl",
-      "footer.appleStoreImg",
       "footer.facebookImg",
       "footer.facebookUrl",
       "footer.helpUrl",
@@ -34,50 +23,14 @@
       "footer.twitterUrl",
       "footer.youtubeImg",
       "footer.youtubeUrl",
-      "order.orderId",
-      "rma.isDropoff",
-      "rma.isHome",
-      "rma.items.color",
-      "rma.items.description",
-      "rma.items.imageUrl",
-      "rma.items.size",
-      "rma.items.sizeDescription",
-      "rma.items.sku",
-      "rma.items.units",
-      "rma.numProducts"
+      "zaraLogo",
+      "footer.appleStoreImg"
     ],
-    "blocks": ["refundAddress", "productsList", "footer", "styles"]
+    "blocks": ["styles", "footer"]
   },
   "render": {
     "parameters": {
       "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
-      "address": {
-        "country": "España",
-        "fullName": "Adrián Teijeiro",
-        "address": "Calle Falsa",
-        "zipCode": "15002",
-        "city": "Coruña",
-        "state": "Coruña",
-        "mobile": "607181721"
-      },
-      "rma": {
-        "numProducts": 1,
-        "isHome": false,
-        "isDropoff": true,
-        "items": [
-          {
-            "sku": "0239823340104",
-            "units": 1,
-            "size": "M",
-            "color": "Negro",
-            "description": "Blusa",
-            "imageUrl": "https://static.zara.net/photos///2018/V/0/1/p/4437/095/251/2/w/1024/4437095251_1_1_1.jpg?ts=1526465637157"
-          }
-        ]
-      },
-      "order": {
-        "orderId": "987654321"
-      },
       "footer": {
         "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
         "facebookUrl": "https://www.facebook.com/Zara",
