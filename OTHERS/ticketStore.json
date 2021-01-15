@@ -8,26 +8,9 @@
     "requiredParameters": ["zaraLogo"],
     "optionalParameters": [
       "eTicketId",
-      "footer.androidAppUrl",
-      "footer.appleStoreImg",
-      "footer.facebookImg",
-      "footer.facebookUrl",
-      "footer.helpUrl",
-      "footer.instagramImg",
-      "footer.instagramUrl",
-      "footer.iosAppUrl",
-      "footer.pinterestImg",
-      "footer.pinterestUrl",
-      "footer.playStoreImg",
-      "footer.privacyPolicy",
-      "footer.termsAndConditions",
-      "footer.twitterImg",
-      "footer.twitterUrl",
-      "footer.youtubeImg",
-      "footer.youtubeUrl",
       "landingPageURL"
     ],
-    "blocks": ["styles", "footer"]
+    "blocks": ["styles"]
   },
   "render": {
     "parameters": {
