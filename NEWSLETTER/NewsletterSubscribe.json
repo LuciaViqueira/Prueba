@@ -1,0 +1,44 @@
+{
+  "create": {
+    "name": "NewsletterSubscribe",
+    "body": "",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": ["zaraLogo"],
+    "optionalParameters": [
+      "newsletter_newsletterData_sections",
+      "newsletter_newsletterData_confirmUrl"
+    ],
+    "blocks": ["footer", "styles"]
+  },
+  "render": {
+    "parameters": {
+      "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
+      "newsletter_newsletterData_sections": ["HOMBRE", "Mujer"],
+      "newsletter_newsletterData_confirmUrl": "https://www.zara.com",
+      "footer": {
+        "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+        "facebookUrl": "https://www.facebook.com/Zara",
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
+        "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
+        "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+        "youtubeUrl": "http://www.youtube.com/zara",
+        "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+        "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+        "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+        "instagramUrl": "https://www.instagram.com/zara/",
+        "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
+        "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+        "helpUrl": "https://www.zara.com/es/es/help",
+        "iosAppUrl": "https://itunes.apple.com/app/id547951480",
+        "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+        "twitterUrl": "https://twitter.com/ZARA"
+      }
+    },
+    "localeVariables": {
+      "locale": "es_ES"
+    }
+  }
+}
