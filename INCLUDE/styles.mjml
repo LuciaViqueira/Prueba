@@ -7,7 +7,51 @@
   <mj-image padding="0" />
   <mj-divider padding="0" border-width="1px" border-color="#dddddd" />
 </mj-attributes>
+<mj-style>
+    @media only screen and (max-width:480px) {
+        .newsletter-logo img {
+            width: 50% !important;
+        }
+
+        .social-links-newsletter a {
+            font-size: 9.7px !important;
+            padding: 0 2px ;
+        }
+    }
+</mj-style>
 <mj-style inline="inline">
+
+.download-app-link a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+}
+
+.social-links-newsletter td {
+    text-align: center;
+}
+
+.social-links-newsletter a {
+    text-align: center;
+    text-transform: uppercase;
+    direction: ltr;
+    font-weight: 400;
+    font-size: 15px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-unsubscribe a {
+    color: #000000 !important;
+}
+
+.footer-legal-newsletter div, .footer-unsubscribe div {
+    font-size: 11px !important;
+    line-height: 16px !important;
+}
+
+
 .section-title div {
     font-weight: bold;
     font-size: 20px !important;

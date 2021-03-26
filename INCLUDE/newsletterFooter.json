@@ -1,0 +1,17 @@
+{
+  "create": {
+    "name": "newsletterFooter",
+    "body": "",
+    "version": "1",
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": [
+      "footer.facebookUrl",
+      "footer.instagramUrl",
+      "footer.pinterestUrl",
+      "footer.twitterUrl",
+      "footer.youtubeUrl"
+    ]
+  },
+  "render": {}
+}

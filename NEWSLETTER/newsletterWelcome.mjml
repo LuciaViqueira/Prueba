@@ -1,0 +1,50 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="654px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image align="left" width="327px" src="[[zaraLogo]]" padding-top="100px" padding-left="20px" css-class="newsletter-logo" />
+        <mj-image src="https://static.zara.net/photos///mkt/misc/newsletterw/header.png" padding-top="64px" padding-bottom="10px" />
+        <mj-text css-class="section-title" padding-bottom="25px" align="left" text-transform="uppercase">
+          [[tags.newsletterWelcome_title]]
+        </mj-text>
+        <mj-text css-class="header-text" align="left">
+          <p>[[tags.newsletterWelcome_text1]]<br>[[tags.newsletterWelcome_text2]]</p>
+          [[#each newsletter_newsletterData_sections]]
+            [[#if this]]
+              <div style="text-transform: uppercase; padding-bottom: 2px;"><strong>- [[this]]</strong></div>
+            [[/if]]
+          [[/each]]
+        </mj-text>
+        <mj-button 
+          align="left"
+          background-color="#FFFFFF" 
+          color="#000000" 
+          border="2px solid #000000" 
+          border-radius="0px"
+          font-weight="bold" 
+          text-transform="uppercase" 
+          padding="70px 0 0"
+          href="https://www.zara.com" >
+            [[tags.newsletterWelcome_buttonTxt]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="newsletterFooter" />
+    <mj-section padding="30px 0 125px">
+      <mj-column>
+        <mj-text css-class="footer-unsubscribe" padding-bottom="25px">
+          [[& newsletter_newsletterData_unsubscriptionText]]
+        </mj-text>
+        <mj-text css-class="footer-legal-newsletter" color="#959595">
+          [[& newsletter_newsletterData_legalText]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
