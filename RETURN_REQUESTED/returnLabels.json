@@ -6,25 +6,7 @@
     "tags": [],
     "channel": "MAIL",
     "requiredParameters": ["zaraLogo", "orderIdsList"],
-    "optionalParameters": [
-      "footer.androidAppUrl",
-      "footer.appleStoreImg",
-      "footer.facebookImg",
-      "footer.facebookUrl",
-      "footer.helpUrl",
-      "footer.instagramImg",
-      "footer.instagramUrl",
-      "footer.iosAppUrl",
-      "footer.pinterestImg",
-      "footer.pinterestUrl",
-      "footer.playStoreImg",
-      "footer.privacyPolicy",
-      "footer.termsAndConditions",
-      "footer.twitterImg",
-      "footer.twitterUrl",
-      "footer.youtubeImg",
-      "footer.youtubeUrl"
-    ],
+    "optionalParameters": [],
     "blocks": ["footer", "styles"]
   },
   "render": {

@@ -13,25 +13,7 @@
       "productUrl",
       "zaraLogo"
     ],
-    "optionalParameters": [
-      "footer.appleStoreImg",
-      "footer.facebookUrl",
-      "footer.pinterestImg",
-      "footer.privacyPolicy",
-      "footer.termsAndConditions",
-      "footer.instagramImg",
-      "footer.youtubeUrl",
-      "footer.twitterImg",
-      "footer.pinterestUrl",
-      "footer.facebookImg",
-      "footer.instagramUrl",
-      "footer.androidAppUrl",
-      "footer.youtubeImg",
-      "footer.helpUrl",
-      "footer.iosAppUrl",
-      "footer.playStoreImg",
-      "footer.twitterUrl"
-    ],
+    "optionalParameters": [],
     "blocks": ["styles", "footer"]
   },
   "render": {

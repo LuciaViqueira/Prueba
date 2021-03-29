@@ -9,6 +9,7 @@
     "optionalParameters": [
       "isSplitted",
       "numSuborders",
+      "numOrders",
       "showSubordersInfo",
       "suborders.cancelDate",
       "suborders.giftCards.description",
