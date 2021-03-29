@@ -1,0 +1,34 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.NewsletterSubscribe_title]]
+        </mj-text>
+        <mj-text padding="37px 0 13px" css-class="header-text">
+          <p>[[tags.NewsletterSubscribe_text1]]</p>
+          [[#each newsletter_newsletterData_sections]]
+            [[#if this]]
+              <div style="text-transform: uppercase; padding-bottom: 2px;"><strong>[[this]]</strong></div>
+            [[/if]]
+          [[/each]]
+        </mj-text>
+        <mj-button background-color="#000000" color="#FFFFFF" text-transform="uppercase" href="[[newsletter_newsletterData_confirmUrl]]" padding="0 0 20px">
+          [[tags.NewsletterSubscribe_subscribeBtn]]
+        </mj-button>
+        <mj-text css-class="header-text">
+          <p>[[tags.NewsletterSubscribe_privacyWarn]]</p>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
