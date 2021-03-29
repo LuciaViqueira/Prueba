@@ -20,6 +20,9 @@
     }
 </mj-style>
 <mj-style inline="inline">
+* {
+    direction: [[#if rtl]]rtl[[else]]ltr[[/if]];
+}
 
 .download-app-link a {
     color: #000000 !important;
