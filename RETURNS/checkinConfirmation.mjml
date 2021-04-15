@@ -27,8 +27,8 @@
     </mj-section>
     <!-- Sección 2 refundAddress -->
     <mj-include path="refundAddress" />
-    <!-- Sección 3 productsList -->
-    <mj-include path="productListConfirmation" />
+    <!-- Sección 3 itemList -->
+    <mj-include path="itemList" />
     <!-- Sección 4 footer -->
     <mj-include path="footer" />
   </mj-body>

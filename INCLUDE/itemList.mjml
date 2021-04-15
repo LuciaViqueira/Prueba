@@ -1,0 +1,187 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="23px">
+      [[#if returnTitle]]
+        [[tags.itemList_productListTitleReturnRequest]]
+      [[else]]
+        [[tags.itemList_productListTitle]]
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="product-counter" padding-bottom="50px">
+        [[numProducts]]
+        [[#eq numProducts 1]]
+          [[tags.itemList_singleItemText]]
+        [[/eq]]
+        [[#neq numProducts 1]]
+          [[tags.itemList_multipleItemText]]
+        [[/neq]]
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.itemList_shipmentsNumberText]]
+        [[/and]]
+        [[#if numOrders]]
+          [[tags.itemList_ordersNumberText]]
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[#each itemList]]
+    </mj-raw>
+    <mj-text text-transform="uppercase" padding-bottom="10px">
+      <strong>
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.itemList_shipmentText]] [[this.suborderId]]
+        [[/and]]
+        [[#if showMultiOrderId]]
+          [[tags.itemList_orderText]] [[this.suborderId]]
+        [[/if]]
+        [[#if this.cancelDate]]
+          - [[tags.itemList_cancelDateText]]
+        [[/if]]
+      </strong>
+    </mj-text>
+
+    <mj-raw>
+            [[#each this.items]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-size">
+      [[this.size]]
+    </mj-text>
+    <mj-text>
+      [[#if this.sizeDescription]]
+        [[this.sizeDescription]]
+      [[/if]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      [[this.description]]
+    </mj-text>
+    <mj-text color="#7f7f7f">
+      [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
+    </mj-text>
+    <mj-text css-class="product-custom-warn">
+        [[#if this.isPantone]]
+            [[tags.itemList_customizationsWarn]]
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[#if this.isCustom]]
+    </mj-raw>
+    <mj-button css-class="product-custom" background-color="#000000" color="#FFFFFF" text-transform="uppercase">
+        <span class="product-custom-lbl">[[tags.itemList_customizationsButton]]</span>
+    </mj-button>
+    <mj-text css-class="product-custom-warn">
+        [[tags.itemList_customizationsWarn]]
+    </mj-text>
+    <mj-raw>
+        [[#each this.itemCustomizations]]
+    </mj-raw>
+    <mj-text align="center" padding="10px 0" css-class="product-custom-table">
+        <div>[[tags.itemList_customizationsText]]: [[this.embroideryText]]</div>
+        <div>[[tags.itemList_customizationsArea]]: [[this.embroideryArea]]</div>
+        <div>[[tags.itemList_customizationsTypography]]: [[this.embroideryFont]]</div>
+        <div>[[tags.itemList_customizationsColor]]: [[this.embroideryColor]]</div>
+        [[#if this.serviceCost]]
+            <div>[[tags.itemList_customizationsPrice]]: [[this.serviceCost]]</div>
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[/each]]
+        [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-unit">
+      [[this.units]]
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+        [[#eq this.units "1"]]
+            [[tags.itemList_singleUnitText]]
+        [[/eq]]
+        [[#neq this.units "1"]]
+            [[tags.itemList_multipleUnitsText]]
+        [[/neq]]
+    </mj-text>
+    <mj-text css-class="product-price">
+        [[this.price]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    ####################################
+    ## Tarjeta regalo
+    ####################################
+    <mj-raw>
+        [[#each this.giftCards]]
+    </mj-raw>
+        <mj-raw>
+            [[#if this.imageUrl]]
+        </mj-raw>
+            <mj-image padding="0 0 23px" width="240px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
+        <mj-text text-transform="uppercase">
+            [[this.description]]
+        </mj-text>
+        <mj-text>
+          <div><span style="text-transform: uppercase;">[[tags.itemList_fromText]]</span>: [[this.from]]</div>
+          <div style="text-transform: uppercase;">[[tags.itemList_receiverPhoneText]]: [[this.receiverPhone]]</div>
+        </mj-text>
+        <mj-text css-class="product-unit">
+          1
+        </mj-text>
+        <mj-text color="#959595" css-class="product-unit-label">
+          [[tags.itemList_singleUnitText]]
+        </mj-text>
+        <mj-text css-class="product-price">
+          [[this.price]]
+        </mj-text>
+        <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    ####################################
+    ## Tarjeta regalo virtual
+    ####################################
+    <mj-raw>
+        [[#each this.virtualGiftCards]]
+    </mj-raw>
+        <mj-raw>
+          [[#if this.imageUrl]]
+        </mj-raw>
+            <mj-image padding="0 0 23px" width="180px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
+        <mj-text text-transform="uppercase">
+          [[this.description]]
+        </mj-text>
+        <mj-text>
+          <div><span style="text-transform: uppercase;">[[tags.itemList_fromText]]:</span> [[this.from]]</div>
+          <div><span style="text-transform: uppercase;">[[tags.itemList_receiverEmailText]]:</span> [[this.receiverEmail]]</div>
+          <div style="text-transform: uppercase;">[[tags.itemList_devileryDateText]] [[this.deliveryDate]]</div>
+        </mj-text>
+        <mj-text css-class="product-unit">
+          1
+        </mj-text>
+        <mj-text color="#959595" css-class="product-unit-label">
+          [[tags.itemList_singleUnitText]]
+        </mj-text>
+       
+        <mj-text css-class="product-price">
+          [[this.price]]
+        </mj-text>
+        <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>
