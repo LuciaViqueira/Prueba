@@ -8,11 +8,11 @@
       [[/if]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
-        [[itemList.numItems]]
-        [[#eq numProducts 1]]
+        [[numItemTotal]]
+        [[#eq numItemTotal 1]]
           [[tags.itemList_singleItemText]]
         [[/eq]]
-        [[#neq numProducts 1]]
+        [[#neq numItemTotal 1]]
           [[tags.itemList_multipleItemText]]
         [[/neq]]
         [[#and isSplitted showSubordersInfo]]
@@ -94,13 +94,13 @@
         [[/if]]
     </mj-raw>
     <mj-text css-class="product-unit">
-      [[this.units]]
+      [[this.numItems]]
     </mj-text>
     <mj-text color="#959595" css-class="product-unit-label">
-        [[#eq this.units "1"]]
+        [[#eq this.numItems "1"]]
             [[tags.itemList_singleUnitText]]
         [[/eq]]
-        [[#neq this.units "1"]]
+        [[#neq this.numItems "1"]]
             [[tags.itemList_multipleUnitsText]]
         [[/neq]]
     </mj-text>
