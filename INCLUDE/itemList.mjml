@@ -8,7 +8,7 @@
       [[/if]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
-        [[numProducts]]
+        [[itemList.numItems]]
         [[#eq numProducts 1]]
           [[tags.itemList_singleItemText]]
         [[/eq]]
