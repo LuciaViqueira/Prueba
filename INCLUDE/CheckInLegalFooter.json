@@ -1,0 +1,12 @@
+{
+  "create": {
+    "name": "CheckInLegalFooter",
+    "body": "",
+    "version": "1",
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": [
+    ]
+  },
+  "render": {}
+}
