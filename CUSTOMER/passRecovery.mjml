@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "notShowTermsConds"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+            [[tags.passRecovery_passRecoveryTitle]]
+        </mj-text>
+        <mj-text padding-top="23px" css-class="order-number">
+          <p>[[tags.passRecovery_passRecoveryLink]]</p>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
