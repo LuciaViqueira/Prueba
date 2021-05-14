@@ -1,0 +1,29 @@
+{
+  "company": {
+      "name": "COMPAÑÍA DE INVERSIONES TEXTILES DE MODA TEXMODA S.A.S.",
+      "ruc": "900.123.408-4",
+      "address": "Bodega Guadalete Vereda Fusca Autopista Norte Kilometro 21 Chía, Cundinamarca.",
+      "date": "25.02.2020 – 21:23 pm"
+
+  },
+  "claim": {
+      "orderId": "51700907553",
+      "date": "25.02.2020 – 21:23 pm",
+      "number": "PE00001",
+      "itemsDescription": "ABRIGO OVERSIZE CUADROS – 8683/114",
+      "ammount": "PEN 459,00",
+      "message": "El artículo recibido no se corresponde con la imagen mostrada en la web."
+  },
+  "address": {
+      "firstName": "Jose",
+      "lastName": "Sánchez",
+      "nif": "12345678R",
+      "address": "Avenida Jorge Basadre 49",
+      "state": "San Isidro",
+      "city": "Lima",
+      "district": "27",
+      "country": "Perú",
+      "phone": "(51-1) 212-5155",
+      "email": "adteije@gmail.com"
+  }
+}
