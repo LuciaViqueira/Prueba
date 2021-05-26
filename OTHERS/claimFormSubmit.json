@@ -1,29 +1,49 @@
 {
-  "company": {
-      "name": "COMPAÑÍA DE INVERSIONES TEXTILES DE MODA TEXMODA S.A.S.",
-      "ruc": "900.123.408-4",
-      "address": "Bodega Guadalete Vereda Fusca Autopista Norte Kilometro 21 Chía, Cundinamarca.",
-      "date": "25.02.2020 – 21:23 pm"
+    "localeVariables": {
+        "locale": "es_ES",
+        "modifier": "ES"    
+    },
+    "parameters": {        
+      "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
+      "company_name": "COMPAÑÍA DE INVERSIONES TEXTILES DE MODA TEXMODA S.A.S.",
+      "company_ruc": "900.123.408-4",
+      "company_address": "Bodega Guadalete Vereda Fusca Autopista Norte Kilometro 21 Chía, Cundinamarca.",
+      "claim_orderId": "51700907553",
+      "claim_date": "25.02.2020 – 21:23 pm",
+      "claim_number": "PE00001",
+      "claim_itemsDescription": "ABRIGO OVERSIZE CUADROS – 8683/114",
+      "claim_ammount": "PEN 459,00",
+      "claim_message": "El artículo recibido no se corresponde con la imagen mostrada en la web.",
+      "user_firstName": "Jose",
+      "user_lastName": "Sánchez",
+      "user_nif": "12345678R",
+      "user_address": "Avenida Jorge Basadre 49",
+      "user_state": "San Isidro",
+      "user_city": "Lima",
+      "user_district": "27",
+      "user_country": "Perú",
+      "user_phone": "(51-1) 212-5155",
+      "user_email": "adteije@gmail.com",
 
-  },
-  "claim": {
-      "orderId": "51700907553",
-      "date": "25.02.2020 – 21:23 pm",
-      "number": "PE00001",
-      "itemsDescription": "ABRIGO OVERSIZE CUADROS – 8683/114",
-      "ammount": "PEN 459,00",
-      "message": "El artículo recibido no se corresponde con la imagen mostrada en la web."
-  },
-  "address": {
-      "firstName": "Jose",
-      "lastName": "Sánchez",
-      "nif": "12345678R",
-      "address": "Avenida Jorge Basadre 49",
-      "state": "San Isidro",
-      "city": "Lima",
-      "district": "27",
-      "country": "Perú",
-      "phone": "(51-1) 212-5155",
-      "email": "adteije@gmail.com"
-  }
+      "footer": {
+        "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+        "facebookUrl": "https://www.facebook.com/Zara",
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
+        "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
+        "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+        "youtubeUrl": "http://www.youtube.com/zara",
+        "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+        "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+        "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+        "instagramUrl": "https://www.instagram.com/zara/",
+        "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
+        "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+        "helpUrl": "https://www.zara.com/es/es/help",
+        "iosAppUrl": "https://itunes.apple.com/app/id547951480",
+        "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+        "twitterUrl": "https://twitter.com/ZARA"
+      }
+    }
 }
+        
