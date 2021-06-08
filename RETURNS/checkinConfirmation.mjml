@@ -28,8 +28,10 @@
     <!-- Sección 2 refundAddress -->
     <mj-include path="refundAddress" />
     <!-- Sección 3 productsList -->
-    <mj-include path="productListConfirmation" />
-    <!-- Sección 4 footer -->
+    <mj-include path="itemList" />
+    <!-- Sección 4 CheckInLegalFooter -->
+    <mj-include path="CheckInLegalFooter" />
+    <!-- Sección 5 footer -->
     <mj-include path="footer" />
   </mj-body>
 </mjml>

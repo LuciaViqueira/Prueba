@@ -1,0 +1,110 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="23px">
+      [[#if returnTitle]]
+        [[tags.itemList_productListTitleReturnRequest]]
+      [[else]]
+        [[tags.itemList_productListTitle]]
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="product-counter" padding-bottom="50px">
+        [[numItemTotal]]
+        [[#eq numItemTotal 1]]
+          [[tags.itemList_singleItemText]]
+        [[/eq]]
+        [[#neq numItemTotal 1]]
+          [[tags.itemList_multipleItemText]]
+        [[/neq]]
+        [[#if numOrders]]
+          [[tags.itemList_ordersNumberText]]
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[#each itemList]]
+    </mj-raw>
+    <mj-text text-transform="uppercase" padding-bottom="10px">
+      <strong>
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.itemList_shipmentText]] [[this.suborderId]]
+        [[/and]]
+        [[#if showMultiOrderId]]
+          [[tags.itemList_orderText]] [[this.suborderId]]
+        [[/if]]
+        [[#if this.cancelDate]]
+          - [[tags.itemList_cancelDateText]]
+        [[/if]]
+      </strong>
+    </mj-text>
+
+    <mj-raw>
+      [[#if this.item.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240px" height="auto" css-class="product-img" src="[[this.item.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-size">
+      [[this.item.size]]
+    </mj-text>
+    <mj-text>
+      [[#if this.item.sizeDescription]]
+        [[this.item.sizeDescription]]
+      [[/if]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      [[this.item.description]]
+    </mj-text>
+    <mj-text color="#7f7f7f">
+      [[this.item.color]] [[substring this.[item.sku] 0 1]]/[[substring this.[item.sku] 1 5]]/[[substring this.[item.sku] 5 8]]/[[substring this.[item.sku] 8 11]]/[[substring this.[item.sku] 11 13]]
+    </mj-text>
+    <mj-text css-class="product-custom-warn">
+        [[#if this.item.isPantone]]
+            [[tags.itemList_customizationsWarn]]
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[#if this.item.isCustom]]
+    </mj-raw>
+    <mj-button css-class="product-custom" background-color="#000000" color="#FFFFFF" text-transform="uppercase">
+        <span class="product-custom-lbl">[[tags.itemList_customizationsButton]]</span>
+    </mj-button>
+    <mj-text css-class="product-custom-warn">
+        [[tags.itemList_customizationsWarn]]
+    </mj-text>
+    <mj-raw>
+        [[#each this.item.itemCustomizations]]
+    </mj-raw>
+    <mj-text align="center" padding="10px 0" css-class="product-custom-table">
+        <div>[[tags.itemList_customizationsText]]: [[this.item.embroideryText]]</div>
+        <div>[[tags.itemList_customizationsArea]]: [[this.item.embroideryArea]]</div>
+        <div>[[tags.itemList_customizationsTypography]]: [[this.item.embroideryFont]]</div>
+        <div>[[tags.itemList_customizationsColor]]: [[this.item.embroideryColor]]</div>
+        [[#if this.serviceCost]]
+            <div>[[tags.itemList_customizationsPrice]]: [[this.item.serviceCost]]</div>
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[/each]]
+        [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-unit">
+      [[this.numItems]]
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+        [[#eq this.numItems "1"]]
+            [[tags.itemList_singleUnitText]]
+        [[/eq]]
+        [[#neq this.numItems "1"]]
+            [[tags.itemList_multipleUnitsText]]
+        [[/neq]]
+    </mj-text>
+    <mj-text css-class="product-price">
+        [[this.item.price]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>
