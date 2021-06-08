@@ -1,7 +1,11 @@
 <mj-section padding-top="41px" padding-bottom="125px">
   <mj-column>
     <mj-text css-class="footer-link">
-      <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
+      [[#if notShowTermsConds]]
+
+      [[else]]
+        <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
+      [[/if]]      
     </mj-text>
     <mj-text css-class="footer-link"> <a href="[[footer.policyUrl]]">[[tags.policyText]]</a> </mj-text>
     <mj-text css-class="footer-link"> <a href="[[footer.helpUrl]]">[[tags.helpText]]</a> </mj-text>

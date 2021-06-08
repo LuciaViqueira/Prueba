@@ -1,0 +1,47 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.claimFormSubmit_claimFormSubmitTitle]]
+        </mj-text>
+        <mj-text padding="37px 0 0" css-class="header-text">
+          <p>[[company_name]]</p>
+          <p>[[tags.claimFormSubmit_RUC]] [[company_ruc]]</p>
+        </mj-text>
+        <mj-text padding="0 0 13px">
+          <div>[[company_address]]</div>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+        <mj-text padding="37px 0 17px">
+           <div><span style="font-weight: bold;">[[tags.claimFormSubmit_date]]</span> [[claim_date]]</div>
+           <div><span style="font-weight: bold;">[[tags.claimFormSubmit_claimNumber]]</span> [[claim_number]]</div>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+        <mj-text padding="25px 0 5px">
+          <div style="font-size: 18px; font-weight: bold;">[[tags.claimFormSubmit_clientInformation]]</div>
+        </mj-text>
+        <mj-text>
+          <div style="font-weight: bold; margin-top: 15px">[[tags.claimFormSubmit_Name]]</div> <div>[[user_firstName]] [[user_lastName]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_DNI]]</div> <div>[[user_nif]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_address]]</div> <div>[[user_address]], [[user_state]], [[user_city]] [[user_district]], [[user_country]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_phoneNumber]]</div> <div>[[user_phone]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_Email]]</div> <div><a href="mailto:$address.email">[[user_email]]</a></div>
+          <div style="font-weight: bold; margin-top: 30px">[[tags.claimFormSubmit_OrderId]]</div> <div>[[claim_orderId]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_articles]]</div> <div>[[claim_itemsDescription]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_amount]]</div> <div>[[claim_ammount]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_message]]</div> <div>[[claim_message]]</div>
+        </mj-text>
+        <mj-divider padding-top="37px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
