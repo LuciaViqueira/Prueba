@@ -20,7 +20,7 @@
         </mj-text>
         <mj-divider padding-top="20px" />
         <mj-text padding="37px 0 17px">
-           <div><span style="font-weight: bold;">[[tags.claimFormSubmit_date]]</span> [[claim_date]]</div>
+           <div><span style="font-weight: bold;">[[tags.claimFormSubmit_date]]</span> [[epoch claim_date "yyyy-MM-dd HH:mm:ss" "America/Lima"]]</div>
            <div><span style="font-weight: bold;">[[tags.claimFormSubmit_claimNumber]]</span> [[claim_number]]</div>
         </mj-text>
         <mj-divider padding-top="20px" />
@@ -32,7 +32,7 @@
           <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_DNI]]</div> <div>[[user_nif]]</div>
           <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_address]]</div> <div>[[user_address]], [[user_state]], [[user_city]] [[user_district]], [[user_country]]</div>
           <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_phoneNumber]]</div> <div>[[user_phone]]</div>
-          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_Email]]</div> <div><a href="mailto:$address.email">[[user_email]]</a></div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_Email]]</div> <div><a href="mailto:[[decrypt user_email]]">[[decrypt user_email]]</a></div>
           <div style="font-weight: bold; margin-top: 30px">[[tags.claimFormSubmit_OrderId]]</div> <div>[[claim_orderId]]</div>
           <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_articles]]</div> <div>[[claim_itemsDescription]]</div>
           <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_amount]]</div> <div>[[claim_ammount]]</div>
