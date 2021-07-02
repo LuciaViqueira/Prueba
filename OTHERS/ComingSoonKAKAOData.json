@@ -1,0 +1,11 @@
+{
+    "templateCode": "templateCode",
+    "message": "[[tags.comingSoonMessageKAKAO]]",
+    "buttons": [
+        {
+            "name": "[[tags.comingSoonButtonKAKAO]]",
+            "urlMobile": "[[comingSoonKakao.urlMobile]]",
+            "type": "type"
+        }
+    ]
+}
