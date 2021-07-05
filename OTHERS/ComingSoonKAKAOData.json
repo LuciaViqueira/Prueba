@@ -4,7 +4,7 @@
     "buttons": [
         {
             "name": "[[tags.comingSoonButtonKAKAO]]",
-            "urlMobile": "[[comingSoonKakao.urlMobile]]",
+            "urlMobile": "[[comingSoonKakao_urlMobile]]",
             "type": "type"
         }
     ]
