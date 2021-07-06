@@ -1,11 +1,11 @@
 {
-    "templateCode": "templateCode",
+    "templateCode": "instockalarm_new",
     "message": "[[tags.comingSoonMessageKAKAO]]",
     "buttons": [
         {
             "name": "[[tags.comingSoonButtonKAKAO]]",
-            "urlMobile": "[[comingSoonKakao_urlMobile]]",
-            "type": "type"
+            "urlMobile": "[[& comingSoonKakao_urlMobile]]",
+            "type": "WL"
         }
     ]
 }
