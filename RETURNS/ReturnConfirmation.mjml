@@ -1,0 +1,54 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.ReturnConfirmation_returnConfirmationTitle]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[tags.ReturnConfirmation_returnNumberText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          [[#neq returnInformation.refundPaymentMethod "GIFT_CARD"]]
+            [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
+          [[/neq]]
+          [[#and refundPaymentMethodNotGiftCard returnInformation.isRefundRupportedByGateway returnInformation.isAlreadyRefunded]]
+            <p>[[tags.ReturnConfirmation_alreadyRefundedInfoTitle]]</p>
+          [[else]]
+            <p>[[tags.ReturnConfirmation_refundInfoTitle]]</p>
+          [[/and]]
+          [[#eq returnInformation.refundPaymentMethod "GIFT_CARD"]]
+            <i>[[tags.ReturnConfirmation_refundGiftCardText]]</i>
+          [[else]]
+            [[#if returnInformation.isRefundSupportedByGateway]]
+              [[#if returnInformation.isAlreadyRefunded]]
+              [[else]]
+                <i>[[tags.ReturnConfirmation_refundSupportedByGatewayText]]</i>
+              [[/if]]
+            [[else]]
+              <i>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</i>
+            [[/if]]
+          [[/eq]]
+        </mj-text>
+        <mj-divider padding-top="40px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 5 productos -->
+    <mj-include path="ReturnProductList" />
+
+    <!-- Sección 5 pago -->
+    <mj-include path="ReturnPayment" />
+    <!-- Sección 6 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
