@@ -20,7 +20,7 @@
                 [[/eq]]
                 <br />
                 [[#assign "numPayments"]][[#size returnInformation.orderList.[0].payment.paymentDetails]][[/size]][[/assign]]
-                [[#neq numPayments "1"]]      
+                [[#neq numPayments 1]]      
                     [[& this.amount.humanReadableText]]
                 [[/neq]]
             </p>

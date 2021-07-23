@@ -19,7 +19,7 @@
   },
   "render": {
     "parameters": {
-      "marketingInformation": {
+      "marketingInfo": {
         "showGiftCardConditions": true
       },
       "returnInformation": {

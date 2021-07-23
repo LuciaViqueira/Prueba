@@ -8,7 +8,7 @@
       [[/if]]      
     </mj-text>
     <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
-      <mj-raw>[[#if marketingInformation.showGiftCardConditions]]</mj-raw>
+      <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
       <mj-text css-class="footer-link">
         <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
       </mj-text>

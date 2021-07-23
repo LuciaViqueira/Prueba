@@ -39,7 +39,7 @@
       [[this.item.shortDescription]]
     </mj-text>
     <mj-text color="#7f7f7f">
-       [[this.item.color]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
+       [[this.item.color]] [[this.item.sku]]
     </mj-text>
     <mj-text css-class="product-custom-warn">
       <!-- #if ($rmaItem.isPantone)
@@ -77,10 +77,10 @@
       [[this.quantity]]
     </mj-text>
     <mj-text color="#959595" css-class="product-unit-label">
-        [[#eq this.quantity "1"]]
+        [[#eq this.quantity 1]]
             [[tags.ReturnProductList_singleUnitText]]
         [[/eq]]
-        [[#neq this.quantity "1"]]
+        [[#neq this.quantity 1]]
             [[tags.ReturnProductList_multipleUnitsText]]
         [[/neq]]
     </mj-text>
