@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title" padding-bottom="50px">
+          [[tags.AccountCancellationNoticeMAIL_title]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          <p>[[tags.AccountCancellationNoticeMAIL_lastAccessText]]</p>
+          <p>[[tags.AccountCancellationNoticeMAIL_warningText1]]</p>
+          <p>[[tags.AccountCancellationNoticeMAIL_warningText2]]</p>
+          <p>[[tags.AccountCancellationNoticeMAIL_warningText3]]</p>
+          <p>[[tags.AccountCancellationNoticeMAIL_nextNotification]]</p>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
