@@ -14,8 +14,6 @@
         <mj-text css-class="header-text">
           <p>[[tags.AccountCancellationNoticeMAIL_lastAccessText]]</p>
           <p>[[tags.AccountCancellationNoticeMAIL_warningText1]]</p>
-          <p>[[tags.AccountCancellationNoticeMAIL_warningText2]]</p>
-          <p>[[tags.AccountCancellationNoticeMAIL_warningText3]]</p>
           <p>[[tags.AccountCancellationNoticeMAIL_nextNotification]]</p>
         </mj-text>
         <mj-divider padding-top="20px" />
