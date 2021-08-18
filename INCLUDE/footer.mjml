@@ -7,6 +7,20 @@
         <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
       [[/if]]      
     </mj-text>
+    <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
+      <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
+      <mj-text css-class="footer-link">
+        <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+      </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[#if returnInformation.isGiftTicket]]
+      </mj-raw>
+      <mj-text css-class="footer-link">  
+        <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+      </mj-text>
+      <mj-raw>[[/if]]</mj-raw>
+    <mj-raw>[[/if]]</mj-raw>
     <mj-text css-class="footer-link"> <a href="[[footer.policyUrl]]">[[tags.policyText]]</a> </mj-text>
     <mj-text css-class="footer-link"> <a href="[[footer.helpUrl]]">[[tags.helpText]]</a> </mj-text>
     <mj-text padding-top="60px"> [[tags.downloadAppText]] </mj-text>
