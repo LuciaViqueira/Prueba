@@ -24,6 +24,7 @@
             [[/neq]]
         </mj-text>
         <mj-text css-class="header-text">
+            <p>[[tags.returnLabel_warningText]]</p>
             <p>[[tags.returnLabel_labelText]]</p>
             [[#neq orderIdsNumber "1"]]
                 <p>[[tags.returnLabel_multiOrderText]]</p>
