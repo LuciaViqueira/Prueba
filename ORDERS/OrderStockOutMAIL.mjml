@@ -4,6 +4,10 @@
     <mj-include path="styles" />
   </mj-head>
   <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -15,9 +19,7 @@
           [[tags.OrderStockOutMAIL_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-          [[#if user.name]]
-            <p>[[tags.OrderStockOutMAIL_helloText]]</p>
-          [[/if]]
+          <p>[[tags.OrderStockOutMAIL_helloText]]</p>
           <p>[[tags.OrderStockOutMAIL_apologyText1]]</p>
           <p>[[tags.OrderStockOutMAIL_apologyText2]]</p>
           <p>[[tags.OrderStockOutMAIL_apologyText3]]</p>
@@ -29,7 +31,7 @@
             border="1px solid #000000" 
             font-weight="bold" 
             text-transform="uppercase" 
-            href="https://www.zara.com/[[store.identifier.value]]/[[user.preferences.locale.language]]/user/order/[[order.identifier]]" >
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.OrderStockOutMAIL_orderInsufficientBtn]]
         </mj-button>
         <mj-text css-class="header-text">

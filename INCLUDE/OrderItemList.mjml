@@ -1,0 +1,153 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="23px">
+      [[tags.OrderItemList_title]]
+    </mj-text>
+    <mj-text css-class="product-counter" padding-bottom="50px">
+        [[#assign "orderNumItems"]] [[payload.orders.[0].numItems]] [[/assign]]
+        [[orderNumItems]]
+        [[#eq orderNumItems "1"]]
+          [[tags.OrderItemList_singleItemText]]
+        [[/eq]]
+        [[#neq orderNumItems "1"]]
+          [[tags.OrderItemList_multipleItemText]]
+        [[/neq]]
+    </mj-text>
+
+    <mj-raw>
+      [[#each payload.orders.[0].suborders.[0].orderItems]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.item]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.item.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240" height="auto" css-class="product-img" src="[[this.item.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-size">
+      [[this.item.size]]
+    </mj-text>
+    <mj-text>
+      [[#if this.item.sizeDescription]]
+        [[this.item.sizeDescription]]
+      [[/if]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      [[this.item.shortDescription]]
+    </mj-text>
+    <mj-text color="#7f7f7f">
+       [[this.item.color]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
+    </mj-text>
+    <mj-text css-class="product-custom-warn">
+      <!-- #if ($rmaItem.isPantone)
+        [[tags.OrderItemList_customizationsWarn]]
+      #end-->
+    </mj-text>
+    <mj-raw>
+      [[#if this.isCustom]]
+    </mj-raw>
+    <mj-button css-class="product-custom" background-color="#000000" color="#FFFFFF" text-transform="uppercase">
+      <span class="product-custom-lbl">[[tags.OrderItemList_customizationsButton]]</span>
+    </mj-button>
+    <mj-text css-class="product-custom-warn">
+      [[tags.OrderItemList_customizationsWarn]]
+    </mj-text>
+    <mj-raw>
+      [[#each this.itemCustomizations]]
+    </mj-raw>
+    <mj-text align="center" padding="10px 0" css-class="product-custom-table">
+        <div>[[tags.OrderItemList_customizationsText]]: [[this.embroideryText]]</div>
+        <div>[[tags.OrderItemList_customizationsArea]]: [[this.embroideryArea]]</div>
+        <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
+        <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
+        [[#if this.serviceCost.humanReadableText]]
+          <div>[[tags.OrderItemList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+      [[/each]]
+    </mj-raw>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-unit">
+      [[#if usePreviousQuantity]]
+        [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+      [[else]]
+        [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+      [[/if]]
+      [[templateQuantity]]
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+        [[#eq templateQuantity "1"]]
+            [[tags.OrderItemList_singleUnitText]]
+        [[/eq]]
+        [[#neq templateQuantity "1"]]
+            [[tags.OrderItemList_multipleUnitsText]]
+        [[/neq]]
+    </mj-text>
+    <mj-text css-class="product-price">
+      [[& this.price.humanReadableText]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <!------------ -->
+    <!-- GIFT CARD -->
+    <!------------ -->
+    <mj-raw>
+      [[else]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.giftCard.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240" height="auto" css-class="product-img" src="[[this.giftCard.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text text-transform="uppercase">
+     [[this.giftCard.description]]
+    </mj-text>
+    <mj-text>
+      [[#if this.giftCard.from]]
+        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_fromText]]:</span> [[this.giftCard.from]]</div>
+      [[/if]]
+      [[#eq this.giftCard.type "VIRTUAL"]]
+        [[#if this.giftCard.receiverData.customerEmail]]
+          <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.customerEmail]]</div>
+        [[/if]]
+        [[#if this.giftCard.shippedDate]]
+          <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[this.giftCard.shippedDate.dateIso]]</div>
+        [[/if]]
+      [[else]]
+        [[#if this.giftCard.receiverData.customerPhone]]
+          <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.customerPhone]]</div>
+        [[/if]]
+      [[/eq]]
+     
+    </mj-text>
+    <mj-text css-class="product-unit">
+      1
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+      [[tags.OrderItemList_singleUnitText]]
+    </mj-text>
+ 
+    <mj-text css-class="product-price">
+      [[& this.giftCard.amount.humanReadableText]]
+    </mj-text>
+    <mj-spacer height="50px" />
+
+    <mj-raw>
+      [[/if]] <!--CHECK_IS_GIFT_CARD-->
+    </mj-raw>
+    <!-- END GIFT CARD-->
+
+    <mj-raw>
+      [[/each]]
+    </mj-raw>
+    
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>
