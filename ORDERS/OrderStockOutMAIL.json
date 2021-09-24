@@ -8,299 +8,302 @@
         "requiredParameters": [],
         "optionalParameters": [
             "zaraLogo",
-            "order",
-            "user"
+            "item"
         ]
     },
     "render": {
         "parameters": {
-            "marketingInfo": {
-                "showGiftCardConditions": true
-            },
-            "order": {
-                "identifier": "111111111",
-                "isSplitted": false,
-                "totalNumItems": "3",
-                "numSuborders": "1",
-                "isFastSint": false,
-                "isPreorder": false,
-                "suborders": [
+            "payload": {
+                "marketingInfo": {
+                    "showGiftCardConditions": true
+                },
+                "order": [
                     {
-                        "suborderId": "1234567890",
-                        "numItems": "3",
-                        "discounts": [],
-                        "payment": {
-                            "totalAmount": {
-                                "currency": "",
-                                "humanReadableText": "",
-                                "value": "0",
-                                "exponent": "0"
-                            },
-                            "customizationPrice": {
-                                "currency": "",
-                                "humanReadableText": "",
-                                "value": "0",
-                                "exponent": "0"
-                            },
-                            "finalAmount": {
-                                "currency": "",
-                                "humanReadableText": "",
-                                "value": "0",
-                                "exponent": "0"
-                            },
-                            "totalDiscounts": {
-                                "currency": "",
-                                "humanReadableText": "",
-                                "value": "0",
-                                "exponent": "0"
-                            },
-                            "vatDetails": [
-                                {
-                                    "amount": {
-                                        "currency": "",
-                                        "humanReadableText": "",
-                                        "value": "0",
-                                        "exponent": "0"
-                                    },
-                                    "rate": "-1",
-                                    "type": ""
-                                },
-                                {
-                                    "amount": {
-                                        "currency": "Vat",
-                                        "humanReadableText": "12 EUR",
-                                        "value": "0",
-                                        "exponent": "0"
-                                    },
-                                    "rate": "5",
-                                    "type": "VAT"
-                                }
-                            ],
-                            "paymentDetails": [
-                                {
-                                    "last4": "9999",
-                                    "amount": {
-                                        "currency": "",
-                                        "humanReadableText": "43.01&nbsp;USD",
-                                        "value": "0",
-                                        "exponent": "0"
-                                    },
-                                    "paymentMethodDescription": "MasterCard",
-                                    "cardHolderName": "MANUEL MARTOS",
-                                    "paymentMethodId": "-1"
-                                }
-                            ]
-                        },
-                        "orderItems": [
+                        "identifier": "111111111",
+                        "isSplitted": false,
+                        "totalNumItems": "3",
+                        "numSuborders": "1",
+                        "isFastSint": false,
+                        "isPreorder": false,
+                        "suborders": [
                             {
-                                "item": {
-                                    "colour": "Azul",
-                                    "size": "",
-                                    "sizeDescription": "34 EU",
-                                    "imageUrl": "https://sttc-stage-zaraphr.inditex.com/photos//2021/V/0/1/p/2036/125/605/2/w/400/2036125605_1_1_1.jpg?ts=1604416785935",
-                                    "shortDescription": "BERMUDA CORTA",
-                                    "sku": "0347312048922-V2016",
-                                    "catEntryId": "-1"
-                                },
-                                "quantity": 1,
-                                "retailPriceAmount": {
-                                    "currency": "",
-                                    "humanReadableText": "",
-                                    "value": "0",
-                                    "exponent": "0"
-                                },
+                                "suborderId": "1234567890",
+                                "numItems": "3",
                                 "discounts": [],
-                                "price": {
-                                    "currency": "",
-                                    "humanReadableText": "50&nbsp;USD",
-                                    "value": "0",
-                                    "exponent": "0"
-                                },
-                                "orderItemId": "",
-                                "isCustom": false,
-                                "giftCard": {
-                                    "amount": {
+                                "payment": {
+                                    "totalAmount": {
                                         "currency": "",
                                         "humanReadableText": "",
                                         "value": "0",
                                         "exponent": "0"
                                     },
-                                    "imageUrl": "",
-                                    "description": "",
-                                    "from": "",
-                                    "sku": "",
-                                    "type": "",
-                                    "shippedDate": {
-                                        "dateIso": "",
-                                        "dateType": "ISO8601",
-                                        "region": ""
-                                    },
-                                    "receiverData": {
-                                        "customerEmail": ""
-                                    }
-                                },
-                                "customizations": []
-                            },
-                            {
-                                "item": {
-                                    "colour": "Azul",
-                                    "size": "",
-                                    "sizeDescription": "34 EU",
-                                    "imageUrl": "https://sttc-stage-zaraphr.inditex.com/photos//2021/V/0/1/p/2036/125/605/2/w/400/2036125605_1_1_1.jpg?ts=1604416785935",
-                                    "shortDescription": "BERMUDA CORTA 2",
-                                    "sku": "0347312048923-V2016",
-                                    "catEntryId": "-1"
-                                },
-                                "quantity": "1",
-                                "retailPriceAmount": {
-                                    "currency": "",
-                                    "humanReadableText": "",
-                                    "value": "0",
-                                    "exponent": "0"
-                                },
-                                "discounts": [],
-                                "price": {
-                                    "currency": "",
-                                    "humanReadableText": "50&nbsp;USD",
-                                    "value": "0",
-                                    "exponent": "0"
-                                },
-                                "orderItemId": "",
-                                "isCustom": true,
-                                "giftCard": {
-                                    "amount": {
+                                    "customizationPrice": {
                                         "currency": "",
                                         "humanReadableText": "",
                                         "value": "0",
                                         "exponent": "0"
                                     },
-                                    "imageUrl": "",
-                                    "description": "",
-                                    "from": "",
-                                    "sku": "",
-                                    "type": "",
-                                    "shippedDate": {
-                                        "dateIso": "",
-                                        "dateType": "ISO8601",
-                                        "region": ""
+                                    "finalAmount": {
+                                        "currency": "",
+                                        "humanReadableText": "",
+                                        "value": "0",
+                                        "exponent": "0"
                                     },
-                                    "receiverData": {
-                                        "customerEmail": ""
-                                    }
+                                    "totalDiscounts": {
+                                        "currency": "",
+                                        "humanReadableText": "",
+                                        "value": "0",
+                                        "exponent": "0"
+                                    },
+                                    "vatDetails": [
+                                        {
+                                            "amount": {
+                                                "currency": "",
+                                                "humanReadableText": "",
+                                                "value": "0",
+                                                "exponent": "0"
+                                            },
+                                            "rate": "-1",
+                                            "type": ""
+                                        },
+                                        {
+                                            "amount": {
+                                                "currency": "Vat",
+                                                "humanReadableText": "12 EUR",
+                                                "value": "0",
+                                                "exponent": "0"
+                                            },
+                                            "rate": "5",
+                                            "type": "VAT"
+                                        }
+                                    ],
+                                    "paymentDetails": [
+                                        {
+                                            "last4": "9999",
+                                            "amount": {
+                                                "currency": "",
+                                                "humanReadableText": "43.01&nbsp;USD",
+                                                "value": "0",
+                                                "exponent": "0"
+                                            },
+                                            "paymentMethodDescription": "MasterCard",
+                                            "cardHolderName": "MANUEL MARTOS",
+                                            "paymentMethodId": "-1"
+                                        }
+                                    ]
                                 },
-                                "customizations": [
+                                "orderItems": [
                                     {
-                                        "embroideryFont": "Verdana",
-                                        "serviceCost": {
+                                        "item": {
+                                            "colour": "Azul",
+                                            "size": "",
+                                            "sizeDescription": "34 EU",
+                                            "imageUrl": "https://sttc-stage-zaraphr.inditex.com/photos//2021/V/0/1/p/2036/125/605/2/w/400/2036125605_1_1_1.jpg?ts=1604416785935",
+                                            "shortDescription": "BERMUDA CORTA",
+                                            "sku": "0347312048922-V2016",
+                                            "catEntryId": "-1"
+                                        },
+                                        "quantity": 1,
+                                        "retailPriceAmount": {
                                             "currency": "",
                                             "humanReadableText": "",
                                             "value": "0",
                                             "exponent": "0"
                                         },
-                                        "embroideryText": "Personalized test",
-                                        "description": "",
-                                        "embroideryColor": "Blue",
-                                        "embroideryArea": "Up Right"
-                                    }
-                                ]
-                            },
-                            {
-                                "item": null,
-                                "quantity": "",
-                                "retailPriceAmount": {
-                                    "currency": "",
-                                    "humanReadableText": "",
-                                    "value": "",
-                                    "exponent": ""
-                                },
-                                "discounts": [],
-                                "price": {
-                                    "currency": "",
-                                    "humanReadableText": "",
-                                    "value": "",
-                                    "exponent": ""
-                                },
-                                "orderItemId": "",
-                                "isCustom": false,
-                                "giftCard": {
-                                    "amount": {
-                                        "currency": "",
-                                        "humanReadableText": "20 USD",
-                                        "value": "0",
-                                        "exponent": "0"
+                                        "discounts": [],
+                                        "price": {
+                                            "currency": "",
+                                            "humanReadableText": "50&nbsp;USD",
+                                            "value": "0",
+                                            "exponent": "0"
+                                        },
+                                        "orderItemId": "",
+                                        "isCustom": false,
+                                        "giftCard": {
+                                            "amount": {
+                                                "currency": "",
+                                                "humanReadableText": "",
+                                                "value": "0",
+                                                "exponent": "0"
+                                            },
+                                            "imageUrl": "",
+                                            "description": "",
+                                            "from": "",
+                                            "sku": "",
+                                            "type": "",
+                                            "shippedDate": {
+                                                "dateIso": "",
+                                                "dateType": "ISO8601",
+                                                "region": ""
+                                            },
+                                            "receiverData": {
+                                                "customerEmail": ""
+                                            }
+                                        },
+                                        "customizations": []
                                     },
-                                    "imageUrl": "https://static.zara.net/photos///9999/I/5/3/p/0000/000/001/2/w/400/0000000001_2_1_1.jpg?ts=1509988235998",
-                                    "description": "Tarjeta regalo",
-                                    "from": "Fulanito",
-                                    "sku": "-------------",
-                                    "type": "VIRTUAL",
-                                    "shippedDate": {
-                                        "dateIso": "12/12/2021",
-                                        "dateType": "ISO8601",
-                                        "region": ""
-                                    },
-                                    "receiverData": {
-                                        "customerEmail": "fulanito@menganito.com",
-                                        "customerPhone": "666555444"
-                                    }
-                                },
-                                "customizations": [
                                     {
-                                        "embroideryFont": "Verdana",
-                                        "serviceCost": {
+                                        "item": {
+                                            "colour": "Azul",
+                                            "size": "",
+                                            "sizeDescription": "34 EU",
+                                            "imageUrl": "https://sttc-stage-zaraphr.inditex.com/photos//2021/V/0/1/p/2036/125/605/2/w/400/2036125605_1_1_1.jpg?ts=1604416785935",
+                                            "shortDescription": "BERMUDA CORTA 2",
+                                            "sku": "0347312048923-V2016",
+                                            "catEntryId": "-1"
+                                        },
+                                        "quantity": "1",
+                                        "retailPriceAmount": {
                                             "currency": "",
                                             "humanReadableText": "",
                                             "value": "0",
                                             "exponent": "0"
                                         },
-                                        "embroideryText": "Personalized test",
-                                        "description": "",
-                                        "embroideryColor": "Blue",
-                                        "embroideryArea": "Up Right"
+                                        "discounts": [],
+                                        "price": {
+                                            "currency": "",
+                                            "humanReadableText": "50&nbsp;USD",
+                                            "value": "0",
+                                            "exponent": "0"
+                                        },
+                                        "orderItemId": "",
+                                        "isCustom": true,
+                                        "giftCard": {
+                                            "amount": {
+                                                "currency": "",
+                                                "humanReadableText": "",
+                                                "value": "0",
+                                                "exponent": "0"
+                                            },
+                                            "imageUrl": "",
+                                            "description": "",
+                                            "from": "",
+                                            "sku": "",
+                                            "type": "",
+                                            "shippedDate": {
+                                                "dateIso": "",
+                                                "dateType": "ISO8601",
+                                                "region": ""
+                                            },
+                                            "receiverData": {
+                                                "customerEmail": ""
+                                            }
+                                        },
+                                        "customizations": [
+                                            {
+                                                "embroideryFont": "Verdana",
+                                                "serviceCost": {
+                                                    "currency": "",
+                                                    "humanReadableText": "",
+                                                    "value": "0",
+                                                    "exponent": "0"
+                                                },
+                                                "embroideryText": "Personalized test",
+                                                "description": "",
+                                                "embroideryColor": "Blue",
+                                                "embroideryArea": "Up Right"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "item": null,
+                                        "quantity": "",
+                                        "retailPriceAmount": {
+                                            "currency": "",
+                                            "humanReadableText": "",
+                                            "value": "",
+                                            "exponent": ""
+                                        },
+                                        "discounts": [],
+                                        "price": {
+                                            "currency": "",
+                                            "humanReadableText": "",
+                                            "value": "",
+                                            "exponent": ""
+                                        },
+                                        "orderItemId": "",
+                                        "isCustom": false,
+                                        "giftCard": {
+                                            "amount": {
+                                                "currency": "",
+                                                "humanReadableText": "20 USD",
+                                                "value": "0",
+                                                "exponent": "0"
+                                            },
+                                            "imageUrl": "https://static.zara.net/photos///9999/I/5/3/p/0000/000/001/2/w/400/0000000001_2_1_1.jpg?ts=1509988235998",
+                                            "description": "Tarjeta regalo",
+                                            "from": "Fulanito",
+                                            "sku": "-------------",
+                                            "type": "VIRTUAL",
+                                            "shippedDate": {
+                                                "dateIso": "12/12/2021",
+                                                "dateType": "ISO8601",
+                                                "region": ""
+                                            },
+                                            "receiverData": {
+                                                "customerEmail": "fulanito@menganito.com",
+                                                "customerPhone": "666555444"
+                                            }
+                                        },
+                                        "customizations": [
+                                            {
+                                                "embroideryFont": "Verdana",
+                                                "serviceCost": {
+                                                    "currency": "",
+                                                    "humanReadableText": "",
+                                                    "value": "0",
+                                                    "exponent": "0"
+                                                },
+                                                "embroideryText": "Personalized test",
+                                                "description": "",
+                                                "embroideryColor": "Blue",
+                                                "embroideryArea": "Up Right"
+                                            }
+                                        ]
                                     }
-                                ]
+                                ],
+                                "shipping": {
+                                    "mode": "MODO",
+                                    "type": "TIPO",
+                                    "name": "NOMBRE",
+                                    "description": "DESCRIPCIÓN",
+                                    "address": {
+                                        "line": "Línea",
+                                        "street": "Calle Juan Flórez",
+                                        "zipCode": "15005",
+                                        "city": "A Coruña",
+                                        "country": "España",
+                                        "state": "ESTADO",
+                                        "district": "DISTRICTO"
+                                    }
+                                }
                             }
                         ],
-                        "shipping": {
-                            "mode": "MODO",
-                            "type": "TIPO",
-                            "name": "NOMBRE",
-                            "description": "DESCRIPCIÓN",
-                            "address": {
-                                "line": "Línea",
-                                "street": "Calle Juan Flórez",
-                                "zipCode": "15005",
-                                "city": "A Coruña",
-                                "country": "España",
-                                "state": "ESTADO",
-                                "district": "DISTRICTO"
-                            }
-                        }
+                        "payment": null,
+                        "discount": null
                     }
                 ],
-                "payment": null,
-                "discount": null
-            },
-            "user": {
-                "identifier": "3065100558",
-                "mobilePhoneNumber": "",
-                "preferences": {
-                    "locale": {
-                        "country": "ES",
-                        "variant": "",
-                        "language": "es"
-                    }
+                "user": {
+                    "identifier": "3065100558",
+                    "mobilePhoneNumber": "",
+                    "preferences": {
+                        "locale": {
+                            "country": "ES",
+                            "variant": "",
+                            "language": "es"
+                        }
+                    },
+                    "phoneNumber": "",
+                    "surname": "",
+                    "name": "María",
+                    "email": "",
+                    "token": ""
                 },
-                "phoneNumber": "",
-                "surname": "",
-                "name": "María",
-                "email": "",
-                "token": ""
-            },
-            "store": {
-                "identifier": {
-                    "legacyValue": "10701",
-                    "value": ""
+                "store": {
+                    "identifier": {
+                        "legacyValue": "10701",
+                        "value": ""
+                    }
                 }
             },
             "footer": {
