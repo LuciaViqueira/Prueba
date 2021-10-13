@@ -28,6 +28,11 @@
               [[tags.returnRequestDifferentOrders_homeDescription]]
             [[/if]]
           </p>
+          [[#if payload.returnEntity.request.returnCosts.[0]]]
+            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
+              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
+            [[/with]]
+          [[/if]]
           [[#if isDropoff]]
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
           [[/if]]
