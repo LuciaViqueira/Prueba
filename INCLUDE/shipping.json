@@ -6,29 +6,7 @@
     "tags": [],
     "channel": "MAIL",
     "requiredParameters": [],
-    "optionalParameters": [
-      "addressInfo.address",
-      "addressInfo.city",
-      "addressInfo.companyName",
-      "addressInfo.country",
-      "addressInfo.district",
-      "addressInfo.dropPointName",
-      "addressInfo.mobile",
-      "addressInfo.phone",
-      "addressInfo.state",
-      "addressInfo.storeName",
-      "addressInfo.zipCode",
-      "hasRelatedSuborders",
-      "isFastSint",
-      "shippingInfo.isSignRequided",
-      "shippingInfo.orderDeliveredDate",
-      "shippingInfo.shippingMethod",
-      "shippingInfo.shippingMethodDescription",
-      "shippingInfo.signHasBeenRequired",
-      "suborders.cancelDate",
-      "suborders.suborderDeliveredDate"
-    ],
-    "blocks": []
+    "optionalParameters": []
   },
   "render": {}
 }

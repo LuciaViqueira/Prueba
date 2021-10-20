@@ -1,10 +1,18 @@
 <mj-section>
   <mj-column>
     <mj-text css-class="section-title" padding-bottom="23px">
-      [[tags.OrderItemList_title]]
+      [[#if returnOrderItemTitle]]
+        [[tags.OrderItemList_productListTitleReturnRequest]]
+      [[else]]
+        [[tags.OrderItemList_title]]
+      [[/if]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
-        [[#assign "orderNumItems"]] [[payload.orders.[0].numItems]] [[/assign]]
+        [[#if useTotalOrdersNumItems]]
+          [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+        [[else]]
+          [[#assign "orderNumItems"]] [[this.orders.[0].numItems]] [[/assign]]
+        [[/if]]
         [[orderNumItems]]
         [[#eq orderNumItems "1"]]
           [[tags.OrderItemList_singleItemText]]
@@ -15,7 +23,16 @@
     </mj-text>
 
     <mj-raw>
-      [[#each payload.orders.[0].suborders.[0].orderItems]]
+      [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
+      [[#each this.orders]]
+    </mj-raw>
+    <mj-text text-transform="uppercase" padding-bottom="24px">
+      [[#neq ordersSize 1]]
+        [[tags.OrderItemList_orderNumberText]]
+      [[/neq]]
+    </mj-text>
+    <mj-raw>
+      [[#each this.suborders.[0].orderItems]]
     </mj-raw>
     <mj-raw>
       [[#if this.item]]
@@ -145,6 +162,7 @@
     <!-- END GIFT CARD-->
 
     <mj-raw>
+      [[/each]]
       [[/each]]
     </mj-raw>
     

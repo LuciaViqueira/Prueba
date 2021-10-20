@@ -1,0 +1,56 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "checkinTitle"]]true[[/assign]]
+      [[#assign "returnTitle"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "useTotalOrdersNumItems"]]true[[/assign]]
+    </mj-raw>
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.CheckInMultiOrderV2MAIL_CheckinConfirmationTitle]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[tags.CheckInMultiOrderV2MAIL_checkinNumberText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          <p>[[tags.CheckInMultiOrderV2MAIL_checkinDetails]]</p>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.balancedCheckIn]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="shipping" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+    <!-- Sección 3 productsList -->
+    <mj-raw>
+      [[#with payload.balancedCheckIn]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="OrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+    
+    <!-- Sección 4 CheckInLegalFooter -->
+    <mj-include path="CheckInLegalFooter" />
+
+    <!-- Sección 5 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
