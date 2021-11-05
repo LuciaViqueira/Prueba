@@ -1,0 +1,47 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showShippingNumber"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.LiveTrackingMAIL_title]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[tags.LiveTrackingMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          <p>[[tags.LiveTrackingMAIL_deliveryTime]]</p>
+        </mj-text>
+        <mj-button css-class="order-detail-btn" 
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            href="https://www.zara.com/[[payload.liveTracking.store.identifier.value]]/[[payload.liveTracking.user.preferences.locale.language]]/user/order/[[payload.liveTracking.orders.[0].identifier]]" >
+          [[tags.LiveTrackingMAIL_buttonTxt]]
+        </mj-button>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      [[#with payload.liveTracking.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+    <mj-include path="shipping" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
