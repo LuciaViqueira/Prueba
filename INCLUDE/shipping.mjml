@@ -4,7 +4,7 @@
       [[#if returnShippingTitle]]
         [[tags.shipping_returnShippingTitle]]
       [[else]]
-        [[#if this.orders.[0].isFastSint]]
+        [[#if order.isFastSint]]
           [[tags.shipping_fastSintTitle]]
         [[else]]
           [[#if checkinTitle]]
@@ -16,61 +16,92 @@
       [[/if]]
     </mj-text>
     <mj-raw>
-      [[#if this.orders.[0].suborders.[0].shipping.name]]
+      [[#if hideTimeMethodInfo]]
+      [[else]]
     </mj-raw>
     <mj-text css-class="send-time-received">
-        [[this.orders.[0].suborders.[0].shipping.name]]
-    </mj-text>
-    <mj-raw>
+      [[#assign "numSuborders"]][[#size order.suborders]][[/size]][[/assign]]
+      [[#neq numSuborders "1"]]
+        [[#assign "showShippingNumberLocal"]]true[[/assign]]
+      [[/neq]]
+      [[#if showShippingNumber]]
+        [[#assign "showShippingNumberLocal"]]true[[/assign]]
       [[/if]]
-      [[#if this.orders.[0].suborders.[0].shipping.description]]
-    </mj-raw>
+      [[#each order.suborders]]
+      <div>
+      
+        [[#if showShippingNumberLocal]]
+          [[tags.shipping_shippingNumberText]] [[this.suborderId]]:
+        [[/if]]
+        [[#eq this.shipping.mode "EXPRESS"]]
+          [[tags.shipping_EXPRESS]]
+        [[else]]
+          [[#eq this.shipping.mode "STANDARD"]]
+            [[tags.shipping_STANDARD]]
+          [[else]]
+            [[#eq this.shipping.mode "STORE"]]
+              [[tags.shipping_STORE]]
+            [[else]]
+              [[#eq this.shipping.mode "DDD"]]
+                [[tags.shipping_DDD]]
+              [[else]]
+                [[#eq this.shipping.mode "DROPPOINT"]]
+                  [[tags.shipping_DROPPOINT]]
+                [[else]]
+                  [[#eq this.shipping.mode "SAMEDAY"]]
+                    [[tags.shipping_SAMEDAY]]
+                  [[else]]
+                    [[#eq this.shipping.mode "TRYON"]]
+                      [[tags.shipping_TRYON]]
+                    [[else]]
+                      [[#eq this.shipping.mode "VIRTUAL"]]
+                        [[tags.shipping_VIRTUAL]]
+                      [[else]]
+                        [[#eq this.shipping.mode "DEFERRED_STANDARD"]]
+                          [[tags.shipping_DEFERRED_STANDARD]]
+                        [[else]]
+                          [[#eq this.shipping.mode "STANDARD_ASSEMBLY"]]
+                            [[tags.shipping_STANDARD_ASSEMBLY]]
+                          [[/eq]]
+                        [[/eq]]
+                      [[/eq]]
+                    [[/eq]]
+                  [[/eq]]
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+          [[/eq]]
+        [[/eq]]
+      </div>
+      [[/each]]
+    </mj-text>
     <mj-text css-class="send-time-description">
       <div>
-        [[this.orders.[0].suborders.[0].shipping.description]]
+        [[#if shipping.description]]
+          [[shipping.description]]
+        [[/if]]
       </div>
     </mj-text>
     <mj-raw>
       [[/if]]
+      [[#with shipping.address]]
+          </mj-raw>
+            <mj-include path="Address" />
+          <mj-raw>
+      [[else]]
+        [[#with shipping.physicalStore.address]]
+          </mj-raw>
+            <mj-include path="Address" />
+          <mj-raw>
+        [[else]]
+          [[#with shipping.dropPoint.address]]
+            </mj-raw>
+              <mj-include path="Address" />
+            <mj-raw>
+          [[/with]]
+        [[/with]]
+      [[/with]]
     </mj-raw>
-    <mj-text css-class="address-text">
-     [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.receiver.name]]
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.receiver.name]]
-      [[/if]]
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.line]]
-        <div>[[this.orders.[0].suborders.[0].shipping.physicalStore.address.line]]</div>
-      [[/if]]
-    </mj-text>
-    <mj-text css-class="address-text">
-      [[this.orders.[0].suborders.[0].shipping.physicalStore.address.street]]<br/>
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.district.value]]
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.district.value]] <br/>
-      [[/if]]
-    </mj-text>
-    <mj-text css-class="address-text">
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.zipCode.value]]
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.zipCode.value]]
-      [[/if]]
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.city.value]]
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.city.value]]
-      [[/if]]
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.state.value]]
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.state.value]]
-      [[/if]]
-      [[this.orders.[0].suborders.[0].shipping.physicalStore.address.country.value]]
-    </mj-text>
-     <mj-text>
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.receiver.phone]]
-        [[tags.shipping_phoneText]]:
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.receiver.phone]]
-        <br/>
-      [[/if]]
-      [[#if this.orders.[0].suborders.[0].shipping.physicalStore.address.receiver.mobile]]
-        [[tags.shipping_mobileText]]:
-        [[this.orders.[0].suborders.[0].shipping.physicalStore.address.receiver.mobile]]
-      [[/if]]
-      <br/>
-    </mj-text>
     <mj-text css-class="address-sign-text"> <!-- TODO: pendiente de saber las variables -->
       [[#if shippingInfo.isSignRequided]]
         <p>

@@ -1,0 +1,42 @@
+<mj-text css-class="address-text">
+    [[#if this.receiver.name]]
+        [[this.receiver.name]]
+    [[/if]]
+    [[#if this.line]]
+        <div>[[this.line]]</div>
+    [[/if]]
+    </mj-text>
+    <mj-text css-class="address-text">
+    [[#if this.street.value]]
+        [[this.street.value]] <br/>
+    [[/if]]
+    [[#if this.district.value]]
+        [[this.district.value]] <br/>
+    [[/if]]
+    </mj-text>
+    <mj-text css-class="address-text">
+    [[#if this.zipCode.value]]
+        [[this.zipCode.value]]
+    [[/if]]
+    [[#if this.city.value]]
+        [[this.city.value]]
+    [[/if]]
+    [[#if this.state.value]]
+        [[this.state.value]]
+    [[/if]]
+    [[this.country.value]]
+    </mj-text>
+    <mj-text>
+    [[#if showAddressPhoneNumber]]
+        [[#if this.receiver.phone]]
+            [[tags.shipping_phoneText]]:
+            [[this.receiver.phone]]
+            <br/>
+        [[/if]]
+        [[#if this.receiver.mobile]]
+            [[tags.shipping_mobileText]]:
+            [[this.receiver.mobile]]
+        [[/if]]
+    [[/if]]
+    <br/>
+</mj-text>

@@ -1,0 +1,113 @@
+{
+    "create": {
+        "name": "LiveTrackingMAIL",
+        "body": "",
+        "version": "1",
+        "tags": [],
+        "channel": "MAIL",
+        "requiredParameters": [],
+        "optionalParameters": [
+            "zaraLogo",
+            "address"
+        ]
+    },
+    "render": {
+        "parameters": {
+            "payload": {
+                "liveTracking": {
+                    "orders": [
+                        {
+                            "identifier": 40000475407,
+                            "suborders": [
+                                {
+                                    "shipping": {
+                                        "mode": "EXPRESS",
+                                        "type": "HOME",
+                                        "name": "aa",
+                                        "description": "",
+                                        "address": {
+                                            "identifier": 768990760,
+                                            "line": "Rúa San Andrés\n21",
+                                            "country": {
+                                                "code": "",
+                                                "value": "España"
+                                            },
+                                            "state": {
+                                                "code": "A CORUÑA",
+                                                "value": ""
+                                            },
+                                            "city": {
+                                                "code": "",
+                                                "value": "A Coruña"
+                                            },
+                                            "district": {
+                                                "code": "",
+                                                "value": ""
+                                            },
+                                            "street": null,
+                                            "zipCode": {
+                                                "code": "",
+                                                "value": "15003"
+                                            },
+                                            "receiver": {
+                                                "customerId": null,
+                                                "email": null,
+                                                "phone": "+34333333333",
+                                                "customerCode": null,
+                                                "name": "Live",
+                                                "surname": "Tracking",
+                                                "empty": false
+                                            }
+                                        },
+                                        "amount": null,
+                                        "discounts": null,
+                                        "signatureRequired": false,
+                                        "physicalStore": null,
+                                        "dropPoint": null
+                                    },
+                                    "discounts": null,
+                                    "numItems": 0,
+                                    "suborderId": 12938002,
+                                    "orderItems": null,
+                                    "deliveryDate": null,
+                                    "shippedDate": null
+                                }
+                            ],
+                            "payment": null,
+                            "discounts": null,
+                            "numItems": 0,
+                            "numSuborders": 1,
+                            "isFastSint": false,
+                            "isPreorder": false,
+                            "isSplitted": false
+                        }
+                    ],
+                    "user": {
+                        "token": "",
+                        "name": "",
+                        "surname": "",
+                        "address": "",
+                        "email": "Rf50VZU2vRAyUY2s6g0VctQplrDhbWc4TCxxNVijIVc=",
+                        "preferences": {
+                            "locale": {
+                                "language": "es",
+                                "country": "ES",
+                                "variant": ""
+                            }
+                        },
+                        "documentNumber": "",
+                        "phoneNumber": "",
+                        "mobilePhoneNumber": ""
+                    },
+                    "store": {
+                        "identifier": {
+                            "value": "",
+                            "legacyValue": 10701
+                        }
+                    },
+                    "numberOfRemainingStops": 9
+                }
+            }
+        }  
+    }
+}
