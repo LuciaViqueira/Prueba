@@ -1,0 +1,14 @@
+<mj-raw>[[#if this.attachments]]</mj-raw>
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="47px">
+        [[tags.eTicket_title]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      <p>[[tags.eTicket_message]]</p>
+      <p>[[tags.eTicket_sloveniaWarn]]</p>
+    </mj-text>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>
+<mj-raw>[[/if]]</mj-raw>
