@@ -1,7 +1,10 @@
 <mj-text css-class="address-text">
-    [[#if this.receiver.name]]
-        [[this.receiver.name]]
-    [[/if]]
+    <!-- TODO: Verificar que esta condición es transversal -->
+    [[#eq shipping.mode "STORE"]]
+        [[#if this.receiver.name]]
+            [[this.receiver.name]]
+        [[/if]]
+    [[/eq]]
     [[#if this.line]]
         <div>[[this.line]]</div>
     [[/if]]
@@ -10,21 +13,26 @@
     [[#if this.street.value]]
         [[this.street.value]] <br/>
     [[/if]]
-    [[#if this.district.value]]
-        [[this.district.value]] <br/>
-    [[/if]]
+   
     </mj-text>
     <mj-text css-class="address-text">
-    [[#if this.zipCode.value]]
-        [[this.zipCode.value]]
-    [[/if]]
-    [[#if this.city.value]]
-        [[this.city.value]]
-    [[/if]]
-    [[#if this.state.value]]
-        [[this.state.value]]
-    [[/if]]
-    [[this.country.value]]
+    <div>
+        [[#if this.zipCode.value]]
+            [[this.zipCode.value]] - 
+        [[/if]]
+        [[#if this.city.value]]
+            [[this.city.value]][[#if this.district.value]],[[/if]]
+        [[/if]]
+        [[#if this.district.value]]
+            [[this.district.value]]
+        [[/if]]
+    </div>
+    <div>
+        [[#if this.state.value]]
+            [[this.state.value]] - 
+        [[/if]]
+        [[this.country.value]]
+    </div>
     </mj-text>
     <mj-text>
     [[#if showAddressPhoneNumber]]
