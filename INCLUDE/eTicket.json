@@ -1,0 +1,12 @@
+{
+  "create": {
+    "name": "eTicket",
+    "body": "",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": []
+  },
+  "render": {}
+}
