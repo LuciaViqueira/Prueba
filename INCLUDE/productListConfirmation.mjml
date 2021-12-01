@@ -8,18 +8,20 @@
       [[/if]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
-        [[numProducts]]
-        [[#eq numProducts 1]]
+        [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
+        [[orderNumItems]]
+        [[#eq orderNumItems "1"]]
           [[tags.productListConfirmation_singleItemText]]
         [[/eq]]
-        [[#neq numProducts 1]]
+        [[#neq orderNumItems "1"]]
           [[tags.productListConfirmation_multipleItemText]]
         [[/neq]]
         [[#and isSplitted showSubordersInfo]]
           [[tags.productListConfirmation_shipmentsNumberText]]
         [[/and]]
         [[#if numOrders]]
-          [[tags.productListConfirmation_ordersNumberText]]
+            [[tags.productListConfirmation_ordersNumberText]]
+          [[/neq]]
         [[/if]]
     </mj-text>
     <mj-raw>
@@ -94,13 +96,14 @@
         [[/if]]
     </mj-raw>
     <mj-text css-class="product-unit">
-      [[this.units]]
+      [[#assign "templateQuantity"]] [[this.units]] [[/assign]]
+      [[templateQuantity]]
     </mj-text>
     <mj-text color="#959595" css-class="product-unit-label">
-        [[#eq this.units "1"]]
+        [[#eq templateQuantity "1"]]
             [[tags.productListConfirmation_singleUnitText]]
         [[/eq]]
-        [[#neq this.units "1"]]
+        [[#neq templateQuantity "1"]]
             [[tags.productListConfirmation_multipleUnitsText]]
         [[/neq]]
     </mj-text>
