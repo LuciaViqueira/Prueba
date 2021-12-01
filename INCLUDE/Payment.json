@@ -1,0 +1,11 @@
+{
+  "create": {
+    "name": "Payment",
+    "body": "",
+    "version": "1",
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": []
+  },
+  "render": {}
+}
