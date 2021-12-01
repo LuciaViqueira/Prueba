@@ -10,7 +10,8 @@
       [[#assign "returnTitle"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "useTotalOrdersNumItems"]]true[[/assign]]
-    </mj-raw>
+      [[#assign "hideTimeMethodInfo"]]true[[/assign]]
+      [[#assign "showAddressPhoneNumber"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -30,18 +31,19 @@
     </mj-section>
 
     <mj-raw>
-      [[#with payload.balancedCheckIn]]
-    </mj-raw>
-    <!-- Sección 2 refundAddress -->
-      <mj-include path="shipping" />
-    <mj-raw>
+      [[#with payload.balancedCheckIn.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+        </mj-raw>
+        <mj-include path="shipping" />
+        <mj-raw>
+        [[/with]]
       [[/with]]
     </mj-raw>
+    
     <!-- Sección 3 productsList -->
     <mj-raw>
       [[#with payload.balancedCheckIn]]
     </mj-raw>
-    <!-- Sección 2 refundAddress -->
       <mj-include path="OrderItemList" />
     <mj-raw>
       [[/with]]
