@@ -1,0 +1,82 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="47px">
+      [[tags.Payment_title]]
+    </mj-text>
+    <mj-text padding-bottom="30px" css-class="payment-methods">
+      [[#each this.payments]]
+        [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
+        [[#each this.paymentDetails]]
+          [[#if this.cardHolderName]]
+            <p class="payment-name">
+              [[this.cardHolderName]]
+            </p>
+          [[/if]]
+          <p>
+            [[this.paymentMethodDescription]]
+            [[#if this.last4]]
+              [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+              [[#eq last4Characters "4"]]
+                **** **** **** [[this.last4]]
+              [[/eq]]
+            [[/if]]
+            <br />
+            [[#neq numPayments "1"]]      
+              [[currency this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText]]
+            [[/neq]]
+          </p>
+        [[/each]]
+      [[/each]]
+    </mj-text>
+    
+    <mj-raw>
+      [[#with paymentBreakdown]]
+    </mj-raw>
+    <mj-table css-class="payment-table">
+      <tr>
+        <td>[[tags.Payment_totalProductsAmountText]]</td>
+        <td class="payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText]]</td>
+      </tr>
+      [[#if this.shippingPrice]]
+          <tr>
+            <td>[[tags.Payment_deliveryCostText]]</td>
+            <td class="payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+          </tr>
+      [[/if]]
+      [[#if this.customizationPrice]]
+        <tr>
+          <td>[[tags.Payment_customizationAdjustmentText]]</td>
+          <td class="payment-price">[[currency this.customizationPrice.value this.customizationPrice.exponent this.customizationPrice.currency this.customizationPrice.humanReadableText]]</td>
+        </tr>
+      [[/if]]
+      [[#if this.shippingDiscountPrice]]
+        <tr>
+          <td>[[tags.Payment_shippingDiscountsText]]</td>
+          <td class="payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
+        </tr>
+      [[/if]]
+
+      [[#if this.subtotal]]
+        <tr>
+          <td><strong>[[tags.Payment_subtotalText]]</strong></td>
+          <td class="payment-price"><strong>[[currency this.subtotal.value this.subtotal.exponent this.subtotal.currency this.subtotal.humanReadableText]]</strong></td>
+        </tr>
+      [[/if]]
+      
+      <tr class="payment-total">
+        <td>[[tags.Payment_totalAmountText]]</td>
+        <td class="payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
+      </tr>
+      <tr>
+        <td class="payment-price" colspan="2">
+          <span class="payment-include-tax-label">[[tags.Payment_includeTaxText]]</span>
+        </td>
+      </tr>
+     
+    </mj-table>
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>

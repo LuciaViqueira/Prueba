@@ -4,7 +4,6 @@
       [[tags.ReturnProductList_title]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
-        [[#assign "orderReturnProducts"]][[returnInformation.orderList.[0]]][[/assign]]
         [[returnInformation.orderList.[0].totalNumItems]]
         [[#eq returnInformation.orderList.[0].totalNumItems "1"]]
           [[tags.ReturnProductList_singleItemText]]
