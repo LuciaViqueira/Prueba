@@ -4,26 +4,21 @@
     <mj-include path="styles" />
   </mj-head>
   <mj-body width="854px">
-    <!-- Template configuration -->
-    <mj-raw>
-      
-    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
         <mj-text css-class="section-title">
-          [[tags.OrderStockOutMAIL_title]]
+          [[tags.OrderShipped_title]]
         </mj-text>
         <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
-          [[tags.OrderStockOutMAIL_orderNumberText]]
+          [[tags.OrderShipped_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-          <p>[[tags.OrderStockOutMAIL_helloText]]</p>
-          <p>[[tags.OrderStockOutMAIL_apologyText1]]</p>
-          <p>[[tags.OrderStockOutMAIL_apologyText2]]</p>
-          <p>[[tags.OrderStockOutMAIL_apologyText3]]</p>
-          <p>[[tags.OrderStockOutMAIL_zaraTeam]]</p>
+          [[#eq payload.orders.[0].suborders.[0].shipping.type "StoreShipping"]]
+            <p>[[tags.OrderShipped_storeNoticeOfArrival]]</p>
+          [[/eq]]
+          <p>[[tags.OrderShipped_preButtonText]]</p>
         </mj-text>
         <mj-button css-class="order-detail-btn" 
             background-color="#FFFFFF" 
@@ -32,23 +27,39 @@
             font-weight="bold" 
             text-transform="uppercase" 
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
-          [[tags.OrderStockOutMAIL_orderInsufficientBtn]]
+          [[tags.OrderShipped_orderBtn]]
         </mj-button>
-        <mj-text css-class="header-text">
-          <p>[[tags.OrderStockOutMAIL_contentRemoved]]</p>
-        </mj-text>
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
     
+    <!-- <mj-include path="optional" /> -->
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+      <mj-include path="shipping" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+    
     <mj-raw>
       [[#with payload]]
     </mj-raw>
-    <!-- Sección 2 refundAddress -->
+      <mj-include path="eTicket" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
       <mj-include path="OrderItemList" />
     <mj-raw>
       [[/with]]
     </mj-raw>
+    
     
     <mj-include path="footer" />
   </mj-body>
