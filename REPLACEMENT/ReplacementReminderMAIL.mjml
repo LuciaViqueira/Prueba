@@ -1,0 +1,39 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+     
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.ReplacementReminderMAIL_title]]
+        </mj-text>
+        <mj-text padding-top="62px" css-class="header-text">
+          <p>[[tags.ReplacementReminderMAIL_helloText]]</p>
+          <p>[[tags.ReplacementReminderMAIL_warningText]]</p>
+          <p>[[tags.ReplacementReminderMAIL_gratefulnessText]]</p>
+          <p>[[tags.ReplacementReminderMAIL_webRedirect]]</p>
+          <p>[[tags.ReplacementReminderMAIL_byeText]]</p>
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="OrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+    
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
