@@ -5,63 +5,85 @@
     "version": "1",
     "tags": [],
     "channel": "MAIL",
-    "requiredParameters": ["zaraLogo", "checkinId"],
-    "optionalParameters": [
+    "requiredParameters": [
+      "zaraLogo",
+      "checkInId"
     ],
-    "blocks": ["refundAddress", "productListConfirmation", "footer", "styles"]
+    "optionalParameters": [],
+    "blocks": [
+      "refundAddress",
+      "itemList",
+      "footer",
+      "styles"
+    ]
   },
   "render": {
-    "parameters": {        
+    "parameters": {
       "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
-      "check_inId":"123456",
+      "checkinId": "123456",
       "address": {
-          "country": "España",
-          "storeName":"CC Marineda City",
-          "fullName": "Adrián Teijeiro",
-          "address": "Calle Falsa",
-          "zipCode": "15002",
-          "city": "Coruña",
-          "state": "Coruña",
-          "mobile": "607181721"
+        "country": "España",
+        "storeName": "CC Marineda City",
+        "fullName": "Adrián Teijeiro",
+        "address": "Calle Falsa",
+        "zipCode": "15002",
+        "city": "Coruña",
+        "state": "Coruña",
+        "mobile": "607181721"
       },
-      "numProducts": 3,
-      "suborders": [
-          {
-          "orderId": "12345",
+      "numItemTotal": 3,
+      "itemList": [
+        {
+          "suborderId": "12345",
           "items": [
-              {
+            {
+              "imageUrl": "https://static.zara.net/photos///2020/I/0/1/p/2850/202/800/2/w/805/2850202800_6_1_1.jpg?ts=1591088934566",
               "sku": "0239823340104",
               "units": 1
-              },
-              {
+            },
+            {
               "sku": "0239823340104",
               "units": 2
-              }
+            }
           ]
-          }
+        },
+        {
+          "suborderId": "54321",
+          "items": [
+            {
+              "imageUrl": "https://static.zara.net/photos///2020/I/0/1/p/2850/202/800/2/w/805/2850202800_6_1_1.jpg?ts=1591088934566",
+              "sku": "0239823340104",
+              "units": 1
+            },
+            {
+              "sku": "0239823340104",
+              "units": 2
+            }
+          ]
+        }
       ],
       "footer": {
-          "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
-          "facebookUrl": "https://www.facebook.com/Zara",
-          "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
-          "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
-          "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
-          "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
-          "youtubeUrl": "http://www.youtube.com/zara",
-              "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
-          "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
-          "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
-          "instagramUrl": "https://www.instagram.com/zara/",
-          "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
-          "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
-          "helpUrl": "https://www.zara.com/es/es/help",
-          "iosAppUrl": "https://itunes.apple.com/app/id547951480",
-          "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
-          "twitterUrl": "https://twitter.com/ZARA"
+        "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+        "facebookUrl": "https://www.facebook.com/Zara",
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20200421.pdf",
+        "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20200305.pdf",
+        "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+        "youtubeUrl": "http://www.youtube.com/zara",
+        "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+        "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+        "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+        "instagramUrl": "https://www.instagram.com/zara/",
+        "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara",
+        "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+        "helpUrl": "https://www.zara.com/es/es/help",
+        "iosAppUrl": "https://itunes.apple.com/app/id547951480",
+        "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+        "twitterUrl": "https://twitter.com/ZARA"
       }
     },
     "localeVariables": {
-      "locale": "es_ES"        
+      "locale": "es_ES"
     }
   }
 }
