@@ -9,16 +9,16 @@
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
         <mj-text css-class="section-title">
-          [[tags.OrderShipped_title]]
+          [[tags.OrderShippedMAIL_title]]
         </mj-text>
         <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
-          [[tags.OrderShipped_orderNumberText]]
+          [[tags.OrderShippedMAIL_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-          [[#eq payload.orders.[0].suborders.[0].shipping.type "StoreShipping"]]
-            <p>[[tags.OrderShipped_storeNoticeOfArrival]]</p>
+          [[#eq payload.orders.[0].suborders.[0].shipping.mode "STORE"]]
+            <p>[[tags.OrderShippedMAIL_storeNoticeOfArrival]]</p>
           [[/eq]]
-          <p>[[tags.OrderShipped_preButtonText]]</p>
+          <p>[[tags.OrderShippedMAIL_preButtonText]]</p>
         </mj-text>
         <mj-button css-class="order-detail-btn" 
             background-color="#FFFFFF" 
@@ -27,7 +27,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
-          [[tags.OrderShipped_orderBtn]]
+          [[tags.OrderShippedMAIL_orderBtn]]
         </mj-button>
         <mj-divider padding-top="20px" />
       </mj-column>

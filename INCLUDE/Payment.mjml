@@ -1,7 +1,11 @@
 <mj-section>
   <mj-column>
     <mj-text css-class="section-title" padding-bottom="47px">
-      [[tags.Payment_title]]
+      [[#if showRefundPaymentTitle]]
+        [[tags.Payment_refundTitle]]
+      [[else]]
+        [[tags.Payment_title]]
+      [[/if]]
     </mj-text>
     <mj-text padding-bottom="30px" css-class="payment-methods">
       [[#each this.payments]]
@@ -13,7 +17,22 @@
             </p>
           [[/if]]
           <p>
-            [[this.paymentMethodDescription]]
+            [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
+            [[#eq paymentMethodIdString "1001"]]
+              VISA
+            [[else]]
+              [[#eq paymentMethodIdString "1002"]]
+                Mastercard
+              [[else]]
+                [[#eq paymentMethodIdString "1003"]]
+                  AMEX
+                [[else]]
+                  [[this.paymentMethodDescription]]
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+
+            
             [[#if this.last4]]
               [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
               [[#eq last4Characters "4"]]

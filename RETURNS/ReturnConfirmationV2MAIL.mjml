@@ -7,20 +7,22 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "showRefundPaymentTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
         <mj-text css-class="section-title">
+          [[tags.ReturnConfirmationV2MAIL_title]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
           [[#if payload.returnInformation.uuid.prettyUuid]]
             [[#assign "returnId"]][[payload.returnInformation.uuid.prettyUuid]][[/assign]]
           [[else]]
             [[#assign "returnId"]][[payload.returnInformation.uuid.uuid]][[/assign]]
           [[/if]]
-          [[tags.ReturnConfirmationV2MAIL_returnConfirmationTitle]]
-        </mj-text>
-        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
           [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
@@ -57,12 +59,10 @@
       [[/with]]
     </mj-raw>
 
-    <!-- Sección 5 pago -->
-  <mj-raw>
+    <mj-raw>
       [[#with payload]]
         [[#with this.returnInformation.refunds.[0].payments as | payments |]]
     </mj-raw>
-    <!-- Sección 2 refundAddress -->
       <mj-include path="Payment" />
     <mj-raw>
         [[/with]]
