@@ -20,8 +20,7 @@
           [[tags.productListConfirmation_shipmentsNumberText]]
         [[/and]]
         [[#if numOrders]]
-            [[tags.productListConfirmation_ordersNumberText]]
-          [[/neq]]
+          [[tags.productListConfirmation_ordersNumberText]]
         [[/if]]
     </mj-text>
     <mj-raw>

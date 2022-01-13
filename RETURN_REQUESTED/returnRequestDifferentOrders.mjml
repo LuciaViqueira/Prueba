@@ -41,9 +41,18 @@
       </mj-column>
     </mj-section>
     <!-- Sección 2 refundAddress -->
-    <mj-raw>[[#if isHome]]</mj-raw>
-      <mj-include path="refundAddress" />
-    <mj-raw>[[/if]]</mj-raw>
+    <mj-raw>
+      [[#if isHome]]
+        [[#assign "addressIdentifier"]] [[payload.address.identifier]] [[/assign]]
+        [[#neq addressIdentifier "0"]] [[#assign "addressIdentifierZERO"]]true[[/assign]][[/neq]]
+        [[#neq addressIdentifier "-1"]] [[#assign "addressIdentifierONE"]]true[[/assign]][[/neq]]
+        [[#and addressIdentifierZERO addressIdentifierONE]]
+          </mj-raw>
+            <mj-include path="refundAddress" />
+          <mj-raw>
+        [[/and]]
+      [[/if]]
+    </mj-raw>
     <!-- Sección 3 productsList -->
     <mj-include path="productListConfirmation" />
     <!-- Sección 4 footer -->
