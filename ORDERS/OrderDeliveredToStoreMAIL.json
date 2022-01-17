@@ -12,7 +12,7 @@
             "order"
         ]
     },
-    "render"{
+    "render": {
         "parameters": {
             "marketingInfo": {
                 "showGiftCardConditions": true
