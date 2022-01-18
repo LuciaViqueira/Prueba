@@ -1,0 +1,138 @@
+<mj-section padding-top="41px" padding-bottom="125px">
+  <mj-column>
+    <mj-text padding-top="60px"> [[tags.footerStore_downloadAppText]] </mj-text>
+    <mj-table padding="22px 0 63px" css-class="download-apps">
+      <tr>
+        <td style="text-align: right; padding-right: 10px;"> <a href="[[footer.androidAppUrl]]"> <img
+              src="[[footer.playStoreImg]]" /> </a> </td>
+        <td style="text-align: left; padding-left: 10px;"> <a href="[[footer.iosAppUrl]]"> <img
+              src="[[footer.appleStoreImg]]" /> </a> </td>
+      </tr>
+    </mj-table>
+    <mj-text> [[tags.footerStore_followUsText]] </mj-text>
+    <mj-table padding="0" line-height="0">
+      <tr>
+        <td align="center" class="social-links" style="font-size:0px;padding:24px 0 0;word-break:break-word;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.instagramUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.instagramImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.facebookUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.facebookImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.twitterUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.twitterImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.pinterestUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.pinterestImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.youtubeUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.youtubeImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+      </tr>
+    </mj-table>
+  </mj-column>
+</mj-section>
