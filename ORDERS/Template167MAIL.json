@@ -1,0 +1,133 @@
+{
+    "create": {
+        "name": "Template167",
+        "body": "",
+        "version": "1",
+        "tags": [],
+        "channel": "MAIL",
+        "requiredParameters": [],
+        "optionalParameters": [
+            "zaraLogo",
+            "address"
+        ]
+    },
+    "render": {
+        "parameters": {
+            "payload": {
+                "orders": [
+                    {
+                        "identifier": 40000475407,
+                        "suborders": [
+                            {
+                                "shipping": {
+                                    "mode": "EXPRESS",
+                                    "type": "HOME",
+                                    "name": "aa",
+                                    "description": "",
+                                    "address": {
+                                        "identifier": 768990760,
+                                        "line": "Rúa San Andrés\n21",
+                                        "country": {
+                                            "code": "",
+                                            "value": "España"
+                                        },
+                                        "state": {
+                                            "code": "A CORUÑA",
+                                            "value": ""
+                                        },
+                                        "city": {
+                                            "code": "",
+                                            "value": "A Coruña"
+                                        },
+                                        "district": {
+                                            "code": "",
+                                            "value": ""
+                                        },
+                                        "street": null,
+                                        "zipCode": {
+                                            "code": "",
+                                            "value": "15003"
+                                        },
+                                        "receiver": {
+                                            "customerId": null,
+                                            "email": null,
+                                            "phone": "+34333333333",
+                                            "customerCode": null,
+                                            "name": "Live",
+                                            "surname": "Tracking",
+                                            "empty": false
+                                        }
+                                    },
+                                    "amount": null,
+                                    "discounts": null,
+                                    "signatureRequired": false,
+                                    "physicalStore": null,
+                                    "dropPoint": null
+                                },
+                                "discounts": null,
+                                "numItems": 0,
+                                "suborderId": 12938002,
+                                "orderItems": null,
+                                "deliveryDate": null,
+                                "shippedDate": null
+                            }
+                        ],
+                        "payment": null,
+                        "discounts": null,
+                        "numItems": 0,
+                        "numSuborders": 1,
+                        "isFastSint": false,
+                        "isPreorder": false,
+                        "isSplitted": false
+                    }
+                ],
+                "user": {
+                    "token": "",
+                    "name": "",
+                    "surname": "",
+                    "address": "",
+                    "email": "Rf50VZU2vRAyUY2s6g0VctQplrDhbWc4TCxxNVijIVc=",
+                    "preferences": {
+                        "locale": {
+                            "language": "es",
+                            "country": "ES",
+                            "variant": ""
+                        }
+                    },
+                    "documentNumber": "",
+                    "phoneNumber": "",
+                    "mobilePhoneNumber": ""
+                },
+                "store": {
+                    "identifier": {
+                        "value": "",
+                        "legacyValue": 10701
+                    }
+                } 
+            },
+            "footer": {
+                "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
+                "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
+                "facebookImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png",
+                "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
+                "twitterUrl": "https://twitter.com/zaraes?s=20",
+                "helpUrl": "https://www.zara.com/es/es/help",
+                "twitterImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png",
+                "iosAppUrl": "https://apps.apple.com/es/app/zara/id547951480",
+                "policyUrl": "https://static.zara.net/static/pdfs/ES/privacy-policy/privacy-policy-es_ES-20201030.pdf",
+                "facebookUrl": "https://es-es.facebook.com/Zara",
+                "instagramImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png",
+                "youtubeUrl": "https://www.youtube.com/user/zara",
+                "purchaseConditionsUrl": "https://static.zara.net/static//pdfs/ES/terms-and-conditions/terms-and-conditions-es_ES-20210315.pdf",
+                "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara&hl=es",
+                "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
+                "instagramUrl": "https://www.instagram.com/zara",
+                "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png"
+            },
+            "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png"
+        },
+        "localeVariables": {
+            "locale": "es_ES"
+        }  
+    }
+}
