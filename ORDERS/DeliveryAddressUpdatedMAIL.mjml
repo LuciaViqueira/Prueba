@@ -1,0 +1,49 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.Template167MAIL_title]]
+          <!-- Dirección de entrega actualizada --> 
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[tags.Template167MAIL_orderNumberText]]
+          <!-- Pedido Nº [[payload...]] --> 
+        </mj-text>
+        <mj-text css-class="header-text">
+          <p>[[tags.Template167MAIL_sucessModification]]</p>
+          <p>[[tags.Template167MAIL_notice]]</p>
+            <!-- La dirección de entrega de tu pedido se ha modificado correctamente -->
+            <!-- Te enviaremos un nuevo email cuando esté de camino -->
+        </mj-text>
+        <mj-button css-class="order-detail-btn" 
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+          [[tags.Template167MAIL_buttonTxt]]
+        </mj-button>
+        <!-- Haz seguimiento aquí -->
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+    <mj-include path="shipping" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
