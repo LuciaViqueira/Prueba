@@ -12,7 +12,7 @@
           [[tags.TicketLessV2MAIL_title]]
         </mj-text>
         <mj-text padding-top="23px" css-class="header-text">
-          [[#assign "tagName"]]TicketLessV2MAIL_purchaseReturn_[[payload.ticketLess.type]][[/assign]]
+          [[#assign "tagName"]]TicketLessV2MAIL_purchaseReturn_[[payload.ticketless.type]][[/assign]]
           <p style="margin: 0 0 18px; text-transform: uppercase;">[[tagTranslate tagName]]</p>
           <p style="margin: 0 0 18px; text-transform: uppercase;">[[tags.TicketLessV2MAIL_date]]</p>    
           <p style="margin: 0 0 18px; text-transform: uppercase;">[[tags.TicketLessV2MAIL_amount]]</p> 
