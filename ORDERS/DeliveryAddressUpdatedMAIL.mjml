@@ -14,17 +14,13 @@
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
         <mj-text css-class="section-title">
           [[tags.DeliveryAddressUpdatedMAIL_title]]
-          <!-- Dirección de entrega actualizada --> 
         </mj-text>
         <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
           [[tags.DeliveryAddressUpdatedMAIL_orderNumberText]]
-          <!-- Pedido Nº [[payload...]] --> 
         </mj-text>
         <mj-text css-class="header-text">
           <p>[[tags.DeliveryAddressUpdatedMAIL_sucessModification]]</p>
           <p>[[tags.DeliveryAddressUpdatedMAIL_notice]]</p>
-            <!-- La dirección de entrega de tu pedido se ha modificado correctamente -->
-            <!-- Te enviaremos un nuevo email cuando esté de camino -->
         </mj-text>
         <mj-button css-class="order-detail-btn" 
             background-color="#FFFFFF" 
@@ -35,7 +31,6 @@
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.DeliveryAddressUpdatedMAIL_buttonTxt]]
         </mj-button>
-        <!-- Haz seguimiento aquí -->
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
