@@ -19,6 +19,12 @@
           [[tags.LiveTrackingMAIL_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
+          [[#assign "numberOfRemainingStops"]] [[payload.liveTracking.numberOfRemainingStops]] [[/assign]]
+            [[#eq numberOfRemainingStops "-1"]]
+            
+          [[else]]
+            <p>[[tags.LiveTrackingMAIL_numberOfStops]]</p>
+          [[/eq]]
           <p>[[tags.LiveTrackingMAIL_deliveryTime]]</p>
         </mj-text>
         <mj-button css-class="order-detail-btn" 
