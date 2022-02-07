@@ -139,7 +139,7 @@
                         "region": ""
                       },
                       "receiverData": {
-                        "customerEmail": ""
+                        "email": ""
                       }
                     },
                     "customizations": []
@@ -188,7 +188,7 @@
                         "region": ""
                       },
                       "receiverData": {
-                        "customerEmail": ""
+                        "email": ""
                       }
                     },
                     "customizations": [
@@ -243,8 +243,8 @@
                         "region": ""
                       },
                       "receiverData": {
-                        "customerEmail": "fulanito@menganito.com",
-                        "customerPhone": "666555444"
+                        "email": "fulanito@menganito.com",
+                        "phone": "666555444"
                       }
                     },
                     "customizations": [
