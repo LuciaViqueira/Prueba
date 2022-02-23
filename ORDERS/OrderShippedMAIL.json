@@ -18,16 +18,16 @@
         "showGiftCardConditions": true
       },
       "payload": {
-        "orders":[
+        "orders": [
           {
               "identifier":11111,
-              "suborders":[
+              "suborders": [
                   {
                   "suborderId":1234,
-                  "orderItems":[
+                  "orderItems": [
                       {
                           "orderItemId":"13",
-                          "retailPriceAmount":{
+                          "retailPriceAmount": {
                               "value":10,
                               "currency":"EURO",
                               "exponent":2,
@@ -51,13 +51,13 @@
                               ],
                           "quantity":1,
                           "previousQuantity":0,
-                          "price":{
+                          "price": {
                               "value":"0",
                               "currency":"",
                               "exponent":null,
                               "humanReadableText":"50&nbsp;USD"
                           },
-                          "item":{
+                          "item": {
                               "sku": "0347312048922-V2016",
                               "catEntryId":12,
                               "commercialComponentId":-1,
@@ -71,11 +71,11 @@
                               "shortDescription":"BERMUDA CORTA",
                               "colour":"Azul"
                           },
-                          "giftCard":{
+                          "giftCard": {
                               "type":"",
                               "from":"sender",
                               "message":"Prueba mensaje",
-                              "receiverData":{
+                              "receiverData": {
                                   "customerId":"",
                                   "email": "fulanito@menganito.com",
                                   "phone": "666555444",
@@ -83,14 +83,14 @@
                                   "name":"",
                                   "surname":""
                               },
-                              "shippingDate":{
+                              "shippingDate": {
                                   "dateType":"ISO8601",
                                   "timestamp":0,
                                   "dateIso":"123123123123",
                                   "region":"",
                                   "humanReadableText":""
                               },
-                              "item":{
+                              "item": {
                                   "sku": "0347312048922-V2016",
                                   "catEntryId":12,
                                   "commercialComponentId":-1,
@@ -109,7 +109,7 @@
                       },
                       {
                           "orderItemId":"17",
-                          "retailPriceAmount":{
+                          "retailPriceAmount": {
                               "value":10,
                               "currency":"EURO",
                               "exponent":1,
@@ -119,13 +119,13 @@
                           "customizations":null,
                           "quantity":1,
                           "previousQuantity":0,
-                          "price":{
+                          "price": {
                               "value":10,
                               "currency":"EURO",
                               "exponent":1,
                               "humanReadableText":""
                           },
-                          "item":{
+                          "item": {
                               "sku": "0347312048922-V2016",
                               "catEntryId":13,
                               "commercialComponentId":-1,
@@ -139,11 +139,11 @@
                               "shortDescription":"",
                               "colour":""
                           },
-                          "giftCard":{
+                          "giftCard": {
                               "type":"PHYSICAL",
                               "from":"sender",
                               "message":"",
-                              "receiverData":{
+                              "receiverData": {
                                   "customerId":"",
                                   "email":"",
                                   "phone":"+34666666666",
@@ -152,7 +152,7 @@
                                   "surname":""
                               },
                               "shippingDate":null,
-                              "item":{
+                              "item": {
                                   "sku": "0347312048922-V2016",
                                   "catEntryId":13,
                                   "commercialComponentId":-1,
@@ -171,7 +171,7 @@
                       },
                       {
                           "orderItemId":"22",
-                          "retailPriceAmount":{
+                          "retailPriceAmount": {
                               "value":10,
                               "currency":"EURO",
                               "exponent":1,
@@ -181,18 +181,18 @@
                           "customizations":null,
                           "quantity":2,
                           "previousQuantity":0,
-                          "price":{
+                          "price": {
                               "value":10,
                               "currency":"EURO",
                               "exponent":1,
                               "humanReadableText":""
                           },
                           "item": null,
-                          "giftCard":{
+                          "giftCard": {
                               "type":"VIRTUAL",
                               "from":"sender",
                               "message":"Tarjeta Regalo",
-                              "receiverData":{
+                              "receiverData": {
                                   "customerId":"",
                                   "email": "fulanito@menganito.com",
                                   "phone": "666555444",
@@ -200,14 +200,14 @@
                                   "name":"",
                                   "surname":""
                               },
-                              "shippingDate":{
+                              "shippingDate": {
                                   "dateType":"ISO8601",
                                   "timestamp":0,
                                   "dateIso":"123123123123",
                                   "region":"",
                                   "humanReadableText":""
                               },
-                              "item":{
+                              "item": {
                                   "sku": "0347312048922-V2016",
                                   "catEntryId":12,
                                   "commercialComponentId":-1,
@@ -230,14 +230,14 @@
                           "discounts":null
                       }
                   ],
-                  "shipping":{
+                  "shipping": {
                       "mode":"STANDARD",
                       "type":"DroppointShipping",
                       "name":"",
                       "description":"",
                       "signatureRequired":false,
                       "physicalStore":null,
-                      "dropPoint":{
+                      "dropPoint": {
                           "identifier":1,
                           "code":"2",
                           "address":null
@@ -261,7 +261,7 @@
               "payments":null
           }
       ],
-      "user":{
+      "user": {
           "identifier":1234,
           "token":"",
           "name":"",
@@ -271,8 +271,8 @@
           "mobilePhoneNumber":"",
           "address":"",
           "email":"",
-          "preferences":{
-              "locale":{
+          "preferences": {
+              "locale": {
                   "language":"es",
                   "country":"ES",
                   "variant":""
