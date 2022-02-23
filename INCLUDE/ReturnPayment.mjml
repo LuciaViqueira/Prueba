@@ -72,7 +72,7 @@
       [[#each returnInformation.orderList.[0].payment.vatDetails]]
         [[#if this.amount.humanReadableText]]
           <tr>
-            <td>[[this.type]] [[this.rate]] %</td>
+            <td>[[this.type]] [[this.humanReadableText]] %</td>
             <td class="payment-price">
               -[[& this.amount.humanReadableText]]
             </td>
