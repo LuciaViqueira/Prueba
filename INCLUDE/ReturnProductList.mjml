@@ -12,7 +12,6 @@
           [[tags.ReturnProductList_multipleItemText]]
         [[/neq]]
     </mj-text>
-
     <mj-raw>
       [[#each returnInformation.orderList.[0].orderItems]]
     </mj-raw>
@@ -62,8 +61,8 @@
         <div>[[tags.ReturnProductList_customizationsArea]]: [[this.embroideryArea]]</div>
         <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
         <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
-        [[#if this.serviceCost.humanReadableText]]
-          <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>
+        [[#if this.serviceCost]]
+          <div>[[tags.ReturnProductList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
         [[/if]]
     </mj-text>
     <mj-raw>
@@ -84,7 +83,7 @@
         [[/neq]]
     </mj-text>
     <mj-text css-class="product-price">
-      -[[& this.price.humanReadableText]]
+      -[[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
     </mj-text>
     <mj-spacer height="50px" />
     <!------------ -->
@@ -117,7 +116,6 @@
           <div style="text-transform: uppercase;">[[tags.ReturnProductList_receiverPhoneText]]: [[this.giftCard.receiverData.customerPhone]]</div>
         [[/if]]
       [[/eq]]
-     
     </mj-text>
     <mj-text css-class="product-unit">
       1
@@ -125,21 +123,17 @@
     <mj-text color="#959595" css-class="product-unit-label">
       [[tags.ReturnProductList_singleUnitText]]
     </mj-text>
- 
     <mj-text css-class="product-price">
-      -[[& this.giftCard.amount.humanReadableText]]
+      -[[currency this.giftCard.amount.value this.giftCard.amount.exponent this.giftCard.amount.currency this.giftCard.amount.humanReadableText]]
     </mj-text>
     <mj-spacer height="50px" />
-
     <mj-raw>
       [[/if]] <!--CHECK_IS_GIFT_CARD-->
     </mj-raw>
     <!-- END GIFT CARD-->
-
     <mj-raw>
       [[/each]]
     </mj-raw>
-    
     <mj-divider padding-top="50px" />
   </mj-column>
 </mj-section>
