@@ -30,13 +30,13 @@
             <td style="text-align: right; padding-right: 10px;">
               <a href="https://play.google.com/store/apps/details?id=com.inditex.zara">
                 <img
-                  src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png" />
+                  src="http://static.zara.net/photos/contents/apps/google-play.png" />
               </a>
             </td>
             <td style="text-align: left; padding-left: 10px;">
               <a href="https://itunes.apple.com/app/id547951480">
                 <img
-                  src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png" />
+                  src="http://static.zara.net/photos/contents/apps/apple-store.png" />
               </a>
             </td>
           </tr>
@@ -60,7 +60,7 @@
                                   <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
                                     <a href="https://www.instagram.com/zara/" target="_blank">
                                       <img height="20"
-                                        src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_instagram.png"
+                                        src="http://static.zara.net/photos/contents/apps/icono_instagram.png"
                                         style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
                                         width="20">
                                     </a>
@@ -86,7 +86,7 @@
                                   <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
                                     <a href="https://www.facebook.com/Zara" target="_blank">
                                       <img height="20"
-                                        src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_facebook.png"
+                                        src="http://static.zara.net/photos/contents/apps/icono_facebook.png"
                                         style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
                                         width="20">
                                     </a>
@@ -112,7 +112,7 @@
                                   <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
                                     <a href="https://twitter.com/ZARA" target="_blank">
                                       <img height="20"
-                                        src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_twitter.png"
+                                        src="http://static.zara.net/photos/contents/apps/icono_twitter.png"
                                         style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
                                         width="20">
                                     </a>
@@ -138,7 +138,7 @@
                                   <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
                                     <a href=" https://www.pinterest.es/zaraofficial/" target="_blank">
                                       <img height="20"
-                                        src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png"
+                                        src="http://static.zara.net/photos/contents/apps/icono_pinterest.png"
                                         style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
                                         width="20">
                                     </a>
@@ -164,7 +164,7 @@
                                   <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
                                     <a href="http://www.youtube.com/zara" target="_blank">
                                       <img height="20"
-                                        src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png"
+                                        src="http://static.zara.net/photos/contents/apps/icono_youtube.png"
                                         style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
                                         width="20">
                                     </a>
