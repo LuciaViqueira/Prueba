@@ -18,7 +18,7 @@
         <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
         [[#assign "orderId"]][[returnInformation.orderList.[0].identifier]][[/assign]]
         [[#eq orderId "-1"]]
-          [[#assign "orderId"]][[returnInformation.orderList.[0].string_identifier ]][[/assign]]
+          [[#assign "orderId"]][[returnInformation.orderList.[0].stringIdentifier ]][[/assign]]
         [[/eq]]
           [[tags.ReturnConfirmation_returnNumberText]]
         </mj-text>
