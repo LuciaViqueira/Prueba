@@ -7,6 +7,7 @@
     <!-- Template configuration -->
       <mj-raw>
         [[#assign "newDirectionTitle"]]true[[/assign]]
+        [[#assign "hideTimeMethodInfo"]]true[[/assign]]
       </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
