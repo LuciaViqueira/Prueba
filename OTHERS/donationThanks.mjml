@@ -14,7 +14,8 @@
         <mj-text css-class="header-text">
           <p>[[tags.donationThanks_text1]]</p>
         </mj-text>
-        <mj-text padding-bottom="18px">
+        <mj-image src="https://static.zara.net/photos/contents/customer/IMAGEN_NEWSLETTER_RECOGIDA.png" padding-top="32px" padding-bottom="50px" />
+        <mj-text font-weight="bold" padding-bottom="18px">
           [[tags.donationThanks_text2]]
         </mj-text>
         <mj-divider padding-top="20px" />
