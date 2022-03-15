@@ -20,14 +20,13 @@
           [[tags.returnRequestDifferentOrders_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-          <p>
             [[#if isDropoff]]
-              [[tags.returnRequestDifferentOrders_dropOffDescription]]
+              <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+              <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
             [[/if]]
             [[#if isHome]]
-              [[tags.returnRequestDifferentOrders_homeDescription]]
-            [[/if]]
-          </p>
+              <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
+            [[/if]] 
           [[#if payload.returnEntity.request.returnCosts.[0]]]
             [[#with payload.returnEntity.request.returnCosts.[0].amount]]
               <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
@@ -37,6 +36,21 @@
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
           [[/if]]
         </mj-text>
+        <mj-raw>
+          [[#if isDropoff]]
+        </mj-raw>
+        <mj-button css-class="order-detail-btn" 
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/return-requests/300019719" >
+            [[tags.returnRequestDifferentOrders_buttonTxt]]
+        </mj-button>
+        <mj-raw>
+        [[/if]]
+        </mj-raw>
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
