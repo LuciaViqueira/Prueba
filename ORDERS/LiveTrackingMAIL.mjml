@@ -21,7 +21,11 @@
         <mj-text css-class="header-text">
           [[#assign "numberOfRemainingStops"]] [[payload.liveTracking.numberOfRemainingStops]] [[/assign]]
             [[#neq numberOfRemainingStops "-1"]]
-              <p>[[tags.LiveTrackingMAIL_numberOfStops]]</p>
+              [[#eq numberOfRemainingStops "1"]]
+                <p>[[tags.LiveTrackingMAIL_oneStop]]</p>
+              [[else]]
+                <p>[[tags.LiveTrackingMAIL_numberOfStops]]</p>
+              [[/eq]]
             [[/neq]]
           <p>[[tags.LiveTrackingMAIL_deliveryTime]]</p>
         </mj-text>
