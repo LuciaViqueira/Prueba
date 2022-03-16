@@ -7,7 +7,7 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png" padding-top="100px" padding-bottom="10px" />
+        <mj-image width="149px" src="http://static.zara.net/photos/contents/apps/logo_Zara_2019.png" padding-top="100px" padding-bottom="10px" />
         <mj-text css-class="section-title" padding-bottom="25px">
           [[title]]
         </mj-text>
