@@ -122,14 +122,14 @@
       [[else]]
     </mj-raw>
     <mj-raw>
-      [[#if this.giftCard.imageUrl]]
+      [[#if this.giftCard.item.imageUrl]]
     </mj-raw>
-    <mj-image padding="0 0 23px" width="240" height="auto" css-class="product-img" src="[[this.giftCard.imageUrl]]" />
+    <mj-image padding="0 0 23px" width="240" height="auto" css-class="product-img" src="[[this.giftCard.item.imageUrl]]" />
     <mj-raw>
       [[/if]]
     </mj-raw>
     <mj-text text-transform="uppercase">
-     [[this.giftCard.description]]
+     [[this.giftCard.message]]
     </mj-text>
     <mj-text>
       [[#if this.giftCard.from]]
@@ -139,8 +139,8 @@
         [[#if this.giftCard.receiverData.email]]
           <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
         [[/if]]
-        [[#if this.giftCard.shippedDate]]
-          <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[this.giftCard.shippedDate.dateIso]]</div>
+        [[#if this.giftCard.shippingDate]]
+          <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.dateIso]] [[/epoch]]</div>
         [[/if]]
       [[else]]
         [[#if this.giftCard.receiverData.phone]]
@@ -157,7 +157,7 @@
     </mj-text>
  
     <mj-text css-class="product-price">
-      [[#with this.giftCard.amount]]
+      [[#with this.giftCard.item.amount]]
         [[currency this.value this.exponent this.currency this.humanReadableText]]
       [[/with]]
     </mj-text>

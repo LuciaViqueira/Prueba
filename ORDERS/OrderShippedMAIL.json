@@ -20,159 +20,273 @@
       "payload": {
         "orders": [
           {
-            "identifier": 40000505047,
-            "suborders": [
-              {
-                "shipping": {
-                  "mode": "STANDARD",
-                  "type": "StoreShipping",
-                  "name": "",
-                  "description": "",
-                  "address": {
-                    "identifier": 766982643,
-                    "line": "Avenue de la Quarantaine\n2, 5B",
-                    "country": {
-                      "code": "",
-                      "value": "Monaco"
-                    },
-                    "state": {
-                      "code": "MONACO",
-                      "value": ""
-                    },
-                    "city": {
-                      "code": "",
-                      "value": "Monaco"
-                    },
-                    "district": {
-                      "code": "",
-                      "value": ""
-                    },
-                    "street": null,
-                    "receiver": {
-                      "customerId": null,
-                      "email": null,
-                      "phone": "+377412345678",
-                      "customerCode": null,
-                      "name": "Luis",
-                      "surname": "Villa",
-                      "empty": false
-                    },
-                    "zipCode": {
-                      "code": "",
-                      "value": "98000"
-                    }
-                  },
-                  "amount": null,
-                  "discounts": null,
-                  "signatureRequired": false,
-                  "physicalStore": null,
-                  "dropPoint": null
-                },
-                "discounts": null,
-                "suborderId": 440,
-                "orderItems": [
+              "identifier":11111,
+              "suborders": [
                   {
-                    "customizations": null,
-                    "quantity": 1,
-                    "price": null,
-                    "item": {
-                      "sku": "1110761004040",
-                      "amount": null,
-                      "size": "",
-                      "colour": "",
-                      "catEntryId": 56643848,
-                      "commercialComponentId": -1,
-                      "imageUrl": "",
-                      "isZaraHome": false,
-                      "isBulky": false,
-                      "isPantone": false,
-                      "sizeDescription": "",
-                      "shortDescription": ""
-                    },
-                    "discounts": null,
-                    "orderItemId": "500001222971",
-                    "retailPriceAmount": {
-                      "value": 7995,
-                      "currency": "EUR",
-                      "exponent": 2,
-                      "humanReadableText": ""
-                    },
-                    "isCustom": false,
-                    "previousQuantity": -1,
-                    "giftCard": null
+                  "suborderId":1234,
+                  "orderItems": [
+                      {
+                          "orderItemId":"13",
+                          "retailPriceAmount": {
+                              "value":10,
+                              "currency":"EURO",
+                              "exponent":2,
+                              "humanReadableText":""
+                          },
+                          "isCustom":true,
+                          "customizations": [
+                                  {
+                                      "embroideryFont": "Verdana",
+                                      "serviceCost": {
+                                          "currency": "",
+                                          "humanReadableText": "0",
+                                          "value": "0",
+                                          "exponent": null
+                                      },
+                                      "embroideryText": "Personalized test",
+                                      "description": "",
+                                      "embroideryColor": "Blue",
+                                      "embroideryArea": "Up Right"
+                                  }
+                              ],
+                          "quantity":1,
+                          "previousQuantity":0,
+                          "price": {
+                              "value":"0",
+                              "currency":"",
+                              "exponent":null,
+                              "humanReadableText":"50&nbsp;USD"
+                          },
+                          "item": {
+                              "sku": "0347312048922-V2016",
+                              "catEntryId":12,
+                              "commercialComponentId":-1,
+                              "imageUrl": "https://sttc-stage-zaraphr.inditex.com/photos//2021/V/0/1/p/2036/125/605/2/w/400/2036125605_1_1_1.jpg?ts=1604416785935",
+                              "isZaraHome":false,
+                              "isBulky":false,
+                              "isPantone":false,
+                              "amount":null,
+                              "size":"",
+                              "sizeDescription":"34 EU",
+                              "shortDescription":"BERMUDA CORTA",
+                              "colour":"Azul"
+                          },
+                          "giftCard": {
+                              "type":"",
+                              "from":"sender",
+                              "message":"Prueba mensaje",
+                              "receiverData": {
+                                  "customerId":"",
+                                  "email": "fulanito@menganito.com",
+                                  "phone": "666555444",
+                                  "customerCode":"",
+                                  "name":"",
+                                  "surname":""
+                              },
+                              "shippingDate": {
+                                  "dateType":"ISO8601",
+                                  "timestamp":0,
+                                  "dateIso":"123123123123",
+                                  "region":"",
+                                  "humanReadableText":""
+                              },
+                              "item": {
+                                  "sku": "0347312048922-V2016",
+                                  "catEntryId":12,
+                                  "commercialComponentId":-1,
+                                  "imageUrl":"",
+                                  "isZaraHome":false,
+                                  "isBulky":false,
+                                  "isPantone":false,
+                                  "amount":null,
+                                  "size":"",
+                                  "sizeDescription":"",
+                                  "shortDescription":"",
+                                  "colour":""
+                              }
+                          },
+                          "discounts":null
+                      },
+                      {
+                          "orderItemId":"17",
+                          "retailPriceAmount": {
+                              "value":10,
+                              "currency":"EURO",
+                              "exponent":1,
+                              "humanReadableText":""
+                          },
+                          "isCustom":false,
+                          "customizations":null,
+                          "quantity":1,
+                          "previousQuantity":0,
+                          "price": {
+                              "value":10,
+                              "currency":"EURO",
+                              "exponent":1,
+                              "humanReadableText":""
+                          },
+                          "item": {
+                              "sku": "0347312048922-V2016",
+                              "catEntryId":13,
+                              "commercialComponentId":-1,
+                              "imageUrl": "https://sttc-stage-zaraphr.inditex.com/photos//2021/V/0/1/p/2036/125/605/2/w/400/2036125605_1_1_1.jpg?ts=1604416785935",
+                              "isZaraHome":false,
+                              "isBulky":false,
+                              "isPantone":false,
+                              "amount":null,
+                              "size":"",
+                              "sizeDescription":"",
+                              "shortDescription":"",
+                              "colour":""
+                          },
+                          "giftCard": {
+                              "type":"PHYSICAL",
+                              "from":"sender",
+                              "message":"",
+                              "receiverData": {
+                                  "customerId":"",
+                                  "email":"",
+                                  "phone":"+34666666666",
+                                  "customerCode":"",
+                                  "name":"",
+                                  "surname":""
+                              },
+                              "shippingDate":null,
+                              "item": {
+                                  "sku": "0347312048922-V2016",
+                                  "catEntryId":13,
+                                  "commercialComponentId":-1,
+                                  "imageUrl":"",
+                                  "isZaraHome":false,
+                                  "isBulky":false,
+                                  "isPantone":false,
+                                  "amount":null,
+                                  "size":"",
+                                  "sizeDescription":"",
+                                  "shortDescription":"",
+                                  "colour":""
+                              }
+                          },
+                          "discounts":null
+                      },
+                      {
+                          "orderItemId":"22",
+                          "retailPriceAmount": {
+                              "value":10,
+                              "currency":"EURO",
+                              "exponent":1,
+                              "humanReadableText":""
+                          },
+                          "isCustom":false,
+                          "customizations":null,
+                          "quantity":2,
+                          "previousQuantity":0,
+                          "price": {
+                              "value":10,
+                              "currency":"EURO",
+                              "exponent":1,
+                              "humanReadableText":""
+                          },
+                          "item": null,
+                          "giftCard": {
+                              "type":"VIRTUAL",
+                              "from":"sender",
+                              "message":"Tarjeta Regalo",
+                              "receiverData": {
+                                  "customerId":"",
+                                  "email": "fulanito@menganito.com",
+                                  "phone": "666555444",
+                                  "customerCode":"",
+                                  "name":"",
+                                  "surname":""
+                              },
+                              "shippingDate": {
+                                  "dateType":"ISO8601",
+                                  "timestamp":0,
+                                  "dateIso":"123123123123",
+                                  "region":"",
+                                  "humanReadableText":""
+                              },
+                              "item": {
+                                  "sku": "0347312048922-V2016",
+                                  "catEntryId":12,
+                                  "commercialComponentId":-1,
+                                  "imageUrl":"https://static.zara.net/photos///9999/I/5/3/p/0000/000/001/2/w/400/0000000001_2_1_1.jpg?ts=1509988235998",
+                                  "isZaraHome":false,
+                                  "isBulky":false,
+                                  "isPantone":false,
+                                   "amount": {
+                                      "currency": "",
+                                      "humanReadableText": "20 USD",
+                                      "value": "0",
+                                      "exponent": null
+                                  },
+                                  "size":"",
+                                  "sizeDescription":"",
+                                  "shortDescription":"",
+                                  "colour":""
+                              }
+                          },
+                          "discounts":null
+                      }
+                  ],
+                  "shipping": {
+                      "mode":"STANDARD",
+                      "type":"DroppointShipping",
+                      "name":"",
+                      "description":"",
+                      "signatureRequired":false,
+                      "physicalStore":null,
+                      "dropPoint": {
+                          "identifier":1,
+                          "code":"2",
+                          "address":null
+                      },
+                      "address":null,
+                      "amount":null,
+                      "discounts":null
                   },
-                  {
-                    "customizations": null,
-                    "quantity": 1,
-                    "price": null,
-                    "item": {
-                      "sku": "1205261204040",
-                      "amount": null,
-                      "size": "",
-                      "colour": "",
-                      "catEntryId": 78441221,
-                      "commercialComponentId": -1,
-                      "imageUrl": "",
-                      "isZaraHome": false,
-                      "isBulky": false,
-                      "isPantone": false,
-                      "sizeDescription": "",
-                      "shortDescription": ""
-                    },
-                    "discounts": null,
-                    "orderItemId": "500001222972",
-                    "retailPriceAmount": {
-                      "value": 9995,
-                      "currency": "EUR",
-                      "exponent": 2,
-                      "humanReadableText": ""
-                    },
-                    "isCustom": false,
-                    "previousQuantity": -1,
-                    "giftCard": null
+                  "numItems":3,
+                  "deliveryDate":null,
+                  "discounts":null,
+                  "shippedDate":null
                   }
-                ],
-                "deliveryDate": null,
-                "shippedDate": null,
-                "numItems": 2
-              }
-            ],
-            "payment": null,
-            "discounts": null,
-            "numItems": 2,
-            "numSuborders": 1,
-            "isFastSint": false,
-            "isPreorder": false,
-            "isSplitted": false
+              ],
+              "numItems":3,
+              "numSuborders":1,
+              "isFastSint":false,
+              "isPreorder":false,
+              "isSplitted":false,
+              "discounts":null,
+              "payments":null
           }
-        ],
-        "user": {
-          "token": "",
-          "name": "",
-          "surname": "",
-          "address": "",
-          "email": "sBBlyMDxiPDarTplsfnazPcRR5OFBxrPyKfSkP0d1E4=",
+      ],
+      "user": {
+          "identifier":1234,
+          "token":"",
+          "name":"",
+          "documentNumber":"",
+          "surname":"",
+          "phoneNumber":"",
+          "mobilePhoneNumber":"",
+          "address":"",
+          "email":"",
           "preferences": {
-            "locale": {
-              "language": "fr",
-              "country": "FR",
-              "variant": ""
-            }
-          },
-          "documentNumber": "",
-          "phoneNumber": "",
-          "mobilePhoneNumber": ""
-        },
-        "store": {
-          "identifier": {
-            "value": "",
-            "legacyValue": 11713
+              "locale": {
+                  "language":"es",
+                  "country":"ES",
+                  "variant":""
+              }
           }
-        },
-        "attachments": [
-          {}
-        ]
       },
+      "store": {
+          "identifier": {
+              "value": "fr",
+              "legacyValue": 10703
+          }
+      },
+      "attachments": null
+  },
       "footer": {
         "pinterestUrl": "https://www.pinterest.es/zaraofficial/",
         "playStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/google-play.png",
