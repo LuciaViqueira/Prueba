@@ -45,7 +45,7 @@
             border="1px solid #000000" 
             font-weight="bold" 
             text-transform="uppercase" 
-            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/return-requests/300019719" >
+            href="https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/300019719" >
             [[tags.returnRequestDifferentOrders_buttonTxt]]
         </mj-button>
         <mj-raw>
