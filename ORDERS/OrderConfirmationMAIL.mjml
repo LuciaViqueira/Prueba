@@ -31,7 +31,7 @@
           [[tags.OrderConfirmationMAIL_orderBtn]]
         </mj-button>
         <mj-text css-class="header-text">
-          [[#if payload.orderHasGiftTicket]]
+          [[#if payload.orders.[0].hasGiftTicket]]
               <p>[[tags.OrderConfirmationMAIL_giftTicket]]</p>
           [[/if]]
         </mj-text>
