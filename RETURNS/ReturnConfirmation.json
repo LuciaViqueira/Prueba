@@ -52,7 +52,7 @@
           "orderList": [
           {
               "identifier": "-1",
-              "string_identifier": "11112222244444",
+              "stringIdentifier": "11112222244444",
               "totalNumItems": "3",
               "discount": [
               {
