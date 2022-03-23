@@ -19,10 +19,12 @@
           [[tags.LiveTrackingMAIL_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-          [[#assign "numberOfRemainingStops"]] [[payload.liveTracking.numberOfRemainingStops]] [[/assign]]
-            [[#neq numberOfRemainingStops "-1"]]
-              <p>[[tags.LiveTrackingMAIL_numberOfStops]]</p>
-            [[/neq]]
+          [[#if payload.liveTracking.numberOfRemainingStops]]
+            [[#assign "numberOfRemainingStops"]] [[payload.liveTracking.numberOfRemainingStops]] [[/assign]]
+              [[#neq numberOfRemainingStops "-1"]]
+                <p>[[tags.LiveTrackingMAIL_numberOfStops]]</p>
+              [[/neq]]
+          [[/if]]
           <p>[[tags.LiveTrackingMAIL_deliveryTime]]</p>
         </mj-text>
         <mj-button css-class="order-detail-btn" 
@@ -46,6 +48,14 @@
         [[/with]]
       [[/with]]
     </mj-raw>
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.liveTracking.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="footer" />
   </mj-body>
 </mjml>
+
+
