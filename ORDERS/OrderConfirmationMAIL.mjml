@@ -30,6 +30,11 @@
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.OrderConfirmationMAIL_orderBtn]]
         </mj-button>
+        <mj-text css-class="header-text">
+          [[#if payload.orders.[0].hasGiftTicket]]
+              <p>[[tags.OrderConfirmationMAIL_giftTicket]]</p>
+          [[/if]]
+        </mj-text>
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>

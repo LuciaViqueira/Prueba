@@ -19,8 +19,10 @@
         "marketingInfo": {
           "showGiftCardConditions": true
         },
+        "orderHasGiftTicket": true,
         "orders": [
           {
+            "hasGiftTicket": true,
             "identifier": "222222222",
             "isSplitted": false,
             "numItems": "3",
