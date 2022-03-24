@@ -30,6 +30,58 @@
       "numProducts": 3,
       "numOrders": 2,
       "requestId": "134654",
+      "payload": {
+        "address": {
+            "identifier": "1"
+        },
+        "store": {
+            "identifier": {
+                "value": "ES",
+                "legacyValue": 10701
+            }
+        },
+        "returnEntity": {
+            "request": {
+                "identifier": "300013041",
+                "useGiftTicket": false,
+                "creationInstant": 1633618286675,
+                "numberPackages": 1,
+                "type": "HOME",
+                "returnCosts": [
+                    {
+                        "amount": {
+                            "value": 333,
+                            "currency": "EUR",
+                            "exponent": 2,
+                            "humanReadableText": ""
+                        },
+                        "taxType": "DELIVERY"
+                    }
+                ],
+                "courier": {
+                    "name": "Halcourier",
+                    "code":"H4B8Rez"
+                }
+            }
+        },
+        "user": {
+                "token": "",
+                "name": "",
+                "surname": "",
+                "address": "",
+                "email": "Rf50VZU2vRAyUY2s6g0VctQplrDhbWc4TCxxNVijIVc=",
+                "preferences": {
+                    "locale": {
+                        "language": "es",
+                        "country": "ES",
+                        "variant": ""
+                    }
+                },
+                "documentNumber": "",
+                "phoneNumber": "",
+                "mobilePhoneNumber": ""
+        }
+      },
       "suborders": [
         {
           "orderId": "12345",

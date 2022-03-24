@@ -8,7 +8,7 @@
     <mj-section>
       <mj-column>
         <mj-image align="[[#if rtl]]right[[else]]left[[/if]]" width="327px" src="[[zaraLogo]]" padding-top="100px" padding-left="20px" css-class="newsletter-logo" />
-        <mj-image src="https://static.zara.net/photos/mkt/misc/newsletterw/header_fw21.png" padding-top="64px" padding-bottom="10px" />
+        <mj-image src="https://static.zara.net/photos/contents/mkt/newsletters/header_ss22.png" padding-top="64px" padding-bottom="10px" />
         <mj-text css-class="section-title" padding-bottom="25px" align="[[#if rtl]]right[[else]]left[[/if]]" text-transform="uppercase">
           [[tags.newsletterWelcome_title]]
         </mj-text>
