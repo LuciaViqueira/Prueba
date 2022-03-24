@@ -20,14 +20,14 @@
           [[tags.returnRequestDifferentOrders_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-          <p>
             [[#if isDropoff]]
-              [[tags.returnRequestDifferentOrders_dropOffDescription]]
+              [[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+              <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
+              <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
             [[/if]]
             [[#if isHome]]
-              [[tags.returnRequestDifferentOrders_homeDescription]]
-            [[/if]]
-          </p>
+              <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
+            [[/if]] 
           [[#if payload.returnEntity.request.returnCosts.[0]]]
             [[#with payload.returnEntity.request.returnCosts.[0].amount]]
               <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
@@ -37,6 +37,21 @@
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
           [[/if]]
         </mj-text>
+        <mj-raw>
+          [[#and isDropoff payload.returnEntity.request.courier.name]]
+        </mj-raw>
+        <mj-button css-class="order-detail-btn" 
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            href="https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[requestId]]" >
+            [[tags.returnRequestDifferentOrders_buttonTxt]]
+        </mj-button>
+        <mj-raw>
+          [[/and]]
+        </mj-raw>
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
@@ -50,12 +65,24 @@
           </mj-raw>
             <mj-include path="refundAddress" />
           <mj-raw>
+        [[else]]
+          [[#if payload.address.address]]
+            </mj-raw>
+              <mj-include path="SODAddress" />
+            <mj-raw>
+          [[/if]]
         [[/and]]
       [[/if]]
     </mj-raw>
     <!-- Sección 3 productsList -->
     <mj-include path="productListConfirmation" />
     <!-- Sección 4 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="footer" />
   </mj-body>
 </mjml>
