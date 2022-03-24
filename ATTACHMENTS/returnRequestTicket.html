@@ -5,14 +5,18 @@
             #container {
                 width: 490px;
                 margin: 0 auto;
-                font-family: Arial;
+                font-family: "custom-font";
                 font-size: 12px;
                 text-transform: uppercase;
                 font-weight: bold;
                 border: 2px solid black;
                 border-radius: 55px;
                 padding: 30px;
-                }
+            }
+            @font-face {
+                font-family: "custom-font";
+                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
+            }
 
             img {
                 display:block;
@@ -49,15 +53,15 @@
     </head>
     <body>
         <div id="container"> 
-            <img width="149px" src="[[zaraLogo]]" style="padding-top:20px;" />
+            <img width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
             <table style="padding-top:20px; padding-bottom:60px;">
                 <tr>
-                    <th class="alignLeft font12px">[[tags.returnRequestTicket_orderNumberText]]</th>
+                    <th class="alignLeft font12px">[[tags.ReturnRequestTicket_orderNumberText]]</th>
                     <th class="alignRight fontGrey">[[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th>
                 </tr>
             </table>
             <img width="250px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
-            <p style="padding-top:20px; padding-bottom:20px;">[[tags.returnRequestTicket_returnQrText]]</p>
+            <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnRequestTicket_returnQrText]]</p>
             <hr class="hrClass">
             <table style="border-collapse: collapse;">
                 [[#each suborders.[0].items]]

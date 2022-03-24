@@ -22,6 +22,7 @@
         <mj-text css-class="header-text">
             [[#if isDropoff]]
               [[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+    <! -- Pendiente controlar que sea Drop a tienda TEMP-201 --> 
               <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
               <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
 
