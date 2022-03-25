@@ -64,7 +64,8 @@
             <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnRequestTicket_returnQrText]]</p>
             <hr class="hrClass">
             <table style="border-collapse: collapse;">
-                [[#each suborders.[0].items]]
+                [[#each suborders]]
+                    [[#each this.items]]
                 <div>
                     <tr>
                         <td class="alignLeft fontGrey fontBold" style="padding-top:20px;">[[this.description]]</th>
@@ -74,6 +75,7 @@
                         <td class="alignRight borderPaddingBottom fontGrey fontBold" >[[this.price]]</th>
                     </tr>
                 </div>  
+                    [[/each]]
                 [[/each]]
             </table>
         </div>
