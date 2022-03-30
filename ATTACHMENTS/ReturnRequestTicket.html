@@ -3,19 +3,36 @@
     <head>
         <style>
             #container {
-                width: 490px;
+                width: 620px;
                 margin: 0 auto;
                 font-family: "custom-font";
                 font-size: 12px;
                 text-transform: uppercase;
                 font-weight: bold;
+                padding: 20px;
+            }
+            @page {
+               
                 border: 2px solid black;
                 border-radius: 55px;
-                padding: 30px;
+                padding-top: 130px;
+                @top-center {
+                    content: element(pageHeader);
+                    display: block;
+                }
             }
             @font-face {
                 font-family: "custom-font";
                 src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
+            }
+            #pageHeader{
+                position: running(pageHeader);
+                display: block;
+                width: 100%;
+                padding-top: 60px;
+            }
+            #pageContent{
+                width: 100%;
             }
 
             img {
@@ -55,38 +72,43 @@
                 border-top: 1px solid grey;
             }
         </style>
-       
     </head>
     <body>
         <div id="container"> 
-            <img width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
-            <table style="padding-top:20px; padding-bottom:60px;">
-                <tr>
-                    <th class="alignLeft font10px fontGrey">[[tags.ReturnRequestTicket_requestNumberText]]</th>
-                    <th class="alignRight fontGrey">[[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th>
-                </tr>
-                <tr>
-                    <td class="alignLeft font14px fontBold">[[requestId]]</td> 
-                </tr>
-            </table>
-            <img width="250px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
-            <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnRequestTicket_returnQrText]]</p>
-            <hr class="hrClass">
-            <table style="border-collapse: collapse;">
-                [[#each suborders]]
-                    [[#each this.items]]
-                <div>
+            <div id="pageHeader">
+                <table >
+                    <img width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
+                </table>
+            </div>
+            <div id="pageContent"></div>
+                <table style="padding-bottom:30px;">
                     <tr>
-                        <td class="alignLeft fontGrey fontBold" style="padding-top:20px;">[[this.description]]</th>
+                        <th class="alignLeft font10px fontGrey">[[tags.ReturnRequestTicket_requestNumberText]]</th>
+                        <th class="alignRight fontGrey">[[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th>
                     </tr>
                     <tr>
-                        <td class="alignLeft borderPaddingBottom fontGrey">[[this.sku]] - [[this.units]]</th>
-                        <td class="alignRight borderPaddingBottom fontGrey fontBold" >[[this.price]]</th>
+                        <td class="alignLeft font14px fontBold">[[requestId]]</td> 
                     </tr>
-                </div>  
+                </table>
+                <img width="250px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
+                <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnRequestTicket_returnQrText]]</p>
+                <hr class="hrClass">
+                <table style="border-collapse: collapse;">
+                    [[#each suborders]]
+                        [[#each this.items]]
+                    <div>
+                        <tr>
+                            <td class="alignLeft fontGrey fontBold" style="padding-top:20px;">[[this.description]]</th>
+                        </tr>
+                        <tr>
+                            <td class="alignLeft borderPaddingBottom fontGrey">[[this.sku]] - [[this.units]]</th>
+                            <td class="alignRight borderPaddingBottom fontGrey fontBold" >[[this.price]]</th>
+                        </tr>
+                    </div>  
+                        [[/each]]
                     [[/each]]
-                [[/each]]
-            </table>
+                </table>
+            </div>
         </div>
     </body>
 </html>
