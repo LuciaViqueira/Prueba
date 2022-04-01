@@ -32,10 +32,10 @@
                 width: 100%;
                 padding-top: 20px;
             }
-            #pageContent{
-                width: 100%;
+            #pageBreak{
+                page-break-inside:avoid; 
+                page-break-after:auto;
             }
-
             img {
                 display:block;
                 margin:auto;
@@ -81,35 +81,33 @@
                     <img width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
                 </table>
             </div>
-            <div id="pageContent"></div>
-                <table style="padding-bottom:30px;">
+            <table style="padding-bottom:30px;">
+                <tr>
+                    <th class="alignLeft font10px fontGrey">[[tags.ReturnRequestTicket_requestNumberText]]</th>
+                    <th class="alignRight fontGrey">[[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th>
+                </tr>
+                <tr>
+                    <td class="alignLeft font14px fontBold">[[requestId]]</td> 
+                </tr>
+            </table>
+            <img width="250px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
+            <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnRequestTicket_returnQrText]]</p>
+            <hr class="hrClass">
+            <table style="border-collapse: collapse;">
+                [[#each suborders]]
+                    [[#each this.items]]
+                <table id="pageBreak">
                     <tr>
-                        <th class="alignLeft font10px fontGrey">[[tags.ReturnRequestTicket_requestNumberText]]</th>
-                        <th class="alignRight fontGrey">[[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th>
+                        <td class="alignLeft fontGrey fontBold" style="padding-top:20px;">[[this.description]]</th>
                     </tr>
                     <tr>
-                        <td class="alignLeft font14px fontBold">[[requestId]]</td> 
+                        <td class="alignLeft borderPaddingBottom fontGrey">[[this.sku]] - [[this.units]]</th>
+                        <td class="alignRight borderPaddingBottom fontGrey fontBold" >[[this.price]]</th>
                     </tr>
-                </table>
-                <img width="250px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
-                <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnRequestTicket_returnQrText]]</p>
-                <hr class="hrClass">
-                <table style="border-collapse: collapse;">
-                    [[#each suborders]]
-                        [[#each this.items]]
-                    <div>
-                        <tr>
-                            <td class="alignLeft fontGrey fontBold" style="padding-top:20px;">[[this.description]]</th>
-                        </tr>
-                        <tr>
-                            <td class="alignLeft borderPaddingBottom fontGrey">[[this.sku]] - [[this.units]]</th>
-                            <td class="alignRight borderPaddingBottom fontGrey fontBold" >[[this.price]]</th>
-                        </tr>
-                    </div>  
-                        [[/each]]
+                </table>  
                     [[/each]]
-                </table>
-            </div>
+                [[/each]]
+            </table>
         </div>
     </body>
 </html>
