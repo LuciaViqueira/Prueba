@@ -19,6 +19,14 @@
       <mj-text css-class="footer-link">  
         <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
       </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[else]]
+        [[#if payload.orders.[0].hasGiftTicket]]
+      </mj-raw>
+      <mj-text css-class="footer-link">  
+        <a href="[[footer.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+      </mj-text>
       <mj-raw>[[/if]]</mj-raw>
     <mj-raw>[[/if]]</mj-raw>
     <mj-text css-class="footer-link"> <a href="[[footer.policyUrl]]">[[tags.policyText]]</a> </mj-text>

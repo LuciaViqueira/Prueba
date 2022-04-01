@@ -19,7 +19,6 @@
         "marketingInfo": {
           "showGiftCardConditions": true
         },
-        "orderHasGiftTicket": true,
         "orders": [
           {
             "hasGiftTicket": true,
@@ -416,7 +415,7 @@
         },
         "store": {
           "identifier": {
-            "legacyValue": "10701",
+            "legacyValue": "11727",
             "value": ""
           }
         }
@@ -438,7 +437,8 @@
         "androidAppUrl": "https://play.google.com/store/apps/details?id=com.inditex.zara&hl=es",
         "youtubeImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_youtube.png",
         "instagramUrl": "https://www.instagram.com/zara",
-        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png"
+        "pinterestImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/icono_pinterest.png",
+        "giftTicketUrl": "https://www.zara.com/"
       },
       "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png"
     },
