@@ -8,16 +8,18 @@
 
     <mj-table padding="10px 0 25px" css-class="social-links-newsletter" width="100%" align="center">
       <tr>
-        <td>
-          <a href="[[footer.instagramUrl]]" target="_blank">
-            [[tags.newsletterFooter_instagramText]]
-          </a>
-        </td>
-        <td>
-          <a href="[[footer.facebookUrl]]" target="_blank">
-            [[tags.newsletterFooter_facebookText]]
-          </a>
-        </td>
+        [[#not hiddenInRussia]]
+          <td>
+            <a href="[[footer.instagramUrl]]" target="_blank">
+              [[tags.newsletterFooter_instagramText]]
+            </a>
+          </td>
+          <td>
+            <a href="[[footer.facebookUrl]]" target="_blank">
+              [[tags.newsletterFooter_facebookText]]
+            </a>
+          </td>
+        [[/not]]
         <td>
           <a href="[[footer.twitterUrl]]" target="_blank">
             [[tags.newsletterFooter_twitterText]]

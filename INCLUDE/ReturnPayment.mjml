@@ -92,7 +92,14 @@
       [[#if returnInformation.hasReturnCharges]]
       <tr>
         <td>[[tags.returnPayment_returnChargesText]]</td>
-        <td class="payment-price">[[& returnInformation.charges.humanReadableText]]</td>
+        [[#assign "returnCostsEscaped"]][[& returnInformation.charges.humanReadableText]][[/assign]]
+        [[#assign "first"]][[substring returnCostsEscaped 0 1]][[/assign]]
+        [[#assign "returnCosts"]][[substring returnInformation.charges.humanReadableText 1]][[/assign]]
+        [[#eq first "-"]]
+          <td class="payment-price">[[returnCosts]]</td>
+        [[else]]
+          <td class="payment-price">[[& returnInformation.charges.humanReadableText]]</td>
+        [[/eq]]
       </tr>
       [[/if]]
       <tr class="payment-total">
