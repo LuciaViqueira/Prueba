@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.NewsletterFarewellMAIL_title]]
+        </mj-text>
+        <mj-text padding="37px 0 13px" css-class="header-text">
+          <p>[[tags.NewsletterFarewellMAIL_text1]]</p>
+          <p>[[tags.NewsletterFarewellMAIL_text2]]</p>
+        </mj-text>
+        <mj-button background-color="#000000" color="#FFFFFF" text-transform="uppercase" href="[[payload.newsletterData.confirmUrl]]" padding="0 0 20px">
+          [[tags.NewsletterFarewellMAIL_farewellBtn]]
+        </mj-button>
+        <mj-divider padding-top="38px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>
