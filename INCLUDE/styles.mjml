@@ -301,5 +301,11 @@
 .order-optional div {
     color: #ff930b !important;
 }
+
+.list-text > div {
+    font-weight: bold;
+    font-size: 17px !important;
+    text-transform: uppercase;
+}
 </mj-style>
 
