@@ -15,6 +15,12 @@
       "payload": {
         "newsletterData": {
           "confirmUrl": "https://www.zara.com"
+        },
+        "store": {
+          "identifier": {
+            "legacyValue": "11717",
+            "value": ""
+          }
         }
       },
       "footer": {

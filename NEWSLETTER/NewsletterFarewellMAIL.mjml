@@ -15,9 +15,16 @@
           <p>[[tags.NewsletterFarewellMAIL_text1]]</p>
           <p>[[tags.NewsletterFarewellMAIL_text2]]</p>
         </mj-text>
-        <mj-button background-color="#000000" color="#FFFFFF" text-transform="uppercase" href="[[payload.newsletterData.confirmUrl]]" padding="0 0 20px">
-          [[tags.NewsletterFarewellMAIL_farewellBtn]]
-        </mj-button>
+        <mj-raw>
+          [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+            [[#neq storeLegacyValue  "11717"]]
+        </mj-raw>
+              <mj-button background-color="#000000" color="#FFFFFF" text-transform="uppercase" href="[[payload.newsletterData.confirmUrl]]" padding="0 0 20px">
+                [[tags.NewsletterFarewellMAIL_farewellBtn]]
+              </mj-button>
+        <mj-raw>
+            [[/neq]]
+        </mj-raw>
         <mj-divider padding-top="38px" />
       </mj-column>
     </mj-section>
