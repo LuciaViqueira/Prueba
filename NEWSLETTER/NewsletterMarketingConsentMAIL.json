@@ -21,6 +21,9 @@
               "dateIso":"123123123123",
               "region":"",
               "humanReadableText":""
+          },
+          "subscriptionDateType": {
+              "symbols":"EXACT"
           }
         }
       },

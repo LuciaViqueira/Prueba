@@ -13,7 +13,12 @@
         </mj-text>
         <mj-text padding="37px 0 13px" css-class="header-text">
           <p>[[tags.NewsletterMarketingConsentMAIL_mainText]]</p>
-          <p>[[tags.NewsletterMarketingConsentMAIL_subscriptionText]]</p>
+          [[#assign "subscriptionDateType"]][[payload.newsletterData.subscriptionDateType.symbols]][[/assign]]
+          [[#eq subscriptionDateType  "EXACT"]]
+            <p>[[tags.NewsletterMarketingConsentMAIL_subscriptionTextExact]]</p>
+          [[else]]
+            <p>[[tags.NewsletterMarketingConsentMAIL_subscriptionText]]</p>
+          [[/eq]]
         </mj-text>
         <mj-divider padding-top="38px" />
       </mj-column>
