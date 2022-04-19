@@ -21,6 +21,7 @@
           <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext1]]</p>
           <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext2]]</p>
           <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext3]]</p>
+          <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext4]]</p>
         </mj-text>
         <mj-text css-class="list-text">
            [[tags.PersonalInformationNoticeMAIL_text2]]
