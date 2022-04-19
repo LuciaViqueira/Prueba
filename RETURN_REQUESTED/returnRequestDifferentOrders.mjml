@@ -26,6 +26,13 @@
                 <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
               [[/if]]
             [[/if]]
+            [[#if payload.returnEntity.request.type]]
+              [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
+              [[#eq requestType "STORE_DROPOFF"]]
+                <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
+                <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
+              [[/eq]]
+            [[/if]]
             [[#if isHome]]
               <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
             [[/if]] 

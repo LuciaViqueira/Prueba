@@ -24,9 +24,11 @@
                 "humanReadableText": ""
             },
             "date": {
-                "dateIso": "12/12/2021",
                 "dateType": "ISO8601",
-                "region": ""
+                "timestamp": -1,
+                "dateIso": "2022-02-23T18:35:53.942000000+0100",
+                "region": "",
+                "humanReadableText": ""
             },
             "order": {
                 "suborders": [
