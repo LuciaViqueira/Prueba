@@ -1,6 +1,6 @@
 {
   "create": {
-    "name": "NewsletterMarketingConsentMAIL",
+    "name": "PersonalInformationNoticeMAIL",
     "body": "",
     "version": "1",
     "tags": [],
@@ -14,17 +14,7 @@
       "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
       "payload": {
         "newsletterData": {
-          "confirmUrl": "https://www.zara.com",
-          "subscribedAt": {
-              "dateType":"ISO8601",
-              "timestamp":1608568140000,
-              "dateIso":"123123123123",
-              "region":"",
-              "humanReadableText":""
-          },
-          "subscriptionDateType": {
-              "symbols":"EXACT"
-          }
+          "confirmUrl": "https://www.zara.com"
         }
       },
       "footer": {

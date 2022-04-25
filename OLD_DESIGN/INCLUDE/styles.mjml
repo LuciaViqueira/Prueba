@@ -1,0 +1,311 @@
+<mj-attributes>
+  <mj-all font-family="Arial" />
+  <mj-text padding="0" align="center" font-size="14px" line-height="20px" />
+  <mj-section padding="0 4%" />
+  <mj-column padding="0" />
+  <mj-body padding="0" />
+  <mj-image padding="0" />
+  <mj-divider padding="0" border-width="1px" border-color="#dddddd" />
+</mj-attributes>
+<mj-style>
+    @media only screen and (max-width:480px) {
+        .newsletter-logo img {
+            width: 50% !important;
+        }
+
+        .social-links-newsletter a {
+            font-size: 9.7px !important;
+            padding: 0 2px ;
+        }
+    }
+</mj-style>
+<mj-style inline="inline">
+* {
+    direction: [[#if rtl]]rtl[[else]]ltr[[/if]];
+}
+
+.download-app-link a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+}
+
+.social-links-newsletter td {
+    text-align: center;
+}
+
+.social-links-newsletter a {
+    text-align: center;
+    text-transform: uppercase;
+    direction: ltr;
+    font-weight: 400;
+    font-size: 15px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-unsubscribe a {
+    color: #000000 !important;
+}
+
+.footer-legal-newsletter div, .footer-unsubscribe div {
+    font-size: 11px !important;
+    line-height: 16px !important;
+}
+
+
+.section-title div {
+    font-weight: bold;
+    font-size: 20px !important;
+    line-height: 20px !important;
+    margin-top: 50px !important;
+}
+
+.header-text p {
+    margin: 0 0 18px;
+    text-transform: uppercase;
+}
+
+.send-time > div {
+    line-height: 19px !important;
+    margin-bottom: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.send-time-received > div {
+    line-height: 23px !important;
+    font-weight: bold;
+    font-size: 18px !important;
+    text-transform: uppercase;
+}
+
+.send-time-description {
+    line-height: 19px !important;
+    padding-top: 8px;
+    padding-bottom: 38px !important;
+    text-transform: uppercase;
+}
+
+.delay-date {
+    color: #ff930b;
+}
+
+.order-detail-btn {
+    padding: 15px 0 20px !important;
+}
+
+.order-number div {
+    text-transform: uppercase;
+}
+
+.address-text div {
+    line-height: 19px !important;
+    max-width: 358px;
+}
+
+.address-sign-text p {
+    text-transform: uppercase;
+    margin: 20px 0 0;
+}
+
+.product-counter div {
+    text-transform: uppercase;
+}
+
+.product-img img {
+    object-fit: contain;
+}
+
+.product-size div {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    line-height: 22px !important;
+    margin-bottom: 8px !important;
+    text-transform: uppercase;
+}
+
+.product-unit div {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 17px !important;
+    margin-top: 10px !important;
+}
+
+.product-unit-label div {
+    font-size: 12px !important;
+    line-height: 17px !important;
+}
+
+.product-price div {
+    font-size: 18px !important;
+    line-height: 17px !important;
+    margin-top: 10px !important;
+    text-transform: uppercase;
+}
+
+.product-custom {
+    padding: 10px 0 0 !important;
+}
+
+.product-custom table {
+    line-height: inherit !important;
+    margin: auto;
+}
+
+.product-custom td {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #000000;
+    padding: 4px 8px !important;
+}
+
+.product-custom-lbl {
+    text-transform: uppercase;
+    color: #FFFFFF !important;
+    white-space: nowrap !important;
+    line-height: 15px !important;
+}
+
+.product-custom-warn div {
+    margin-top: 10px;
+    color: #ff930b !important;
+    font-style: italic;
+    font-size: 12px !important;
+}
+
+.product-custom-table div {
+    width: auto !important;
+    line-height: 18px !important;
+    text-align: center;
+    font-size: 13px !important;
+}
+
+.product-custom-table td + td {
+    padding-left: 16px;
+}
+
+.payment-method-table {
+    font-family: Arial;
+}
+
+.payment-method-table td.label {
+    font-weight: bold;
+    text-align: left;
+    margin-right: 4px;
+}
+
+.payment-methods p.payment-name {
+    font-weight: bold !important;
+    margin: 0 0 10px;
+}
+
+.payment-methods p {
+    margin: 0 0 20px;
+}
+
+.payment-table {
+    padding: 30px !important;
+    border: solid 1px #dddddd;
+}
+
+.payment-table table {
+    font-size: 14px !important;
+    line-height: 28px !important;
+    text-transform: uppercase;
+}
+
+.payment-total {
+    font-weight: bold;
+}
+
+.payment-total td {
+    padding-top: 20px;
+}
+
+.payment-include-tax-label {
+    color: #959595;
+    font-size: 12px !important;
+    line-height: 17px !important;
+    text-transform: none;
+}
+
+.payment-price {
+    text-align: right !important;
+    word-break: break-word !important;
+}
+
+.footer-link div {
+    font-size: 12px !important;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.footer-link a {
+    color: #000;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    font-size: 12px !important;
+}
+
+.footer-legal-message p {
+    color: #959595;
+    font-size: 12px !important;
+    line-height: 17px !important;
+    text-transform: none;
+    margin: 80px 0 -30px 0;
+}
+
+.footer-il-message div {
+    padding-top: 40px;
+}
+
+.social-links img {
+    object-fit: contain;
+    height: 20px;
+    width: 20px;
+}
+
+.social-links {
+    direction: ltr !important;
+}
+
+.social-links * {
+    direction: ltr !important;
+}
+
+.download-apps a {
+    text-decoration: none;
+    font-size: 0px;
+}
+
+.download-apps img {
+    height: 40px;
+}
+
+.download-apps table {
+    line-height: 0px !important;
+    height: 40px;
+}
+
+.download-apps {
+    direction: ltr !important;
+}
+
+.download-apps * {
+    direction: ltr !important;
+}
+
+
+.order-optional div {
+    color: #ff930b !important;
+}
+
+.list-text > div {
+    font-weight: bold;
+    font-size: 17px !important;
+    text-transform: uppercase;
+}
+</mj-style>
+

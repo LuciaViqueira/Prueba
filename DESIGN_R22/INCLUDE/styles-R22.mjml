@@ -1,0 +1,201 @@
+<mj-attributes>
+  <mj-all font-family="Neue-Helvetica, Helvetica"; />
+  <mj-text padding="0" align="left" font-size="14px" line-height="18px" />
+  <mj-section padding="0 35px" />
+  <mj-column padding="0" align="left" />
+  <mj-image padding="0" align="left" />
+  <mj-divider padding="0" border-width="1px" border-color="#dddddd" />
+</mj-attributes>
+<mj-style>
+  @font-face {
+    font-family: "Neue-Helvetica";
+    font-weight: bold;
+		src: url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.eot#iefix");                             /* IE9 Compat Modes */
+		src: local('?'),
+				 url("#https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.woff2.woff2') format('woff2'),                  /* Super Modern Browsers */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.woff') format('woff'),                    /* Pretty Modern Browsers */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.ttf') format('truetype'),                 /* Safari, Android, iOS */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.svg#{NeueHelveticaforZara-MdCn}') format('svg');          /* Legacy iOS */
+		      
+  }
+  @font-face {
+    font-family: "Neue-Helvetica";
+   	src: url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.eot#iefix");                             /* IE9 Compat Modes */
+		src: local('?'),
+				 url("#https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.woff2.woff2') format('woff2'),                  /* Super Modern Browsers */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.woff') format('woff'),                    /* Pretty Modern Browsers */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.ttf') format('truetype'),                 /* Safari, Android, iOS */
+				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.svg#{NeueHelveticaforZara-LtCn}') format('svg');          /* Legacy iOS */
+  }
+</mj-style>
+<mj-style inline="inline">
+* {
+    direction: [[#rtl]]rtl[[/rtl]][[^rtl]]ltr[[/rtl]];
+}
+
+.rd-title div {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    letter-spacing: 0.7px; 
+}
+
+.rd-section-title div {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    letter-spacing: 0.7px; 
+}
+
+.rd-subsection-title div {
+    text-transform: uppercase;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.7px; 
+}
+
+.rd-subsection-title-small div {
+    text-transform: uppercase;
+    font-size: 11px !important;
+    line-height: 16px !important;
+    letter-spacing: 0.8px; 
+}
+.rd-subsection-text div{
+    text-transform: uppercase;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    letter-spacing: 0.8px; 
+}
+
+.rd-subsection-text-light div{
+    text-transform: uppercase;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.8px; 
+    color: #333333 !important;
+}
+
+.rd-subsection-smallText div{
+    font-size: 9px !important;
+    line-height: 16px !important;
+    letter-spacing: 0.4px; 
+}
+
+.rd-order-detail-btn {
+    padding: 15px 0 20px !important;
+    font-size: 14px !important;
+}
+
+.rd-text-info div {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.3px; 
+}
+
+.rd-text-info-small div {
+    text-transform: uppercase;
+    font-size: 11px !important;
+    line-height: 16px !important;
+    letter-spacing: 0.8px; 
+}
+
+.rd-payment-table {
+    padding: 0px !important;
+    padding-bottom: 40px !important;
+}
+
+.rd-payment-table table {
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+.rd-payment-table caption {
+    font-size: 14px !important;
+    line-height: 82px !important;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.rd-footer-link div {
+    margin-bottom: 12px;
+}
+
+.rd-footer-link a {
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px !important;
+    line-height: 18px;
+    letter-spacing: 0.7px;
+    text-decoration: none;
+}
+
+.rd-footer-rrsss-link a {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px !important;
+    letter-spacing: 0.7px;
+    line-height: 16px;
+    text-decoration: none;
+}
+
+.rd-dowload-app div {
+    text-transform: uppercase;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.7px; 
+}
+
+
+.rd-orange-font {
+    color: #FF930B !important;
+}
+
+.rd-black-font {
+    color: #000000 !important;
+}
+
+.rd-payment-price {
+    text-align: [[#rtl]]left[[/rtl]][[^rtl]]right[[/rtl]] !important;
+    word-break: break-word !important;
+}
+
+.rd-payment-total {
+    font-weight: bold;
+}
+
+.rd-payment-include-tax-label {
+    color: #959595;
+    font-size: 12px !important;
+    line-height: 17px !important;
+    text-transform: none;
+}
+
+.rd-payment-include-tax-label-left {
+    color: #666666;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    text-align: left !important;
+}
+
+.rd-product-img img {
+    object-fit: contain;
+}
+
+td {
+    padding-bottom: 4px;
+}
+
+tr {
+    color: #666666;
+}
+
+</mj-style>
