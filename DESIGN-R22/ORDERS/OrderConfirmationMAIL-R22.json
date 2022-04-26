@@ -32,6 +32,7 @@
               {
                 "suborderId": "1234567890",
                 "numItems": "3",
+                "deliveryDate": "Sabado 27 de Enero",
                 "discounts": [],
                 "payment": {
                   "totalAmount": {
@@ -300,9 +301,9 @@
                       },
                       "discounts":null
                   }
-              ],
+                ],
                 "shipping": {
-                  "mode": "EXPRESS",
+                  "mode": "STORE",
                   "type": "HOME",
                   "name": "aa",
                   "description": "Recoger en tienda",

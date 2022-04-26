@@ -1,0 +1,67 @@
+<mj-section>
+  <mj-column padding="72px 0 100px">
+    <mj-text css-class="rd-footer-link">
+      <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
+    </mj-text>
+    <mj-text css-class="rd-footer-link">
+      [[#if notShowTermsConds]]
+      [[else]]
+        <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
+      [[/if]]      
+    </mj-text>
+    <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
+      <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
+      <mj-text css-class="rd-footer-link">
+        <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+      </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[#if returnInformation.isGiftTicket]]
+      </mj-raw>
+      <mj-text css-class="rd-footer-link">  
+        <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+      </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[else]]
+        [[#if payload.orders.[0].hasGiftTicket]]
+      </mj-raw>
+      <mj-text css-class="rd-footer-link">  
+        <a href="[[footer.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+      </mj-text>
+      <mj-raw>[[/if]]</mj-raw>
+    <mj-raw>[[/if]]</mj-raw>
+    <mj-text css-class="rd-footer-link">
+      <a href="[[footer.policyUrl]]">[[tags.policyText]]</a>
+    </mj-text>
+
+      <mj-table padding="28px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
+      <tr>
+        <td>
+          <a href="https://zara.com" target="_blank">Tik Tok</a>
+        </td>
+        [[#not hiddenInRussia]]
+          <td>
+            <a href="[[footer.instagramUrl]]" target="_blank">Instagram</a>
+          </td>
+          <td>
+            <a href="[[footer.facebookUrl]]" target="_blank">Facebook</a>
+          </td>
+        [[/not]]
+        <td>
+          <a href="[[footer.twitterUrl]]" target="_blank">Twitter</a>
+        </td>
+        <td>
+          <a href="[[footer.pinterestUrl]]" target="_blank">Pinterest</a>
+        </td>
+        <td>
+          <a href="[[footer.youtubeUrl]]" target="_blank">Youtube</a>
+        </td>
+      </tr>
+    </mj-table>
+
+    <mj-text padding-top="8px" font-weight="bold" css-class="rd-dowload-app">
+      [[tags.downloadAppText]]
+    </mj-text>
+  </mj-column>
+</mj-section>

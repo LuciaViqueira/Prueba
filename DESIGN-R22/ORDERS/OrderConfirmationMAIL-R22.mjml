@@ -1,7 +1,7 @@
 <mjml>
   <mj-head>
     <mj-title>ZARA</mj-title>
-    <mj-include path="styles" />
+    <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="500px">
     <!-- Template configuration -->
@@ -25,7 +25,7 @@
       [[#with payload.orders.[0] as | order |]]
         [[#with order.suborders.[0].shipping as | shipping |]]
     </mj-raw>
-    <mj-include path="shipping" />
+    <mj-include path="shipping-R22" />
     <mj-raw>
         [[/with]]
       [[/with]]
@@ -37,11 +37,12 @@
           <p>[[tags.OrderConfirmationMAIL_notice]]</p>
         </mj-text>
         <mj-button css-class="order-detail-btn" 
-            background-color="#FFFFFF" 
-            color="#000000" 
-            border="1px solid #000000" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
             font-weight="bold" 
             text-transform="uppercase" 
+            width="100%"
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.OrderConfirmationMAIL_orderBtn]]
         </mj-button>
@@ -52,33 +53,14 @@
         </mj-text>
       </mj-column>
     </mj-section>
-     
-    <mj-raw>
-      [[#with payload]]
-    </mj-raw>
-    <!-- Sección 2 refundAddress -->
-      <mj-include path="OrderItemList" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
-    
-    <mj-raw>
-      [[#with payload]]
-        [[#with this.orders.[0].payments as | payments |]]
-    </mj-raw>
-    <!-- Sección 2 refundAddress -->
-      <mj-include path="Payment" />
-    <mj-raw>
-        [[/with]]
-      [[/with]]
-    </mj-raw>
-    
+
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
       [[/eq]]
     </mj-raw>
-    <mj-include path="footer" />
+    <mj-include path="footer-R22" />
+
   </mj-body>
 </mjml>

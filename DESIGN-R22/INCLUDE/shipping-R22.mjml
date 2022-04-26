@@ -1,14 +1,14 @@
 <mj-section>
-  <mj-column>
+  <mj-column padding-top="24px">
     <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
-      Recibirás tu envío:
+      [[tags.shipping_title]]:
     </mj-text>
 
     <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
       [[#each order.suborders]]
         <div>
           [[#if this.deliveryDate]]
-              <div class="rd-subsection-title" style="font-weight: bold; padding-bottom:4px;" >this.deliveryDate</div>
+              <div class="rd-subsection-title" style="font-weight: bold; padding-bottom:4px;" >[[this.deliveryDate]]</div>
           [[/if]]
     </mj-text>
     
@@ -60,29 +60,71 @@
     </mj-text>
 
     <mj-text padding-top="0" css-class="rd-section-title">
-      INFORMACIÓN DE ENVÍO
+      [[tags.shipping_title]]
     </mj-text>
     <mj-text padding-top="8px" font-weight="bold" css-class="rd-subsection-text-light">
+      <!-- ShippingMethod -->
+          [[#eq this.shipping.mode "EXPRESS"]]
+            [[tags.shipping_EXPRESS]]
+          [[else]]
+            [[#eq this.shipping.mode "STANDARD"]]
+              [[tags.shipping_STANDARD]]
+            [[else]]
+              [[#eq this.shipping.mode "STORE"]]
+                [[tags.shipping_STORE]]
+              [[else]]
+                [[#eq this.shipping.mode "DDD"]]
+                  [[tags.shipping_DDD]]
+                [[else]]
+                  [[#eq this.shipping.mode "DROPPOINT"]]
+                    [[tags.shipping_DROPPOINT]]
+                  [[else]]
+                    [[#eq this.shipping.mode "SAMEDAY"]]
+                      [[tags.shipping_SAMEDAY]]
+                    [[else]]
+                      [[#eq this.shipping.mode "TRYON"]]
+                        [[tags.shipping_TRYON]]
+                      [[else]]
+                        [[#eq this.shipping.mode "VIRTUAL"]]
+                          [[tags.shipping_VIRTUAL]]
+                        [[else]]
+                          [[#eq this.shipping.mode "DEFERRED_STANDARD"]]
+                            [[tags.shipping_DEFERRED_STANDARD]]
+                          [[else]]
+                            [[#eq this.shipping.mode "STANDARD_ASSEMBLY"]]
+                              [[tags.shipping_STANDARD_ASSEMBLY]]
+                            [[/eq]]
+                          [[/eq]]
+                        [[/eq]]
+                      [[/eq]]
+                    [[/eq]]
+                  [[/eq]]
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+          [[/eq]]
+          <!-- ShippingMethod END -->
+    </mj-text>
+    <mj-text padding-top="4px" css-class="rd-subsection-text">
       [[#if shipping.description]]
         [[shipping.description]]
       [[/if]]
     </mj-text>
       
     <mj-raw>
-      [[/if]]
       [[#with shipping.address]]
           </mj-raw>
-            <mj-include path="Address" />
+            <mj-include path="Address-R22" />
           <mj-raw>
       [[else]]
         [[#with shipping.physicalStore.address]]
           </mj-raw>
-            <mj-include path="Address" />
+            <mj-include path="Address-R22" />
           <mj-raw>
         [[else]]
           [[#with shipping.dropPoint.address]]
             </mj-raw>
-              <mj-include path="Address" />
+              <mj-include path="Address-R22" />
             <mj-raw>
           [[/with]]
         [[/with]]
