@@ -1,48 +1,18 @@
 <mj-section>
   <mj-column>
-    <mj-text css-class="section-title" padding-bottom="47px">
-      [[#if returnShippingTitle]]
-        [[tags.shipping_returnShippingTitle]]
-      [[else]]
-        [[#if order.isFastSint]]
-          [[tags.shipping_fastSintTitle]]
-        [[else]]
-          [[#if checkinTitle]]
-            [[tags.shipping_addressTitleCheckin]]
-          [[else]]
-            [[#if newDirectionTitle]]
-              [[tags.shipping_newDirectionTitle]]
-            [[else]]
-              [[tags.shipping_title]]
-            [[/if]]
-          [[/if]]
-        [[/if]]
-      [[/if]]
+    <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
+      Recibirás tu envío:
     </mj-text>
-    <mj-raw>
-      [[#if hideTimeMethodInfo]]
-      [[else]]
-    </mj-raw>
-    <mj-text css-class="send-time-received">
-      [[#assign "numSuborders"]][[#size order.suborders]][[/size]][[/assign]]
-      [[#neq numSuborders "1"]]
-        [[#assign "showShippingNumberLocal"]]true[[/assign]]
-      [[/neq]]
-      [[#if showShippingNumber]]
-        [[#assign "showShippingNumberLocal"]]true[[/assign]]
-      [[/if]]
+    <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
       [[#each order.suborders]]
-      <div>
-      
-        [[#if showShippingNumberLocal]]
-          [[tags.shipping_shippingNumberText]] [[this.suborderId]]: 
-        [[/if]]
-        [[#and showDeliveryDate this.deliveryDate]]
-          [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-          [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-          [[readableDate minDeliveredDate maxDeliveredDate]]
-        [[else]]
-          <!-- ShippingMethod -->
+        <div>
+          [[#if this.deliveryDate]]
+              <div class="rd-subsection-title" style="font-weight: bold; padding-bottom:4px;" >this.deliveryDate</div>
+          [[/if]]
+    </mj-text>
+    <mj-text padding="4px 0 24px 0" css-class="rd-subsection-text"> 
+        [[tags.shipping_shippingNumberText]] [[this.suborderId]]:
+        <!-- ShippingMethod -->
           [[#eq this.shipping.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
           [[else]]
@@ -83,7 +53,67 @@
             [[/eq]]
           [[/eq]]
           <!-- ShippingMethod END -->
-        [[/and]]
+        </div>
+      [[/each]]
+    </mj-text>
+    <mj-text padding-top="0" css-class="rd-section-title">
+      INFORMACIÓN DE ENVÍO
+    </mj-text>
+    <mj-text padding-top="8px" font-weight="bold" css-class="rd-subsection-text-light">
+      [[#if shipping.description]]
+        [[shipping.description]]
+      [[/if]]
+    </mj-text>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <mj-text css-class="section-title" padding-bottom="47px">
+      [[#if returnShippingTitle]]
+        [[tags.shipping_returnShippingTitle]]
+      [[else]]
+        [[#if order.isFastSint]]
+          [[tags.shipping_fastSintTitle]]
+        [[else]]
+          [[#if checkinTitle]]
+            [[tags.shipping_addressTitleCheckin]]
+          [[else]]
+            [[#if newDirectionTitle]]
+              [[tags.shipping_newDirectionTitle]]
+            [[else]]
+              [[tags.shipping_title]]
+            [[/if]]
+          [[/if]]
+        [[/if]]
+      [[/if]]
+    </mj-text>
+    <mj-raw>
+      [[#if hideTimeMethodInfo]]
+      [[else]]
+    </mj-raw>
+    <mj-text css-class="send-time-received">
+      [[#assign "numSuborders"]][[#size order.suborders]][[/size]][[/assign]]
+      [[#neq numSuborders "1"]]
+        [[#assign "showShippingNumberLocal"]]true[[/assign]]
+      [[/neq]]
+      [[#if showShippingNumber]]
+        [[#assign "showShippingNumberLocal"]]true[[/assign]]
+      [[/if]]
+      [[#each order.suborders]]
+      <div>
+      
+        
+        
       </div>
       [[/each]]
     </mj-text>

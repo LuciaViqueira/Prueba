@@ -305,10 +305,10 @@
                   "mode": "EXPRESS",
                   "type": "HOME",
                   "name": "aa",
-                  "description": "",
+                  "description": "Recoger en tienda",
                   "address": {
                     "identifier": 768990760,
-                    "line": "Rúa San Andrés\n21",
+                    "line": "Marineda City - Calle Baños de Arteixo,\n43",
                     "country": {
                       "code": "",
                       "value": "España"
@@ -328,7 +328,7 @@
                     "street": null,
                     "zipCode": {
                       "code": "",
-                      "value": "15003"
+                      "value": "15005"
                     },
                     "receiver": {
                       "customerId": null,
