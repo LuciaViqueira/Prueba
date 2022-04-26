@@ -3,6 +3,7 @@
     <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
       Recibirás tu envío:
     </mj-text>
+
     <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
       [[#each order.suborders]]
         <div>
@@ -10,6 +11,7 @@
               <div class="rd-subsection-title" style="font-weight: bold; padding-bottom:4px;" >this.deliveryDate</div>
           [[/if]]
     </mj-text>
+    
     <mj-text padding="4px 0 24px 0" css-class="rd-subsection-text"> 
         [[tags.shipping_shippingNumberText]] [[this.suborderId]]:
         <!-- ShippingMethod -->
@@ -56,6 +58,7 @@
         </div>
       [[/each]]
     </mj-text>
+
     <mj-text padding-top="0" css-class="rd-section-title">
       INFORMACIÓN DE ENVÍO
     </mj-text>
@@ -64,66 +67,7 @@
         [[shipping.description]]
       [[/if]]
     </mj-text>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <mj-text css-class="section-title" padding-bottom="47px">
-      [[#if returnShippingTitle]]
-        [[tags.shipping_returnShippingTitle]]
-      [[else]]
-        [[#if order.isFastSint]]
-          [[tags.shipping_fastSintTitle]]
-        [[else]]
-          [[#if checkinTitle]]
-            [[tags.shipping_addressTitleCheckin]]
-          [[else]]
-            [[#if newDirectionTitle]]
-              [[tags.shipping_newDirectionTitle]]
-            [[else]]
-              [[tags.shipping_title]]
-            [[/if]]
-          [[/if]]
-        [[/if]]
-      [[/if]]
-    </mj-text>
-    <mj-raw>
-      [[#if hideTimeMethodInfo]]
-      [[else]]
-    </mj-raw>
-    <mj-text css-class="send-time-received">
-      [[#assign "numSuborders"]][[#size order.suborders]][[/size]][[/assign]]
-      [[#neq numSuborders "1"]]
-        [[#assign "showShippingNumberLocal"]]true[[/assign]]
-      [[/neq]]
-      [[#if showShippingNumber]]
-        [[#assign "showShippingNumberLocal"]]true[[/assign]]
-      [[/if]]
-      [[#each order.suborders]]
-      <div>
       
-        
-        
-      </div>
-      [[/each]]
-    </mj-text>
-    <mj-text css-class="send-time-description">
-      <div>
-        [[#if shipping.description]]
-          [[shipping.description]]
-        [[/if]]
-      </div>
-    </mj-text>
     <mj-raw>
       [[/if]]
       [[#with shipping.address]]
@@ -144,19 +88,5 @@
         [[/with]]
       [[/with]]
     </mj-raw>
-    <mj-text css-class="address-sign-text"> <!-- TODO: pendiente de saber las variables -->
-      [[#if shippingInfo.isSignRequided]]
-        <p>
-          [[tags.shipping_signText]]: 
-          [[#if shippingInfo.signHasBeenRequired]]
-            [[tags.shipping_signTextYes]]
-          [[else]]
-            [[tags.shipping_signTextNo]]
-          [[/if]]
-        </p>
-      [[/if]]
-    </mj-text>
-    <mj-spacer height="50px" />
-    <mj-divider/>
   </mj-column>
 </mj-section>
