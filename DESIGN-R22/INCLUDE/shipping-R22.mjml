@@ -1,49 +1,52 @@
 <mj-section>
   <mj-column padding-top="24px">
     <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
-      [[tags.shipping_title]]:
+      [[tags.shipping_fastSintTitle]]:
     </mj-text>
 
-    <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
+    <mj-raw>
       [[#each order.suborders]]
-        <div>
+    </mj-raw>
+    <mj-text css-class="rd-subsection-title">
           [[#if this.deliveryDate]]
               <div class="rd-subsection-title" style="font-weight: bold; padding-bottom:4px;" >[[this.deliveryDate]]</div>
           [[/if]]
     </mj-text>
     
     <mj-text padding="4px 0 24px 0" css-class="rd-subsection-text"> 
-        [[tags.shipping_shippingNumberText]] [[this.suborderId]]:
-        <!-- ShippingMethod -->
-          [[#eq this.shipping.mode "EXPRESS"]]
-            [[tags.shipping_EXPRESS]]
-          [[else]]
-            [[#eq this.shipping.mode "STANDARD"]]
-              [[tags.shipping_STANDARD]]
+        <div>
+          [[tags.shipping_shippingNumberText]] [[this.suborderId]]:
+          <!-- ShippingMethod -->
+            [[#eq this.shipping.mode "EXPRESS"]]
+              [[tags.shipping_EXPRESS]]
             [[else]]
-              [[#eq this.shipping.mode "STORE"]]
-                [[tags.shipping_STORE]]
+              [[#eq this.shipping.mode "STANDARD"]]
+                [[tags.shipping_STANDARD]]
               [[else]]
-                [[#eq this.shipping.mode "DDD"]]
-                  [[tags.shipping_DDD]]
+                [[#eq this.shipping.mode "STORE"]]
+                  [[tags.shipping_STORE]]
                 [[else]]
-                  [[#eq this.shipping.mode "DROPPOINT"]]
-                    [[tags.shipping_DROPPOINT]]
+                  [[#eq this.shipping.mode "DDD"]]
+                    [[tags.shipping_DDD]]
                   [[else]]
-                    [[#eq this.shipping.mode "SAMEDAY"]]
-                      [[tags.shipping_SAMEDAY]]
+                    [[#eq this.shipping.mode "DROPPOINT"]]
+                      [[tags.shipping_DROPPOINT]]
                     [[else]]
-                      [[#eq this.shipping.mode "TRYON"]]
-                        [[tags.shipping_TRYON]]
+                      [[#eq this.shipping.mode "SAMEDAY"]]
+                        [[tags.shipping_SAMEDAY]]
                       [[else]]
-                        [[#eq this.shipping.mode "VIRTUAL"]]
-                          [[tags.shipping_VIRTUAL]]
+                        [[#eq this.shipping.mode "TRYON"]]
+                          [[tags.shipping_TRYON]]
                         [[else]]
-                          [[#eq this.shipping.mode "DEFERRED_STANDARD"]]
-                            [[tags.shipping_DEFERRED_STANDARD]]
+                          [[#eq this.shipping.mode "VIRTUAL"]]
+                            [[tags.shipping_VIRTUAL]]
                           [[else]]
-                            [[#eq this.shipping.mode "STANDARD_ASSEMBLY"]]
-                              [[tags.shipping_STANDARD_ASSEMBLY]]
+                            [[#eq this.shipping.mode "DEFERRED_STANDARD"]]
+                              [[tags.shipping_DEFERRED_STANDARD]]
+                            [[else]]
+                              [[#eq this.shipping.mode "STANDARD_ASSEMBLY"]]
+                                [[tags.shipping_STANDARD_ASSEMBLY]]
+                              [[/eq]]
                             [[/eq]]
                           [[/eq]]
                         [[/eq]]
@@ -53,11 +56,12 @@
                 [[/eq]]
               [[/eq]]
             [[/eq]]
-          [[/eq]]
-          <!-- ShippingMethod END -->
+            <!-- ShippingMethod END -->
         </div>
-      [[/each]]
     </mj-text>
+    <mj-raw>
+      [[/each]]
+    </mj-raw>
 
     <mj-text padding-top="0" css-class="rd-section-title">
       [[tags.shipping_title]]

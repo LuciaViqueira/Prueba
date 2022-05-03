@@ -1,0 +1,11 @@
+{
+  "create": {
+    "name": "Payment-R22",
+    "body": "",
+    "version": "1",
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": []
+  },
+  "render": {}
+}

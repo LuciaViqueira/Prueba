@@ -33,10 +33,10 @@
 
     <mj-section>
       <mj-column>
-        <mj-text css-class="header-text">
-          <p>[[tags.OrderConfirmationMAIL_notice]]</p>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[tags.OrderConfirmationMAIL_notice]]
         </mj-text>
-        <mj-button css-class="order-detail-btn" 
+        <mj-button css-class="rd-order-detail-btn" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
@@ -46,13 +46,33 @@
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.OrderConfirmationMAIL_orderBtn]]
         </mj-button>
-        <mj-text css-class="header-text">
+        <mj-text css-class="rd-text-info">
           [[#if payload.orders.[0].hasGiftTicket]]
-              <p>[[tags.OrderConfirmationMAIL_giftTicket]]</p>
+              [[tags.OrderConfirmationMAIL_giftTicket]]
           [[/if]]
         </mj-text>
       </mj-column>
     </mj-section>
+
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#with payload]]
+        [[#with this.orders.[0].payments as | payments |]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="Payment-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
 
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]

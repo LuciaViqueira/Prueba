@@ -100,7 +100,8 @@
     text-transform: uppercase;
     font-size: 11px !important;
     line-height: 16px !important;
-    letter-spacing: 0.8px; 
+    letter-spacing: 0.8px;
+    text-align: left; 
 }
 
 .rd-payment-table {
@@ -196,5 +197,44 @@ td {
 
 tr {
     color: #666666;
+}
+
+.rd-product-custom {
+    padding: 4px !important;
+    background-color: #000000;
+    border:1px solid #FFFFFF;
+    color:#FFFFFF;
+    font-weight:bold;
+    width:100%;
+}
+
+.rd-product-custom table {
+    line-height: inherit !important;
+    margin: auto;
+    border:1px solid #FFFFFF;
+}
+
+.rd-product-custom-lbl {
+    text-transform: uppercase;
+    color: #FFFFFF !important;
+    white-space: nowrap !important;
+    line-height: 15px !important;
+}
+
+.rd-product-custom-warn {
+    color: #ff930b !important;
+    font-style: italic;
+    font-size: 9px !important;
+}
+
+.rd-product-custom-table div {
+    width: auto !important;
+    line-height: 18px !important;
+    text-align: left;
+    font-size: 13px !important;
+}
+
+.rd-product-custom-table td + td {
+    padding-left: 16px;
 }
 </mj-style>
