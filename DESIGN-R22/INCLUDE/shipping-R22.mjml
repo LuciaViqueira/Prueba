@@ -13,7 +13,7 @@
           [[/if]]
     </mj-text>
     
-    <mj-text padding="4px 0 24px 0" css-class="rd-subsection-text"> 
+    <mj-text padding="0 0 24px 0" css-class="rd-subsection-text"> 
         <div>
           [[tags.shipping_shippingNumberText]] [[this.suborderId]]:
           <!-- ShippingMethod -->

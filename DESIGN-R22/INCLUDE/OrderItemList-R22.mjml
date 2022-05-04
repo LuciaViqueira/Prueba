@@ -18,7 +18,7 @@
         <div>
           [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
         </div>
-        <div style="padding-top: 4px">
+        <div class="rd-light-font" style="padding-top: 4px">
           [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
           [[orderNumItems]]
           [[#eq orderNumItems "1"]]

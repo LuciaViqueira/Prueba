@@ -67,7 +67,7 @@
 .rd-subsection-text div{
     text-transform: uppercase;
     font-size: 13px !important;
-    line-height: 16px !important;
+    line-height: 18px !important;
     letter-spacing: 0.8px; 
 }
 
@@ -107,6 +107,10 @@
 .rd-payment-table {
     padding: 0px !important;
     padding-bottom: 40px !important;
+}
+
+.rd-payment-table td {
+     padding-bottom: 4px;
 }
 
 .rd-payment-table table {
@@ -153,13 +157,20 @@
     letter-spacing: 0.7px; 
 }
 
-
 .rd-orange-font {
     color: #FF930B !important;
 }
 
 .rd-black-font {
     color: #000000 !important;
+}
+
+.rd-lightNeutral-font {
+    color: #999999;
+}
+
+.rd-light-font {
+    color: #666666;
 }
 
 .rd-payment-price {
@@ -189,14 +200,6 @@
 
 .rd-product-img img {
     object-fit: contain;
-}
-
-td {
-    padding-bottom: 4px;
-}
-
-tr {
-    color: #666666;
 }
 
 .rd-product-custom {
