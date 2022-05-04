@@ -1,5 +1,6 @@
 <mj-section>
-  <mj-column padding="40px 0 0 0">
+  <mj-column padding="30px 0 0 0">
+    <mj-divider padding-bottom="40px" />
     <mj-text css-class="rd-section-title">
       [[#if showRefundPaymentTitle]]
         [[tags.Payment_refundTitle]]
@@ -9,7 +10,6 @@
     </mj-text>
   </mj-column>
 </mj-section>
-
 <mj-raw>
   [[#each this.payments]] 
     [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
@@ -61,7 +61,6 @@
     [[/each]]
   [[/each]]
 </mj-raw>
-
 <mj-raw>
   [[#with paymentBreakdown]]
 </mj-raw>

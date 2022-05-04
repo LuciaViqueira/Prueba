@@ -145,7 +145,6 @@
           [[/each]]
         [[/each]]
       [[/each]]
-    </mj-raw>   
-    <mj-divider padding-top="30px" />
+    </mj-raw>
   </mj-column>
 </mj-section>
