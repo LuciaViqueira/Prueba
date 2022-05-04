@@ -1,6 +1,6 @@
 {
   "create": {
-    "name": "OrderShippedMAIL-R22",
+    "name": "OrderDeliveredToStoreMAIL-R22",
     "body": "",
     "version": "1",
     "tags": [],
@@ -8,9 +8,9 @@
     "requiredParameters": [],
     "optionalParameters": [
         "zaraLogo",
-        "item",
-        "address"
-      ]
+        "physicalStore",
+        "order"
+    ]
   },
   "render": {
     "parameters": {
