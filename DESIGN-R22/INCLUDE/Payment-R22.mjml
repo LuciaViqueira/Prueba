@@ -16,46 +16,60 @@
     [[#each this.paymentDetails]]   
 </mj-raw>
 <mj-section padding-top="16px">
-  <mj-table> 
-    <tr>
-      <td style="width:60px;" >
-        [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
-        [[#eq paymentMethodIcon "666"]]
-          <img width="60px" height="auto" padding-left="10px" src="https://static.zara.net/photos/contents/apps/icon-payment-visa.svg" /> 
-        [[else]]
-          <img width="60px" height="auto" padding-left="10px" src="https://static.zara.net/photos/contents/apps/Background.svg" /> 
-        [[/eq]]
-      </td>
-      <td style="padding-left: 16px;" class="rd-text-info-small">
-        [[#if this.cardHolderName]]
-          <div>[[this.cardHolderName]]</div>
-        [[/if]]
-        [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
-        <div>
-          [[#eq paymentMethodIdString "1001"]]
-            VISA
+  <mj-column>
+    <mj-table padding="0"> 
+      <tr>
+        <td style="width:60px;" >
+          [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
+          [[#eq paymentMethodIcon "666"]]
+            <table>
+              <tr>
+                <td>
+                  <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/icon-payment-visa.jpg" style="width:60px; height:auto;"/> 
+                </td>
+              </tr>
+            </table> 
           [[else]]
-            [[#eq paymentMethodIdString "1002"]]
-              Mastercard
+            <table>
+              <tr>
+                <td>
+                  <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/Background.jpg" style="width:60px; height:auto;"/> 
+                </td>
+              </tr>
+            </table>
+          [[/eq]]
+        </td>
+        <td style="padding-left: 16px;" class="rd-text-info-small">
+          [[#if this.cardHolderName]]
+            <div>[[this.cardHolderName]]</div>
+          [[/if]]
+          [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
+          <div>
+            [[#eq paymentMethodIdString "1001"]]
+              VISA
             [[else]]
-              [[#eq paymentMethodIdString "1003"]]
-                AMEX
+              [[#eq paymentMethodIdString "1002"]]
+                Mastercard
               [[else]]
-                [[this.paymentMethodDescription]]
+                [[#eq paymentMethodIdString "1003"]]
+                  AMEX
+                [[else]]
+                  [[this.paymentMethodDescription]]
+                [[/eq]]
               [[/eq]]
             [[/eq]]
-          [[/eq]]
-        </div>
-        [[#if this.last4]]
-          [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
-          [[#eq last4Characters "4"]]
-            <div> **** **** **** [[this.last4]]</div>
-          [[/eq]]
-        [[/if]]
-        <div>[[tags.Payment_totalAmountText]] [[currency this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText]]</div>
-      </td>
-    </tr>
-  </mj-table>
+          </div>
+          [[#if this.last4]]
+            [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+            [[#eq last4Characters "4"]]
+              <div> **** **** **** [[this.last4]]</div>
+            [[/eq]]
+          [[/if]]
+          <div>[[tags.Payment_totalAmountText]] [[currency this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText]]</div>
+        </td>
+      </tr>
+    </mj-table>
+  </mj-column>
 </mj-section>
 <mj-raw>
     [[/each]]
@@ -87,12 +101,6 @@
           <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
         </tr>
       [[/if]]
-    <!--ToDo En el old-payment no tenemos descuento empleado
-      <tr class="rd-orange-font">
-        <td>[[tags.Payment_employeeDiscountsText]]</td>
-        <td class="rd-payment-price">XX EUR</td>
-      </tr>
-    -->    
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.Payment_totalAmountText]]</td>
         <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>

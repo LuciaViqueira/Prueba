@@ -1,7 +1,7 @@
 <mj-attributes>
   <mj-all font-family="Neue-Helvetica, Helvetica"; />
   <mj-text padding="0" align="left" font-size="14px" line-height="18px" />
-  <mj-section padding="0 35px" />
+  <mj-section padding="0" />
   <mj-column padding="0" align="left" />
   <mj-image padding="0" align="left" />
   <mj-divider padding="0" border-width="1px" border-color="#dddddd" />
@@ -47,7 +47,7 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: 16px !important;
-    line-height: 20px !important;
+    line-height: 24px !important;
     letter-spacing: 0.7px; 
 }
 
@@ -101,7 +101,7 @@
     font-size: 11px !important;
     line-height: 16px !important;
     letter-spacing: 0.8px;
-    text-align: left; 
+    text-align: left;
 }
 
 .rd-payment-table {
@@ -144,7 +144,7 @@
     color: #000;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 11px !important;
+    font-size: 9px !important;
     letter-spacing: 0.7px;
     line-height: 16px;
     text-decoration: none;
@@ -152,7 +152,7 @@
 
 .rd-dowload-app div {
     text-transform: uppercase;
-    font-size: 14px !important;
+    font-size: 11px !important;
     line-height: 18px !important;
     letter-spacing: 0.7px; 
 }
@@ -202,6 +202,13 @@
     object-fit: contain;
 }
 
+.rd-product-price div {
+    font-size: 18px !important;
+    line-height: 17px !important;
+    margin-top: 10px !important;
+    text-transform: uppercase;
+}
+
 .rd-product-custom {
     padding: 4px !important;
     background-color: #000000;
@@ -240,4 +247,5 @@
 .rd-product-custom-table td + td {
     padding-left: 16px;
 }
+
 </mj-style>
