@@ -1,0 +1,89 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="500px">
+    <!-- Template configuration -->
+    <mj-raw>
+      
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
+            [[tags.OrderCancellationMAIL_titleStockOut]]
+          [[else]]
+            [[tags.OrderCancellationMAIL_title]]
+          [[/eq]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+            [[tags.OrderCancellationMAIL_orderNumberText]]
+        </mj-text>
+   
+        <mj-text padding-top="24px" css-class="rd-text-info">
+
+          [[#eq payload.orderCancellation.cancellationReason "CUSTOMER"]]
+             <div>[[tags.OrderCancellationMAIL_cancelText]]</div>
+          [[else]]
+            [[#eq payload.orderCancellation.cancellationReason "PAYMENT_REJECTED"]]
+              <div>[[tags.OrderCancellationMAIL_expiredPayment]]</div>
+              <div>[[tags.OrderCancellationMAIL_expiredPayment2]]</div>
+            [[else]]
+              [[#eq payload.orderCancellation.cancellationReason "FRAUD_REJECTED"]]
+                <div>[[tags.OrderCancellationMAIL_fraud]]</div>
+                <div>[[tags.OrderCancellationMAIL_warnRU]]</div>
+                <div>[[tags.OrderCancellationMAIL_warnRU2]]</div>
+              [[else]]
+                [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
+                    <div>[[tags.OrderCancellationMAIL_helloText]]</div>
+                    <div>[[tags.OrderCancellationMAIL_apologyText1]]</div>
+                    <div>[[tags.OrderCancellationMAIL_apologyText2]]</div>
+                    <div>[[tags.OrderCancellationMAIL_apologyText3]]</div>
+                    <div>[[tags.OrderCancellationMAIL_zaraTeam]]</div>
+                  </mj-text>
+                  <mj-button css-class="rd-order-detail-btn" 
+                      background-color="#000000" 
+                      color="#FFFFFF" 
+                      border="1px solid #FFFFFF" 
+                      font-weight="bold" 
+                      text-transform="uppercase" 
+                      width="100%"
+                      href="https://www.zara.com/[[payload.orderCancellation.store.identifier.value]]/[[payload.orderCancellation.user.preferences.locale.language]]/user/order/[[payload.orderCancellation.orders.[0].identifier]]" >
+                    [[tags.OrderCancellationMAIL_buttonTxt]]
+                  </mj-button>
+                  <mj-text css-class="rd-text-info">
+                    <div>[[tags.OrderCancellationMAIL_contentRemoved]]</div>
+                [[else]]
+                  <div>[[tags.OrderCancellationMAIL_backOffice]]</div>
+                  <div>[[tags.OrderCancellationMAIL_expiredPayment2]]</div>
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+          [[/eq]]
+
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.orderCancellation]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
