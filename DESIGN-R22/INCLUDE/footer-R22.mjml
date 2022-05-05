@@ -35,27 +35,61 @@
       <a href="[[footer.policyUrl]]">[[tags.policyText]]</a>
     </mj-text>
 
-      <mj-table padding="28px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
+    <mj-table padding="28px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
       <tr>
         <td>
-          <a href="https://zara.com" target="_blank">Tik Tok</a>
-        </td>
-        [[#not hiddenInRussia]]
-          <td>
-            <a href="[[footer.instagramUrl]]" target="_blank">Instagram</a>
-          </td>
-          <td>
-            <a href="[[footer.facebookUrl]]" target="_blank">Facebook</a>
-          </td>
-        [[/not]]
-        <td>
-          <a href="[[footer.twitterUrl]]" target="_blank">Twitter</a>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="https://zara.com" target="_blank">Tik Tok</a>
+              </td>
+            </tr>
+          </table>
         </td>
         <td>
-          <a href="[[footer.pinterestUrl]]" target="_blank">Pinterest</a>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.instagramUrl]]" target="_blank">Instagram</a>
+              </td>
+            </tr>
+          </table>
         </td>
         <td>
-          <a href="[[footer.youtubeUrl]]" target="_blank">Youtube</a>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.facebookUrl]]" target="_blank">Facebook</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.twitterUrl]]" target="_blank">Twitter</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.pinterestUrl]]" target="_blank">Pinterest</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.youtubeUrl]]" target="_blank">Youtube</a>
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
     </mj-table>
