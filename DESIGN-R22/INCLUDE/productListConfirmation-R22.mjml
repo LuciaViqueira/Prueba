@@ -1,0 +1,195 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="rd-section-title" padding-bottom="23px">
+      [[#if returnTitle]]
+        [[tags.productListConfirmation_productListTitleReturnRequest]]
+      [[else]]
+        [[tags.productListConfirmation_productListTitle]]
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="product-counter" padding-bottom="50px">
+        [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
+        [[orderNumItems]]
+        [[#eq orderNumItems "1"]]
+          [[tags.productListConfirmation_singleItemText]]
+        [[/eq]]
+        [[#neq orderNumItems "1"]]
+          [[tags.productListConfirmation_multipleItemText]]
+        [[/neq]]
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.productListConfirmation_shipmentsNumberText]]
+        [[/and]]
+        [[#if numOrders]]
+          [[#assign "orderNumOrders"]] [[numOrders]] [[/assign]]
+          [[#eq orderNumOrders "1"]]
+            [[tags.productListConfirmation_singleOrderNumberText]]
+          [[/eq]]
+          [[#neq orderNumOrders "1"]]
+            [[tags.productListConfirmation_ordersNumberText]]
+          [[/neq]]
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[#each suborders]]
+    </mj-raw>
+    <mj-text text-transform="uppercase" padding-bottom="10px">
+      <strong>
+        [[#and isSplitted showSubordersInfo]]
+          [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
+        [[/and]]
+        [[#if showMultiOrderId]]
+          [[tags.productListConfirmation_orderText]] [[this.suborderId]]
+        [[/if]]
+        [[#if this.cancelDate]]
+          - [[tags.productListConfirmation_cancelDateText]]
+        [[/if]]
+      </strong>
+    </mj-text>
+
+    <mj-raw>
+            [[#each this.items]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-size">
+      [[this.size]]
+    </mj-text>
+    <mj-text>
+      [[#if this.sizeDescription]]
+        [[this.sizeDescription]]
+      [[/if]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      [[this.description]]
+    </mj-text>
+    <mj-text color="#7f7f7f">
+      [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
+    </mj-text>
+    <mj-text css-class="product-custom-warn">
+        [[#if this.isPantone]]
+            [[tags.productListConfirmation_customizationsWarn]]
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[#if this.isCustom]]
+    </mj-raw>
+    <mj-button css-class="product-custom" background-color="#000000" color="#FFFFFF" text-transform="uppercase">
+        <span class="product-custom-lbl">[[tags.productListConfirmation_customizationsButton]]</span>
+    </mj-button>
+    <mj-text css-class="product-custom-warn">
+        [[tags.productListConfirmation_customizationsWarn]]
+    </mj-text>
+    <mj-raw>
+        [[#each this.itemCustomizations]]
+    </mj-raw>
+    <mj-text align="center" padding="10px 0" css-class="product-custom-table">
+        <div>[[tags.productListConfirmation_customizationsText]]: [[this.embroideryText]]</div>
+        <div>[[tags.productListConfirmation_customizationsArea]]: [[this.embroideryArea]]</div>
+        <div>[[tags.productListConfirmation_customizationsTypography]]: [[this.embroideryFont]]</div>
+        <div>[[tags.productListConfirmation_customizationsColor]]: [[this.embroideryColor]]</div>
+        [[#if this.serviceCost]]
+            <div>[[tags.productListConfirmation_customizationsPrice]]: [[this.serviceCost]]</div>
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+        [[/each]]
+        [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-unit">
+      [[#assign "templateQuantity"]] [[this.units]] [[/assign]]
+      [[templateQuantity]]
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+        [[#eq templateQuantity "1"]]
+            [[tags.productListConfirmation_singleUnitText]]
+        [[/eq]]
+        [[#neq templateQuantity "1"]]
+            [[tags.productListConfirmation_multipleUnitsText]]
+        [[/neq]]
+    </mj-text>
+    <mj-text css-class="product-price">
+        [[this.price]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    ####################################
+    ## Tarjeta regalo
+    ####################################
+    <mj-raw>
+        [[#each this.giftCards]]
+    </mj-raw>
+        <mj-raw>
+            [[#if this.imageUrl]]
+        </mj-raw>
+            <mj-image padding="0 0 23px" width="240px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
+        <mj-text text-transform="uppercase">
+            [[this.description]]
+        </mj-text>
+        <mj-text>
+          <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_fromText]]</span>: [[this.from]]</div>
+          <div style="text-transform: uppercase;">[[tags.productListConfirmation_receiverPhoneText]]: [[this.receiverPhone]]</div>
+        </mj-text>
+        <mj-text css-class="product-unit">
+          1
+        </mj-text>
+        <mj-text color="#959595" css-class="product-unit-label">
+          [[tags.productListConfirmation_singleUnitText]]
+        </mj-text>
+        <mj-text css-class="product-price">
+          [[this.price]]
+        </mj-text>
+        <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    ####################################
+    ## Tarjeta regalo virtual
+    ####################################
+    <mj-raw>
+        [[#each this.virtualGiftCards]]
+    </mj-raw>
+        <mj-raw>
+          [[#if this.imageUrl]]
+        </mj-raw>
+            <mj-image padding="0 0 23px" width="180px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
+        <mj-text text-transform="uppercase">
+          [[this.description]]
+        </mj-text>
+        <mj-text>
+          <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_fromText]]:</span> [[this.from]]</div>
+          <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_receiverEmailText]]:</span> [[this.receiverEmail]]</div>
+          <div style="text-transform: uppercase;">[[tags.productListConfirmation_devileryDateText]] [[this.deliveryDate]]</div>
+        </mj-text>
+        <mj-text css-class="product-unit">
+          1
+        </mj-text>
+        <mj-text color="#959595" css-class="product-unit-label">
+          [[tags.productListConfirmation_singleUnitText]]
+        </mj-text>
+       
+        <mj-text css-class="product-price">
+          [[this.price]]
+        </mj-text>
+        <mj-spacer height="50px" />
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    <mj-raw>
+        [[/each]]
+    </mj-raw>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>

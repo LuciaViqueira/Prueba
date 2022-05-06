@@ -1,0 +1,50 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="rd-section-title" padding-bottom="8px">
+      [[#if checkinTitle]]
+        [[tags.refundAddress_addressTitleCheckin]]
+      [[else]]
+        [[tags.refundAddress_addressTitle]]
+      [[/if]]      
+    </mj-text>
+    <mj-text css-class="rd-subsection-text">
+      [[#if address.companyName]]
+        [[address.companyName]] <br/> 
+      [[/if]]
+      [[#if address.storeName]]
+        [[address.storeName]]<br/>
+      [[/if]]
+      [[address.fullName]] <br/>
+      [[address.address]]<br/>
+      [[#if address.district]]
+        [[address.district]] <br/>
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="rd-subsection-text">
+      [[#if address.zipCode]]
+        [[address.zipCode]]
+      [[/if]]
+      [[#if address.city]]
+        [[address.city]]
+      [[/if]]
+      [[#if address.state]]
+        [[address.state]]
+      [[/if]]
+      [[address.country]]
+    </mj-text>
+    <mj-text>
+      [[#if address.phone]]
+        [[tags.refundAddress_phoneText]]:
+        [[address.phone]]
+        <br/>
+      [[/if]]
+      [[#if address.mobile]]
+        [[tags.refundAddress_mobileText]]:
+        [[address.mobile]]
+      [[/if]]
+      <br/>
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-divider/>
+  </mj-column>
+</mj-section>
