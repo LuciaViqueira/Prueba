@@ -1,0 +1,69 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="500px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "checkinTitle"]]true[[/assign]]
+      [[#assign "returnTitle"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "useTotalOrdersNumItems"]]true[[/assign]]
+      [[#assign "hideTimeMethodInfo"]]true[[/assign]]
+      [[#assign "showAddressPhoneNumber"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[tags.CheckInMultiOrderV2MAIL_CheckinConfirmationTitle]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+          [[tags.CheckInMultiOrderV2MAIL_checkinNumberText]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.balancedCheckIn.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+        </mj-raw>
+        <mj-include path="shipping-R22" />
+        <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[tags.CheckInMultiOrderV2MAIL_checkinDetails]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    
+    <!-- Sección 3 productsList -->
+    <mj-raw>
+      [[#with payload.balancedCheckIn]]
+    </mj-raw>
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+    
+    <!-- Sección 4 CheckInLegalFooter -->
+    <mj-include path="CheckInLegalFooter" />
+
+    <!-- Sección 5 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

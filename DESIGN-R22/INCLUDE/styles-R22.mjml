@@ -35,6 +35,11 @@
     direction: [[#rtl]]rtl[[/rtl]][[^rtl]]ltr[[/rtl]];
 }
 
+.rd-footer-legal-newsletter div, .rd-footer-unsubscribe div {
+    font-size: 11px !important;
+    line-height: 16px !important;
+}
+
 .rd-title div {
     text-transform: uppercase;
     font-weight: bold;
