@@ -1,0 +1,31 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="500px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[tags.TicketLessV2MAIL_title]]
+        </mj-text>
+        <mj-text padding-top="23px" css-class="rd-subsection-title" font-weight="bold">
+          [[#assign "tagName"]]TicketLessV2MAIL_purchaseReturn_[[payload.ticketless.type]][[/assign]]
+          <div>[[tagTranslate tagName]]</div>
+          <div>[[tags.TicketLessV2MAIL_date]]</div>    
+        </mj-text>
+        <mj-text css-class="rd-subsection-text" font-weight="bold">
+           <div>[[tags.TicketLessV2MAIL_amount]]</div>
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[tags.TicketLessV2MAIL_remember]]</p>
+          <p>[[tags.TicketLessV2MAIL_link]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-include path="footerStore" />
+  </mj-body>
+</mjml>
