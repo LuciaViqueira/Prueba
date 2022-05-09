@@ -27,14 +27,14 @@
             </td>
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[productUrl]]" style="color:#000; text-decoration:none">
+                <a href="[[productUrl]]" style="color:#000; text-decoration:none; font-weight:bold;">
                   [[productShortDescription]]
                 </a>
               </div>
               <div>
                 [[productSku]]
               </div>
-              <div>
+              <div style="font-weight:bold;">
                 [[productSize]]
               </div>
             </td>
