@@ -4,6 +4,10 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="500px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "onlyShowFooterHelp"]]true[[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -26,6 +30,6 @@
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
-    <mj-include path="footerStore" />
+    <mj-include path="footer-R22" />
   </mj-body>
 </mjml>

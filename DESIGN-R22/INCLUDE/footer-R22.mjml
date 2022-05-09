@@ -1,40 +1,51 @@
 <mj-section>
   <mj-column padding="72px 0 100px">
-    <mj-text css-class="rd-footer-link">
-      <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
-    </mj-text>
-    <mj-text css-class="rd-footer-link">
-      [[#if notShowTermsConds]]
-      [[else]]
-        <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
-      [[/if]]      
-    </mj-text>
-    <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
-      <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
+    <mj-raw>
+      [[#if onlyShowFooterHelp]]
+    </mj-raw> 
       <mj-text css-class="rd-footer-link">
-        <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+        <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
       </mj-text>
-      <mj-raw>
-        [[/if]]
-        [[#if returnInformation.isGiftTicket]]
-      </mj-raw>
-      <mj-text css-class="rd-footer-link">  
-        <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+    <mj-raw>
+      [[else]]
+    </mj-raw>
+      <mj-text css-class="rd-footer-link">
+        <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
       </mj-text>
-      <mj-raw>
-        [[/if]]
+      <mj-text css-class="rd-footer-link">
+        [[#if notShowTermsConds]]
         [[else]]
-        [[#if payload.orders.[0].hasGiftTicket]]
-      </mj-raw>
-      <mj-text css-class="rd-footer-link">  
-        <a href="[[footer.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+          <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
+        [[/if]]      
       </mj-text>
+      <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
+        <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
+        <mj-text css-class="rd-footer-link">
+          <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+        </mj-text>
+        <mj-raw>
+          [[/if]]
+          [[#if returnInformation.isGiftTicket]]
+        </mj-raw>
+        <mj-text css-class="rd-footer-link">  
+          <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+        </mj-text>
+        <mj-raw>
+          [[/if]]
+          [[else]]
+          [[#if payload.orders.[0].hasGiftTicket]]
+        </mj-raw>
+        <mj-text css-class="rd-footer-link">  
+          <a href="[[footer.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+        </mj-text>
+        <mj-raw>[[/if]]</mj-raw>
       <mj-raw>[[/if]]</mj-raw>
-    <mj-raw>[[/if]]</mj-raw>
-    <mj-text css-class="rd-footer-link">
-      <a href="[[footer.policyUrl]]">[[tags.policyText]]</a>
-    </mj-text>
-
+      <mj-text css-class="rd-footer-link">
+        <a href="[[footer.policyUrl]]">[[tags.policyText]]</a>
+      </mj-text>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
     <mj-table padding="28px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
       <tr>
         <td>
