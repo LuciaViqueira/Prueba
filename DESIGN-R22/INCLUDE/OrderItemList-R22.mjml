@@ -1,8 +1,15 @@
 <mj-section>
   <mj-column>
-      <mj-raw>
-       [[#each this.orders]]
-      </mj-raw>
+    <mj-raw>
+      [[#if returnOrderItemTitle]]
+    </mj-raw>
+      <mj-text css-class="rd-section-title" padding-top="64px">
+        [[tags.OrderItemList_productListTitleReturnRequest]]
+      </mj-text>
+    <mj-raw> 
+      [[/if]]
+      [[#each this.orders]]
+    </mj-raw>
       ####################################
       ## Productos de cada suborder
       ####################################
@@ -19,7 +26,11 @@
           [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
         </div>
         <div class="rd-light-font" style="padding-top: 4px">
-          [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
+          [[#if useTotalOrdersNumItems]]
+            [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+          [[else]]
+            [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
+          [[/if]]
           [[orderNumItems]]
           [[#eq orderNumItems "1"]]
             [[tags.OrderItemList_singleItemText]]
@@ -40,7 +51,11 @@
           <td style="padding: 0; width:56px;">
             [[#if this.item.imageUrl]]
               <table>
-                <img width="56" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:56px; height:auto;" />
+                <tr>
+                  <td>
+                    <img width="56" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:56px; height:auto;" />
+                  </td>
+                </tr>
               </table>
             [[/if]]
           </td>
@@ -107,7 +122,11 @@
           <td style="padding: 0; width:56px;">
             [[#if this.giftCard.item.imageUrl]]
               <table>
-                <img width="56" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:56px; height:auto;" />
+                <tr>
+                  <td>
+                    <img width="56" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:56px; height:auto;" />
+                  </td>
+              </tr>
               </table>
             [[/if]]
           </td>
@@ -134,7 +153,7 @@
             </div>
             <div>
               [[#with this.giftCard.item.amount]]
-               1 X [[currency this.value this.exponent this.currency this.humanReadableText]]
+              1 X [[currency this.value this.exponent this.currency this.humanReadableText]]
               [[/with]]
             </div>
           </td>
@@ -145,6 +164,6 @@
           [[/each]]
         [[/each]]
       [[/each]]
-    </mj-raw>
+      </mj-raw>
   </mj-column>
 </mj-section>
