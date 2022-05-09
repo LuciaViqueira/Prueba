@@ -1,0 +1,64 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="500px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[tags.itemAvailable_Title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-subsection-text">
+          [[tags.itemAvailable_skuAvailable]]
+        </mj-text>
+        <mj-table padding="24px 0 9px"> 
+          <tr>
+            <td style="padding: 0; width:176px;">
+                <table>
+                  <tr>
+                    <td>
+                      <img width="176" padding="0" class="rd-product-img" src="[[productPictureUrl]]" href="[[productUrl]]" style="width:176px; height:auto;" />
+                    </td>
+                  </tr>   
+                </table>
+            </td>
+            <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
+              <div>
+                <a href="[[productUrl]]" style="color:#000; text-decoration:none">
+                  [[productShortDescription]]
+                </a>
+              </div>
+              <div>
+                [[productSku]]
+              </div>
+              <div>
+                [[productSize]]
+              </div>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[productUrl]]" >
+          [[tags.itemAvailable_Button]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
