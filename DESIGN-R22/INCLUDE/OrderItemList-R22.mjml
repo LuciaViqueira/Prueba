@@ -1,13 +1,14 @@
 <mj-section>
   <mj-column>
-    <mj-raw>
-      [[#if returnOrderItemTitle]]
-    </mj-raw>
       <mj-text css-class="rd-section-title" padding-top="64px">
-        [[tags.OrderItemList_productListTitleReturnRequest]]
+        [[#if returnOrderItemTitle]]
+          [[tags.OrderItemList_productListTitleReturnRequest]]
+        [[else]]
+          [[tags.OrderItemList_title]]
+        [[/if]]
       </mj-text>
     <mj-raw> 
-      [[/if]]
+      [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
     </mj-raw>
       ####################################
@@ -17,9 +18,11 @@
         [[#each this.suborders]]
       </mj-raw>
       <mj-text padding-top="46px" padding-bottom="4px" css-class="rd-section-title">
-        [[#if this.deliveryDate]]
-          <div>[[this.deliveryDate]]</div>
-        [[/if]]
+        [[#and showDeliveryDate this.deliveryDate]]
+          [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
+          [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
+          [[readableDate minDeliveredDate maxDeliveredDate]]
+        [[/and]]
       </mj-text>
       <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
         <div>
@@ -114,9 +117,9 @@
       <mj-raw>
         [[else]]
       </mj-raw>   
-      ####################################
-      ## Tarjeta regalo si la hay
-      ####################################
+      ###################
+      ## Tarjeta regalo
+      ###################
       <mj-table padding="16px 0 0"> 
         <tr>
           <td style="padding: 0; width:56px;">
@@ -126,7 +129,7 @@
                   <td>
                     <img width="56" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:56px; height:auto;" />
                   </td>
-              </tr>
+                </tr>
               </table>
             [[/if]]
           </td>

@@ -253,4 +253,14 @@
     padding-left: 16px;
 }
 
+.rd-address-text div {
+    line-height: 19px !important;
+    max-width: 358px;
+}
+
+.rd-address-sign-text p {
+    text-transform: uppercase;
+    margin: 20px 0 0;
+}
+
 </mj-style>

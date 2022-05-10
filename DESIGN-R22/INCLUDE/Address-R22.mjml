@@ -1,9 +1,19 @@
 <mj-text padding-top="4px" css-class="rd-subsection-text">
+    [[#eq shipping.mode "STORE"]]
+        [[#if this.receiver.name]]
+            [[this.receiver.name]]
+        [[/if]]
+    [[/eq]]
     <div>
         [[#if this.line]]
             <div>[[this.line]]</div>
         [[/if]]
     </div>
+</mj-text>
+<mj-text css-class="rd-subsection-text">
+    [[#if this.street.value]]
+        <div>[[this.street.value]]</div>
+    [[/if]]
     <div>
         [[#if this.zipCode.value]]
             [[this.zipCode.value]] - 
@@ -13,6 +23,27 @@
         [[/if]]
         [[#if this.district.value]]
             [[this.district.value]]
+        [[/if]]
+    </div>
+    <div>
+        [[#if this.state.value]]
+            [[this.state.value]] - 
+        [[/if]]
+        [[this.country.value]]
+    </div>
+</mj-text>
+<mj-text css-class="rd-subsection-text">
+    <div>
+        [[#if showAddressPhoneNumber]]
+            [[#if this.receiver.phone]]
+                [[tags.shipping_phoneText]]:
+                [[this.receiver.phone]]
+                <br/>
+            [[/if]]
+            [[#if this.receiver.mobile]]
+                [[tags.shipping_mobileText]]:
+                [[this.receiver.mobile]]
+            [[/if]]
         [[/if]]
     </div>
 </mj-text>
