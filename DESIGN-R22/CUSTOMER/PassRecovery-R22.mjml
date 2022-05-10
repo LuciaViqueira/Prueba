@@ -15,10 +15,10 @@
         <mj-text css-class="rd-title">
             [[tags.passRecovery_passRecoveryTitle]]
         </mj-text>
-        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+        <mj-text padding-top="24px" css-class="rd-text-info">
           [[tags.passRecovery_passRecoveryLink]]
         </mj-text>
-        <mj-button css-class="rd-order-detail-btn" padding-bottom="0px"
+        <mj-button css-class="rd-order-detail-btn-noPadBottom"
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 

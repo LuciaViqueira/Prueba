@@ -11,7 +11,7 @@
         <mj-text css-class="rd-title">
           [[tags.itemAvailable_Title]]
         </mj-text>
-        <mj-text  padding-top="24px" css-class="rd-subsection-text">
+        <mj-text  padding-top="24px" css-class="rd-subsection-text-notUppercase">
           [[tags.itemAvailable_skuAvailable]]
         </mj-text>
         <mj-table padding="24px 0 9px"> 
@@ -40,7 +40,7 @@
             </td>
           </tr>
         </mj-table>
-        <mj-button css-class="rd-order-detail-btn" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 

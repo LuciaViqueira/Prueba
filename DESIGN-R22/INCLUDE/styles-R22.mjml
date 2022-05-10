@@ -76,6 +76,12 @@
     letter-spacing: 0.8px; 
 }
 
+.rd-subsection-text-notUppercase div{   
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.8px; 
+}
+
 .rd-subsection-text-light div{
     text-transform: uppercase;
     font-size: 13px !important;
@@ -92,6 +98,11 @@
 
 .rd-order-detail-btn {
     padding: 15px 0 20px !important;
+    font-size: 14px !important;
+}
+
+.rd-order-detail-btn-noPadBottom {
+    padding: 15px 0 0px !important;
     font-size: 14px !important;
 }
 

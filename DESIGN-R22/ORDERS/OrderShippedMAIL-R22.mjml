@@ -60,7 +60,7 @@
       [[#with payload]]
     </mj-raw>
     <!-- Sección 2 refundAddress -->
-      <mj-include path="OrderItemListNoDetails-R22" />
+      <mj-include path="OrderItemList-R22" />
     <mj-raw>
       [[/with]]
     </mj-raw>
