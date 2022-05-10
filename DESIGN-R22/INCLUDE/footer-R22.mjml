@@ -1,7 +1,7 @@
 <mj-section>
   <mj-column padding="72px 0 100px">
     <mj-raw>
-      [[#if onlyShowFooterHelp]]
+      [[#if onlyShowFooterStoreConfiguration]]
     </mj-raw> 
       <mj-text css-class="rd-footer-link">
         <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>

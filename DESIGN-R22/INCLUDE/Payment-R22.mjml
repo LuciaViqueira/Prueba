@@ -21,7 +21,7 @@
       <tr>
         <td style="width:60px;" >
           [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
-          [[#eq paymentMethodIcon "666"]]
+          [[#eq paymentMethodIcon "1013"]]
             <table>
               <tr>
                 <td>
@@ -54,7 +54,11 @@
                 [[#eq paymentMethodIdString "1003"]]
                   AMEX
                 [[else]]
-                  [[this.paymentMethodDescription]]
+                  [[#eq paymentMethodIdString "1017"]]
+                    Paypal
+                  [[else]]
+                    [[this.paymentMethodDescription]]
+                  [[/eq]]
                 [[/eq]]
               [[/eq]]
             [[/eq]]

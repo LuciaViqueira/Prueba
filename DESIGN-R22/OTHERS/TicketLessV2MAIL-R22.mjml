@@ -6,7 +6,7 @@
   <mj-body width="500px">
     <!-- Template configuration -->
     <mj-raw>
-      [[#assign "onlyShowFooterHelp"]]true[[/assign]]
+      [[#assign "onlyShowFooterStoreConfiguration"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

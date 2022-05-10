@@ -6,7 +6,7 @@
   <mj-body width="500px">
     <!-- Template configuration -->
     <mj-raw>
-      [[#assign "showDeliveryDate"]]true[[/assign]]
+     
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -31,10 +31,8 @@
       [[/with]]
     </mj-raw>
     
-
     <mj-section>
-      <mj-column>
-        
+      <mj-column>  
         <mj-text padding-top="24px" padding-bottom="24px" css-class="rd-text-info">
           <div>[[tags.OrderDeliveredToStoreMAIL_deadline]]</div>
           <div>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</div>
@@ -76,6 +74,5 @@
       [[/eq]]
     </mj-raw>
     <mj-include path="footer-R22" />
-
   </mj-body>
 </mjml>
