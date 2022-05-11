@@ -58,7 +58,11 @@
             [[#if newDirectionTitle]]
               [[tags.shipping_newDirectionTitle]]:
             [[else]]
-              [[tags.shipping_title]]:
+              [[#if pickupTitle]]
+                [[tags.shipping_pickupInfoTitle]]:
+              [[else]]
+                [[tags.shipping_title]]:
+              [[/if]]
             [[/if]]
           [[/if]]
         [[/if]]
