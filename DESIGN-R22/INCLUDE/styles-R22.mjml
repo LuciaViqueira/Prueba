@@ -122,7 +122,6 @@
 
 .rd-payment-table {
     padding: 0px !important;
-    padding-bottom: 40px !important;
 }
 
 .rd-payment-table td {

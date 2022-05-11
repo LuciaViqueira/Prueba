@@ -4,6 +4,11 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="500px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showDeliveryInfo"]]true[[/assign]]
+      [[#assign "showDeliveryDate"]]true[[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>

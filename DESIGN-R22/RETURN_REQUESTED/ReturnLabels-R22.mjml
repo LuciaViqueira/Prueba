@@ -23,7 +23,7 @@
                 [[tags.returnLabel_multiOrderNumberText]]
             [[/neq]]
         </mj-text>
-        <mj-text padding-top="24px" padding-bottom="42px" css-class="rd-text-info">
+        <mj-text padding-top="24px" css-class="rd-text-info">
             <p>[[tags.returnLabel_warningText]]</p>
             <p>[[tags.returnLabel_labelText]]</p>
             [[#neq orderIdsNumber "1"]]

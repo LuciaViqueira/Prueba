@@ -6,7 +6,7 @@
   <mj-body width="500px">
     <!-- Template configuration -->
     <mj-raw>
-     
+      
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -32,7 +32,10 @@
     </mj-raw>
     
     <mj-section>
-      <mj-column>  
+      <mj-column>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+            [[tags.OrderDeliveredToStoreMAIL_orderNumberText]]
+        </mj-text>  
         <mj-text padding-top="24px" padding-bottom="24px" css-class="rd-text-info">
           <div>[[tags.OrderDeliveredToStoreMAIL_deadline]]</div>
           <div>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</div>
