@@ -33,7 +33,15 @@
       </mj-raw>
         <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
           <div>
-            [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
+            [[#if sendNumber]]
+              [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
+            [[else]]
+              [[#if orderNumber]]
+                [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+              [[else]]
+                [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
+              [[/if]]
+            [[/if]]
           </div>
           <div class="rd-light-font" style="padding-top: 4px">
             [[#if useTotalOrdersNumItems]]
@@ -74,7 +82,15 @@
           [[else]]
         </mj-raw>
           <mj-text padding-top="46px" css-class="rd-section-title">
-              [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
+            [[#if sendNumber]]
+              [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
+            [[else]]
+              [[#if orderNumber]]
+                [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+              [[else]]
+                [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
+              [[/if]]
+            [[/if]]
           </mj-text> 
           <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
             <div class="rd-light-font">

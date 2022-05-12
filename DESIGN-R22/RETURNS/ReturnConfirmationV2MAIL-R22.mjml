@@ -10,6 +10,7 @@
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
       [[#assign "showBlockTitle"]]true[[/assign]]
+      [[#assign "orderNumber"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

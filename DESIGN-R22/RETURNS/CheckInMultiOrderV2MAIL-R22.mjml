@@ -13,6 +13,7 @@
       [[#assign "hideTimeMethodInfo"]]true[[/assign]]
       [[#assign "showAddressPhoneNumber"]]true[[/assign]]
       [[#assign "showBlockTitle"]]true[[/assign]]
+      [[#assign "orderNumber"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
