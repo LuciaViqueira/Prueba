@@ -5,7 +5,7 @@
       [[#if showRefundPaymentTitle]]
         [[tags.Payment_refundTitle]]
       [[else]]
-        [[tags.Payment_title]]
+        [[tags.Payment_paymentMethod]]
       [[/if]]
     </mj-text>
   </mj-column>
@@ -86,7 +86,7 @@
   <mj-column padding="28px 0 0 0">
   <mj-divider padding-bottom="24px" />
     <mj-text padding-bottom="16px" css-class="rd-section-title">
-      [[tags.Payment_totalProductsAmountText]]
+      [[tags.Payment_breakdown]]
     </mj-text>
     <mj-table css-class="rd-payment-table">
       <tr class="rd-light-font">

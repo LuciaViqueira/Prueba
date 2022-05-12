@@ -32,9 +32,9 @@
             [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
           [[/neq]]
           [[#and refundPaymentMethodNotGiftCard payload.returnInformation.refunds.[0].isRefundSupportedByGateway payload.returnInformation.refunds.[0].isAlreadyRefunded]]
-            <p>[[tags.ReturnConfirmationV2MAIL_alreadyRefundedInfoTitle]]</p>
+            <p>[[tags.ReturnConfirmationV2MAIL_alreadyRefundedInfoTitleMin]]</p>
           [[else]]
-            <p>[[tags.ReturnConfirmationV2MAIL_refundInfoTitle]]</p>
+            <p>[[tags.ReturnConfirmationV2MAIL_refundInfoTitleMin]]</p>
           [[/and]]
           [[#eq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
             <i>[[tags.ReturnConfirmationV2MAIL_refundGiftCardText]]</i>

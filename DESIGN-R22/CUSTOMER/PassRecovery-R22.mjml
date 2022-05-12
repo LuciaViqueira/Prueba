@@ -16,7 +16,7 @@
             [[tags.passRecovery_passRecoveryTitle]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.passRecovery_passRecoveryLink]]
+          [[tags.passRecovery_passRecoveryLinkR22]]
         </mj-text>
         <mj-button css-class="rd-order-detail-btn-noPadBottom"
             background-color="#000000" 
@@ -26,7 +26,7 @@
             text-transform="uppercase" 
             width="100%"
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
-          [[tags.passRecovery_passRecoveryLink]]
+          [[tags.passRecovery_buttonTxt]]
         </mj-button>
       </mj-column>
     </mj-section>

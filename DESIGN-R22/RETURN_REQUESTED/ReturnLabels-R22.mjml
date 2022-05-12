@@ -25,9 +25,9 @@
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
             <p>[[tags.returnLabel_warningText]]</p>
-            <p>[[tags.returnLabel_labelText]]</p>
+            <p>[[tags.returnLabel_labelTextMin]]</p>
             [[#neq orderIdsNumber "1"]]
-                <p>[[tags.returnLabel_multiOrderText]]</p>
+                <p>[[tags.returnLabel_multiOrderTextMin]]</p>
             [[/neq]]
         </mj-text>
       </mj-column>
