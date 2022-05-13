@@ -1,7 +1,0 @@
-<mj-section>
-  <mj-column width="700px">
-    <mj-text css-class="footer-legal-newsletter" color="#959595">
-        <p>[[tags.CheckInLegalFooter_legalText]]</p>
-    </mj-text>
-  </mj-column>
-</mj-section>
