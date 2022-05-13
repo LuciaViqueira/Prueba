@@ -15,6 +15,7 @@
       [[#assign "showBlockTitle"]]true[[/assign]]
       [[#assign "orderNumber"]]true[[/assign]]
       [[#assign "articleInOrderNumber"]]true[[/assign]]
+      [[#assign "showOnlyUnits"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

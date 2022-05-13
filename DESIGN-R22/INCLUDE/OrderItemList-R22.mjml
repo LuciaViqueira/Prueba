@@ -148,7 +148,11 @@
                         [[else]]
                           [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
                         [[/if]]
-                        [[templateQuantity]] X [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                        [[#if showOnlyUnits]]
+                          [[templateQuantity]]
+                        [[else]]
+                          [[templateQuantity]] X [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                        [[/if]]
                       [[/if]]
                     </div>
                     [[#if this.item.size]]
