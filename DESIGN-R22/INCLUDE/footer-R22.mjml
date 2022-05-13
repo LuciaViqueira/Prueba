@@ -1,6 +1,13 @@
 <mj-section>
   <mj-column padding="72px 0 100px">
+     <mj-raw>
+      [[#if showLegalFooter]]
+    </mj-raw> 
+      <mj-text css-class="rd-footer-legal-newsletter" color="#959595">
+          <p>[[tags.CheckInLegalFooter_legalText]]</p>
+      </mj-text>
     <mj-raw>
+      [[/if]]
       [[#if onlyShowFooterStoreConfiguration]]
     </mj-raw> 
       <mj-text css-class="rd-footer-link">

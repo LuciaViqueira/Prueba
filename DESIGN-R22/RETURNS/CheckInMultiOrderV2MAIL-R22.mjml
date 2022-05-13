@@ -16,6 +16,7 @@
       [[#assign "orderNumber"]]true[[/assign]]
       [[#assign "articleInOrderNumber"]]true[[/assign]]
       [[#assign "showOnlyUnits"]]true[[/assign]]
+      [[#assign "showLegalFooter"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -58,9 +59,6 @@
       [[/with]]
     </mj-raw>
     
-    <!-- Sección 4 CheckInLegalFooter -->
-    <mj-include path="CheckInLegalFooter" />
-
     <!-- Sección 5 footer -->
     <mj-raw>
      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
