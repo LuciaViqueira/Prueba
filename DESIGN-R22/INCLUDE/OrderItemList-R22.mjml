@@ -14,6 +14,7 @@
       [[/if]]
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
+        [[#assign "orderIdentifier"]][[this.identifier]][[/assign]]
     </mj-raw>
       ####################################
       ## Productos de cada suborder
@@ -60,7 +61,7 @@
             </mj-text>
       <mj-raw>
           [[else]]
-            [[#if notShowSuborderId]] <!-- Oculta el pedido Nº -->
+            [[#if notShowSuborderId]] <!-- Oculta el Pedido Nº -->
       </mj-raw>
               <mj-text padding-top="46px" padding-bottom="8px" css-class="rd-subsection-text">  
                 <div class="rd-light-font">
@@ -106,6 +107,9 @@
                   [[#neq orderNumItems "1"]]
                     [[tags.OrderItemList_multipleItemText]]
                   [[/neq]]
+                  [[#if articleInOrderNumber]]
+                    [[tags.OrderItemList_singleOrderNumberText]] [[orderIdentifier]]
+                  [[/if]]
                 </div>
               </mj-text>
       <mj-raw>
