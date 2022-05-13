@@ -78,8 +78,7 @@
 <mj-raw>
     [[/each]]
   [[/each]]
-</mj-raw>
-<mj-raw>
+  [[#assign "orderNumItems"]][[orders.[0].numItems]][[/assign]]  
   [[#with paymentBreakdown]]
 </mj-raw>
 <mj-section>
@@ -90,7 +89,15 @@
     </mj-text>
     <mj-table css-class="rd-payment-table">
       <tr class="rd-light-font">
-        <td>[[tags.Payment_totalProductsAmountText]]</td>
+        <td>
+          [[orderNumItems]]
+          [[#eq orderNumItems "1"]]
+            [[tags.Payment_singleItemText]]
+          [[/eq]]
+          [[#neq orderNumItems "1"]]
+            [[tags.Payment_multipleItemText]] 
+          [[/neq]]
+        </td>
         <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText]]</td>
       </tr>
       [[#if this.shippingPrice]]
