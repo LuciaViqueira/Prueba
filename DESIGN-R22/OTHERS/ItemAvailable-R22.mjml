@@ -34,7 +34,7 @@
               <div>
                 [[productSku]]
               </div>
-              <div style="font-weight:bold;">
+              <div style="font-weight:bold; padding-top:32px;">
                 [[productSize]]
               </div>
             </td>

@@ -1,7 +1,7 @@
 <mj-section>
   <mj-column>
     <mj-raw> 
-      [[#if showBlockTitle]]
+      [[#if showBlockTitle]]  <!-- Muestra el titulo del bloque -->
     </mj-raw>
       <mj-text css-class="rd-section-title" padding-top="64px">
         [[#if returnOrderItemTitle]]
@@ -22,215 +22,215 @@
         [[#each this.suborders]]
           [[#and showDeliveryDate this.deliveryDate]]
       </mj-raw>
-        <mj-text padding-top="46px" padding-bottom="4px" css-class="rd-section-title"> 
-          [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-          [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-          [[readableDate minDeliveredDate maxDeliveredDate]]   
-        </mj-text>
+            <mj-text padding-top="46px" padding-bottom="4px" css-class="rd-section-title"> 
+              [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
+              [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
+              [[readableDate minDeliveredDate maxDeliveredDate]]   
+            </mj-text>
       <mj-raw>
           [[/and]]
-        [[#if showDeliveryDate]]
+          [[#if showDeliveryDate]] <!-- Muestra la fecha del suborder -->
       </mj-raw>
-        <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
-          <div>
-            [[#if sendNumber]]
-              [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
-            [[else]]
-              [[#if orderNumber]]
-                [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
-              [[else]]
-                [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
-              [[/if]]
-            [[/if]]
-          </div>
-          <div class="rd-light-font" style="padding-top: 4px">
-            [[#if useTotalOrdersNumItems]]
-              [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-            [[else]]
-              [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
-            [[/if]]
-            [[orderNumItems]]
-            [[#eq orderNumItems "1"]]
-              [[tags.OrderItemList_singleItemText]]
-            [[/eq]]
-            [[#neq orderNumItems "1"]]
-              [[tags.OrderItemList_multipleItemText]]
-            [[/neq]]
-          </div>
-        </mj-text>
-        <mj-raw>
-          [[else]]
-          [[#if notShowSuborderId]]
-        </mj-raw>
-          <mj-text padding-top="46px" padding-bottom="8px" css-class="rd-subsection-text">  
-            <div class="rd-light-font">
-              [[#if useTotalOrdersNumItems]]
-                [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-              [[else]]
-                [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
-              [[/if]]
-              [[orderNumItems]]
-              [[#eq orderNumItems "1"]]
-                [[tags.OrderItemList_singleItemText]]
-              [[/eq]]
-              [[#neq orderNumItems "1"]]
-                [[tags.OrderItemList_multipleItemText]]
-              [[/neq]]
-            </div>
-          </mj-text>
-        <mj-raw>
-          [[else]]
-        </mj-raw>
-          <mj-text padding-top="46px" css-class="rd-section-title">
-            [[#if sendNumber]]
-              [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
-            [[else]]
-              [[#if orderNumber]]
-                [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
-              [[else]]
-                [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
-              [[/if]]
-            [[/if]]
-          </mj-text> 
-          <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
-            <div class="rd-light-font">
-              [[#if useTotalOrdersNumItems]]
-                [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-              [[else]]
-                [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
-              [[/if]]
-              [[orderNumItems]]
-              [[#eq orderNumItems "1"]]
-                [[tags.OrderItemList_singleItemText]]
-              [[/eq]]
-              [[#neq orderNumItems "1"]]
-                [[tags.OrderItemList_multipleItemText]]
-              [[/neq]]
-            </div>
-          </mj-text>
-      <mj-raw>
-          [[/if]]
-        [[/if]]
-        [[#each this.orderItems]]
-      </mj-raw>
-      <mj-raw>
-        [[#if this.item]]
-      </mj-raw>
-      <mj-table padding="16px 0 0"> 
-        <tr>
-          <td style="padding: 0; width:56px;">
-            [[#if this.item.imageUrl]]
-              <table>
-                <tr>
-                  <td>
-                    <img width="56" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:56px; height:auto;" />
-                  </td>
-                </tr>
-              </table>
-            [[/if]]
-          </td>
-          <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
-            <div>
-              [[this.item.shortDescription]]
-            </div>
-            <div>
-                [[this.item.colour]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
-            </div>
-            <div style="padding-top: 16px">
-              [[#if hideItemQuantity]]
-              [[else]]
-                [[#if usePreviousQuantity]]
-                  [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+            <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
+              <div>
+                [[#if sendNumber]]
+                  [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
                 [[else]]
-                  [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                  [[#if orderNumber]]
+                    [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+                  [[else]]
+                    [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
+                  [[/if]]
                 [[/if]]
-                [[templateQuantity]] X [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
-              [[/if]]
-            </div>
-            [[#if this.item.size]]
-              <div>[[this.item.size]]</div>
-            [[/if]]
-            [[#if this.item.sizeDescription]]
-              <div>[[this.item.sizeDescription]]</div>
-            [[/if]]
-          <!--
-            [[#if this.rmaItem.isPantone]]
-              <div class="rd-product-custom-warn">[[tags.OrderItemList_customizationsWarn]]</div>
-            [[/if]]
-          -->
-      
-            [[#if this.isCustom]]
-              <button class="rd-product-custom">
-                <span class="rd-product-custom-lbl">[[tags.OrderItemList_customizationsButton]]</span>
-              </button>
-              <div class="rd-product-custom-warn">
-                [[tags.OrderItemList_customizationsWarn]]
               </div>
-              [[#each this.customizations]]
-                <mj-text align="left" padding="10px 0" css-class="rd-product-custom-table">
-                    <div>[[tags.OrderItemList_customizationsText]]: [[this.embroideryText]]</div>
-                    <div>[[tags.OrderItemList_customizationsArea]]: [[this.embroideryArea]]</div>
-                    <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
-                    <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
-                    [[#if this.serviceCost]]
-                      <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
-                    [[/if]]
-                </mj-text>
-              [[/each]]
-            [[/if]]
-          </td>
-        </tr>
-      </mj-table>
+              <div class="rd-light-font" style="padding-top: 4px">
+                [[#if useTotalOrdersNumItems]]
+                  [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+                [[else]]
+                  [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
+                [[/if]]
+                [[orderNumItems]]
+                [[#eq orderNumItems "1"]]
+                  [[tags.OrderItemList_singleItemText]]
+                [[/eq]]
+                [[#neq orderNumItems "1"]]
+                  [[tags.OrderItemList_multipleItemText]]
+                [[/neq]]
+              </div>
+            </mj-text>
       <mj-raw>
-        [[else]]
-      </mj-raw>   
-      ###################
-      ## Tarjeta regalo
-      ###################
-      <mj-table padding="16px 0 0"> 
-        <tr>
-          <td style="padding: 0; width:56px;">
-            [[#if this.giftCard.item.imageUrl]]
-              <table>
+          [[else]]
+            [[#if notShowSuborderId]] <!-- Oculta el pedido Nº -->
+      </mj-raw>
+              <mj-text padding-top="46px" padding-bottom="8px" css-class="rd-subsection-text">  
+                <div class="rd-light-font">
+                  [[#if useTotalOrdersNumItems]]
+                    [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+                  [[else]]
+                    [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
+                  [[/if]]
+                  [[orderNumItems]]
+                  [[#eq orderNumItems "1"]]
+                    [[tags.OrderItemList_singleItemText]]
+                  [[/eq]]
+                  [[#neq orderNumItems "1"]]
+                    [[tags.OrderItemList_multipleItemText]]
+                  [[/neq]]
+                </div>
+              </mj-text>
+        <mj-raw>
+            [[else]]
+        </mj-raw>
+              <mj-text padding-top="46px" css-class="rd-section-title">
+                [[#if sendNumber]]
+                  [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
+                [[else]]
+                  [[#if orderNumber]]
+                    [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+                  [[else]]
+                    [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
+                  [[/if]]
+                [[/if]]
+              </mj-text> 
+              <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
+                <div class="rd-light-font">
+                  [[#if useTotalOrdersNumItems]]
+                    [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+                  [[else]]
+                    [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
+                  [[/if]]
+                  [[orderNumItems]]
+                  [[#eq orderNumItems "1"]]
+                    [[tags.OrderItemList_singleItemText]]
+                  [[/eq]]
+                  [[#neq orderNumItems "1"]]
+                    [[tags.OrderItemList_multipleItemText]]
+                  [[/neq]]
+                </div>
+              </mj-text>
+      <mj-raw>
+            [[/if]]
+          [[/if]]
+          [[#each this.orderItems]]
+      </mj-raw>
+          <mj-raw>
+            [[#if this.item]]
+          </mj-raw>
+              <mj-table padding="16px 0 0"> 
                 <tr>
-                  <td>
-                    <img width="56" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:56px; height:auto;" />
+                  <td style="padding: 0; width:56px;">
+                    [[#if this.item.imageUrl]]
+                      <table>
+                        <tr>
+                          <td>
+                            <img width="56" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:56px; height:auto;" />
+                          </td>
+                        </tr>
+                      </table>
+                    [[/if]]
+                  </td>
+                  <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
+                    <div>
+                      [[this.item.shortDescription]]
+                    </div>
+                    <div>
+                        [[this.item.colour]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
+                    </div>
+                    <div style="padding-top: 16px">
+                      [[#if hideItemQuantity]]
+                      [[else]]
+                        [[#if usePreviousQuantity]]
+                          [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+                        [[else]]
+                          [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                        [[/if]]
+                        [[templateQuantity]] X [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                      [[/if]]
+                    </div>
+                    [[#if this.item.size]]
+                      <div>[[this.item.size]]</div>
+                    [[/if]]
+                    [[#if this.item.sizeDescription]]
+                      <div>[[this.item.sizeDescription]]</div>
+                    [[/if]]
+                  <!--
+                    [[#if this.rmaItem.isPantone]]
+                      <div class="rd-product-custom-warn">[[tags.OrderItemList_customizationsWarn]]</div>
+                    [[/if]]
+                  -->
+              
+                    [[#if this.isCustom]]
+                      <button class="rd-product-custom">
+                        <span class="rd-product-custom-lbl">[[tags.OrderItemList_customizationsButton]]</span>
+                      </button>
+                      <div class="rd-product-custom-warn">
+                        [[tags.OrderItemList_customizationsWarn]]
+                      </div>
+                      [[#each this.customizations]]
+                        <mj-text align="left" padding="10px 0" css-class="rd-product-custom-table">
+                            <div>[[tags.OrderItemList_customizationsText]]: [[this.embroideryText]]</div>
+                            <div>[[tags.OrderItemList_customizationsArea]]: [[this.embroideryArea]]</div>
+                            <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
+                            <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
+                            [[#if this.serviceCost]]
+                              <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                            [[/if]]
+                        </mj-text>
+                      [[/each]]
+                    [[/if]]
                   </td>
                 </tr>
-              </table>
-            [[/if]]
-          </td>
-          <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
-            <div>
-              [[this.giftCard.message]]
-            </div>
-            <div>
-              [[#if this.giftCard.from]]
-                <div><span style="text-transform: uppercase;">[[tags.OrderItemList_fromText]]:</span> [[this.giftCard.from]]</div>
-              [[/if]]
-              [[#eq this.giftCard.type "VIRTUAL"]]
-                [[#if this.giftCard.receiverData.email]]
-                  <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
-                [[/if]]
-                [[#if this.giftCard.shippingDate]]
-                  <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.dateIso]] [[/epoch]]</div>
-                [[/if]]
-              [[else]]
-                [[#if this.giftCard.receiverData.phone]]
-                  <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
-                [[/if]]
-              [[/eq]]
-            </div>
-            <div>
-              [[#with this.giftCard.item.amount]]
-              1 X [[currency this.value this.exponent this.currency this.humanReadableText]]
-              [[/with]]
-            </div>
-          </td>
-        </tr>
-      </mj-table>
+              </mj-table>
+          <mj-raw>
+            [[else]]
+          </mj-raw>   
+          ###################
+          ## Tarjeta regalo
+          ###################
+              <mj-table padding="16px 0 0"> 
+                <tr>
+                  <td style="padding: 0; width:56px;">
+                    [[#if this.giftCard.item.imageUrl]]
+                      <table>
+                        <tr>
+                          <td>
+                            <img width="56" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:56px; height:auto;" />
+                          </td>
+                        </tr>
+                      </table>
+                    [[/if]]
+                  </td>
+                  <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
+                    <div>
+                      [[this.giftCard.message]]
+                    </div>
+                    <div>
+                      [[#if this.giftCard.from]]
+                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_fromText]]:</span> [[this.giftCard.from]]</div>
+                      [[/if]]
+                      [[#eq this.giftCard.type "VIRTUAL"]]
+                        [[#if this.giftCard.receiverData.email]]
+                          <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
+                        [[/if]]
+                        [[#if this.giftCard.shippingDate]]
+                          <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.dateIso]] [[/epoch]]</div>
+                        [[/if]]
+                      [[else]]
+                        [[#if this.giftCard.receiverData.phone]]
+                          <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
+                        [[/if]]
+                      [[/eq]]
+                    </div>
+                    <div>
+                      [[#with this.giftCard.item.amount]]
+                      1 X [[currency this.value this.exponent this.currency this.humanReadableText]]
+                      [[/with]]
+                    </div>
+                  </td>
+                </tr>
+              </mj-table>
       <mj-raw>
-          [[/if]]
+            [[/if]]
           [[/each]]
         [[/each]]
       [[/each]]

@@ -38,8 +38,8 @@
             [[tags.OrderDeliveredToStoreMAIL_instructions]]
         </mj-text>  
         <mj-text padding-top="24px" padding-bottom="24px" css-class="rd-text-info">
-          <div>[[tags.OrderDeliveredToStoreMAIL_deadline]]</div>
-          <div>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</div>
+          <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
+          <p>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</p>
         </mj-text>
         <mj-button css-class="rd-order-detail-btn" 
             background-color="#000000" 
