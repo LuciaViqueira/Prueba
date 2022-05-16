@@ -25,26 +25,26 @@
    
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[#eq payload.orderCancellation.cancellationReason "CUSTOMER"]]
-             <div>[[tags.OrderCancellationMAIL_cancelText]]</div>
+             <p>[[tags.OrderCancellationMAIL_cancelText]]</p>
           [[else]]
             [[#eq payload.orderCancellation.cancellationReason "PAYMENT_REJECTED"]]
-              <div>[[tags.OrderCancellationMAIL_expiredPaymentMin]]</div>
-              <div>[[tags.OrderCancellationMAIL_expiredPayment2Min]]</div>
+              <p>[[tags.OrderCancellationMAIL_expiredPaymentMin]]</p>
+              <p>[[tags.OrderCancellationMAIL_expiredPayment2Min]]</p>
             [[else]]
               [[#eq payload.orderCancellation.cancellationReason "FRAUD_REJECTED"]]
-                <div>[[tags.OrderCancellationMAIL_fraud]]</div>
-                <div>[[tags.OrderCancellationMAIL_warnRU]]</div>
-                <div>[[tags.OrderCancellationMAIL_warnRU2]]</div>
+                <p>[[tags.OrderCancellationMAIL_fraud]]</p>
+                <p>[[tags.OrderCancellationMAIL_warnRU]]</p>
+                <p>[[tags.OrderCancellationMAIL_warnRU2]]</p>
               [[else]]
                 [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
-                    <div>[[tags.OrderCancellationMAIL_helloText]]</div>
-                    <div>[[tags.OrderCancellationMAIL_apologyText1Min]]</div>
-                    <div>[[tags.OrderCancellationMAIL_apologyText2Min]]</div>
-                    <div>[[tags.OrderCancellationMAIL_apologyText3Min]]</div>
-                    <div>[[tags.OrderCancellationMAIL_zaraTeamMin]]</div> 
+                    <p>[[tags.OrderCancellationMAIL_helloText]]</p>
+                    <p>[[tags.OrderCancellationMAIL_apologyText1Min]]</p>
+                    <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                    <p>[[tags.OrderCancellationMAIL_apologyText3Min]]</p>
+                    <p>[[tags.OrderCancellationMAIL_zaraTeamMin]]</p> 
                 [[else]]
-                  <div>[[tags.OrderCancellationMAIL_backOffice]]</div>
-                  <div>[[tags.OrderCancellationMAIL_expiredPayment2Min]]</div>
+                  <p>[[tags.OrderCancellationMAIL_backOffice]]</p>
+                  <p>[[tags.OrderCancellationMAIL_expiredPayment2Min]]</p>
                 [[/eq]]
               [[/eq]]
             [[/eq]]

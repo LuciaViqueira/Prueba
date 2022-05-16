@@ -37,7 +37,7 @@
         <mj-text  padding-top="24px" css-class="rd-section-title">
             [[tags.OrderDeliveredToStoreMAIL_instructions]]
         </mj-text>  
-        <mj-text padding-top="24px" padding-bottom="24px" css-class="rd-text-info">
+        <mj-text padding-top="24px" css-class="rd-text-info">
           <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
           <p>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</p>
         </mj-text>

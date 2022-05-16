@@ -37,12 +37,12 @@
             <p>[[tags.ReturnConfirmationV2MAIL_refundInfoTitleMin]]</p>
           [[/and]]
           [[#eq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
-            <i>[[tags.ReturnConfirmationV2MAIL_refundGiftCardText]]</i>
+            <p>[[tags.ReturnConfirmationV2MAIL_refundGiftCardText]]</p>
           [[else]]
             [[#if payload.returnInformation.refunds.[0].isRefundSupportedByGateway]]
               [[#if payload.returnInformation.refunds.[0].isAlreadyRefunded]]
               [[else]]
-                <i>[[tags.ReturnConfirmationV2MAIL_refundSupportedByGatewayText]]</i>
+                <p>[[tags.ReturnConfirmationV2MAIL_refundSupportedByGatewayText]]</p>
               [[/if]]
             [[else]]
               
