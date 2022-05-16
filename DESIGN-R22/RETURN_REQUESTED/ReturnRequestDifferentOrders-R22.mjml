@@ -19,6 +19,31 @@
         <mj-text  padding-top="24px" css-class="rd-section-title">
           [[tags.returnRequestDifferentOrders_orderNumberText]]
         </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 2 refundAddress -->
+    <mj-raw>
+      [[#if isHome]]
+        [[#assign "addressIdentifier"]] [[payload.address.identifier]] [[/assign]]
+        [[#neq addressIdentifier "0"]] [[#assign "addressIdentifierZERO"]]true[[/assign]][[/neq]]
+        [[#neq addressIdentifier "-1"]] [[#assign "addressIdentifierONE"]]true[[/assign]][[/neq]]
+        [[#and addressIdentifierZERO addressIdentifierONE]]
+          </mj-raw>
+            <mj-include path="refundAddress-R22" />
+          <mj-raw>
+        [[else]]
+          [[#if payload.address.address]]
+            </mj-raw>
+              <mj-include path="SODAddress-R22" />
+            <mj-raw>
+          [[/if]]
+        [[/and]]
+      [[/if]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
             [[#if isDropoff]]
               <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
@@ -65,28 +90,10 @@
     </mj-section>
 
 
-    <!-- Sección 2 refundAddress -->
-    <mj-raw>
-      [[#if isHome]]
-        [[#assign "addressIdentifier"]] [[payload.address.identifier]] [[/assign]]
-        [[#neq addressIdentifier "0"]] [[#assign "addressIdentifierZERO"]]true[[/assign]][[/neq]]
-        [[#neq addressIdentifier "-1"]] [[#assign "addressIdentifierONE"]]true[[/assign]][[/neq]]
-        [[#and addressIdentifierZERO addressIdentifierONE]]
-          </mj-raw>
-            <mj-include path="refundAddress-R22" />
-          <mj-raw>
-        [[else]]
-          [[#if payload.address.address]]
-            </mj-raw>
-              <mj-include path="SODAddress" />
-            <mj-raw>
-          [[/if]]
-        [[/and]]
-      [[/if]]
-    </mj-raw>
+    
     
     <!-- Sección 3 productsList -->
-    <mj-include path="productListConfirmation" />
+    <mj-include path="productListConfirmation-R22" />
 
     <!-- Sección 4 footer -->
     <mj-raw>
