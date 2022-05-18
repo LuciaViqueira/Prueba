@@ -7,16 +7,39 @@
         [[tags.productListConfirmation_productListTitle]]
       [[/if]]
     </mj-text>
+   
+    <mj-text padding-top="46px" css-class="rd-subsection-text">
+      [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
+      [[orderNumItems]]
+      [[#eq orderNumItems "1"]]
+        [[tags.productListConfirmation_singleItemText]]
+      [[/eq]]
+      [[#neq orderNumItems "1"]]
+        [[tags.productListConfirmation_multipleItemText]]
+      [[/neq]]
+      [[#and isSplitted showSubordersInfo]]
+        [[tags.productListConfirmation_shipmentsNumberText]]
+      [[/and]]
+      [[#if numOrders]]
+        [[#assign "orderNumOrders"]] [[numOrders]] [[/assign]]
+        [[#eq orderNumOrders "1"]]
+          [[tags.productListConfirmation_singleOrderNumberText]]
+        [[/eq]]
+        [[#neq orderNumOrders "1"]]
+          [[tags.productListConfirmation_ordersNumberText]]
+        [[/neq]]
+      [[/if]]
+  </mj-text> 
     ####################################
     ## Productos de cada suborder
     ####################################
     <mj-raw>
-      [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
       [[#each suborders]]
-    </mj-raw>
-        <mj-text padding-top="46px" css-class="rd-subsection-text">
+    </mj-raw> 
+      <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
+        <div class="rd-light-font">
           [[#and isSplitted showSubordersInfo]]
-            [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
+          [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
           [[/and]]
           [[#if showMultiOrderId]]
             [[tags.productListConfirmation_orderTextR22]] [[this.suborderId]]
@@ -24,23 +47,8 @@
           [[#if this.cancelDate]]
             - [[tags.productListConfirmation_cancelDateText]]
           [[/if]]
-        </mj-text> 
-        <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
-          <div class="rd-light-font">
-            [[orderNumItems]]
-            [[#eq orderNumItems "1"]]
-              [[tags.productListConfirmation_singleItemText]]
-            [[/eq]]
-            [[#neq orderNumItems "1"]]
-              [[tags.productListConfirmation_multipleItemText]]
-            [[/neq]]
-            [[#and isSplitted showSubordersInfo]]
-              [[tags.productListConfirmation_shipmentsNumberText]]
-            [[/and]]
-              [[tags.productListConfirmation_singleOrderNumberTextR22]]
-          </div>
-        </mj-text>
-
+        </div>
+      </mj-text>
       <mj-raw>
         [[#each this.items]]
       </mj-raw>
