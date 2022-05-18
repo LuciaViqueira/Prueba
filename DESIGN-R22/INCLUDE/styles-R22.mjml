@@ -1,7 +1,7 @@
 <mj-attributes>
   <mj-all font-family="Neue-Helvetica, Helvetica"; />
   <mj-text padding="0" align="left" font-size="14px" line-height="18px" />
-  <mj-section padding="0" />
+  <mj-section padding="0 5px" />
   <mj-column padding="0" align="left" />
   <mj-image padding="0" align="left" />
   <mj-divider padding="0" border-width="1px" border-color="#dddddd" />
@@ -11,23 +11,23 @@
     font-family: "Neue-Helvetica";
     font-weight: bold;
 		src: url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.eot#iefix");                             /* IE9 Compat Modes */
-		src: local('?'),
-				 url("#https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.woff2.woff2') format('woff2'),                  /* Super Modern Browsers */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.woff') format('woff'),                    /* Pretty Modern Browsers */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.ttf') format('truetype'),                 /* Safari, Android, iOS */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.svg#{NeueHelveticaforZara-MdCn}') format('svg');          /* Legacy iOS */
+		src: local("?"),
+				 url("#https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.woff2.woff2") format("woff2"),                  /* Super Modern Browsers */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.woff") format("woff"),                    /* Pretty Modern Browsers */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.ttf") format("truetype"),                 /* Safari, Android, iOS */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-MdCn.svg#{NeueHelveticaforZara-MdCn}") format("svg");          /* Legacy iOS */
 		      
   }
   @font-face {
     font-family: "Neue-Helvetica";
    	src: url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.eot#iefix");                             /* IE9 Compat Modes */
-		src: local('?'),
-				 url("#https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.woff2.woff2') format('woff2'),                  /* Super Modern Browsers */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.woff') format('woff'),                    /* Pretty Modern Browsers */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.ttf') format('truetype'),                 /* Safari, Android, iOS */
-				 url('https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.svg#{NeueHelveticaforZara-LtCn}') format('svg');          /* Legacy iOS */
+		src: local("?"),
+				 url("#https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.woff2.woff2") format("woff2"),                  /* Super Modern Browsers */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.woff") format("woff"),                    /* Pretty Modern Browsers */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.ttf") format("truetype"),                 /* Safari, Android, iOS */
+				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.svg#{NeueHelveticaforZara-LtCn}") format("svg");          /* Legacy iOS */
   }
 </mj-style>
 <mj-style inline="inline">
@@ -125,7 +125,8 @@
 }
 
 .rd-payment-table td {
-     padding-bottom: 4px;
+    padding-bottom: 4px;
+    min-width: 100px;
 }
 
 .rd-payment-table table {
