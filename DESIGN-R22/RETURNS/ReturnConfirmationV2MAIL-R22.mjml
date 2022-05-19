@@ -61,6 +61,7 @@
     </mj-raw>
 
     <mj-raw>
+      [[#assign "orderNumItems"]][[payload.returnInformation.orders.[0].numItems]][[/assign]]
       [[#with payload]]
         [[#with this.returnInformation.refunds.[0].payments as | payments |]]
     </mj-raw>

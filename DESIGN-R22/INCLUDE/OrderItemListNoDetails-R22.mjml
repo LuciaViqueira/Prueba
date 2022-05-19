@@ -3,9 +3,6 @@
       <mj-raw>
         [[#each this.orders]]
       </mj-raw>
-      ####################################
-      ## Productos de cada suborder
-      ####################################
       <mj-raw>
         [[#each this.suborders]]
       </mj-raw>
@@ -29,37 +26,28 @@
           [[/neq]]
         </div>
       </mj-text>
-      <mj-section padding="0">
-        <mj-group>
-          <mj-raw>
+        <mj-table>
             [[#each this.orderItems]]
-          </mj-raw>
-          <mj-raw>
-            [[#if this.item]]
-          </mj-raw>
-          <mj-column width="30%"> 
-            [[#if this.item.imageUrl]]
-              <mj-image width="98px" height="auto" padding="0 8px 8px 0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:98px; height:auto;" />
-            [[/if]]
-          </mj-column>
-          <mj-raw>
-            [[else]]
-          </mj-raw>   
-          ####################################
-          ## Tarjeta regalo si la hay
-          ####################################
-          <mj-column width="30%"> 
-            [[#if this.giftCard.item.imageUrl]]
-              <mj-image width="98px" height="auto" padding="0 8px 8px 0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:98px; height:auto;" />
-            [[/if]]
-          </mj-column>
-          <mj-raw>
-              [[/if]]
+            <tr>
+              [[#each this]]
+               <td>
+                [[#if this.item]]
+                  [[#if this.item.imageUrl]]
+                    <img width="98px" height="auto" padding="0 8px 8px 0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:98px; height:auto;" />
+                  [[/if]]
+                [[else]]
+                  [[#if this.giftCard.item.imageUrl]]
+                    <img width="98px" height="auto" padding="0 8px 8px 0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:98px; height:auto;" />
+                  [[/if]]
+                [[/if]]
+                </td>
               [[/each]]
+            </tr>
             [[/each]]
-          [[/each]]
-          </mj-raw>
-        </mj-group>
-      </mj-section>
+      </mj-table>
+       <mj-raw>
+        [[/each]]
+        [[/each]]
+      </mj-raw>
   </mj-column>
 </mj-section>

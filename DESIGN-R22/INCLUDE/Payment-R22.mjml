@@ -78,7 +78,6 @@
 <mj-raw>
     [[/each]]
   [[/each]]
-  [[#assign "orderNumItems"]][[orders.[0].numItems]][[/assign]]  
   [[#with paymentBreakdown]]
 </mj-raw>
 <mj-section>
