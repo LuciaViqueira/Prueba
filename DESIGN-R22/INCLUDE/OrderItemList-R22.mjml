@@ -21,7 +21,7 @@
       ####################################
       <mj-raw>
         [[#each this.suborders]]
-          [[#and showDeliveryDate this.deliveryDate]]
+          [[#and showDeliveryDate this.deliveryDate]] <!-- Muestra la fecha del suborder -->
       </mj-raw>
             <mj-text padding-top="46px" padding-bottom="4px" css-class="rd-section-title"> 
               [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
@@ -30,7 +30,7 @@
             </mj-text>
       <mj-raw>
           [[/and]]
-          [[#if showDeliveryDate]] <!-- Muestra la fecha del suborder -->
+          [[#if showDeliveryDate]] <!-- Si muestra fecha disminuye el padding-top -->
       </mj-raw>
             <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
               <div>
@@ -60,8 +60,8 @@
               </div>
             </mj-text>
       <mj-raw>
-          [[else]]
-            [[#if notShowSuborderId]] <!-- Oculta el Pedido Nº -->
+          [[else]]  <!-- No muestra fecha -->
+            [[#if notShowSuborderId]] <!-- No fecha, No num pedido, solo muestra X articulo/s -->
       </mj-raw>
               <mj-text padding-top="46px" padding-bottom="8px" css-class="rd-subsection-text">  
                 <div class="rd-light-font">
@@ -80,19 +80,29 @@
                 </div>
               </mj-text>
         <mj-raw>
-            [[else]]
+            [[else]]  <!-- No fecha, si num pedido y si X articulo-->
+               [[#if sendNumber]]
         </mj-raw>
-              <mj-text padding-top="46px" css-class="rd-section-title">
-                [[#if sendNumber]]
-                  [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
-                [[else]]
-                  [[#if orderNumber]]
-                    [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+                <mj-text padding-top="46px" css-class="rd-section-title">
+                    [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
+                </mj-text>
+                <mj-raw>  
                   [[else]]
-                    [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
+                    [[#if orderNumber]]
+                </mj-raw>
+                      <mj-text padding-top="46px" css-class="rd-subsection-text">
+                        [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+                      </mj-text>
+                  <mj-raw>    
+                    [[else]]
+                  </mj-raw>
+                      <mj-text padding-top="46px" css-class="rd-section-title">
+                        [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
+                      </mj-text>
+                <mj-raw>  
+                    [[/if]]
                   [[/if]]
-                [[/if]]
-              </mj-text> 
+                </mj-raw> 
               <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
                 <div class="rd-light-font">
                   [[#if useTotalOrdersNumItems]]
