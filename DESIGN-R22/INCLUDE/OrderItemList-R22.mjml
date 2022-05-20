@@ -122,12 +122,12 @@
           </mj-raw>
               <mj-table padding="16px 0 0"> 
                 <tr>
-                  <td style="padding: 0; width:56px;">
+                  <td style="padding: 0;">
                     [[#if this.item.imageUrl]]
                       <table>
                         <tr>
                           <td>
-                            <img width="56" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:56px; height:auto;" />
+                            <img width="168" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:168px; height:auto;" />
                           </td>
                         </tr>
                       </table>
@@ -203,12 +203,12 @@
           ###################
               <mj-table padding="16px 0 0"> 
                 <tr>
-                  <td style="padding: 0; width:56px;">
+                  <td style="padding: 0;">
                     [[#if this.giftCard.item.imageUrl]]
                       <table>
                         <tr>
                           <td>
-                            <img width="56" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:56px; height:auto;" />
+                            <img width="168" padding="0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:168px; height:auto;" />
                           </td>
                         </tr>
                       </table>

@@ -29,6 +29,11 @@
 				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.ttf") format("truetype"),                 /* Safari, Android, iOS */
 				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.svg#{NeueHelveticaforZara-LtCn}") format("svg");          /* Legacy iOS */
   }
+    @media all and (max-width: 480px) {
+        .rd-product-img {
+            max-width: 56px;
+        }
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
