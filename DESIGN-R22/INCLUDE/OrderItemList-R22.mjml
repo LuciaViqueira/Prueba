@@ -14,15 +14,17 @@
       <mj-raw>
         [[#if useTotalOrdersNumItems]] <!-- Muestra el totalItems -->
       </mj-raw>
-        <mj-text css-class="rd-subsection-text" padding-top="20px"> 
-          [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-          [[orderNumItems]]
-          [[#eq orderNumItems "1"]]
-            [[tags.OrderItemList_singleItemText]]
-          [[/eq]]
-          [[#neq orderNumItems "1"]]
-            [[tags.OrderItemList_multipleItemText]]
-          [[/neq]]   
+        <mj-text css-class="rd-subsection-text" padding-top="40px">
+          <div class="rd-light-font"> 
+            [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+            [[orderNumItems]]
+            [[#eq orderNumItems "1"]]
+              [[tags.OrderItemList_singleItemText]]
+            [[/eq]]
+            [[#neq orderNumItems "1"]]
+              [[tags.OrderItemList_multipleItemText]]
+            [[/neq]]
+          </div>   
         </mj-text>
     <mj-raw>
         [[/if]]
@@ -38,7 +40,7 @@
         [[#each this.suborders]]
           [[#and showDeliveryDate this.deliveryDate]] <!-- Muestra la fecha del suborder -->
       </mj-raw>
-            <mj-text padding-top="46px" padding-bottom="4px" css-class="rd-section-title"> 
+            <mj-text padding-top="40px" padding-bottom="4px" css-class="rd-section-title"> 
               [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
               [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
               [[readableDate minDeliveredDate maxDeliveredDate]]   
@@ -59,7 +61,7 @@
                   [[/if]]
                 [[/if]]
               </div>
-              <div class="rd-light-font" style="padding-top: 4px">
+              <div class="rd-light-font" style="padding-top:4px">
                 [[#if useTotalOrdersNumItems]]
                   [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
                 [[else]]
@@ -78,7 +80,7 @@
           [[else]]  <!-- No muestra fecha -->
             [[#if notShowSuborderId]] <!-- No fecha, No num pedido, solo muestra X articulo/s -->
       </mj-raw>
-              <mj-text padding-top="46px" padding-bottom="8px" css-class="rd-subsection-text">  
+              <mj-text padding-top="40px" padding-bottom="8px" css-class="rd-subsection-text">  
                 <div class="rd-light-font">
                   [[#if useTotalOrdersNumItems]]
                     [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
@@ -98,7 +100,7 @@
             [[else]]
               [[#if onlyShowOrderNumber]]
         </mj-raw>
-                <mj-text padding-top="46px" css-class="rd-subsection-text">
+                <mj-text padding-top="8px" css-class="rd-subsection-text">
                   [[tags.OrderItemList_orderNumberTextR22]] [[orderIdentifier]]
                 </mj-text>
               <mj-raw>
@@ -106,20 +108,20 @@
                 <!-- No fecha, si num pedido y si X articulo-->
                 [[#if sendNumber]]
               </mj-raw>
-                  <mj-text padding-top="46px" css-class="rd-section-title">
+                  <mj-text padding-top="40px" css-class="rd-section-title">
                       [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
                   </mj-text>
                 <mj-raw>  
                 [[else]]
                   [[#if orderNumber]]
                 </mj-raw>
-                    <mj-text padding-top="46px" css-class="rd-subsection-text">
+                    <mj-text padding-top="40px" css-class="rd-subsection-text">
                       [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
                     </mj-text>
                   <mj-raw>    
                     [[else]]
                   </mj-raw>
-                      <mj-text padding-top="46px" css-class="rd-section-title">
+                      <mj-text padding-top="40px" css-class="rd-section-title">
                         [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
                       </mj-text>
                 <mj-raw>  
