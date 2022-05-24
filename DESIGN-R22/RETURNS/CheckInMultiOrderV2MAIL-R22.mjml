@@ -13,7 +13,7 @@
       [[#assign "hideTimeMethodInfo"]]true[[/assign]]
       [[#assign "showAddressPhoneNumber"]]true[[/assign]]
       [[#assign "showBlockTitle"]]true[[/assign]]
-      [[#assign "orderNumber"]]true[[/assign]]
+      [[#assign "onlyShowOrderNumber"]]true[[/assign]]
 
       [[#assign "showOnlyUnits"]]true[[/assign]]
       [[#assign "showLegalFooter"]]true[[/assign]]

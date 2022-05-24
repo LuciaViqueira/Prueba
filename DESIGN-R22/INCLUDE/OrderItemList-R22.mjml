@@ -12,7 +12,7 @@
       </mj-text>
 
       <mj-raw>
-        [[#if useTotalOrdersNumItems]]
+        [[#if useTotalOrdersNumItems]] <!-- Muestra el totalItems -->
       </mj-raw>
         <mj-text css-class="rd-subsection-text" padding-top="20px"> 
           [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
