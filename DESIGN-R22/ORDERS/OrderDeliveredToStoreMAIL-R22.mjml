@@ -7,7 +7,6 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "pickupTitle"]]true[[/assign]]
-      [[#assign "sendNumber"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
