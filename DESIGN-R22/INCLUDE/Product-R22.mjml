@@ -1,0 +1,73 @@
+ <table class="rd-product"> 
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img width="208" padding="0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:208px; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+            <div>
+                [[this.item.shortDescription]]
+            </div>
+            <div style="color: #666666;">
+                [[this.item.colour]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
+            </div>
+            <div style="padding-top: 16px">
+                [[#if hideItemQuantity]]
+                [[else]]
+                [[#if usePreviousQuantity]]
+                    [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+                [[else]]
+                    [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                [[/if]]
+                [[#if showOnlyUnits]]
+                    [[templateQuantity]]
+                    [[#eq templateQuantity "1"]]
+                    [[tags.OrderItemList_singleUnitText]]
+                    [[/eq]]
+                    [[#neq templateQuantity "1"]]
+                    [[tags.OrderItemList_multipleUnitsText]]
+                    [[/neq]]
+                [[else]]
+                    [[templateQuantity]] X [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                [[/if]]
+                [[/if]]
+            </div>
+            [[#if this.item.size]]
+                <div>[[this.item.size]]</div>
+            [[/if]]
+            [[#if this.item.sizeDescription]]
+                <div>[[this.item.sizeDescription]]</div>
+            [[/if]]
+            <!--
+            [[#if this.rmaItem.isPantone]]
+                <div class="rd-product-custom-warn">[[tags.OrderItemList_customizationsWarn]]</div>
+            [[/if]]
+            -->
+
+            [[#if this.isCustom]]
+                <button class="rd-product-custom">
+                <span class="rd-product-custom-lbl">[[tags.OrderItemList_customizationsButton]]</span>
+                </button>
+                <div class="rd-product-custom-warn">
+                [[tags.OrderItemList_customizationsWarn]]
+                </div>
+                [[#each this.customizations]]
+                <mj-text align="left" padding="10px 0" css-class="rd-product-custom-table">
+                    <div>[[tags.OrderItemList_customizationsText]]: [[this.embroideryText]]</div>
+                    <div>[[tags.OrderItemList_customizationsArea]]: [[this.embroideryArea]]</div>
+                    <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
+                    <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
+                    [[#if this.serviceCost]]
+                        <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                    [[/if]]
+                </mj-text>
+                [[/each]]
+            [[/if]]
+        </td>
+    </tr>
+</table>

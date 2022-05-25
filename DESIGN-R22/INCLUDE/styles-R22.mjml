@@ -31,7 +31,11 @@
   }
     @media all and (max-width: 480px) {
         .rd-product-img {
-            max-width: 56px;
+            max-width: 134px !important;
+            width: width: 134px !important;
+        }
+        .rd-product td {
+            width: 134px !important;
         }
     }
 </mj-style>
@@ -219,8 +223,18 @@
     text-align: left !important;
 }
 
+
+.rd-product td {
+    width: 208px;
+}
+
 .rd-product-img img {
     object-fit: contain;
+}
+
+.rd-product-img {
+    max-width: 208px;
+    width: width: 208px;
 }
 
 .rd-product-price div {
