@@ -12,7 +12,6 @@
       </mj-text>
     <mj-raw>
     [[/if]]
-      [[#if showOrderNumItems]] <!-- Muestra el totalItems -->
     </mj-raw>
       <mj-text css-class="rd-subsection-text" padding-top="40px">
         <div class="rd-light-font"> 
@@ -30,141 +29,34 @@
           [[/neq]]
         </div>   
       </mj-text>
-    <mj-raw>
-      [[/if]]
+    <mj-raw> 
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
-        [[#assign "orderIdentifier"]][[this.identifier]][[/assign]]
+        [[#neq ordersSize "1"]]
     </mj-raw>
-      ####################################
-      ## Productos de cada suborder
-      ####################################
+          <mj-text padding-top="8px" css-class="rd-subsection-text">
+              [[tags.OrderItemList_orderNumberTextR22]] [[this.identifier]]
+          </mj-text>
       <mj-raw>
+        [[/neq]]
         [[#each this.suborders]]
-          [[#and showDeliveryDate this.deliveryDate]] <!-- Muestra la fecha del suborder -->
       </mj-raw>
-            <mj-text padding-top="40px" padding-bottom="4px" css-class="rd-section-title"> 
-              [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-              [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-              [[readableDate minDeliveredDate maxDeliveredDate]]   
-            </mj-text>
-      <mj-raw>
-          [[/and]]
-          [[#if notShowSubordersData]]
-          [[else]]
-            [[#if showDeliveryDate]] <!-- Si muestra fecha disminuye el padding-top -->
-      </mj-raw>
-              <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
-                <div>
-                  [[#if sendNumber]]
-                    [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
-                  [[else]]
-                    [[#if orderNumber]]
-                      [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
+          <mj-table padding="16px 0 0">
+            [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
+            [[#each orderItemsMatrix]]
+              <tr>
+                [[#each this]]
+                  <td style="padding-bottom: 24px;">
+                    [[#if this.item]]
+                      <mj-include path="Product-R22" />
                     [[else]]
-                      [[tags.OrderItemList_orderNumberText]] [[this.suborderId]] 
+                      <mj-include path="GiftCard-R22" />
                     [[/if]]
-                  [[/if]]
-                </div>
-                <div class="rd-light-font" style="padding-top:4px">
-                  [[#if useTotalOrdersNumItems]]
-                    [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-                  [[else]]
-                    [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
-                  [[/if]]
-                  [[orderNumItems]]
-                  [[#eq orderNumItems "1"]]
-                    [[tags.OrderItemList_singleItemText]]
-                  [[/eq]]
-                  [[#neq orderNumItems "1"]]
-                    [[tags.OrderItemList_multipleItemText]]
-                  [[/neq]]
-                </div>
-              </mj-text>
-        <mj-raw>
-            [[else]]  <!-- No muestra fecha -->
-              [[#if notShowSuborderId]] <!-- No fecha, No num pedido, solo muestra X articulo/s -->
-        </mj-raw>
-                <mj-text padding-top="40px" padding-bottom="8px" css-class="rd-subsection-text">  
-                  <div class="rd-light-font">
-                    [[#if useTotalOrdersNumItems]]
-                      [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-                    [[else]]
-                      [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
-                    [[/if]]
-                    [[orderNumItems]]
-                    [[#eq orderNumItems "1"]]
-                      [[tags.OrderItemList_singleItemText]]
-                    [[/eq]]
-                    [[#neq orderNumItems "1"]]
-                      [[tags.OrderItemList_multipleItemText]]
-                    [[/neq]]
-                  </div>
-                </mj-text>
-          <mj-raw>
-              [[else]]
-                [[#if onlyShowOrderNumber]]
-          </mj-raw>
-                  <mj-text padding-top="8px" css-class="rd-subsection-text">
-                    [[tags.OrderItemList_orderNumberTextR22]] [[orderIdentifier]]
-                  </mj-text>
-                <mj-raw>
-                [[else]]
-                  <!-- No fecha, si num pedido y si X articulo-->
-                  [[#if sendNumber]]
-                </mj-raw>
-                    <mj-text padding-top="40px" css-class="rd-section-title">
-                        [[tags.OrderItemList_sendNumberText]] [[this.suborderId]]
-                    </mj-text>
-                  <mj-raw>  
-                  [[else]]
-                    [[#if orderNumber]]
-                  </mj-raw>
-                      <mj-text padding-top="40px" css-class="rd-subsection-text">
-                        [[tags.OrderItemList_orderNumberTextR22]] [[this.suborderId]]
-                      </mj-text>     
-                <mj-raw>  
-                    [[/if]]
-                  [[/if]]
-                </mj-raw> 
-                    <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
-                      <div class="rd-light-font">
-                        [[#if useTotalOrdersNumItems]]
-                          [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
-                        [[else]]
-                          [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
-                        [[/if]]
-                        [[orderNumItems]]
-                        [[#eq orderNumItems "1"]]
-                          [[tags.OrderItemList_singleItemText]]
-                        [[/eq]]
-                        [[#neq orderNumItems "1"]]
-                          [[tags.OrderItemList_multipleItemText]]
-                        [[/neq]]
-                      </div>
-                    </mj-text>
-      <mj-raw>
-                [[/if]]
-              [[/if]]
-            [[/if]]
-          [[/if]]
-      </mj-raw>
-      <mj-table padding="16px 0 0">
-        [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
-        [[#each orderItemsMatrix]]
-          <tr>
-            [[#each this]]
-              <td style="padding-bottom: 24px;">
-                [[#if this.item]]
-                  <mj-include path="Product-R22" />
-                [[else]]
-                  <mj-include path="GiftCard-R22" />
-                [[/if]]
-              </td>
+                  </td>
+                [[/each]]
+              </tr>
             [[/each]]
-          </tr>
-        [[/each]]
-      </mj-table>
+          </mj-table>
       <mj-raw>
         [[/each]]
       [[/each]]

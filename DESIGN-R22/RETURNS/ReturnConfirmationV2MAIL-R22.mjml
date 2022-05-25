@@ -9,8 +9,6 @@
       [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
       [[#assign "showBlockTitle"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
-      [[#assign "showOrderNumItems"]]true[[/assign]]
-      [[#assign "notShowSubordersData"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
       
     </mj-raw>

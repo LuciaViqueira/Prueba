@@ -9,13 +9,10 @@
       [[#assign "checkinTitle"]]true[[/assign]]
       [[#assign "returnTitle"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
-      [[#assign "showOrderNumItems"]]true[[/assign]]
       [[#assign "useTotalOrdersNumItems"]]true[[/assign]]
       [[#assign "hideTimeMethodInfo"]]true[[/assign]]
       [[#assign "showAddressPhoneNumber"]]true[[/assign]]
       [[#assign "showBlockTitle"]]true[[/assign]]
-      [[#assign "onlyShowOrderNumber"]]true[[/assign]]
-
       [[#assign "showOnlyUnits"]]true[[/assign]]
       [[#assign "showLegalFooter"]]true[[/assign]]
     </mj-raw>
