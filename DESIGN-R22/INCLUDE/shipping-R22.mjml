@@ -32,15 +32,12 @@
         [[else]]
           [[#each order.suborders]]
       </mj-raw>
-      <mj-text css-class="rd-subsection-title" padding-bottom="4px" font-weight="bold">
+      <mj-text css-class="rd-subsection-title" padding-bottom="32px" font-weight="bold">
           [[#and showDeliveryDate this.deliveryDate]]
             [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
             [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
             [[readableDate minDeliveredDate maxDeliveredDate]]
           [[/and]]
-      </mj-text>
-      <mj-text padding="0 0 24px 0" css-class="rd-subsection-text"> 
-        [[tags.shipping_shippingNumberTextWithN]] [[this.suborderId]]
       </mj-text>
     <mj-raw>
         [[/each]]

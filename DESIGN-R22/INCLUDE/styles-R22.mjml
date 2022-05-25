@@ -38,6 +38,9 @@
             width: 208px !important;
         }
     }
+    .product-row > td + td > table {
+        margin-left: auto;
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
@@ -235,6 +238,10 @@
 .rd-product-img {
     max-width: 98%;
     width: 134px;
+}
+
+.rd-comingSoon-img img{
+    object-fit: contain;
 }
 
 .rd-product-price div {

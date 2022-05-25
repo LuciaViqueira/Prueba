@@ -7,7 +7,6 @@
         [[tags.productListConfirmation_productListTitle]]
       [[/if]]
     </mj-text>
-   
     <mj-text padding-top="46px" css-class="rd-subsection-text">
       [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
       [[orderNumItems]]
@@ -29,17 +28,14 @@
           [[tags.productListConfirmation_ordersNumberText]]
         [[/neq]]
       [[/if]]
-  </mj-text> 
-    ####################################
-    ## Productos de cada suborder
-    ####################################
+    </mj-text>
     <mj-raw>
       [[#each suborders]]
-    </mj-raw> 
+    </mj-raw>
       <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
         <div class="rd-light-font">
           [[#and isSplitted showSubordersInfo]]
-          [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
+            [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
           [[/and]]
           [[#if showMultiOrderId]]
             [[tags.productListConfirmation_orderTextR22]] [[this.suborderId]]
@@ -49,148 +45,21 @@
           [[/if]]
         </div>
       </mj-text>
-      <mj-raw>
-        [[#each this.items]]
-      </mj-raw>
-        <mj-table padding="16px 0 0"> 
+      <mj-table padding="16px 0 0">
+        [[def "orderItemsMatrix" (matrix this.items 2)]]
+        [[#each orderItemsMatrix]]
           <tr>
-            <td style="padding: 0;">
-              [[#if this.imageUrl]]
-                <table>
-                  <tr>
-                    <td>
-                      <img width="168" padding="0" class="rd-product-img" src="[[this.imageUrl]]" style="width:168px; height:auto;" />
-                    </td>
-                  </tr>
-                </table>
-              [[/if]]
-            </td>
-            <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
-              <div>
-                [[this.description]]
-              </div>
-              <div>
-                [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
-              </div>
-              <div style="padding-top: 16px">
-                [[this.units]] X [[this.price]]
-              </div>
-              [[#if this.size]]
-                <div>[[this.size]]</div>
-              [[/if]]
-              [[#if this.sizeDescription]]
-                <div>[[this.sizeDescription]]</div>
-              [[/if]]      
-              [[#if this.isPantone]]
-                <div class="rd-product-custom-warn">[[tags.productListConfirmation_customizationsWarn]]</div>
-              [[/if]]
-              [[#if this.isCustom]]
-                <button class="rd-product-custom">
-                  <span class="rd-product-custom-lbl">[[tags.productListConfirmation_customizationsButton]]</span>
-                </button>
-                <div class="rd-product-custom-warn">
-                  [[tags.productListConfirmation_customizationsWarn]]
-                </div>
-                [[#each this.itemCustomizations]]
-                  <mj-text align="left" padding="10px 0" css-class="rd-product-custom-table">
-                    <div>[[tags.productListConfirmation_customizationsText]]: [[this.embroideryText]]</div>
-                    <div>[[tags.productListConfirmation_customizationsArea]]: [[this.embroideryArea]]</div>
-                    <div>[[tags.productListConfirmation_customizationsTypography]]: [[this.embroideryFont]]</div>
-                    <div>[[tags.productListConfirmation_customizationsColor]]: [[this.embroideryColor]]</div>
-                    [[#if this.serviceCost]]
-                        <div>[[tags.productListConfirmation_customizationsPrice]]: [[this.serviceCost]]</div>
-                    [[/if]]
-                  </mj-text>
-                [[/each]]
-              [[/if]]
-            </td>
+            [[#each this]]
+              <td style="padding-bottom: 24px;">
+                
+                  <mj-include path="ProductConfirmation-R22" />
+               
+              </td>
+            [[/each]]
           </tr>
-        </mj-table>
-      <mj-raw>
         [[/each]]
-      </mj-raw>
-    ####################################
-    ## Tarjeta regalo
-    ####################################
+      </mj-table>
       <mj-raw>
-        [[#each this.giftCards]]
-      </mj-raw>
-        <mj-table padding="16px 0 0"> 
-          <tr>
-            <td style="padding: 0;">
-              [[#if this.imageUrl]]
-                <table>
-                  <tr>
-                    <td>
-                      <img width="168" padding="0" class="rd-product-img" src="[[this.imageUrl]]" style="width:168px; height:auto;" />
-                    </td>
-                  </tr>
-                </table>
-              [[/if]]
-            </td>
-            <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
-              <div>
-                [[this.description]]
-              </div>
-              <div>
-                [[#if this.from]]
-                  <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_fromText]]</span>: [[this.from]]</div>
-                [[/if]]
-                [[#if this.receiverPhone]]
-                  <div style="text-transform: uppercase;">[[tags.productListConfirmation_receiverPhoneText]]: [[this.receiverPhone]]</div>
-                [[/if]]
-              </div>
-              <div> 
-                1 X [[this.price]]
-              </div>
-            </td>
-          </tr>
-        </mj-table>
-      <mj-raw>
-        [[/each]]
-      </mj-raw>
-    ####################################
-    ## Tarjeta regalo virtual
-    ####################################
-      <mj-raw>
-        [[#each this.virtualGiftCards]]
-      </mj-raw>
-        <mj-table padding="16px 0 0"> 
-          <tr>
-            <td style="padding: 0;">
-              [[#if this.imageUrl]]
-                <table>
-                  <tr>
-                    <td>
-                      <img width="168" padding="0" class="rd-product-img" src="[[this.imageUrl]]" style="width:168px; height:auto;" />
-                    </td>
-                  </tr>
-                </table>
-              [[/if]]
-            </td>
-            <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
-              <div>
-                [[this.description]]
-              </div>
-              <div>
-                [[#if this.from]]
-                  <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_fromText]]</span>: [[this.from]]</div>
-                [[/if]]
-                [[#if this.receiverEmail]]
-                  <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_receiverEmailText]]:</span> [[this.receiverEmail]]</div>
-                [[/if]]
-                [[#if this.deliveryDate]]
-                  <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_devileryDateText]] [[this.deliveryDate]]</div>
-                [[/if]]
-              </div>
-              <div> 
-                1 X [[this.price]]
-              </div>
-            </td>
-          </tr>
-        </mj-table>
-      <mj-raw>
-        [[/each]]
       [[/each]]
     </mj-raw>    
   </mj-column>
