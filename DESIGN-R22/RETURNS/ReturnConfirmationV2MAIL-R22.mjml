@@ -7,10 +7,12 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
-      [[#assign "returnOrderItemTitle"]]true[[/assign]]
-      [[#assign "showRefundPaymentTitle"]]true[[/assign]]
       [[#assign "showBlockTitle"]]true[[/assign]]
-      [[#assign "orderNumber"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "showOrderNumItems"]]true[[/assign]]
+      [[#assign "notShowSubordersData"]]true[[/assign]]
+      [[#assign "showRefundPaymentTitle"]]true[[/assign]]
+      
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
