@@ -237,6 +237,10 @@
     width: width: 208px;
 }
 
+.rd-comingSoon-img img{
+    object-fit: contain;
+}
+
 .rd-product-price div {
     font-size: 18px !important;
     line-height: 17px !important;
