@@ -38,6 +38,9 @@
             width: 134px !important;
         }
     }
+    .product-row > td + td > table {
+        margin-left: auto;
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
