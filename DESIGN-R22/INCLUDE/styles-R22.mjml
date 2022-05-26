@@ -45,6 +45,11 @@
         .rd-productNoDetails td {
             width: 168px !important;
         }
+
+        .rd-comingSoonProduct .rd-comingSoonProductImgColumn {
+            width: 300px !important;
+        }
+
         .rd-comingSoon-img {
             max-width: 300px !important;
             width: 300px !important;
@@ -263,6 +268,10 @@
 .rd-productNoDetails-img {
     max-width: 98%;
     width: 98px;
+}
+
+.rd-comingSoonProduct .rd-comingSoonProductImgColumn {
+    width: 176px !important;
 }
 
 .rd-comingSoon-img img{

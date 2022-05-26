@@ -32,7 +32,7 @@
     <mj-raw>
       [[#each suborders]]
     </mj-raw>
-      <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">  
+      <mj-text padding-top="8px" padding-bottom="8px" css-class="rd-subsection-text">  
         <div class="rd-light-font">
           [[#and isSplitted showSubordersInfo]]
             [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]

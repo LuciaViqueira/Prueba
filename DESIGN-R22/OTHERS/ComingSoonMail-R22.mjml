@@ -14,9 +14,9 @@
         <mj-text  padding-top="24px" css-class="rd-subsection-text-notUppercase">
           [[tags.comingSoonMail_skuAvailable]]
         </mj-text>
-        <mj-table padding="24px 0 9px"> 
+        <mj-table padding="24px 0 9px" css-class="rd-comingSoonProduct"> 
           <tr>
-            <td style="padding: 0; width:176px;">
+            <td style="padding: 0;" class="rd-comingSoonProductImgColumn">
                 <table>
                   <tr>
                     <td>
