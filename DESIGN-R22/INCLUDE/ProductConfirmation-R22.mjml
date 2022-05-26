@@ -17,7 +17,14 @@
                 [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
             </div>
             <div style="padding-top: 16px">
-                [[this.units]] X [[this.price]]
+                [[#assign "templateQuantity"]] [[this.units]] [[/assign]]
+                [[templateQuantity]]
+                [[#eq templateQuantity "1"]]
+                    [[tags.productListConfirmation_singleUnitText]]
+                [[/eq]]
+                [[#neq templateQuantity "1"]]
+                    [[tags.productListConfirmation_multipleUnitsText]]
+                [[/neq]]
             </div>
             [[#if this.size]]
                 <div>[[this.size]]</div>
