@@ -34,7 +34,7 @@
       [[#each this.orders]]
         [[#neq ordersSize "1"]]
     </mj-raw>
-          <mj-text padding-top="8px" css-class="rd-subsection-text">
+          <mj-text padding-top="4px" css-class="rd-subsection-text">
               [[tags.OrderItemList_orderNumberTextR22]] [[this.identifier]]
           </mj-text>
       <mj-raw>
