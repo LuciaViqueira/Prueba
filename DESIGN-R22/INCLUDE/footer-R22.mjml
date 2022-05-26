@@ -19,13 +19,17 @@
       <mj-text css-class="rd-footer-link">
         <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
       </mj-text>
-      <mj-text css-class="rd-footer-link">
+      <mj-raw>
         [[#if notShowTermsConds]]
         [[else]]
-          <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
-        [[/if]]      
-      </mj-text>
-      <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
+      </mj-raw>
+          <mj-text css-class="rd-footer-link">
+            <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>      
+          </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[#if showGiftCardAndGiftTicketUrl]]
+      </mj-raw>
         <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
         <mj-text css-class="rd-footer-link">
           <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>

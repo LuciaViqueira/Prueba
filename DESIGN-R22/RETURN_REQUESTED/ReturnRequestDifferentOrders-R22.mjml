@@ -44,7 +44,7 @@
 
     <mj-section>
       <mj-column>
-        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+        <mj-text padding-top="24px" css-class="rd-text-info">
             [[#if isDropoff]]
               <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
               [[#if payload.returnEntity.request.courier.name ]]

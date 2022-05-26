@@ -1,22 +1,25 @@
 <mj-section>
   <mj-column>
-      <mj-raw>
-        [[#each this.orders]]
-      </mj-raw>
-      <mj-raw>
-        [[#each this.suborders]]
-      </mj-raw>
-      <mj-text padding-top="46px" padding-bottom="4px" css-class="rd-section-title">
-        [[#if this.deliveryDate]]
-          <div>[[this.deliveryDate]]</div>
+    <mj-raw> 
+      [[#if showBlockTitle]]  <!-- Muestra el titulo del bloque -->
+    </mj-raw>
+      <mj-text css-class="rd-section-title" padding-top="64px">
+        [[#if returnOrderItemTitle]]
+          [[tags.OrderItemList_productListTitleReturnRequest]]
+        [[else]]
+          [[tags.OrderItemList_title]]
         [[/if]]
       </mj-text>
-      <mj-text padding-top="4px" padding-bottom="8px" css-class="rd-subsection-text">
-        <div>
-          [[tags.OrderItemList_orderNumberText]] [[this.suborderId]]
-        </div>
-        <div class="rd-light-font" style="padding-top: 4px">
-          [[#assign "orderNumItems"]] [[this.numItems]] [[/assign]]
+    <mj-raw>
+    [[/if]]
+    </mj-raw>
+      <mj-text css-class="rd-subsection-text" padding-top="40px">
+        <div class="rd-light-font"> 
+          [[#if useTotalOrdersNumItems]]
+            [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+          [[else]]
+            [[#assign "orderNumItems"]] [[this.orders.[0].numItems]] [[/assign]]
+          [[/if]]
           [[orderNumItems]]
           [[#eq orderNumItems "1"]]
             [[tags.OrderItemList_singleItemText]]
@@ -24,30 +27,39 @@
           [[#neq orderNumItems "1"]]
             [[tags.OrderItemList_multipleItemText]]
           [[/neq]]
-        </div>
+        </div>   
       </mj-text>
-        <mj-table>
-            [[#each this.orderItems]]
-            <tr>
-              [[#each this]]
-               <td>
-                [[#if this.item]]
-                  [[#if this.item.imageUrl]]
-                    <img width="98px" height="auto" padding="0 8px 8px 0" class="rd-product-img" src="[[this.item.imageUrl]]" style="width:98px; height:auto;" />
-                  [[/if]]
-                [[else]]
-                  [[#if this.giftCard.item.imageUrl]]
-                    <img width="98px" height="auto" padding="0 8px 8px 0" class="rd-product-img" src="[[this.giftCard.item.imageUrl]]" style="width:98px; height:auto;" />
-                  [[/if]]
-                [[/if]]
-                </td>
-              [[/each]]
-            </tr>
+    <mj-raw> 
+      [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
+      [[#each this.orders]]
+        [[#neq ordersSize "1"]]
+    </mj-raw>
+          <mj-text padding-top="8px" css-class="rd-subsection-text">
+              [[tags.OrderItemList_orderNumberTextR22]] [[this.identifier]]
+          </mj-text>
+      <mj-raw>
+        [[/neq]]
+        [[#each this.suborders]]
+      </mj-raw>
+          <mj-table padding="16px 0 0">
+            [[def "orderItemsMatrix" (matrix this.orderItems 3)]]
+            [[#each orderItemsMatrix]]
+              <tr>
+                [[#each this]]
+                  <td style="padding-bottom: 24px;">
+                    [[#if this.item]]
+                      <mj-include path="ProductNoDetails-R22" />
+                    [[else]]
+                      <mj-include path="GiftCardNoDetails-R22" />
+                    [[/if]]
+                  </td>
+                [[/each]]
+              </tr>
             [[/each]]
-      </mj-table>
-       <mj-raw>
+          </mj-table>
+      <mj-raw>
         [[/each]]
-        [[/each]]
+      [[/each]]
       </mj-raw>
   </mj-column>
 </mj-section>

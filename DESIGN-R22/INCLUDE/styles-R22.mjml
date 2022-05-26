@@ -37,6 +37,18 @@
         .rd-product td {
             width: 208px !important;
         }
+
+        .rd-productNoDetails-img {
+            max-width: 168px !important;
+            width: 168px !important;
+        }
+        .rd-productNoDetails td {
+            width: 168px !important;
+        }
+        .rd-comingSoon-img {
+            max-width: 300px !important;
+            width: 300px !important;
+        }
     }
     .product-row > td + td > table {
         margin-left: auto;
@@ -238,6 +250,19 @@
 .rd-product-img {
     max-width: 98%;
     width: 134px;
+}
+
+.rd-productNoDetails td {
+    width: 98px;
+}
+
+.rd-productNoDetails-img img {
+    object-fit: contain;
+}
+
+.rd-productNoDetails-img {
+    max-width: 98%;
+    width: 98px;
 }
 
 .rd-comingSoon-img img{

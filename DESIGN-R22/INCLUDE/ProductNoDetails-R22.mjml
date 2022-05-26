@@ -1,0 +1,15 @@
+<table class="rd-productNoDetails"> 
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img width="98" padding="0" class="rd-productNoDetails-img" src="[[this.item.imageUrl]]" style="width:98px; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+        </td>
+    </tr>
+</table>

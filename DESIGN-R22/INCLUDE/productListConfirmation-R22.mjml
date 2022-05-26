@@ -48,7 +48,7 @@
       <mj-table padding="16px 0 0">
         [[def "orderItemsMatrix" (matrix this.items 2)]]
         [[#each orderItemsMatrix]]
-          <tr>
+          <tr class="product-row">
             [[#each this]]
               <td style="padding-bottom: 24px;">
                 
