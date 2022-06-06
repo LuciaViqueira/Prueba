@@ -44,9 +44,9 @@
           <mj-table padding="16px 0 0">
             [[def "orderItemsMatrix" (matrix this.orderItems 3)]]
             [[#each orderItemsMatrix]]
-              <tr>
+              <tr class="rd-product-row">
                 [[#each this]]
-                  <td style="padding-bottom: 24px;">
+                  <td style="padding-bottom: 24px;" class="rd-product-col">
                     [[#if this.item]]
                       <mj-include path="ProductNoDetails-R22" />
                     [[else]]

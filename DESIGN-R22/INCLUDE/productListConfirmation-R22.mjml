@@ -50,10 +50,28 @@
         [[#each orderItemsMatrix]]
           <tr class="product-row">
             [[#each this]]
-              <td style="padding-bottom: 24px;">
-                
+              <td style="padding-bottom: 24px;" class="rd-product-col">
                   <mj-include path="ProductConfirmation-R22" />
-               
+              </td>
+            [[/each]]
+          </tr>
+        [[/each]]
+        [[def "giftCardsMatrix" (matrix this.items 2)]]
+        [[#each giftCardsMatrix]]
+          <tr class="product-row">
+            [[#each this]]
+              <td style="padding-bottom: 24px;" class="rd-product-col">
+                  <mj-include path="GiftCardConfirmation-R22" />
+              </td>
+            [[/each]]
+          </tr>
+        [[/each]]
+        [[def "virtualGiftCardsMatrix" (matrix this.virtualGiftCards 2)]]
+        [[#each virtualGiftCardsMatrix]]
+          <tr class="product-row">
+            [[#each this]]
+              <td style="padding-bottom: 24px;" class="rd-product-col">
+                  <mj-include path="GiftCardConfirmation-R22" />
               </td>
             [[/each]]
           </tr>

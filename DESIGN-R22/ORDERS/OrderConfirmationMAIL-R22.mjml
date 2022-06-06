@@ -3,7 +3,7 @@
     <mj-title>ZARA</mj-title>
     <mj-include path="styles-R22" />
   </mj-head>
-  <mj-body width="500px">
+  <mj-body width="535px">
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "showDeliveryInfo"]]true[[/assign]]
@@ -14,7 +14,7 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="43px" />
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
         <mj-text css-class="rd-title">
             [[tags.OrderConfirmationMAIL_title]]
         </mj-text>

@@ -29,35 +29,10 @@
 				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.ttf") format("truetype"),                 /* Safari, Android, iOS */
 				 url("https://static.zara.net/photos/contents/communication/NeueHelveticaforZara-LtCn.svg#{NeueHelveticaforZara-LtCn}") format("svg");          /* Legacy iOS */
   }
-    @media all and (min-width: 480px) {
-        .rd-product-img {
-            max-width: 208px !important;
-            width: 208px !important;
-        }
-        .rd-product td {
-            width: 208px !important;
-        }
-
-        .rd-productNoDetails-img {
-            max-width: 168px !important;
-            width: 168px !important;
-        }
-        .rd-productNoDetails td {
-            width: 168px !important;
-        }
-
-        .rd-comingSoonProduct .rd-comingSoonProductImgColumn {
-            width: 300px !important;
-        }
-
-        .rd-comingSoon-img {
-            max-width: 300px !important;
-            width: 300px !important;
-        }
-    }
-    .product-row > td + td > table {
+    td.rd-product-col + td.rd-product-col > table.rd-product {
         margin-left: auto;
     }
+
 </mj-style>
 <mj-style inline="inline">
 * {
@@ -136,7 +111,7 @@
 }
 
 .rd-text-info div {
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 18px !important;
     letter-spacing: 0.3px; 
 }
@@ -243,9 +218,12 @@
     text-align: left !important;
 }
 
+.rd-product {
+    width: 85%;
+}
 
 .rd-product td {
-    width: 134px;
+    width: 100%;
 }
 
 .rd-product-img img {
@@ -253,12 +231,16 @@
 }
 
 .rd-product-img {
-    max-width: 98%;
-    width: 134px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.rd-productNoDetails {
+    width: 85%;
 }
 
 .rd-productNoDetails td {
-    width: 98px;
+    width: 100%;
 }
 
 .rd-productNoDetails-img img {
@@ -266,8 +248,8 @@
 }
 
 .rd-productNoDetails-img {
-    max-width: 98%;
-    width: 98px;
+    max-width: 100%;
+    width: 100%;
 }
 
 .rd-comingSoonProduct .rd-comingSoonProductImgColumn {
