@@ -45,7 +45,7 @@
           [[/if]]
         </div>
       </mj-text>
-      <mj-table padding="16px 0 0">
+      <mj-table padding="16px 0 0" table-layout="fixed">
         [[def "orderItemsMatrix" (matrix this.items 2)]]
         [[#each orderItemsMatrix]]
           <tr class="product-row">
@@ -54,9 +54,12 @@
                   <mj-include path="ProductConfirmation-R22" />
               </td>
             [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
           </tr>
         [[/each]]
-        [[def "giftCardsMatrix" (matrix this.items 2)]]
+        [[def "giftCardsMatrix" (matrix this.giftCards 2)]]
         [[#each giftCardsMatrix]]
           <tr class="product-row">
             [[#each this]]
@@ -64,6 +67,9 @@
                   <mj-include path="GiftCardConfirmation-R22" />
               </td>
             [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
           </tr>
         [[/each]]
         [[def "virtualGiftCardsMatrix" (matrix this.virtualGiftCards 2)]]
@@ -74,6 +80,9 @@
                   <mj-include path="GiftCardConfirmation-R22" />
               </td>
             [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
           </tr>
         [[/each]]
       </mj-table>

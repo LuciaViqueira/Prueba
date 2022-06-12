@@ -63,7 +63,7 @@
           <table class="rd-footer-rrsss-link">
             <tr>
               <td>
-                <a href="https://zara.com" target="_blank">Tik Tok</a>
+                <a href="https://www.tiktok.com/@zara" target="_blank">Tik Tok</a>
               </td>
             </tr>
           </table>
@@ -117,7 +117,7 @@
     </mj-table>
 
     <mj-text padding-top="8px" font-weight="bold" css-class="rd-dowload-app">
-      [[tags.downloadAppText]]
+       <a href="https://www.zara.com/static/go/marketplaces.html" target="_blank">[[tags.downloadAppText]]</a>
     </mj-text>
   </mj-column>
 </mj-section>
