@@ -5,7 +5,7 @@
                 <table>
                     <tr>
                         <td style="padding: 0 0 8px;">
-                            <img padding="0" class="rd-productNoDetails-img" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
+                            <img padding="0" class="rd-productNoDetails-img" width="150" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
                         </td>
                     </tr>
                 </table>
