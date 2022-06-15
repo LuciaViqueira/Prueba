@@ -27,7 +27,7 @@
             border="1px solid #000000" 
             font-weight="bold" 
             text-transform="uppercase" 
-            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.order.identifier]]" >
           [[tags.OrderOnDeliveryV2MAIL_buttonTxt]]
         </mj-button>
         <mj-divider padding-top="20px" />
@@ -35,7 +35,7 @@
     </mj-section>
 
     <mj-raw>
-      [[#with payload.orders.[0] as | order |]]
+      [[#with payload.order as | order |]]
         [[#with order.suborders.[0].shipping as | shipping |]]
     </mj-raw>
       <mj-include path="shipping" />
