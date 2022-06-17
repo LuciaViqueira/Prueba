@@ -1,10 +1,21 @@
- <table class="rd-product"> 
+<table class="rd-product"> 
     <tr>
         <td style="padding: 0;" class="rd-subsection-text">
             [[#if this.item.imageUrl]]
                 <table>
                     <tr>
                         <td style="padding: 0 0 8px;">
+                            <div class="rd-container">
+                                
+                                <div class="rd-textAbove" style="width:8%; height:8%;">
+                                    [[#if usePreviousQuantity]]
+                                        [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+                                    [[else]]
+                                        [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                                    [[/if]]
+                                    [[templateQuantity]]
+                                </div>
+                            </div>
                             <img padding="0" class="rd-product-img" width="225" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
                         </td>
                     </tr>

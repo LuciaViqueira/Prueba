@@ -386,4 +386,16 @@
     margin: 20px 0 0;
 }
 
+.rd-container {
+    max-height:0;
+    position:relative;
+    opacity:0.999;
+}
+
+.rd-textAbove{
+    margin-top: 142%;
+    display:inline-block;
+    background-color: #FFFFFF;
+    text-align: center;
+}
 </mj-style>
