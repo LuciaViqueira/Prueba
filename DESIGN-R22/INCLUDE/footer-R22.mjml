@@ -68,24 +68,26 @@
             </tr>
           </table>
         </td>
-        <td>
-          <table class="rd-footer-rrsss-link">
-            <tr>
-              <td>
-                <a href="[[footer.instagramUrl]]" target="_blank">Instagram</a>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <table class="rd-footer-rrsss-link">
-            <tr>
-              <td>
-                <a href="[[footer.facebookUrl]]" target="_blank">Facebook</a>
-              </td>
-            </tr>
-          </table>
-        </td>
+        [[#not hiddenInRussia]]
+          <td>
+            <table class="rd-footer-rrsss-link">
+              <tr>
+                <td>
+                  <a href="[[footer.instagramUrl]]" target="_blank">Instagram</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table class="rd-footer-rrsss-link">
+              <tr>
+                <td>
+                  <a href="[[footer.facebookUrl]]" target="_blank">Facebook</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        [[/not]]
         <td>
           <table class="rd-footer-rrsss-link">
             <tr>
