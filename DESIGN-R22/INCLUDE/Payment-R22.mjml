@@ -11,6 +11,7 @@
   </mj-column>
 </mj-section>
 <mj-raw>
+[[#each this.itemsPayment]]
   [[#each this.payments]] 
     [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
     [[#each this.paymentDetails]]   
@@ -78,6 +79,7 @@
 <mj-raw>
     [[/each]]
   [[/each]]
+[[/each]]
   [[#with paymentBreakdown]]
 </mj-raw>
 <mj-section>

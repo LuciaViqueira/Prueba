@@ -69,7 +69,7 @@
     <mj-raw>
       [[#assign "orderNumItems"]][[payload.orders.[0].numItems]][[/assign]]
       [[#with payload]]
-        [[#with this.orders.[0].payments as | payments |]]
+        [[#with this.orders as | itemsPayment |]]
     </mj-raw>
     <!-- Sección 3 payment -->
       <mj-include path="Payment-R22" />
