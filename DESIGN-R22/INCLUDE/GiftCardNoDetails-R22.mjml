@@ -1,0 +1,15 @@
+<table class="rd-productNoDetails">  
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.giftCard.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img padding="0" class="rd-productNoDetails-img" width="150" src="[[this.giftCard.item.imageUrl]]" style="width:100%; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+        </td>
+    </tr>
+</table>

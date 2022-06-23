@@ -1,0 +1,107 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnTitle"]]true[[/assign]]
+      [[#assign "showMultiOrderId"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[tags.returnRequestDifferentOrders_acceptedRequestTitle]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+          [[tags.returnRequestDifferentOrders_orderNumberText]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 2 refundAddress -->
+    <mj-raw>
+      [[#if isHome]]
+        [[#assign "addressIdentifier"]] [[payload.address.identifier]] [[/assign]]
+        [[#neq addressIdentifier "0"]] [[#assign "addressIdentifierZERO"]]true[[/assign]][[/neq]]
+        [[#neq addressIdentifier "-1"]] [[#assign "addressIdentifierONE"]]true[[/assign]][[/neq]]
+        [[#and addressIdentifierZERO addressIdentifierONE]]
+          </mj-raw>
+            <mj-include path="refundAddress-R22" />
+          <mj-raw>
+        [[else]]
+          [[#if payload.address.address]]
+            </mj-raw>
+              <mj-include path="SODAddress-R22" />
+            <mj-raw>
+          [[/if]]
+        [[/and]]
+      [[/if]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+            [[#if isDropoff]]
+              <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+              [[#if payload.returnEntity.request.courier.name ]]
+                <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
+              [[/if]]
+            [[/if]]
+            [[#if payload.returnEntity.request.type]]
+              [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
+              [[#eq requestType "STORE_DROPOFF"]]
+                <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
+                <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
+              [[/eq]]
+            [[/if]]
+            [[#if isHome]]
+              <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
+            [[/if]] 
+          [[#if payload.returnEntity.request.returnCosts.[0]]]
+            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
+              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
+            [[/with]]
+          [[/if]]
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
+          [[/if]]
+        </mj-text>
+        <mj-raw>
+          [[#and isDropoff payload.returnEntity.request.courier.name]]
+        </mj-raw>
+        <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%" 
+            href="https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[requestId]]" >
+            [[tags.returnRequestDifferentOrders_buttonTxt]]
+        </mj-button>
+        <mj-raw>
+          [[/and]]
+        </mj-raw>
+      </mj-column>
+    </mj-section>
+
+
+    
+    
+    <!-- Sección 3 productsList -->
+    <mj-include path="productListConfirmation-R22" />
+
+    <!-- Sección 4 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

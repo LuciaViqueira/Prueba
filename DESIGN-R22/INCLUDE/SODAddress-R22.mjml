@@ -1,0 +1,44 @@
+<mj-section>
+  <mj-column padding-top="24px">
+    <mj-text css-class="rd-section-title">
+      [[#if checkinTitle]]
+        [[tags.refundAddress_addressTitleCheckin]]
+      [[else]]
+        [[tags.refundAddress_addressTitle]]
+      [[/if]]      
+    </mj-text>
+    <mj-text css-class="rd-subsection-text">
+      [[payload.user.name]] [[payload.user.surname]]<br/>
+      [[payload.address.address]]<br/>
+      [[#if payload.address.district.value]]
+        [[payload.address.district.value]] <br/>
+      [[/if]]
+    </mj-text>
+    <mj-text css-class="rd-subsection-text">
+      [[#if payload.address.postalCode]]
+        [[payload.address.postalCode]]
+      [[/if]]
+      [[#if payload.address.city.value]]
+        [[payload.address.city.value]]
+      [[/if]]
+      [[#if payload.address.state.value]]
+        [[payload.address.state.value]]
+      [[/if]]
+      [[#if payload.address.country.value]]
+        [[payload.address.country.value]]
+      [[/if]]
+    </mj-text>
+    <mj-text>
+      [[#if payload.user.phoneNumber]]
+        [[tags.refundAddress_phoneText]]:
+        [[payload.user.phoneNumber]]
+        <br/>
+      [[/if]]
+      [[#if payload.user.mobilePhoneNumber]]
+        [[tags.refundAddress_mobileText]]:
+        [[payload.user.mobilePhoneNumber]]
+      [[/if]]
+      <br/>
+    </mj-text>
+  </mj-column>
+</mj-section>

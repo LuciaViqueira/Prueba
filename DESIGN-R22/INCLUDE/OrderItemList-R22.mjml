@@ -1,0 +1,68 @@
+<mj-section>
+  <mj-column>
+    <mj-raw> 
+      [[#if showBlockTitle]]  <!-- Muestra el titulo del bloque -->
+    </mj-raw>
+      <mj-text css-class="rd-section-title" padding-top="64px">
+        [[#if returnOrderItemTitle]]
+          [[tags.OrderItemList_productListTitleReturnRequest]]
+        [[else]]
+          [[tags.OrderItemList_title]]
+        [[/if]]
+      </mj-text>
+    <mj-raw>
+    [[/if]]
+    </mj-raw>
+      <mj-text css-class="rd-subsection-text" padding-top="40px">
+        <div class="rd-light-font"> 
+          [[#if useTotalOrdersNumItems]]
+            [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+          [[else]]
+            [[#assign "orderNumItems"]] [[this.orders.[0].numItems]] [[/assign]]
+          [[/if]]
+          [[orderNumItems]]
+          [[#eq orderNumItems "1"]]
+            [[tags.OrderItemList_singleItemText]]
+          [[/eq]]
+          [[#neq orderNumItems "1"]]
+            [[tags.OrderItemList_multipleItemText]]
+          [[/neq]]
+        </div>   
+      </mj-text>
+    <mj-raw> 
+      [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
+      [[#each this.orders]]
+        [[#neq ordersSize "1"]]
+    </mj-raw>
+          <mj-text padding-top="8px" css-class="rd-subsection-text">
+              [[tags.OrderItemList_orderNumberTextR22]] [[this.identifier]]
+          </mj-text>
+      <mj-raw>
+        [[/neq]]
+        [[#each this.suborders]]
+      </mj-raw>
+          <mj-table padding="16px 0 0" table-layout="fixed">
+            [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
+            [[#each orderItemsMatrix]]
+              <tr class="rd-product-row">
+                [[#each this]]
+                  <td style="padding-bottom: 24px;" class="rd-product-col">
+                    [[#if this.item]]
+                      <mj-include path="Product-R22" />
+                    [[else]]
+                      <mj-include path="GiftCard-R22" />
+                    [[/if]]
+                  </td>
+                [[/each]]
+                [[#ifb (compare (length this) "==" 1)]]
+                  <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+                [[/ifb]]
+              </tr>
+            [[/each]]
+          </mj-table>
+      <mj-raw>
+        [[/each]]
+      [[/each]]
+      </mj-raw>
+  </mj-column>
+</mj-section>

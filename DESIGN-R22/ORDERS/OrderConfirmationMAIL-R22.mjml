@@ -1,0 +1,90 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showDeliveryInfo"]]true[[/assign]]
+      [[#assign "showDeliveryDate"]]true[[/assign]]
+      [[#assign "willReceiveTitle"]]true[[/assign]]
+      [[#assign "sendInfoTitle"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+            [[tags.OrderConfirmationMAIL_title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+            [[tags.OrderConfirmationMAIL_orderNumberText]]
+        </mj-text>
+       </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+    <mj-include path="shipping-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[tags.OrderConfirmationMAIL_notice]]
+        </mj-text>
+        <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+          [[tags.OrderConfirmationMAIL_buttonTxt]]
+        </mj-button>
+        <mj-text css-class="rd-text-info">
+          [[#if payload.orders.[0].hasGiftTicket]]
+              [[tags.OrderConfirmationMAIL_giftTicket]]
+          [[/if]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "orderNumItems"]][[payload.orders.[0].numItems]][[/assign]]
+      [[#with payload]]
+        [[#with this.orders as | itemsPayment |]]
+    </mj-raw>
+    <!-- Sección 3 payment -->
+      <mj-include path="Payment-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+
+  </mj-body>
+</mjml>
