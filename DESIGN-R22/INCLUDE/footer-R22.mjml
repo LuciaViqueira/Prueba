@@ -1,0 +1,125 @@
+<mj-section>
+  <mj-column padding="72px 0 100px">
+     <mj-raw>
+      [[#if showLegalFooter]]
+    </mj-raw> 
+      <mj-text css-class="rd-footer-legal-newsletter" color="#959595">
+          <p>[[tags.CheckInLegalFooter_legalText]]</p>
+      </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if onlyShowFooterStoreConfiguration]]
+    </mj-raw> 
+      <mj-text css-class="rd-footer-link">
+        <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
+      </mj-text>
+    <mj-raw>
+      [[else]]
+    </mj-raw>
+      <mj-text css-class="rd-footer-link">
+        <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
+      </mj-text>
+      <mj-raw>
+        [[#if notShowTermsConds]]
+        [[else]]
+      </mj-raw>
+          <mj-text css-class="rd-footer-link">
+            <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>      
+          </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[#if showGiftCardAndGiftTicketUrl]]
+      </mj-raw>
+        <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
+        <mj-text css-class="rd-footer-link">
+          <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+        </mj-text>
+        <mj-raw>
+          [[/if]]
+          [[#if returnInformation.isGiftTicket]]
+        </mj-raw>
+        <mj-text css-class="rd-footer-link">  
+          <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+        </mj-text>
+        <mj-raw>
+          [[/if]]
+          [[else]]
+          [[#if payload.orders.[0].hasGiftTicket]]
+        </mj-raw>
+        <mj-text css-class="rd-footer-link">  
+          <a href="[[footer.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+        </mj-text>
+        <mj-raw>[[/if]]</mj-raw>
+      <mj-raw>[[/if]]</mj-raw>
+      <mj-text css-class="rd-footer-link">
+        <a href="[[footer.policyUrl]]">[[tags.policyText]]</a>
+      </mj-text>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-table padding="28px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
+      <tr>
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="https://www.tiktok.com/@zara" target="_blank">Tik Tok</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+        [[#not hiddenInRussia]]
+          <td>
+            <table class="rd-footer-rrsss-link">
+              <tr>
+                <td>
+                  <a href="[[footer.instagramUrl]]" target="_blank">Instagram</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table class="rd-footer-rrsss-link">
+              <tr>
+                <td>
+                  <a href="[[footer.facebookUrl]]" target="_blank">Facebook</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        [[/not]]
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.twitterUrl]]" target="_blank">Twitter</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.pinterestUrl]]" target="_blank">Pinterest</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="rd-footer-rrsss-link">
+            <tr>
+              <td>
+                <a href="[[footer.youtubeUrl]]" target="_blank">Youtube</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </mj-table>
+
+    <mj-text padding-top="8px" font-weight="bold" css-class="rd-dowload-app">
+       <a href="https://www.zara.com/static/go/marketplaces.html" target="_blank">[[tags.downloadAppText]]</a>
+    </mj-text>
+  </mj-column>
+</mj-section>

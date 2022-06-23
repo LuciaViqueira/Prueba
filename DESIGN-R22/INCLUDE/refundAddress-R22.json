@@ -1,0 +1,24 @@
+{
+  "create": {
+    "name": "refundAddress-R22",
+    "body": "",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": [
+      "address.address",
+      "address.city",
+      "address.companyName",
+      "address.country",
+      "address.district",
+      "address.fullName",
+      "address.mobile",
+      "address.phone",
+      "address.state",
+      "address.zipCode"
+    ],
+    "blocks": []
+  },
+  "render": {}
+}

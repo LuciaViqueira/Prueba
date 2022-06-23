@@ -1,0 +1,76 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+ <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
+      [[#assign "showBlockTitle"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "showRefundPaymentTitle"]]true[[/assign]]
+      
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[tags.ReturnConfirmationV2MAIL_title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+          [[#if payload.returnInformation.uuid.prettyUuid]]
+            [[#assign "returnId"]][[payload.returnInformation.uuid.prettyUuid]][[/assign]]
+          [[else]]
+            [[#assign "returnId"]][[payload.returnInformation.uuid.uuid]][[/assign]]
+          [[/if]]
+          [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
+            [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
+          [[/neq]]
+          [[#and refundPaymentMethodNotGiftCard payload.returnInformation.refunds.[0].isRefundSupportedByGateway payload.returnInformation.refunds.[0].isAlreadyRefunded]]
+            <p>[[tags.ReturnConfirmationV2MAIL_alreadyRefundedInfoTitleMin]]</p>
+          [[else]]
+            <p>[[tags.ReturnConfirmationV2MAIL_refundInfoTitleMin]]</p>
+          [[/and]]
+          [[#eq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
+            <p>[[tags.ReturnConfirmationV2MAIL_refundGiftCardText]]</p>
+          [[else]]
+            [[#if payload.returnInformation.refunds.[0].isRefundSupportedByGateway]]
+              [[#if payload.returnInformation.refunds.[0].isAlreadyRefunded]]
+              [[else]]
+                <p>[[tags.ReturnConfirmationV2MAIL_refundSupportedByGatewayText]]</p>
+              [[/if]]
+            [[else]]
+              
+            [[/if]]
+          [[/eq]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 3 productsList -->
+    <mj-raw>
+      [[#with payload.returnInformation]]
+    </mj-raw>
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "orderNumItems"]][[payload.returnInformation.orders.[0].numItems]][[/assign]]
+      [[#with payload]]
+        [[#with this.returnInformation.refunds as | itemsPayment |]]
+    </mj-raw>
+      <mj-include path="Payment-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+    <!-- Sección 6 footer -->
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

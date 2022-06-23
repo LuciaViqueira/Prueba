@@ -1,0 +1,12 @@
+{
+  "create": {
+    "name": "ProductNoDetails-R22",
+    "body": "",
+    "version": "1",
+    "tags": [],
+    "channel": "MAIL",
+    "requiredParameters": [],
+    "optionalParameters": []
+  },
+  "render": {}
+}

@@ -1,0 +1,73 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+    
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
+        <mj-text css-class="rd-title">
+          [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
+            [[tags.OrderCancellationMAIL_titleStockOut]]
+          [[else]]
+            [[tags.OrderCancellationMAIL_title]]
+          [[/eq]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+            [[tags.OrderCancellationMAIL_orderNumberText]]
+        </mj-text>
+   
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#eq payload.orderCancellation.cancellationReason "CUSTOMER"]]
+             <p>[[tags.OrderCancellationMAIL_cancelText]]</p>
+          [[else]]
+            [[#eq payload.orderCancellation.cancellationReason "PAYMENT_REJECTED"]]
+              <p>[[tags.OrderCancellationMAIL_expiredPaymentMin]]</p>
+              <p>[[tags.OrderCancellationMAIL_expiredPayment2Min]]</p>
+            [[else]]
+              [[#eq payload.orderCancellation.cancellationReason "FRAUD_REJECTED"]]
+                <p>[[tags.OrderCancellationMAIL_fraud]]</p>
+                <p>[[tags.OrderCancellationMAIL_warnRU]]</p>
+                <p>[[tags.OrderCancellationMAIL_warnRU2]]</p>
+              [[else]]
+                [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
+                    <p>[[tags.OrderCancellationMAIL_helloText]]</p>
+                    <p>[[tags.OrderCancellationMAIL_apologyText1Min]]</p>
+                    <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                    <p>[[tags.OrderCancellationMAIL_apologyText3Min]]</p>
+                    <p>[[tags.OrderCancellationMAIL_zaraTeamMin]]</p> 
+                [[else]]
+                  <p>[[tags.OrderCancellationMAIL_backOffice]]</p>
+                  <p>[[tags.OrderCancellationMAIL_expiredPayment2Min]]</p>
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+          [[/eq]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.orderCancellation]]
+    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

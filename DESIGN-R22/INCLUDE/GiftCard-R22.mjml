@@ -1,0 +1,39 @@
+ <table class="rd-product">  
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.giftCard.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img padding="0" class="rd-product-img" width="225" src="[[this.giftCard.item.imageUrl]]" style="width:100%; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+            <div>
+                [[this.giftCard.message]]
+            </div>
+            <div>
+                [[#if this.giftCard.from]]
+                    <div><span style="text-transform: uppercase;">[[tags.OrderItemList_fromText]]:</span> [[this.giftCard.from]]</div>
+                [[/if]]
+                [[#eq this.giftCard.type "VIRTUAL"]]
+                    [[#if this.giftCard.receiverData.email]]
+                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
+                    [[/if]]
+                    [[#if this.giftCard.shippingDate]]
+                        <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.dateIso]] [[/epoch]]</div>
+                    [[/if]]
+                    [[#if this.giftCard.receiverData.phone]]
+                        <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
+                    [[/if]]
+                [[/eq]]
+            </div>
+            <div>
+                [[#with this.giftCard.item.amount]]
+                1 X [[currency this.value this.exponent this.currency this.humanReadableText]]
+                [[/with]]
+            </div>
+        </td>
+    </tr>
+</table>
