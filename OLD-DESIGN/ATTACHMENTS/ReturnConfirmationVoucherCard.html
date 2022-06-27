@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #container {
+                width:600px;
+                margin: 0 auto;
+                font-family: "custom-font";
+                font-size: 12px;
+                font-weight: bold;
+                padding: 20px;
+            }
+            @page {
+                size: 105mm 1000px;
+                border: 2px solid black;
+                border-radius: 55px;
+                padding-top: 120px;
+                margin: 10px 10px 10px 10px;
+                @top-center {
+                    content: element(pageHeader);
+                    display: block;
+                }
+            }
+            @font-face {
+                font-family: "custom-font";
+                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
+            }
+            #pageHeader{
+                position: running(pageHeader);
+                display: block;
+                width: 100%;
+                padding-top: 20px;
+            }
+            #pageBreak{
+                page-break-inside:avoid; 
+                page-break-after:auto;
+            }
+            table {
+                width: 100%;
+            }
+            .uppercase{
+                text-transform: uppercase;
+            }
+            .imgCenter {
+                display:block;
+                margin: auto;
+            }
+            .imgLeft {
+                display:block;
+                margin-right: auto;
+            }
+            .alignLeft {
+                text-align: left;
+            }
+            .alignRight {
+                text-align: right;
+            }
+            .font10px {
+                font-size: 10px; 
+            }
+            .borderPaddingBottom {
+                border-bottom: 1px solid grey;
+                padding-bottom: 20px;
+            }
+            .fontGrey {
+                color: grey;
+            }
+            .hrClass {
+                margin-bottom: 0px;
+                border-top: 2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"> 
+            <div id="pageHeader">
+                <table >
+                    <img class="imgCenter" width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
+                </table>
+                <hr class="hrClass">
+            </div>
+            <table style="padding-bottom:30px;">
+                <tr>
+                    <th class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_amount]]</th>
+                </tr>
+                <tr>
+                    <th class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_cardNumber]]</th>
+                    <th class="alignRight font10px">[[tags.ReturnConfirmationVoucherCard_cvv]]</th>
+                </tr>
+                <tr>
+                    <th class="alignRight uppercase">[[tags.ReturnConfirmationVoucherCard_expirationDate]] [[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th> 
+                </tr>
+            </table>
+            <img class="imgLeft" width="150px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnEntity.request.barCodeImage]]" style="padding-top:20px;" />
+            <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnConfirmationVoucherCard_legalText]]</p> 
+        </div>
+    </body>
+</html>
