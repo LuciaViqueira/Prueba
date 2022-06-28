@@ -95,6 +95,33 @@
     {
       display:block;
     }
+
+    .rd-unit-absolute {
+      max-height: 0;
+      position: relative;
+      opacity: 0.999;
+    }
+
+    .rd-unit-position {
+      margin-top: 135%;
+      padding-left: 4px;
+      padding-right: 4px;
+      display: inline-block;
+      text-align: center;
+      background-color: #FFFFFF;
+      font-size: 10px !important;
+      line-height: 21px !important;
+    }
+
+    .rd-unit-right-absolute {
+        text-align: right;
+    }
+
+    @media only screen and (min-width:430px) {
+      .rd-unit-position {
+        margin-top: 139%;
+      }
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
@@ -384,18 +411,5 @@
 .rd-address-sign-text p {
     text-transform: uppercase;
     margin: 20px 0 0;
-}
-
-.rd-container {
-    max-height:0;
-    position:relative;
-    opacity:0.999;
-}
-
-.rd-textAbove{
-    margin-top: 142%;
-    display:inline-block;
-    background-color: #FFFFFF;
-    text-align: center;
 }
 </mj-style>

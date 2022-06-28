@@ -1,14 +1,48 @@
-<table class="rd-productNoDetails"> 
+<table class="rd-productNoDetails">
     <tr>
         <td style="padding: 0;" class="rd-subsection-text">
             [[#if this.item.imageUrl]]
-                <table>
-                    <tr>
-                        <td style="padding: 0 0 8px;">
-                            <img padding="0" class="rd-productNoDetails-img" width="150" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
-                        </td>
-                    </tr>
-                </table>
+            <table>
+                <tr>
+                    <td style="padding: 0 0 8px;">
+                        [[#if usePreviousQuantity]]
+                            [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+                        [[else]]
+                            [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                        [[/if]]
+                        [[#ifb (compare templateQuantity "!=" 1)]]
+                        <div class="rd-unit-absolute">
+                            <!--[if mso]>
+                            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" stroked="false" style="height:28px; width:24px; position:absolute; top:215px;" >
+                            <v:textbox inset="0,0,0,0">
+                            <![endif]-->
+                            <div class="rd-unit-position">
+                                [[templateQuantity]]
+                            </div>
+                            <!--[if mso]>
+                            </v:textbox>
+                            </v:rect>
+                            <![endif]-->
+                        </div>
+                        [[/ifb]]
+                        [[#if this.item.size]]
+                        <div class="rd-unit-absolute rd-unit-right-absolute">
+                            <!--[if mso]>
+                            <div style="display:none">
+                            <![endif]-->
+                            <div class="rd-unit-position rd-unit-right-position">
+                                [[this.item.size]]
+                            </div>
+                            <!--[if mso]>
+                            </div>
+                            <![endif]-->
+                        </div>
+                        [[/if]]
+                        <img padding="0" class="rd-productNoDetails-img" width="150" src="[[this.item.imageUrl]]"
+                            style="width:100%; height:auto;" />
+                    </td>
+                </tr>
+            </table>
             [[/if]]
         </td>
     </tr>
