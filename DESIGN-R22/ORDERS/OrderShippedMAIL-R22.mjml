@@ -12,12 +12,17 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
-        <mj-text css-class="rd-title">
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
             [[tags.OrderShippedMAIL_title]]
         </mj-text>
-        <mj-text  padding-top="24px" css-class="rd-section-title">
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderShippedMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#eq payload.orders.[0].suborders.[0].shipping.mode "STORE"]]
+            <div>[[tags.OrderShippedMAIL_storeNoticeOfArrival]]</div>
+          [[/eq]]
         </mj-text>
        </mj-column>
     </mj-section>
@@ -34,11 +39,6 @@
 
     <mj-section>
       <mj-column>
-        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
-          [[#eq payload.orders.[0].suborders.[0].shipping.mode "STORE"]]
-            <div>[[tags.OrderShippedMAIL_storeNoticeOfArrival]]</div>
-          [[/eq]]
-        </mj-text>
         <mj-button css-class="rd-order-detail-btn" 
             background-color="#000000" 
             color="#FFFFFF" 
