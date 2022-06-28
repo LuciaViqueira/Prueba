@@ -7,8 +7,8 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
-        <mj-text css-class="rd-title">
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
           [[tags.comingSoonMail_Title]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-subsection-text-notUppercase">
