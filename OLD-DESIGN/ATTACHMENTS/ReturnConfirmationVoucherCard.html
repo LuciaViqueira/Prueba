@@ -81,18 +81,18 @@
             </div>
             <table style="padding-bottom:30px;">
                 <tr>
-                    <th class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_amount]] [[payload.returnInformation.refunds[0].total.value]]</th>
+                    <th class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_amount]] [[payload.returnInformation.refunds.[0].total.value]]</th>
                 </tr>
                 <tr>
-                    <th class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_cardNumber]]</th>
-                    <th class="alignRight font10px">[[tags.ReturnConfirmationVoucherCard_cvv]]</th>
+                    <td class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_cardNumber]] [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.last4]]</th>
+                    <td class="alignRight font10px">[[tags.ReturnConfirmationVoucherCard_cvv]] [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.cvv]]</th>
                 </tr>
                 <tr>
-                    <th class="alignRight uppercase">[[tags.ReturnConfirmationVoucherCard_expirationDate]] [[epoch payload.returnEntity.request.creationInstant "STORE" "SHORT"]]</th> 
+                    <th class="alignRight uppercase">[[tags.ReturnConfirmationVoucherCard_expirationDate]] [[epoch payload.returnInformation.refunds.[0].payments.[0].paymentDetails.expirationDate "STORE" "SHORT"]]</th> 
                 </tr>
             </table>
             <img class="imgLeft" width="150px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
-            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnEntity.request.barCodeImage]]" style="padding-top:20px;" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.barcode]]" style="padding-top:20px;" />
             <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnConfirmationVoucherCard_legalText]]</p> 
         </div>
     </body>
