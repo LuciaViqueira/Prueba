@@ -19,6 +19,7 @@
   "render": {
     "parameters": {
       "zaraLogo": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
+      "passRecoveryURL": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/logo_Zara_2019.png",
       "footer": {
         "appleStoreImg": "http://static.zara.net/wcsstore/ZaraStorefrontAssetStore/images/socialmedia/apple-store.png",
         "facebookUrl": "https://www.facebook.com/Zara",
