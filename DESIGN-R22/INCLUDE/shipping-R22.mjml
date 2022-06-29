@@ -6,35 +6,35 @@
       <mj-raw>
         [[#if returnShippingTitle]]
       </mj-raw>
-          <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold" align="center">
+          <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
             [[tags.shipping_returnShippingTitle]]:
           </mj-text>
         <mj-raw>
         [[else]]
           [[#if order.isFastSint]]
         </mj-raw>
-            <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold" align="center">
+            <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
               [[tags.shipping_fastSintTitle]]:
             </mj-text>
           <mj-raw>
           [[else]]
             [[#if checkinTitle]]
           </mj-raw>
-              <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold" align="center">
+              <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
                 [[tags.shipping_addressTitleCheckin]]
               </mj-text>
             <mj-raw>
             [[else]]
               [[#if newDirectionTitle]]
             </mj-raw>
-                <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold" align="center">
+                <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
                   [[tags.shipping_newDirectionTitle]]:
                 </mj-text>
               <mj-raw>
               [[else]]
                 [[#if willReceiveTitle]]
               </mj-raw>
-                  <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold" align="center">
+                  <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
                     [[tags.shipping_shippingWillReceive]]:
                   </mj-text>
       <mj-raw>
@@ -48,7 +48,7 @@
           [[#each order.suborders]]
             [[#and showDeliveryDate this.deliveryDate]]
       </mj-raw>
-      <mj-text css-class="rd-subsection-title" padding-bottom="32px" font-weight="bold" align="center">
+      <mj-text css-class="rd-subsection-title" padding-bottom="32px" font-weight="bold">
         [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
         [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
         [[readableDate minDeliveredDate maxDeliveredDate]]
