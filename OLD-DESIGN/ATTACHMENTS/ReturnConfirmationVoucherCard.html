@@ -3,10 +3,10 @@
     <head>
         <style>
             #container {
-                width:600px;
+                width:800px;
                 margin: 0 auto;
                 font-family: "custom-font";
-                font-size: 12px;
+                font-size: 10px;
                 font-weight: bold;
                 padding: 20px;
             }
@@ -35,9 +35,6 @@
                 page-break-inside:avoid; 
                 page-break-after:auto;
             }
-            table {
-                width: 100%;
-            }
             .uppercase{
                 text-transform: uppercase;
             }
@@ -55,8 +52,8 @@
             .alignRight {
                 text-align: right;
             }
-            .font10px {
-                font-size: 10px; 
+            .font10px{
+                font-size: 10px;
             }
             .borderPaddingBottom {
                 border-bottom: 1px solid grey;
@@ -74,26 +71,37 @@
     <body>
         <div id="container"> 
             <div id="pageHeader">
-                <table >
-                    <img class="imgCenter" width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <img class="imgCenter" width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
+                        </td>
+                    </tr>
+                    
                 </table>
                 <hr class="hrClass">
             </div>
-            <table style="padding-bottom:30px;">
+            <table style="padding: 30px 0; width: 50%;">
                 <tr>
-                    <th class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_amount]] [[payload.returnInformation.refunds.[0].total.value]]</th>
+                    <td class="alignLeft font10px"><b>[[tags.ReturnConfirmationVoucherCard_amount]]</b> [[currency payload.returnInformation.refunds.[0].total.value payload.returnInformation.refunds.[0].total.exponent payload.returnInformation.refunds.[0].total.currency payload.returnInformation.refunds.[0].total.humanReadableText]]</td>
                 </tr>
                 <tr>
-                    <td class="alignLeft font10px">[[tags.ReturnConfirmationVoucherCard_cardNumber]] [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.last4]]</th>
-                    <td class="alignRight font10px">[[tags.ReturnConfirmationVoucherCard_cvv]] [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.cvv]]</th>
+                    <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ReturnConfirmationVoucherCard_cardNumber]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].pan]]</th>
+                    <td class="font10px" style="padding-top: 4px;"><b>[[tags.ReturnConfirmationVoucherCard_cvv]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].cvv]]</th>
                 </tr>
                 <tr>
-                    <th class="alignRight uppercase">[[tags.ReturnConfirmationVoucherCard_expirationDate]] [[epoch payload.returnInformation.refunds.[0].payments.[0].paymentDetails.expirationDate "STORE" "SHORT"]]</th> 
+                    <td class="alignLeft font10px uppercase" style="padding-top: 4px;"><b>[[tags.ReturnConfirmationVoucherCard_expirationDate]]</b> [[epoch payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate "STORE" "SHORT"]]</th> 
                 </tr>
             </table>
-            <img class="imgLeft" width="150px" src="data:image/png;base64,[[payload.returnEntity.request.qrImage]]" />
-            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.barcode]]" style="padding-top:20px;" />
-            <p style="padding-top:20px; padding-bottom:20px;">[[tags.ReturnConfirmationVoucherCard_legalText]]</p> 
+            <img class="imgLeft" width="100px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].qrImage]]" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcodeImage]]" style="padding-top:20px;" />
+            <table style="padding-top: 20px; width: 62%; text-align: justify;">
+                <tr>
+                    <td>
+                        <p class="font10px">[[tags.ReturnConfirmationVoucherCard_legalText]]</p>
+                    </td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
