@@ -1,4 +1,4 @@
-<table class="rd-productNoDetails">  
+<table class="rd-productNoDetails" style="max-width: 150px;">
     <tr>
         <td style="padding: 0;" class="rd-subsection-text">
             [[#if this.giftCard.item.imageUrl]]
