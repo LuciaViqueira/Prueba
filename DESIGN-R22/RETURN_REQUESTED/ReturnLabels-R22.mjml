@@ -7,11 +7,11 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
-        <mj-text css-class="rd-title">
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
           [[tags.returnLabel_Title]]
         </mj-text>
-        <mj-text  padding-top="24px" css-class="rd-section-title">
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[#assign "orderIdsNumber"]]0[[/assign]]
             [[#each orderIdsList]]
               [[#assign "orderIdsNumber"]] [[#sum orderIdsNumber 1]] [[/sum]] [[/assign]]

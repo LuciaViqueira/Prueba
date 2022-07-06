@@ -12,12 +12,38 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
-        <mj-text css-class="rd-title">
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
           [[tags.returnRequestDifferentOrders_acceptedRequestTitle]]
         </mj-text>
-        <mj-text  padding-top="24px" css-class="rd-section-title">
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[tags.returnRequestDifferentOrders_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+            [[#if payload.returnEntity.request.courier.name ]]
+              <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
+            [[/if]]
+          [[/if]]
+          [[#if payload.returnEntity.request.type]]
+            [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
+            [[#eq requestType "STORE_DROPOFF"]]
+              <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
+              <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
+            [[/eq]]
+          [[/if]]
+          [[#if isHome]]
+            <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
+          [[/if]] 
+          [[#if payload.returnEntity.request.returnCosts.[0]]]
+            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
+              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
+            [[/with]]
+          [[/if]]
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
+          [[/if]]
         </mj-text>
       </mj-column>
     </mj-section>
@@ -44,36 +70,10 @@
 
     <mj-section>
       <mj-column>
-        <mj-text padding-top="24px" css-class="rd-text-info">
-            [[#if isDropoff]]
-              <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
-              [[#if payload.returnEntity.request.courier.name ]]
-                <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
-              [[/if]]
-            [[/if]]
-            [[#if payload.returnEntity.request.type]]
-              [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
-              [[#eq requestType "STORE_DROPOFF"]]
-                <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
-                <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
-              [[/eq]]
-            [[/if]]
-            [[#if isHome]]
-              <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
-            [[/if]] 
-          [[#if payload.returnEntity.request.returnCosts.[0]]]
-            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
-              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
-            [[/with]]
-          [[/if]]
-          [[#if isDropoff]]
-            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
-          [[/if]]
-        </mj-text>
         <mj-raw>
           [[#and isDropoff payload.returnEntity.request.courier.name]]
         </mj-raw>
-        <mj-button css-class="rd-order-detail-btn" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
@@ -88,9 +88,6 @@
         </mj-raw>
       </mj-column>
     </mj-section>
-
-
-    
     
     <!-- Sección 3 productsList -->
     <mj-include path="productListConfirmation-R22" />
