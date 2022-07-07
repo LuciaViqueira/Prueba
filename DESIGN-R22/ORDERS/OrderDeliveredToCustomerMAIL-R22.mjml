@@ -4,9 +4,9 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
-    <!-- Template configuration -->
+     <!-- Template configuration -->
     <mj-raw>
-      
+      [[#assign "hideInfoTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -18,24 +18,25 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderDeliveredToCustomerMAIL_orderNumberText]]
         </mj-text>
-      </mj-column>
-    </mj-section>
-
-        <mj-raw>
-          [[#with payload.orders.[0] as | order |]]
-            [[#with order.suborders.[0].shipping as | shipping |]]
-        </mj-raw>
-        <mj-include path="shipping-R22" />
-        <mj-raw>
-            [[/with]]
-          [[/with]]
-        </mj-raw>
-    <mj-section>
-      <mj-column>
-        <mj-text css-class="rd-text-info">
+         <mj-text padding-top="24px" css-class="rd-text-info">
           <p>¡[[tags.OrderDeliveredToCustomerMAIL_grateful]]!</p>
           <p>[[tags.OrderDeliveredToCustomerMAIL_notice]]</p>
         </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+    <mj-include path="shipping-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
         <mj-button css-class="rd-order-detail-btn" 
             background-color="#000000" 
             color="#FFFFFF" 
@@ -46,7 +47,6 @@
             href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.OrderDeliveredToCustomerMAIL_orderBtn]]
         </mj-button>
-        <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
     
