@@ -94,21 +94,14 @@
                 </mj-text>
               <mj-raw>
               [[else]]
-                [[#if sendInfoTitle]]
-              </mj-raw>
-              <!--
-                  <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
-                    [[tags.shipping_shippingInfoTitle]]:
-                  </mj-text>
-              -->
-                <mj-raw>
-                [[else]]
+                [[#ifb (not hideInfoTitle)]]
+
                 </mj-raw>
                   <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
                     [[tags.shipping_title]]:
                   </mj-text>
     <mj-raw>
-                 [[/if]] 
+                 [[/ifb]] 
               [[/if]]
             [[/if]]
           [[/if]]

@@ -7,7 +7,7 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "showDeliveryInfo"]]true[[/assign]]
-      [[#assign "sendInfoTitle"]]true[[/assign]]
+      [[#assign "hideInfoTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
