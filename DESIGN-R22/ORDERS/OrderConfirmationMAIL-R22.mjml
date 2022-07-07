@@ -9,7 +9,7 @@
       [[#assign "showDeliveryInfo"]]true[[/assign]]
       [[#assign "showDeliveryDate"]]true[[/assign]]
       [[#assign "willReceiveTitle"]]true[[/assign]]
-      [[#assign "sendInfoTitle"]]true[[/assign]]
+      [[#assign "hideInfoTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

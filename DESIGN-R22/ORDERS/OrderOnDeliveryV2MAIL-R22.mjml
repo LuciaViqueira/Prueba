@@ -6,7 +6,7 @@
   <mj-body width="535px">
     <!-- Template configuration -->
     <mj-raw>
-      
+      [[#assign "hideInfoTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -17,6 +17,9 @@
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderOnDeliveryV2MAIL_orderNumberText]]
+        </mj-text>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.OrderOnDeliveryV2MAIL_orderStatus]]</p>      
         </mj-text>
        </mj-column>
     </mj-section>
@@ -33,9 +36,6 @@
     
     <mj-section>
       <mj-column> 
-        <mj-text css-class="rd-text-info">
-          <p>[[tags.OrderOnDeliveryV2MAIL_orderStatus]]</p>      
-        </mj-text>
         <mj-button css-class="rd-order-detail-btn" 
             background-color="#000000" 
             color="#FFFFFF" 
