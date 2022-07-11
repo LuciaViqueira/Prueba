@@ -59,15 +59,17 @@
     </mj-raw>
     <mj-table padding="28px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
       <tr>
-        <td>
-          <table class="rd-footer-rrsss-link">
-            <tr>
-              <td>
-                <a href="https://www.tiktok.com/@zara" target="_blank">Tik Tok</a>
-              </td>
-            </tr>
-          </table>
-        </td>
+        [[#not hiddenTiktok]]
+          <td>
+            <table class="rd-footer-rrsss-link">
+              <tr>
+                <td>
+                  <a href="https://www.tiktok.com/@zara" target="_blank">Tik Tok</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        [[/not]]
         [[#not hiddenInRussia]]
           <td>
             <table class="rd-footer-rrsss-link">
