@@ -30,6 +30,12 @@
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.ticketless.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="footer-R22" />
   </mj-body>
 </mjml>

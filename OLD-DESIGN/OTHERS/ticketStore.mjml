@@ -22,6 +22,12 @@
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-section padding-top="41px" padding-bottom="125px">
       <mj-column>
         <mj-text padding-top="30px"> [[tags.downloadAppText]] </mj-text>
@@ -47,58 +53,60 @@
             <td align="center" class="social-links" style="font-size:0px;padding:24px 0 0;word-break:break-word;">
               <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">
                 <tr>
-                  <td>
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
-                      style="float:none;display:inline-table;">
-                      <tbody>
-                        <tr>
-                          <td style="padding:0 20px 0 20px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation"
-                              style="border-radius:0;width:20px;">
-                              <tbody>
-                                <tr>
-                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
-                                    <a href="https://www.instagram.com/zara/" target="_blank">
-                                      <img height="20"
-                                        src="http://static.zara.net/photos/contents/apps/icono_instagram.png"
-                                        style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
-                                        width="20">
-                                    </a>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  <td>
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
-                      style="float:none;display:inline-table;">
-                      <tbody>
-                        <tr>
-                          <td style="padding:0 20px 0 20px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation"
-                              style="border-radius:0;width:20px;">
-                              <tbody>
-                                <tr>
-                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
-                                    <a href="https://www.facebook.com/Zara" target="_blank">
-                                      <img height="20"
-                                        src="http://static.zara.net/photos/contents/apps/icono_facebook.png"
-                                        style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
-                                        width="20">
-                                    </a>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
+                  [[#not hiddenInRussia]]
+                    <td>
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                        style="float:none;display:inline-table;">
+                        <tbody>
+                          <tr>
+                            <td style="padding:0 20px 0 20px;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                style="border-radius:0;width:20px;">
+                                <tbody>
+                                  <tr>
+                                    <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
+                                      <a href="https://www.instagram.com/zara/" target="_blank">
+                                        <img height="20"
+                                          src="http://static.zara.net/photos/contents/apps/icono_instagram.png"
+                                          style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                          width="20">
+                                      </a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td>
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                        style="float:none;display:inline-table;">
+                        <tbody>
+                          <tr>
+                            <td style="padding:0 20px 0 20px;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                style="border-radius:0;width:20px;">
+                                <tbody>
+                                  <tr>
+                                    <td style="font-size:0;height:20px;vertical-align:middle;width:20px;">
+                                      <a href="https://www.facebook.com/Zara" target="_blank">
+                                        <img height="20"
+                                          src="http://static.zara.net/photos/contents/apps/icono_facebook.png"
+                                          style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                          width="20">
+                                      </a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  [[/not]]
                   <td>
                     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
                       style="float:none;display:inline-table;">
