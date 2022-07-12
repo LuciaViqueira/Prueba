@@ -37,7 +37,7 @@
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/eq]]
-      [[#ifb (or (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
     </mj-raw>
