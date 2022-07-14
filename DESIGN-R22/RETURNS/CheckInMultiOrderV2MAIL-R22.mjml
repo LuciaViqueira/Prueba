@@ -54,10 +54,14 @@
     
     <!-- Sección 4 footer -->
     <mj-raw>
-     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-       [[#eq storeLegacyValue  "11727"]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
     </mj-raw>
     <mj-include path="footer-R22" />
   </mj-body>
