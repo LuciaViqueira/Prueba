@@ -7,6 +7,8 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "showDeliveryInfo"]]true[[/assign]]
+      [[#assign "showDeliveryDate"]]true[[/assign]]
+      [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -79,6 +81,5 @@
       [[/ifb]]
     </mj-raw>
     <mj-include path="footer-R22" />
-
   </mj-body>
 </mjml>
