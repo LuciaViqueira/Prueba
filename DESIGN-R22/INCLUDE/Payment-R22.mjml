@@ -115,7 +115,8 @@
       [[/if]]
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.Payment_totalAmountText]]</td>
-        <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
+        [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
+        <td class="rd-payment-price">[[obj.main_amount]] / [[#each obj]][[#each this]][[this.amount]][[/each]][[/each]]</td> 
       </tr>
       <tr>
         <td colspan="2">
