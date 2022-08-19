@@ -29,8 +29,10 @@
             [[#if payload.returnEntity.request.type]]
               [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
               [[#eq requestType "STORE_DROPOFF"]]
-                <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
-                <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
+                [[#not payload.user.isGuest]]
+                  <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
+                  <p>[[tags.returnRequestDifferentOrders_returnQrText4]]</p>
+                [[/not]]
               [[/eq]]
             [[/if]]
             [[#if isHome]]
