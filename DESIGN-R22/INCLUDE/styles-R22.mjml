@@ -312,6 +312,14 @@
     text-transform: none;
     text-align: left !important;
 }
+.rd-payment-include-tax-label-right {
+    color: #666666;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    text-align: right !important;
+}
 
 .rd-product {
     width: 85%;
