@@ -11,7 +11,7 @@
         [[/if]]
       </mj-text>
     <mj-raw>
-    [[/if]]
+      [[/if]]
     </mj-raw>
       <mj-text css-class="rd-subsection-text" padding-top="40px">
         <div class="rd-light-font"> 
@@ -29,7 +29,19 @@
           [[/neq]]
         </div>   
       </mj-text>
+    <mj-raw>
+      [[#if showExchangeRate]]
+    </mj-raw>
+      <mj-text css-class="rd-subsection-text" padding-top="4px">
+        <div class="rd-light-font"> 
+          [[def "obj" (conversionRate this.orders.[0].suborders.[0].orderItems.[0].price.value this.orders.[0].suborders.[0].orderItems.[0].price.exponent this.orders.[0].suborders.[0].orderItems.[0].price.currency this.orders.[0].suborders.[0].orderItems.[0].price.humanReadableText)]]
+          [[#ifb (compare obj.converted_amounts "!=" "")]] 
+            [[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]
+          [[/ifb]]
+        </div>   
+      </mj-text>
     <mj-raw> 
+      [[/if]]
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
         [[#neq ordersSize "1"]]

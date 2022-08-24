@@ -14,7 +14,7 @@
 [[#each this.itemsPayment]]
   [[#each this.payments]] 
     [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
-    [[#each this.paymentDetails]]   
+    [[#each this.paymentDetails]] 
 </mj-raw>
 <mj-section padding-top="16px">
   <mj-column>
@@ -70,8 +70,9 @@
               <div> **** **** **** [[this.last4]]</div>
             [[/eq]]
           [[/if]]
-          <div>[[tags.Payment_totalAmountText]] [[currency this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText]]</div>
-        </td>
+          [[def "objPayment" (conversionRate this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText)]]
+          <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]][[#ifb (compare objPayment.converted_amounts "!=" "")]][[#each objPayment.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]</div>
+        </td>                                                                                                                                 
       </tr>
     </mj-table>
   </mj-column>
@@ -114,15 +115,17 @@
         </tr>
       [[/if]]
       <tr class="rd-payment-total rd-black-font">
-        <td>[[tags.Payment_totalAmountText]] - [[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
+        <td>[[tags.Payment_totalAmountText]]</td>
         [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
-        <td class="rd-payment-price">[[obj.main_amount]][[#ifb (orb (compare obj.converted_amounts "!=" ""))]] [[#each obj.converted_amounts]] / [[this.amount]][[/each]] [[/ifb]]</td> 
+        <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]</td> 
       </tr>
-      <tr>
-        <td colspan="2" class="rd-payment-include-tax-label-right">
-          <span>*1 EUR = 7.534</span>
-        </td>
-      </tr>
+      [[#ifb (compare obj.converted_amounts "!=" "")]] 
+        <tr>
+          <td colspan="2" class="rd-payment-include-tax-label-right">
+            <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]] </span>
+          </td>
+        </tr>
+      [[/ifb]]
       <tr>
         <td colspan="2">
           <span class="rd-payment-include-tax-label-left">*[[tags.Payment_includeTaxText]]</span>

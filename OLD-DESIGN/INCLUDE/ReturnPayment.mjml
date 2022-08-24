@@ -106,6 +106,13 @@
         <td>[[tags.returnPayment_totalAmountText]]</td>
         <td class="payment-price">-[[& returnInformation.total.humanReadableText]]</td>
       </tr>
+      [[#if showExchangeRate]] 
+        <tr>
+          <td class="payment-price" colspan="2">
+            <span class="payment-include-tax-label" style="text-transform: uppercase;">* 1 EUR = 7.53450 KN</span>
+          </td>
+        </tr>
+      [[/if]]
       <tr>
         <td class="payment-price" colspan="2">
           <span class="payment-include-tax-label">[[tags.returnPayment_includeTaxText]]</span>
