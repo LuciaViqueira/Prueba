@@ -87,7 +87,7 @@
         <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
         [[#if this.serviceCost]]
           [[def "objServiceCost" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
-          <div>[[tags.OrderItemList_customizationsPrice]]: [[objServiceCost.main_amount]][[#ifb (compare objServiceCost.converted_amounts "!=" "")]][[#each objServiceCost.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]</div>  
+          <div>[[tags.OrderItemList_customizationsPrice]]: [[objServiceCost.main_amount]][[#ifb (compare objServiceCost.converted_amounts "!=" "")]][[#each objServiceCost.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>  
         [[/if]]
     </mj-text>
     <mj-raw>
@@ -119,7 +119,7 @@
     </mj-raw>
     <mj-text css-class="product-price">
       [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
-      [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]
+      [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
     </mj-text>
     <mj-spacer height="50px" />
     <!------------ -->
@@ -166,7 +166,7 @@
     <mj-text css-class="product-price">
       [[#with this.giftCard.item.amount]]
         [[def "objGift" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
-        [[objGift.main_amount]][[#ifb (compare objGift.converted_amounts "!=" "")]][[#each objGift.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]
+        [[objGift.main_amount]][[#ifb (compare objGift.converted_amounts "!=" "")]][[#each objGift.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
       [[/with]]
     </mj-text>
     <mj-spacer height="50px" />

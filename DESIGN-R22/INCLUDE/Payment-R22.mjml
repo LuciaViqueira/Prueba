@@ -71,7 +71,7 @@
             [[/eq]]
           [[/if]]
           [[def "objPayment" (conversionRate this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText)]]
-          <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]][[#ifb (compare objPayment.converted_amounts "!=" "")]][[#each objPayment.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]</div>
+          <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]][[#ifb (compare objPayment.converted_amounts "!=" "")]][[#each objPayment.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
         </td>                                                                                                                                 
       </tr>
     </mj-table>
@@ -117,7 +117,7 @@
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.Payment_totalAmountText]]</td>
         [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
-        <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.amount]][[/each]][[/ifb]]</td> 
+        <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
       </tr>
       [[#ifb (compare obj.converted_amounts "!=" "")]] 
         <tr>
