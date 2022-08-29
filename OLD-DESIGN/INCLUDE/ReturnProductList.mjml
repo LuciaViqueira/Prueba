@@ -62,8 +62,7 @@
         <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
         <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
         [[#if this.serviceCost]]
-          [[def "objServiceCost" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
-          <div>[[tags.ReturnProductList_customizationsPrice]]: [[objServiceCost.main_amount]][[#ifb (compare objServiceCost.converted_amounts "!=" "")]][[#each objServiceCost.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>  
+          <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>  
         [[/if]]
     </mj-text>
     <mj-raw>
@@ -84,8 +83,7 @@
         [[/neq]]
     </mj-text>
     <mj-text css-class="product-price">
-      [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
-      -[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / -[[this.human_readable_amount]][[/each]][[/ifb]]
+      [[& this.price.humanReadableText]]
     </mj-text>
     <mj-spacer height="50px" />
     <!------------ -->
@@ -126,8 +124,7 @@
       [[tags.ReturnProductList_singleUnitText]]
     </mj-text>
     <mj-text css-class="product-price">
-      [[def "objGift" (conversionRate this.giftCard.amount.value this.giftCard.amount.exponent this.giftCard.amount.currency this.giftCard.amount.humanReadableText)]]
-      -[[objGift.main_amount]][[#ifb (compare objGift.converted_amounts "!=" "")]][[#each objGift.converted_amounts]] / -[[this.human_readable_amount]][[/each]][[/ifb]]
+      [[& this.giftCard.amount.humanReadableText]]
     </mj-text>
     <mj-spacer height="50px" />
     <mj-raw>

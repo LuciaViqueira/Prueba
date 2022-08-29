@@ -104,7 +104,7 @@
       [[/if]]
       <tr class="payment-total">
         <td>[[tags.returnPayment_totalAmountText]]</td>
-        <td class="payment-price">-[[& returnInformation.total.humanReadableText]]</td>
+        <td class="payment-price">[[& returnInformation.total.humanReadableText]]</td>
       </tr>
       [[#if showExchangeRate]] 
         <tr>
