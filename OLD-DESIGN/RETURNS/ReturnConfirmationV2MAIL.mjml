@@ -9,6 +9,7 @@
       [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
+      [[#assign "hiddenExchangeRateInProducts"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

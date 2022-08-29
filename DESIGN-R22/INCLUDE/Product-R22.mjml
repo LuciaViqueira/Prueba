@@ -33,7 +33,8 @@
                     [[tags.OrderItemList_multipleUnitsText]]
                     [[/neq]]
                 [[else]]
-                    [[templateQuantity]] X [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                    [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                    [[templateQuantity]] X [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                 [[/if]]
                 [[/if]]
             </div>
@@ -63,7 +64,8 @@
                     <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
                     <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
                     [[#if this.serviceCost]]
-                        <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                        [[def "obj" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
+                        <div>[[tags.OrderItemList_customizationsPrice]]: [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
                     [[/if]]
                 </mj-text>
                 [[/each]]
