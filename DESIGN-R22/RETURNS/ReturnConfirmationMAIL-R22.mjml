@@ -32,27 +32,34 @@
             <p>[[tags.ReturnConfirmation_refundInfoTitle]]</p>
           [[/and]]
           [[#eq returnInformation.refundPaymentMethod "GIFT_CARD"]]
-            <i>[[tags.ReturnConfirmation_refundGiftCardText]]</i>
+            <p>[[tags.ReturnConfirmation_refundGiftCardText]]</p>
           [[else]]
             [[#if returnInformation.isRefundSupportedByGateway]]
               [[#if returnInformation.isAlreadyRefunded]]
               [[else]]
-                <i>[[tags.ReturnConfirmation_refundSupportedByGatewayText]]</i>
+                <p>[[tags.ReturnConfirmation_refundSupportedByGatewayText]]</p>
               [[/if]]
             [[else]]
-              <i>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</i>
+              <p>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</p>
             [[/if]]
           [[/eq]]
         </mj-text>
       </mj-column>
     </mj-section>
-    <!-- Sección 5 productos -->
+    <!-- Sección 2 productos -->
     <mj-include path="ReturnProductList-R22" />
 
-    <!-- Sección 5 pago -->
-    [[#assign "orderNumItems"]][[returnInformation.orderList.[0].totalNumItems]][[/assign]]
+    <!-- Sección 3 pago -->
+    <mj-raw>
+      [[#assign "orderNumItems"]][[returnInformation.orderList.[0].totalNumItems]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11737"]]
+        [[#assign "showExchangeRate"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="ReturnPayment-R22" />
-    <!-- Sección 6 footer -->
+    
+    <!-- Sección 4 footer -->
     <mj-raw>
      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
        [[#eq storeLegacyValue  "11727"]]
@@ -62,4 +69,3 @@
     <mj-include path="footer-R22" />
   </mj-body>
 </mjml>
-

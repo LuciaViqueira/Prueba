@@ -16,11 +16,11 @@
             <div>
                 [[this.item.shortDescription]]
             </div>
-            <div>
+            <div style="color: #666666;">
                 [[this.item.color]] [[this.item.sku]]
             </div>
             <div style="padding-top: 16px">
-                [[this.quantity]] X [[this.price.humanReadableText]]  
+                [[this.quantity]] X [[& this.price.humanReadableText]]  
             </div>
             [[#if this.item.size]]
                 <div>[[this.item.size]]</div>
@@ -45,7 +45,7 @@
                     <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
                     <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
                     [[#if this.serviceCost]]
-                        <div>[[tags.ReturnProductList_customizationsPrice]]: [[this.serviceCost.humanReadableText]]</div>
+                        <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>
                     [[/if]]
                 </mj-text>
                 [[/each]]
