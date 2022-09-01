@@ -1,4 +1,4 @@
- <table class="rd-product">  
+<table class="rd-product">  
     <tr>
         <td style="padding: 0;" class="rd-subsection-text">
             [[#if this.giftCard.item.imageUrl]]
@@ -31,7 +31,8 @@
             </div>
             <div>
                 [[#with this.giftCard.item.amount]]
-                1 X [[currency this.value this.exponent this.currency this.humanReadableText]]
+                    [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
+                    1 X [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                 [[/with]]
             </div>
         </td>

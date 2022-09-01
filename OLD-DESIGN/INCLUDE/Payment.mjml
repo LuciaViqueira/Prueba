@@ -40,8 +40,9 @@
               [[/eq]]
             [[/if]]
             <br />
-            [[#neq numPayments "1"]]      
-              [[currency this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText]]
+            [[#neq numPayments "1"]] 
+              [[def "objPayments" (conversionRate this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText)]]
+              [[objPayments.main_amount]][[#ifb (compare objPayments.converted_amounts "!=" "")]][[#each objPayments.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
             [[/neq]]
           </p>
         [[/each]]
@@ -84,8 +85,16 @@
       
       <tr class="payment-total">
         <td>[[tags.Payment_totalAmountText]]</td>
-        <td class="payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
+        [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
+        <td class="payment-price">[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
       </tr>
+      [[#ifb (compare obj.converted_amounts "!=" "")]] 
+        <tr>
+          <td class="payment-price" colspan="2">
+            <span class="payment-include-tax-label" style="text-transform: uppercase;">[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]] </span>
+          </td>
+        </tr>
+      [[/ifb]]
       <tr>
         <td class="payment-price" colspan="2">
           <span class="payment-include-tax-label">[[tags.Payment_includeTaxText]]</span>

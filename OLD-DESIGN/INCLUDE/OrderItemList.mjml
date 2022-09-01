@@ -20,8 +20,13 @@
         [[#neq orderNumItems "1"]]
           [[tags.OrderItemList_multipleItemText]]
         [[/neq]]
+        [[#not hiddenExchangeRateInProducts]]
+          [[def "objExchangeRate" (conversionRate this.orders.[0].suborders.[0].orderItems.[0].price.value this.orders.[0].suborders.[0].orderItems.[0].price.exponent this.orders.[0].suborders.[0].orderItems.[0].price.currency this.orders.[0].suborders.[0].orderItems.[0].price.humanReadableText)]]
+          [[#ifb (compare objExchangeRate.converted_amounts "!=" "")]] 
+            [[#each objExchangeRate.converted_amounts]]<div>1 EUR = 7.53450 KN</div>[[/each]]
+          [[/ifb]]
+        [[/not]]
     </mj-text>
-
     <mj-raw>
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
@@ -81,7 +86,8 @@
         <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
         <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
         [[#if this.serviceCost]]
-          <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+          [[def "objServiceCost" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
+          <div>[[tags.OrderItemList_customizationsPrice]]: [[objServiceCost.main_amount]][[#ifb (compare objServiceCost.converted_amounts "!=" "")]][[#each objServiceCost.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>  
         [[/if]]
     </mj-text>
     <mj-raw>
@@ -112,7 +118,8 @@
       [[/if]]
     </mj-raw>
     <mj-text css-class="product-price">
-      [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+      [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+      [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
     </mj-text>
     <mj-spacer height="50px" />
     <!------------ -->
@@ -158,7 +165,8 @@
  
     <mj-text css-class="product-price">
       [[#with this.giftCard.item.amount]]
-        [[currency this.value this.exponent this.currency this.humanReadableText]]
+        [[def "objGift" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
+        [[objGift.main_amount]][[#ifb (compare objGift.converted_amounts "!=" "")]][[#each objGift.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
       [[/with]]
     </mj-text>
     <mj-spacer height="50px" />
