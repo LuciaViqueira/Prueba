@@ -1,0 +1,175 @@
+<mj-section>
+  <mj-column padding="8px 0 0 0">
+    <mj-divider padding-bottom="40px" />
+     <mj-text css-class="rd-section-title">
+      [[tags.returnPayment_title]]
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  [[#assign "orderReturnProducts"]][[returnInformation.orderList.[0]]][[/assign]]
+  [[#each returnInformation.orderList.[0].payment.paymentDetails]]
+</mj-raw>
+<mj-section padding-top="16px">
+  <mj-column>
+    <mj-table padding="0"> 
+      <tr>
+        <td style="width:60px;" >
+          [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
+          [[#eq paymentMethodIcon "1013"]]
+            <table>
+              <tr>
+                <td>
+                  <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/icon-payment-visa.jpg" style="width:60px; height:auto;"/> 
+                </td>
+              </tr>
+            </table> 
+          [[else]]
+            <table>
+              <tr>
+                <td>
+                  <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/Background.jpg" style="width:60px; height:auto;"/> 
+                </td>
+              </tr>
+            </table>
+          [[/eq]]
+        </td>
+        <td style="padding-left: 16px;" class="rd-text-info-small">
+          [[#if this.cardHolderName]]
+            <div>[[this.cardHolderName]]</div>
+          [[/if]]
+          [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
+          <div>
+            [[#eq paymentMethodIdString "1001"]]
+              VISA
+            [[else]]
+              [[#eq paymentMethodIdString "1002"]]
+                Mastercard
+              [[else]]
+                [[#eq paymentMethodIdString "1003"]]
+                  AMEX
+                [[else]]
+                  [[#eq paymentMethodIdString "1017"]]
+                    Paypal
+                  [[else]]
+                    [[this.paymentMethodDescription]]
+                  [[/eq]]
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+          </div>
+          [[#if this.last4]]
+            [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+            [[#eq last4Characters "4"]]
+              <div> **** **** **** [[this.last4]]</div>
+            [[/eq]]
+          [[/if]]
+          [[#assign "numPayments"]][[#size returnInformation.orderList.[0].payment.paymentDetails]][[/size]][[/assign]]
+          [[#neq numPayments 1]]      
+              <div>[[& this.amount.humanReadableText]]</div>
+          [[/neq]]
+        </td>
+      </tr>
+    </mj-table>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  [[/each]] 
+</mj-raw>            
+<mj-section>
+  <mj-column padding="28px 0 0 0">
+  <mj-divider padding-bottom="40px" />          
+    <mj-table css-class="rd-payment-table">
+      <tr class="rd-light-font">
+        <td>
+          [[orderNumItems]]
+          [[#eq orderNumItems "1"]]
+            [[tags.Payment_singleItemText]]
+          [[/eq]]
+          [[#neq orderNumItems "1"]]
+            [[tags.Payment_multipleItemText]] 
+          [[/neq]]
+        </td>
+        <td class="rd-payment-price">-[[& returnInformation.totalReturnedProductPrice.humanReadableText]]</td>
+      </tr>  
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "SHIPPING"]]
+          <tr class="rd-light-font">
+            <td>[[tags.returnPayment_shippingDisccountText]]</td>
+            <td class="rd-payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq]]
+      [[/each]]       
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "EMPLOYEE"]]
+          <tr class="rd-light-font">
+            <td>[[tags.returnPayment_employeeDisccountsText]]</td>
+            <td class="rd-payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq]]
+      [[/each]]
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "EMPLOYEE"]]
+          <tr class="rd-light-font">
+            <td>[[tags.returnPayment_employeeDisccountsText]]</td>
+            <td class="rd-payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq ]]
+      [[/each]]
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "TOTAL"]]
+          <tr class="rd-light-font">
+            <td>[[tags.returnPayment_disccountsText]]</td>
+            <td class="rd-payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq]]
+      [[/each]]
+      [[#if returnInformation.subtotal.humanReadableText]]
+        <tr class="rd-payment-total rd-black-font">
+          <td><strong>[[tags.returnPayment_subtotalText]]</strong></td>
+          <td class="rd-payment-price"><strong>-[[& returnInformation.subtotal.humanReadableText]]</strong></td>
+        </tr>
+      [[/if]]
+      [[#each returnInformation.orderList.[0].payment.vatDetails]]
+        [[#if this.amount.humanReadableText]]
+          <tr class="rd-light-font">
+            <td>[[this.type]] [[this.humanReadableText]] %</td>
+            <td class="rd-payment-price">-[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/if]]
+      [[/each]]
+      [[#if returnInformation.salesTax.humanReadableText]]
+        <tr class="rd-light-font">
+          <td>
+            <strong>[[tags.returnPayment_salesTaxText]]</strong>
+          </td>
+          <td class="rd-payment-price">
+            <strong>-[[& returnInformation.salesTax.humanReadableText]]</strong>
+          </td>
+        </tr>
+      [[/if]]
+      [[#if returnInformation.hasReturnCharges]]
+        <tr class="rd-light-font">
+          <td>[[tags.returnPayment_returnChargesText]]</td>
+          [[#assign "returnCostsEscaped"]][[& returnInformation.charges.humanReadableText]][[/assign]]
+          [[#assign "first"]][[substring returnCostsEscaped 0 1]][[/assign]]
+          [[#assign "returnCosts"]][[substring returnInformation.charges.humanReadableText 1]][[/assign]]
+          [[#eq first "-"]]
+            <td class="rd-payment-price">[[returnCosts]]</td>
+          [[else]]
+            <td class="rd-payment-price">[[& returnInformation.charges.humanReadableText]]</td>
+          [[/eq]]
+        </tr>
+      [[/if]]
+      <tr class="rd-payment-total rd-black-font">
+        <td>[[tags.returnPayment_totalAmountText]]</td>
+        <td class="rd-payment-price">[[& returnInformation.total.humanReadableText]]</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <span class="rd-payment-include-tax-label-left">*[[tags.returnPayment_includeTaxText]]</span>
+        </td>
+      </tr>  
+    </mj-table>
+  </mj-column>
+</mj-section>
