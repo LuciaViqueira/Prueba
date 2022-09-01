@@ -51,11 +51,16 @@
     <mj-include path="ReturnProductList" />
 
     <!-- Sección 5 pago -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11737"]]
+        [[#assign "showExchangeRate"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="ReturnPayment" />
     <!-- Sección 6 footer -->
     <mj-raw>
-     [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
-       [[#eq storeLegacyValue  "11727"]]
+      [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
       [[/eq]]
     </mj-raw>

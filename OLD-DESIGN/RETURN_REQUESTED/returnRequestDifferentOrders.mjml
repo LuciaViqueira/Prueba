@@ -42,6 +42,10 @@
             [[#with payload.returnEntity.request.returnCosts.[0].amount]]
               <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
             [[/with]]
+            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+            [[#eq storeLegacyValue  "11737"]]
+              <p>1 EUR = 7.53450 KN</p>
+            [[/eq]]
           [[/if]]
           [[#if isDropoff]]
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
