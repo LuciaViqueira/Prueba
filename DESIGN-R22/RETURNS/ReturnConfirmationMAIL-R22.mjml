@@ -1,0 +1,71 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+ <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.ReturnConfirmation_returnConfirmationTitle]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+        [[#assign "orderId"]][[returnInformation.orderList.[0].identifier]][[/assign]]
+        [[#eq orderId "-1"]]
+          [[#assign "orderId"]][[substring returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
+        [[/eq]]
+          [[tags.ReturnConfirmation_returnNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#neq returnInformation.refundPaymentMethod "GIFT_CARD"]]
+            [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
+          [[/neq]]
+          [[#and refundPaymentMethodNotGiftCard returnInformation.isRefundRupportedByGateway returnInformation.isAlreadyRefunded]]
+            <p>[[tags.ReturnConfirmation_alreadyRefundedInfoTitle]]</p>
+          [[else]]
+            <p>[[tags.ReturnConfirmation_refundInfoTitle]]</p>
+          [[/and]]
+          [[#eq returnInformation.refundPaymentMethod "GIFT_CARD"]]
+            <p>[[tags.ReturnConfirmation_refundGiftCardText]]</p>
+          [[else]]
+            [[#if returnInformation.isRefundSupportedByGateway]]
+              [[#if returnInformation.isAlreadyRefunded]]
+              [[else]]
+                <p>[[tags.ReturnConfirmation_refundSupportedByGatewayText]]</p>
+              [[/if]]
+            [[else]]
+              <p>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</p>
+            [[/if]]
+          [[/eq]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 productos -->
+    <mj-include path="ReturnProductList-R22" />
+
+    <!-- Sección 3 pago -->
+    <mj-raw>
+      [[#assign "orderNumItems"]][[returnInformation.orderList.[0].totalNumItems]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11737"]]
+        [[#assign "showExchangeRate"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="ReturnPayment-R22" />
+    
+    <!-- Sección 4 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
