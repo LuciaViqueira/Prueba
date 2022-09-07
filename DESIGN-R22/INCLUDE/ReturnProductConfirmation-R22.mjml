@@ -20,7 +20,7 @@
                 [[this.item.color]] [[this.item.sku]]
             </div>
             <div style="padding-top: 16px">
-                [[this.quantity]] X [[& this.price.humanReadableText]]  
+                [[this.quantity]] / [[& this.price.humanReadableText]]  
             </div>
             [[#if this.item.size]]
                 <div>[[this.item.size]]</div>

@@ -83,6 +83,7 @@
       [[tags.Payment_breakdown]]
     </mj-text>          
     <mj-table css-class="rd-payment-table">
+      [[#if returnInformation.totalReturnedProductPrice.humanReadableText]]
       <tr class="rd-light-font">
         <td>
           [[orderNumItems]]
@@ -94,7 +95,8 @@
           [[/neq]]
         </td>
         <td class="rd-payment-price">-[[& returnInformation.totalReturnedProductPrice.humanReadableText]]</td>
-      </tr>  
+      </tr>
+      [[/if]]
       [[#each returnInformation.orderList.[0].discount]]
         [[#eq this.discountType "SHIPPING"]]
           <tr class="rd-light-font">
