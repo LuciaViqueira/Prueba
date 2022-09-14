@@ -30,6 +30,9 @@
               [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
               [[#eq requestType "STORE_DROPOFF"]]
                 [[#not payload.user.isGuest]]
+                  [[#each payload.marketingInfo.universalLinks]]
+                    [[#ifb (andb (compare this.urlName "==" "ZaraIdQrLink") (compare this.urlValue "!=" ""))]][[#assign "urlValue"]][[this.urlValue]][[/assign]][[/ifb]]
+                  [[/each]]
                   <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
                   <p>[[tags.returnRequestDifferentOrders_returnQrText4]]</p>
                 [[/not]]
