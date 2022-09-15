@@ -4,11 +4,12 @@
       [[tags.productsList_returnDataTitle]]
     </mj-text>
     <mj-text css-class="product-counter" padding-bottom="50px">
-        [[rma.numProducts]]
-        [[#eq rma.numProducts 1]]
+        [[#assign "orderNumItems"]] [[rma.numProducts]] [[/assign]]
+        [[orderNumItems]]
+        [[#eq orderNumItems "1"]]
           [[tags.productsList_singleItemText]]
         [[/eq]]
-        [[#neq rma.numProducts 1]]
+        [[#neq orderNumItems "1"]]
           [[tags.productsList_multipleItemText]]
         [[/neq]]
     </mj-text>
