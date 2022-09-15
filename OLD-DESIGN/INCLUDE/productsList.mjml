@@ -38,13 +38,14 @@
       [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
     </mj-text>
     <mj-text css-class="product-unit">
-      [[this.units]]
+      [[#assign "templateQuantity"]] [[this.units]] [[/assign]]
+      [[templateQuantity]]
     </mj-text>
     <mj-text color="#959595" css-class="product-unit-label">
-      [[#eq this.units 1]]
+      [[#eq templateQuantity "1"]]
         [[tags.productsList_singleUnitText]]
       [[/eq]]
-      [[#neq this.units 1]]
+      [[#neq templateQuantity "1"]]
         [[tags.productsList_multipleUnitsText]]
       [[/neq]]
     </mj-text>
