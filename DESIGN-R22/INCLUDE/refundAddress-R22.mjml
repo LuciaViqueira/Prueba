@@ -22,17 +22,17 @@
     </mj-text>
     <mj-text css-class="rd-subsection-text">
       [[#if address.zipCode]]
-        [[address.zipCode]]
+        <div>[[address.zipCode]]</div>
       [[/if]]
       [[#if address.city]]
-        [[address.city]]
+        <div>[[address.city]]</div>
       [[/if]]
       [[#if address.state]]
-        [[address.state]]
+        <div>[[address.state]]</div>
       [[/if]]
-      [[address.country]]
+      <div>[[address.country]]</div>
     </mj-text>
-    <mj-text>
+    <mj-text css-class="rd-subsection-text">
       [[#if address.phone]]
         [[tags.refundAddress_phoneText]]:
         [[address.phone]]
