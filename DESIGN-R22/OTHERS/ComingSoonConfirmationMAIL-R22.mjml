@@ -14,12 +14,17 @@
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           [[tags.ComingSoonConfirmationMAIL_infoText]]
         </mj-text>
-        <mj-text css-class="rd-text-info">
-          [[payload.payload.item.shortDescription]] - [[payload.payload.item.size]] ([[payload.payload.item.colour]])
+        <mj-text css-class="rd-text-info" font-weight="bold" text-transform="uppercase">
+          [[payload.payload.item.shortDescription]] - [[tags.ComingSoonConfirmationMAIL_sizeText]] [[payload.payload.item.size]] ([[payload.payload.item.colour]])
         </mj-text>
-        <mj-text padding-top="10px" padding-bottom="10px" css-class="rd-text-info">
+        <mj-text padding-top="10px" css-class="rd-text-info">
           [[tags.ComingSoonConfirmationMAIL_preButtonText]]
         </mj-text>
+        <mj-raw>
+          [[#each payload.marketingInfo.universalLinks]]
+            [[#ifb (andb (compare this.urlName "==" "ComingSoonConfirmationLink") (compare this.urlValue "!=" ""))]][[#assign "buttonUrl"]][[this.urlValue]][[/assign]][[/ifb]]
+          [[/each]]
+        </mj-raw>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
@@ -27,7 +32,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[productUrl]]" >
+            href="[[buttonUrl]]" >
           [[tags.ComingSoonConfirmationMAIL_buttonTxt]]
         </mj-button>
       </mj-column>

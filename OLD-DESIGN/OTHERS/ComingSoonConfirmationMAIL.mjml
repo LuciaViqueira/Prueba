@@ -8,27 +8,33 @@
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
-        <mj-text css-class="rd-title" align="center">
-          [[tags.itemAvailable_Title]]
+        <mj-text css-class="section-title">
+          [[tags.ComingSoonConfirmationMAIL_title]]
         </mj-text>
-        <mj-text padding-top="23px"  css-class="header-text">
-          [[tags.ComingSoonConfirmationMAIL_infoText]]
+        <mj-text padding-top="37px"  css-class="header-text" text-transform="uppercase">
+          <p>[[tags.ComingSoonConfirmationMAIL_infoText]]</p>
         </mj-text>
-        <mj-text css-class="header-text">
-          [[payload.payload.item.shortDescription]] - [[payload.payload.item.size]] ([[payload.payload.item.colour]])
+        <mj-text css-class="header-text" text-transform="uppercase" font-weight="bold">
+          <p>[[payload.payload.item.shortDescription]] - [[tags.ComingSoonConfirmationMAIL_sizeText]] [[payload.payload.item.size]] ([[payload.payload.item.colour]])</p>
         </mj-text>
-        <mj-text css-class="header-text">
-          [[tags.ComingSoonConfirmationMAIL_preButtonText]]
+        <mj-text css-class="header-text" text-transform="uppercase">
+          <p>[[tags.ComingSoonConfirmationMAIL_preButtonText]]</p>
         </mj-text>
+        <mj-raw>
+          [[#each payload.marketingInfo.universalLinks]]
+            [[#ifb (andb (compare this.urlName "==" "ComingSoonConfirmationLink") (compare this.urlValue "!=" ""))]][[#assign "buttonUrl"]][[this.urlValue]][[/assign]][[/ifb]]
+          [[/each]]
+        </mj-raw>
         <mj-button css-class="order-detail-btn"  
             background-color="#FFFFFF" 
             color="#000000" 
             border="1px solid #000000" 
             font-weight="bold" 
             text-transform="uppercase"
-            href="[[productUrl]]" >
+            href="[[buttonUrl]]" >
           [[tags.ComingSoonConfirmationMAIL_buttonTxt]]
         </mj-button>
+        <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
