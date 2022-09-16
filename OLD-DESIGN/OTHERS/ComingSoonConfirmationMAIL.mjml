@@ -1,0 +1,43 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.itemAvailable_Title]]
+        </mj-text>
+        <mj-text padding-top="23px"  css-class="header-text">
+          [[tags.ComingSoonConfirmationMAIL_infoText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          [[payload.payload.item.shortDescription]] - [[payload.payload.item.size]] ([[payload.payload.item.colour]])
+        </mj-text>
+        <mj-text css-class="header-text">
+          [[tags.ComingSoonConfirmationMAIL_preButtonText]]
+        </mj-text>
+        <mj-button css-class="order-detail-btn"  
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase"
+            href="[[productUrl]]" >
+          [[tags.ComingSoonConfirmationMAIL_buttonTxt]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>

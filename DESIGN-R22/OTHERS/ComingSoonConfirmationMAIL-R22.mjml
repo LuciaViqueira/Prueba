@@ -14,8 +14,10 @@
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           [[tags.ComingSoonConfirmationMAIL_infoText]]
         </mj-text>
-
-        <mj-text padding-bottom="10px" css-class="rd-text-info">
+        <mj-text css-class="rd-text-info">
+          [[payload.payload.item.shortDescription]] - [[payload.payload.item.size]] ([[payload.payload.item.colour]])
+        </mj-text>
+        <mj-text padding-top="10px" padding-bottom="10px" css-class="rd-text-info">
           [[tags.ComingSoonConfirmationMAIL_preButtonText]]
         </mj-text>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
