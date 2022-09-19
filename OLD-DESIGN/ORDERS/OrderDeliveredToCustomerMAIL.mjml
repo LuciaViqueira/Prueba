@@ -60,6 +60,12 @@
       [[/with]]
     </mj-raw>
     
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="footer" />
   </mj-body>
 </mjml>

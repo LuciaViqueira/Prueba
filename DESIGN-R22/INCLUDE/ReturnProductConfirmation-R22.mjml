@@ -1,0 +1,55 @@
+<table class="rd-product"> 
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img padding="0" class="rd-product-img" width="225" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+            <div>
+                [[this.description]]
+            </div>
+            <div>
+                [[this.item.shortDescription]]
+            </div>
+            <div style="color: #666666;">
+                [[this.item.color]] [[this.item.sku]]
+            </div>
+            <div style="padding-top: 16px">
+                [[this.quantity]] / [[& this.price.humanReadableText]]  
+            </div>
+            [[#if this.item.size]]
+                <div>[[this.item.size]]</div>
+            [[/if]]
+            [[#if this.item.sizeDescription]]
+                <div>[[this.item.sizeDescription]]</div>
+            [[/if]]      
+            [[#if this.isPantone]]
+                <div class="rd-product-custom-warn">[[[tags.ReturnProductList_customizationsWarn]]</div>
+            [[/if]]
+            [[#if this.isCustom]]
+                <button class="rd-product-custom">
+                <span class="rd-product-custom-lbl">[[tags.ReturnProductList_customizationsButton]]</span>
+                </button>
+                <div class="rd-product-custom-warn">
+                [[tags.ReturnProductList_customizationsWarn]]
+                </div>
+                [[#each this.itemCustomizations]]
+                <mj-text align="left" padding="10px 0" css-class="rd-product-custom-table">
+                    <div>[[tags.ReturnProductList_customizationsText]]: [[this.embroideryText]]</div>
+                    <div>[[tags.ReturnProductList_customizationsArea]]: [[this.embroideryArea]]</div>
+                    <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
+                    <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
+                    [[#if this.serviceCost]]
+                        <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>
+                    [[/if]]
+                </mj-text>
+                [[/each]]
+            [[/if]]
+        </td>
+    </tr>
+</table>

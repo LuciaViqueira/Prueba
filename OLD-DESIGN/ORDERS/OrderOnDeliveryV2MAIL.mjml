@@ -6,7 +6,7 @@
   <mj-body width="854px">
     <!-- Template configuration -->
     <mj-raw>
-      
+    [[#assign "showShippingNumber"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -52,5 +52,3 @@
     <mj-include path="footer" />
   </mj-body>
 </mjml>
-
-    

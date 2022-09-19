@@ -9,6 +9,7 @@
       [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
+      [[#assign "hiddenExchangeRateInProducts"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -69,6 +70,12 @@
       [[/with]]
     </mj-raw>
     <!-- Sección 6 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
     <mj-include path="footer" />
   </mj-body>
 </mjml>

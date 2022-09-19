@@ -8,13 +8,11 @@
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
-        <mj-text css-class="section-title" padding-bottom="50px">
-          [[tags.AccountCancellationNoticeMAIL_title]]
+        <mj-text css-class="section-title">
+          [[tags.ResendZaraCardMAIL_title]]
         </mj-text>
-        <mj-text css-class="header-text">
-          <p>[[tags.AccountCancellationNoticeMAIL_lastAccessText]]</p>
-          <p>[[tags.AccountCancellationNoticeMAIL_warningText1]]</p>
-          <p>[[tags.AccountCancellationNoticeMAIL_nextNotification]]</p>
+        <mj-text padding-top="23px" css-class="header-text">
+          <p>[[tags.ResendZaraCardMAIL_text1]]</p>   
         </mj-text>
         <mj-divider padding-top="20px" />
       </mj-column>

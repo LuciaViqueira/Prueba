@@ -4,30 +4,34 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
-    <!-- Template configuration -->
-    <mj-raw>
-      [[#assign "notShowTermsConds"]]true[[/assign]]
-    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-            [[tags.passRecovery_passRecoveryTitle]]
+          [[tags.NewsletterSubscribe_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.passRecovery_passRecoveryLinkR22]]
+          [[tags.NewsletterSubscribe_text1]]
+          [[#each newsletter_newsletterData_sections]]
+            [[#if this]]
+              <div style="text-transform: uppercase; padding-top: 8px;"><strong>[[this]]</strong></div>
+            [[/if]]
+          [[/each]]
         </mj-text>
-        <mj-button css-class="rd-order-detail-btn-noPadBottom"
+        <mj-button css-class="rd-order-detail-btn"
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[passRecoveryURL]]" >
-          [[tags.passRecovery_buttonTxt]]
+            href="[[newsletter_newsletterData_confirmUrl]]">
+          [[tags.NewsletterSubscribe_subscribeBtn]]
         </mj-button>
+        <mj-text css-class="rd-text-info">
+          [[tags.NewsletterSubscribe_privacyWarn]]
+        </mj-text>
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->

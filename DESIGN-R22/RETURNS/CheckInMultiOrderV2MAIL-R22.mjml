@@ -19,16 +19,20 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" />
-        <mj-text css-class="rd-title">
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
           [[tags.CheckInMultiOrderV2MAIL_CheckinConfirmationTitle]]
         </mj-text>
-        <mj-text  padding-top="24px" css-class="rd-section-title">
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[tags.CheckInMultiOrderV2MAIL_checkinNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[tags.CheckInMultiOrderV2MAIL_checkinDetailsMin]]
         </mj-text>
       </mj-column>
     </mj-section>
 
+  <!-- Sección 2 shipping -->
     <mj-raw>
       [[#with payload.balancedCheckIn.orders.[0] as | order |]]
         [[#with order.suborders.[0].shipping as | shipping |]]
@@ -39,15 +43,6 @@
       [[/with]]
     </mj-raw>
 
-    <mj-section>
-      <mj-column>
-        <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.CheckInMultiOrderV2MAIL_checkinDetailsMin]]
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
-    
     <!-- Sección 3 productsList -->
     <mj-raw>
       [[#with payload.balancedCheckIn]]
@@ -57,12 +52,16 @@
       [[/with]]
     </mj-raw>
     
-    <!-- Sección 5 footer -->
+    <!-- Sección 4 footer -->
     <mj-raw>
-     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-       [[#eq storeLegacyValue  "11727"]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
     </mj-raw>
     <mj-include path="footer-R22" />
   </mj-body>
