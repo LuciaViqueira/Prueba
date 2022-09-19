@@ -1,31 +1,48 @@
 <mj-section>
-  <mj-column padding-top="24px">
+  <mj-column padding-top="24px" >
     <mj-raw>
     [[#if showDeliveryInfo]]
     </mj-raw>
-      <mj-text css-class="rd-subsection-title-small" padding-bottom="8px">
+      <mj-raw>
         [[#if returnShippingTitle]]
-          [[tags.shipping_returnShippingTitle]]:
+      </mj-raw>
+          <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+            [[tags.shipping_returnShippingTitle]]:
+          </mj-text>
+        <mj-raw>
         [[else]]
           [[#if order.isFastSint]]
-            [[tags.shipping_fastSintTitle]]:
+        </mj-raw>
+            <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+              [[tags.shipping_fastSintTitle]]:
+            </mj-text>
+          <mj-raw>
           [[else]]
             [[#if checkinTitle]]
-              [[tags.shipping_addressTitleCheckin]]
+          </mj-raw>
+              <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                [[tags.shipping_addressTitleCheckin]]
+              </mj-text>
+            <mj-raw>
             [[else]]
               [[#if newDirectionTitle]]
-                [[tags.shipping_newDirectionTitle]]:
+            </mj-raw>
+                <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                  [[tags.shipping_newDirectionTitle]]:
+                </mj-text>
+              <mj-raw>
               [[else]]
                 [[#if willReceiveTitle]]
-                  [[tags.shipping_shippingWillReceive]]:
+              </mj-raw>
+                  <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                    [[tags.shipping_shippingWillReceive]]:
+                  </mj-text>
+      <mj-raw>
                 [[/if]]  
               [[/if]]
             [[/if]]
           [[/if]]
         [[/if]]
-      </mj-text>
-
-      <mj-raw>
         [[#if hideTimeMethodInfo]]
         [[else]]
           [[#each order.suborders]]
@@ -42,36 +59,57 @@
       [[/if]]
     [[else]]
     [[/if]]
-    </mj-raw>
-
-    <mj-text padding-top="0" css-class="rd-section-title">
       [[#if returnShippingTitle]]
-        [[tags.shipping_returnShippingTitle]]:
+    </mj-raw>
+        <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+          [[tags.shipping_returnShippingTitle]]:
+        </mj-text>
+      <mj-raw>
       [[else]]
         [[#if order.isFastSint]]
-          [[tags.shipping_fastSintTitle]]:
+      </mj-raw>
+          <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+            [[tags.shipping_fastSintTitle]]:
+          </mj-text>
+        <mj-raw>
         [[else]]
           [[#if checkinTitle]]
-            [[tags.shipping_addressTitleCheckin]]
+        </mj-raw>
+            <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+              [[tags.shipping_addressTitleCheckin]]
+            </mj-text>
+          <mj-raw>
           [[else]]
             [[#if newDirectionTitle]]
-              [[tags.shipping_newDirectionTitle]]:
+          </mj-raw>
+              <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+                [[tags.shipping_newDirectionTitle]]:
+              </mj-text>
+            <mj-raw>
             [[else]]
               [[#if pickupTitle]]
-                [[tags.shipping_pickupInfoTitle]]:
+            </mj-raw>
+                <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+                  [[tags.shipping_pickupInfoTitle]]:
+                </mj-text>
+              <mj-raw>
               [[else]]
-                [[#if sendInfoTitle]]
-                  [[tags.shipping_shippingInfoTitle]]:
-                [[else]]
-                  [[tags.shipping_title]]:
-                 [[/if]] 
+                [[#ifb (not hideInfoTitle)]]
+
+                </mj-raw>
+                  <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+                    [[tags.shipping_title]]:
+                  </mj-text>
+    <mj-raw>
+                 [[/ifb]] 
               [[/if]]
             [[/if]]
           [[/if]]
         [[/if]]
       [[/if]]
-    </mj-text>
-    <mj-text padding-top="8px" font-weight="bold" css-class="rd-subsection-text-light">
+    </mj-raw>
+    
+    <mj-text font-weight="bold" css-class="rd-subsection-text-light">
       <!-- ShippingMethod -->
           [[#eq this.shipping.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]

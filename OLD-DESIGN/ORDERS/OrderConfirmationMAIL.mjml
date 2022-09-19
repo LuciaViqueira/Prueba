@@ -7,6 +7,7 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "showDeliveryDate"]]true[[/assign]]
+      [[#assign "hiddenExchangeRateInProducts"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

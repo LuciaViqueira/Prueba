@@ -1,0 +1,42 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="rd-section-title" padding-top="64px">
+      [[tags.ReturnProductList_title]]
+    </mj-text>
+    <mj-text padding-top="46px" css-class="rd-subsection-text">
+        [[returnInformation.orderList.[0].totalNumItems]]
+        [[#eq returnInformation.orderList.[0].totalNumItems "1"]]
+          [[tags.ReturnProductList_singleItemText]]
+        [[/eq]]
+        [[#neq returnInformation.orderList.[0].totalNumItems "1"]]
+          [[tags.ReturnProductList_multipleItemText]]
+        [[/neq]]
+    </mj-text>
+
+    <mj-raw>
+      [[#each returnInformation.orderList]]
+    </mj-raw>
+      <mj-table padding="16px 0 0" table-layout="fixed">
+        [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
+        [[#each orderItemsMatrix]]
+          <tr class="product-row">
+            [[#each this]]
+              <td style="padding-bottom: 24px;" class="rd-product-col">
+                [[#if this.item]]
+                  <mj-include path="ReturnProductConfirmation-R22" />
+                [[else]]
+                  <mj-include path="ReturnGiftCardConfirmation-R22" />
+                [[/if]]
+              </td>
+            [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
+          </tr>
+        [[/each]]
+      </mj-table>   
+    <mj-raw>
+      [[/each]]
+    </mj-raw>    
+  </mj-column>
+</mj-section>

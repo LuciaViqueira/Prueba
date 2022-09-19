@@ -62,7 +62,7 @@
         <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
         <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
         [[#if this.serviceCost]]
-          <div>[[tags.ReturnProductList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+          <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>  
         [[/if]]
     </mj-text>
     <mj-raw>
@@ -83,7 +83,7 @@
         [[/neq]]
     </mj-text>
     <mj-text css-class="product-price">
-      -[[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+      [[& this.price.humanReadableText]]
     </mj-text>
     <mj-spacer height="50px" />
     <!------------ -->
@@ -124,7 +124,7 @@
       [[tags.ReturnProductList_singleUnitText]]
     </mj-text>
     <mj-text css-class="product-price">
-      -[[currency this.giftCard.amount.value this.giftCard.amount.exponent this.giftCard.amount.currency this.giftCard.amount.humanReadableText]]
+      [[& this.giftCard.amount.humanReadableText]]
     </mj-text>
     <mj-spacer height="50px" />
     <mj-raw>

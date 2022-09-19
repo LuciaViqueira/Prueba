@@ -4,19 +4,15 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
-    <!-- Template configuration -->
-    <mj-raw>
-      [[#assign "notShowTermsConds"]]true[[/assign]]
-    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-            [[tags.passRecovery_passRecoveryTitle]]
+           [[tags.NewsletterUnsubscribe_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.passRecovery_passRecoveryLinkR22]]
+          [[tags.NewsletterUnsubscribe_text1]]
         </mj-text>
         <mj-button css-class="rd-order-detail-btn-noPadBottom"
             background-color="#000000" 
@@ -25,8 +21,8 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[passRecoveryURL]]" >
-          [[tags.passRecovery_buttonTxt]]
+            href="[[newsletter_newsletterData_confirmUrl]]">
+          [[tags.NewsletterUnsubscribe_unsubscribeBtn]]
         </mj-button>
       </mj-column>
     </mj-section>

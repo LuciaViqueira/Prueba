@@ -29,8 +29,13 @@
             [[#if payload.returnEntity.request.type]]
               [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
               [[#eq requestType "STORE_DROPOFF"]]
-                <p>[[tags.returnRequestDifferentOrders_returnQrText1]]</p>
-                <p>[[tags.returnRequestDifferentOrders_returnQrText2]]</p>
+                [[#not payload.user.isGuest]]
+                  [[#each payload.marketingInfo.universalLinks]]
+                    [[#ifb (andb (compare this.urlName "==" "ZaraIdQrLink") (compare this.urlValue "!=" ""))]][[#assign "urlValue"]][[this.urlValue]][[/assign]][[/ifb]]
+                  [[/each]]
+                  <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
+                  <p>[[tags.returnRequestDifferentOrders_returnQrText4]]</p>
+                [[/not]]
               [[/eq]]
             [[/if]]
             [[#if isHome]]
@@ -40,6 +45,10 @@
             [[#with payload.returnEntity.request.returnCosts.[0].amount]]
               <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
             [[/with]]
+            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+            [[#eq storeLegacyValue  "11737"]]
+              <p>1 EUR = 7.53450 KN</p>
+            [[/eq]]
           [[/if]]
           [[#if isDropoff]]
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
