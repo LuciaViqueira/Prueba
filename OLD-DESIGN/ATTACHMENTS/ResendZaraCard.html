@@ -83,14 +83,23 @@
             </div>
             <table style="padding: 30px 0; width: 50%;">
                 <tr>
-                    <td class="alignLeft font10px"><b>[[tags.ReturnConfirmationVoucherCard_amount]]</b> [[currency payload.returnInformation.refunds.[0].total.value payload.returnInformation.refunds.[0].total.exponent payload.returnInformation.refunds.[0].total.currency payload.returnInformation.refunds.[0].total.humanReadableText]]</td>
+                    <td class="alignLeft font10px"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.returnInformation.refunds.[0].total.value payload.returnInformation.refunds.[0].total.exponent payload.returnInformation.refunds.[0].total.currency payload.returnInformation.refunds.[0].total.humanReadableText]]</td>
                 </tr>
                 <tr>
-                    <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ReturnConfirmationVoucherCard_cardNumber]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].pan]]</th>
-                    <td class="font10px" style="padding-top: 4px;"><b>[[tags.ReturnConfirmationVoucherCard_cvv]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].cvv]]</th>
+                    <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].pan]]</td>
+                    <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].cvv]]</td>
                 </tr>
+                [[#assign "expirationDate"]][[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate]][[/assign]]
                 <tr>
-                    <td class="alignLeft font10px uppercase" style="padding-top: 4px;"><b>[[tags.ReturnConfirmationVoucherCard_expirationDate]]</b> [[epoch payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate "STORE" "SHORT"]]</th> 
+                    [[#if expirationDate]]
+                        <td class="alignLeft font10px uppercase" style="padding-top: 4px;">
+                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[epoch expirationDate "STORE" "SHORT"]]
+                        </td>
+                    [[else]]
+                        <td class="alignLeft font10px" style="padding-top: 4px;">
+                            <b>[[tags.ResendZaraCard_noExpirationDate]]</b>
+                        </td>
+                    [[/if]]
                 </tr>
             </table>
             <img class="imgLeft" width="100px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].qrImage]]" />
@@ -98,7 +107,7 @@
             <table style="padding-top: 20px; width: 62%; text-align: justify;">
                 <tr>
                     <td>
-                        <p class="font10px">[[tags.ReturnConfirmationVoucherCard_legalText]]</p>
+                        <p class="font10px">[[tags.ResendZaraCard_legalTextVoucher]]</p>
                     </td>
                 </tr>
             </table>
