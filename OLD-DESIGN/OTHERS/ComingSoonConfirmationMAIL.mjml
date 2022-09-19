@@ -15,7 +15,7 @@
           <p>[[tags.ComingSoonConfirmationMAIL_infoText]]</p>
         </mj-text>
         <mj-text css-class="header-text" text-transform="uppercase" font-weight="bold">
-          <p>[[payload.payload.item.shortDescription]] - [[tags.ComingSoonConfirmationMAIL_sizeText]] [[payload.payload.item.size]] ([[payload.payload.item.colour]])</p>
+          <p>[[payload.item.shortDescription]] - [[tags.ComingSoonConfirmationMAIL_sizeText]] [[payload.item.size]] ([[payload.item.colour]])</p>
         </mj-text>
         <mj-text css-class="header-text" text-transform="uppercase">
           <p>[[tags.ComingSoonConfirmationMAIL_preButtonText]]</p>
