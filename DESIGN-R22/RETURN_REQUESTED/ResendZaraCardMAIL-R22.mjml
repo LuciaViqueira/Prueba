@@ -9,10 +9,10 @@
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[tags.SendVoucherCardMAIL_title]]
+          [[tags.ResendZaraCardMAIL_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-            <p>[[tags.SendVoucherCardMAIL_text1]]</p>
+            <p>[[tags.ResendZaraCardMAIL_text1]]</p>
         </mj-text>
       </mj-column>
     </mj-section>
