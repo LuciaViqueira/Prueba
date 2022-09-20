@@ -15,13 +15,13 @@
           [[tags.ComingSoonConfirmationMAIL_infoText]]
         </mj-text>
         <mj-text css-class="rd-text-info" font-weight="bold" text-transform="uppercase">
-          [[payload.item.shortDescription]] - [[tags.ComingSoonConfirmationMAIL_sizeText]] [[payload.item.size]] ([[payload.item.colour]])
+          [[payload.item.shortDescription]] - [[payload.item.size]][[#ifb (compare payload.item.colour "!=" "")]] ([[payload.item.colour]])[[/ifb]]
         </mj-text>
         <mj-text padding-top="10px" css-class="rd-text-info">
           [[tags.ComingSoonConfirmationMAIL_preButtonText]]
         </mj-text>
         <mj-raw>
-          [[#each payload.marketingInfo.universalLinks]]
+          [[#each payload.marketingInformation.universalLinks]]
             [[#ifb (andb (compare this.urlName "==" "ComingSoonConfirmationLink") (compare this.urlValue "!=" ""))]][[#assign "buttonUrl"]][[this.urlValue]][[/assign]][[/ifb]]
           [[/each]]
         </mj-raw>
