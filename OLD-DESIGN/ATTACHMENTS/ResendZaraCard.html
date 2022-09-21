@@ -106,9 +106,17 @@
             <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcodeImage]]" style="padding-top:20px;" />
             <table style="padding-top: 20px; width: 62%; text-align: justify;">
                 <tr>
-                    <td>
-                        <p class="font10px">[[tags.ResendZaraCard_legalTextVoucher]]</p>
-                    </td>
+                    [[#ifb (compare payload.payments.[0].paymentDetails.[0].type "==" "TA")]]
+                        <td>
+                            <p class="font10px">[[tags.ResendZaraCard_legalTextVoucher]]</p>
+                        </td>
+                    [[else]]
+                        [[#ifb (compare payload.payments.[0].paymentDetails.[0].type "==" "TRV")]]
+                            <td>
+                                <p class="font10px">[[tags.ResendZaraCard_legalTextGifted]]</p>
+                            </td>
+                        [[/ifb]]
+                    [[/ifb]]
                 </tr>
             </table>
         </div>
