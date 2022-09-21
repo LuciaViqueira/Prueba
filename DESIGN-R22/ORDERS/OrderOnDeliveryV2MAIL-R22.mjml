@@ -43,7 +43,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.order.identifier]]" >
+            href="https://www.zara.com/[[payload.store.country]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.order.identifier]]" >
           [[tags.OrderOnDeliveryV2MAIL_buttonTxt]]
         </mj-button>
       </mj-column>
