@@ -10,7 +10,6 @@
       [[#assign "showBlockTitle"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
-      
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -25,7 +24,11 @@
           [[else]]
             [[#assign "returnId"]][[payload.returnInformation.uuid.uuid]][[/assign]]
           [[/if]]
-          [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+          [[#if payload.returnInformation.fromGiftTicket]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
+          [[else]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+          [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]

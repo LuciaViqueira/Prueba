@@ -19,7 +19,8 @@
       [[#and isSplitted showSubordersInfo]]
         [[tags.productListConfirmation_shipmentsNumberText]]
       [[/and]]
-      [[#if numOrders]]
+      [[#assign "giftedCustomer"]] [[payload.returnEntity.fromGiftTicket]] [[/assign]]
+      [[#ifb (andb numOrders (notb giftedCustomer))]]
         [[#assign "orderNumOrders"]] [[numOrders]] [[/assign]]
         [[#eq orderNumOrders "1"]]
           [[tags.productListConfirmation_singleOrderNumberText]]
@@ -27,10 +28,11 @@
         [[#neq orderNumOrders "1"]]
           [[tags.productListConfirmation_ordersNumberText]]
         [[/neq]]
-      [[/if]]
+      [[/ifb]]
     </mj-text>
     <mj-raw>
       [[#each suborders]]
+        [[#ifb (notb giftedCustomer)]]
     </mj-raw>
       <mj-text padding-top="8px" padding-bottom="8px" css-class="rd-subsection-text">  
         <div class="rd-light-font">
@@ -45,6 +47,9 @@
           [[/if]]
         </div>
       </mj-text>
+      <mj-raw>
+        [[/ifb]]
+      </mj-raw>
       <mj-table padding="16px 0 0" table-layout="fixed">
         [[def "orderItemsMatrix" (matrix this.items 2)]]
         [[#each orderItemsMatrix]]

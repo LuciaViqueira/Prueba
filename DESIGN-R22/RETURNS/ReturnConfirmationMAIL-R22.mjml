@@ -16,11 +16,15 @@
           [[tags.ReturnConfirmation_returnConfirmationTitle]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-        [[#assign "orderId"]][[returnInformation.orderList.[0].identifier]][[/assign]]
-        [[#eq orderId "-1"]]
-          [[#assign "orderId"]][[substring returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
-        [[/eq]]
-          [[tags.ReturnConfirmation_returnNumberText]]
+          [[#if payload.returnInformation.fromGiftTicket]]
+            [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumber]]
+          [[else]]
+            [[#assign "orderId"]][[returnInformation.orderList.[0].identifier]][[/assign]]
+            [[#eq orderId "-1"]]
+              [[#assign "orderId"]][[substring returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
+            [[/eq]]
+            [[tags.ReturnConfirmation_returnNumberText]]
+          [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[#neq returnInformation.refundPaymentMethod "GIFT_CARD"]]
