@@ -24,7 +24,11 @@
           [[else]]
             [[#assign "returnId"]][[payload.returnInformation.uuid.uuid]][[/assign]]
           [[/if]]
-          [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+          [[#if payload.returnInformation.fromGiftTicket]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
+          [[else]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+          [[/if]]
         </mj-text>
         <mj-text css-class="header-text">
           [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
