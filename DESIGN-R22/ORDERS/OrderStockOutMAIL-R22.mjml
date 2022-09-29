@@ -6,7 +6,7 @@
   <mj-body width="535px">
     <!-- Template configuration -->
     <mj-raw>
-      
+      [[#assign "showOnlyUnits"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

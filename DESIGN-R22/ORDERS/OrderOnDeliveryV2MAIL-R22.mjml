@@ -36,7 +36,7 @@
     
     <mj-section>
       <mj-column> 
-        <mj-button css-class="rd-order-detail-btn" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
