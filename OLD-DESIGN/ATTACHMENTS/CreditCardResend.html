@@ -83,13 +83,13 @@
             </div>
             <table style="padding: 30px 0; width: 50%;">
                 <tr>
-                    <td class="alignLeft font10px"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.returnInformation.refunds.[0].total.value payload.returnInformation.refunds.[0].total.exponent payload.returnInformation.refunds.[0].total.currency payload.returnInformation.refunds.[0].total.humanReadableText]]</td>
+                    <td class="alignLeft font10px"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.payments.[0].paymentDetails.[0].balance.value payload.payments.[0].paymentDetails.[0].balance.exponent payload.payments.[0].paymentDetails.[0].balance.currency payload.payments.[0].paymentDetails.[0].balance.humanReadableText]]</td>
                 </tr>
                 <tr>
-                    <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].pan]]</td>
-                    <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].cvv]]</td>
+                    <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.payments.[0].paymentDetails.[0].pan]]</td>
+                    <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.payments.[0].paymentDetails.[0].cvv]]</td>
                 </tr>
-                [[#assign "expirationDate"]][[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate]][[/assign]]
+                [[#assign "expirationDate"]][[payload.payments.[0].paymentDetails.[0].expirationDate]][[/assign]]
                 <tr>
                     [[#if expirationDate]]
                         <td class="alignLeft font10px uppercase" style="padding-top: 4px;">
@@ -102,8 +102,8 @@
                     [[/if]]
                 </tr>
             </table>
-            <img class="imgLeft" width="100px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].qrImage]]" />
-            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcodeImage]]" style="padding-top:20px;" />
+            <img class="imgLeft" width="100px" src="data:image/png;base64,[[payload.payments.[0].paymentDetails.[0].qrImage]]" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.payments.[0].paymentDetails.[0].barcodeImage]]" style="padding-top:20px;" />
             <table style="padding-top: 20px; width: 62%; text-align: justify;">
                 <tr>
                     [[#ifb (compare payload.payments.[0].paymentDetails.[0].type "==" "TA")]]

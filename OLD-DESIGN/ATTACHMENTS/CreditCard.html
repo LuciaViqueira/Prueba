@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #container {
+                width:800px;
+                margin: 0 auto;
+                font-family: "custom-font";
+                font-size: 10px;
+                font-weight: bold;
+                padding: 20px;
+            }
+            @page {
+                size: 105mm 1000px;
+                border: 2px solid black;
+                border-radius: 55px;
+                padding-top: 120px;
+                margin: 10px 10px 10px 10px;
+                @top-center {
+                    content: element(pageHeader);
+                    display: block;
+                }
+            }
+            @font-face {
+                font-family: "custom-font";
+                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
+            }
+            #pageHeader{
+                position: running(pageHeader);
+                display: block;
+                width: 100%;
+                padding-top: 20px;
+            }
+            #pageBreak{
+                page-break-inside:avoid; 
+                page-break-after:auto;
+            }
+            .uppercase{
+                text-transform: uppercase;
+            }
+            .imgCenter {
+                display:block;
+                margin: auto;
+            }
+            .imgLeft {
+                display:block;
+                margin-right: auto;
+            }
+            .alignLeft {
+                text-align: left;
+            }
+            .alignRight {
+                text-align: right;
+            }
+            .font10px{
+                font-size: 10px;
+            }
+            .borderPaddingBottom {
+                border-bottom: 1px solid grey;
+                padding-bottom: 20px;
+            }
+            .fontGrey {
+                color: grey;
+            }
+            .hrClass {
+                margin-bottom: 0px;
+                border-top: 2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"> 
+            <div id="pageHeader">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <img class="imgCenter" width="149px" src="static/images/logo.svg" style="padding-top:20px;" />
+                        </td>
+                    </tr>
+                    
+                </table>
+                <hr class="hrClass">
+            </div>
+            <table style="padding: 30px 0; width: 50%;">
+                <tr>
+                    <td class="alignLeft font10px"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.value payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.exponent payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.currency payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.humanReadableText]]</td>
+                </tr>
+                <tr>
+                    <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].pan]]</td>
+                    <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].cvv]]</td>
+                </tr>
+                [[#assign "expirationDate"]][[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate]][[/assign]]
+                <tr>
+                    [[#if expirationDate]]
+                        <td class="alignLeft font10px uppercase" style="padding-top: 4px;">
+                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[epoch expirationDate "STORE" "SHORT"]]
+                        </td>
+                    [[else]]
+                        <td class="alignLeft font10px" style="padding-top: 4px;">
+                            <b>[[tags.ResendZaraCard_noExpirationDate]]</b>
+                        </td>
+                    [[/if]]
+                </tr>
+            </table>
+            <img class="imgLeft" width="100px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].qrImage]]" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcodeImage]]" style="padding-top:20px;" />
+            <table style="padding-top: 20px; width: 62%; text-align: justify;">
+                <tr>
+                    [[#ifb (compare payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].type "==" "TA")]]
+                        <td>
+                            <p class="font10px">[[tags.ResendZaraCard_legalTextVoucher]]</p>
+                        </td>
+                    [[else]]
+                        [[#ifb (compare payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].type "==" "TRV")]]
+                            <td>
+                                <p class="font10px">[[tags.ResendZaraCard_legalTextGifted]]</p>
+                            </td>
+                        [[/ifb]]
+                    [[/ifb]]
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
