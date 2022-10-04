@@ -89,11 +89,11 @@
                     <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].pan]]</td>
                     <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].cvv]]</td>
                 </tr>
-                [[#assign "expirationDate"]][[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate]][[/assign]]
+                [[#assign "expirationDate"]][[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].expirationDate.dateIso]][[/assign]]
                 <tr>
                     [[#if expirationDate]]
                         <td class="alignLeft font10px uppercase" style="padding-top: 4px;">
-                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[epoch expirationDate.dateIso "STORE" "SHORT" "ISO8601"]]
+                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[epoch expirationDate.dateIso "STORE" "SHORT"]]
                         </td>
                     [[else]]
                         <td class="alignLeft font10px" style="padding-top: 4px;">
