@@ -102,8 +102,8 @@
                     [[/if]]
                 </tr>
             </table>
-            <img class="imgLeft" width="100px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].qrImage]]" />
-            <img class="imgLeft" width="250px" src="data:image/png;base64,[[payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcodeImage]]" style="padding-top:20px;" />
+            <img class="imgLeft" width="100px" src="data:image/png;base64,[[imageCodeGenerator payload.payments.[0].paymentDetails.[0].barcode 'qr']]" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[imageCodeGenerator payload.payments.[0].paymentDetails.[0].barcode 'barcode']]" style="padding-top:20px;" />
             <table style="padding-top: 20px; width: 62%; text-align: justify;">
                 <tr>
                     [[#ifb (compare payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].type "==" "TA")]]
