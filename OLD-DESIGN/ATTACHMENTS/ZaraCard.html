@@ -93,7 +93,7 @@
                 <tr>
                     [[#if expirationDate]]
                         <td class="alignLeft font10px uppercase" style="padding-top: 4px;">
-                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[epoch expirationDate "STORE" "SHORT" "ISO8601"]]
+                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[expirationDate]]
                         </td>
                     [[else]]
                         <td class="alignLeft font10px" style="padding-top: 4px;">
@@ -102,8 +102,9 @@
                     [[/if]]
                 </tr>
             </table>
+            [[def "barcodeITF" (math payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcode '+' payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].controlDigit)]]
             <img class="imgLeft" width="100px" src="data:image/png;base64,[[imageCodeGenerator payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcode 'QR_CODE']]" />
-            <img class="imgLeft" width="250px" src="data:image/png;base64,[[imageCodeGenerator payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].barcode 'CODABAR']]" style="padding-top:20px;" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="padding-top:20px;" />
             <table style="padding-top: 20px; width: 40%; text-align: justify;">
                 <tr>
                     [[#ifb (compare payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].type "==" "TA")]]

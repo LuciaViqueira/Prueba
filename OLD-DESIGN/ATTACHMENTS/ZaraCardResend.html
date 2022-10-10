@@ -81,7 +81,7 @@
                 </table>
                 <hr class="hrClass">
             </div>
-            <table style="padding: 30px 0; width: 50%;">
+            <table style="padding: 30px 0 0; width: 50%;">
                 <tr>
                     <td class="alignLeft font10px"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.payments.[0].paymentDetails.[0].balance.value payload.payments.[0].paymentDetails.[0].balance.exponent payload.payments.[0].paymentDetails.[0].balance.currency payload.payments.[0].paymentDetails.[0].balance.humanReadableText]]</td>
                 </tr>
@@ -89,11 +89,13 @@
                     <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.payments.[0].paymentDetails.[0].pan]]</td>
                     <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.payments.[0].paymentDetails.[0].cvv]]</td>
                 </tr>
-                [[#assign "expirationDate"]][[payload.payments.[0].paymentDetails.[0].expirationDate.dateIso]][[/assign]]
+            </table>
+            [[#assign "expirationDate"]][[payload.payments.[0].paymentDetails.[0].expirationDate.dateIso]][[/assign]]
+            <table>
                 <tr>
                     [[#if expirationDate]]
                         <td class="alignLeft font10px uppercase" style="padding-top: 4px;">
-                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[epoch expirationDate "STORE" "SHORT" "ISO8601"]]
+                            <b>[[tags.ResendZaraCard_expirationDate]]</b> [[expirationDate]]
                         </td>
                     [[else]]
                         <td class="alignLeft font10px" style="padding-top: 4px;">
@@ -102,8 +104,9 @@
                     [[/if]]
                 </tr>
             </table>
+            [[def "barcodeITF" (math payload.payments.[0].paymentDetails.[0].barcode '+' payload.payments.[0].paymentDetails.[0].controlDigit)]]
             <img class="imgLeft" width="100px" src="data:image/png;base64,[[imageCodeGenerator payload.payments.[0].paymentDetails.[0].barcode 'QR_CODE']]" />
-            <img class="imgLeft" width="250px" src="data:image/png;base64,[[imageCodeGenerator payload.payments.[0].paymentDetails.[0].barcode 'CODABAR']]" style="padding-top:20px;" />
+            <img class="imgLeft" width="250px" src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="padding-top:20px;" />
             <table style="padding-top: 20px; width: 40%; text-align: justify;">
                 <tr>
                     [[#ifb (compare payload.payments.[0].paymentDetails.[0].type "==" "TA")]]
