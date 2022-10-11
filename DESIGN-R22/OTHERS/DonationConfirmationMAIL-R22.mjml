@@ -4,6 +4,10 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "collectionDirectionTitle"]]true[[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -19,10 +23,31 @@
           <p>[[tags.DonationConfirmationMAIL_infoOrganizations]]</p>
           <p>[[tags.DonationConfirmationMAIL_grateful]]</p>
         </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+          Datos del Cliente
+        </mj-text>
+        <mj-text css-class="rd-text-info">
+          <div>[[payload.user.name]]</div>
+          <div>[[payload.user.email]]</div>
+          <div>[[payload.user.mobilePhoneNumber]]</div>
+        </mj-text>
       </mj-column>
     </mj-section>
 
     <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#with payload.address]]
+    </mj-raw>
+    <mj-section>
+      <mj-column>
+        <mj-include path="Address-R22" />
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <!-- Sección 3 footer -->
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
