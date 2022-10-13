@@ -1,4 +1,4 @@
-<mj-text padding-top="4px" css-class="rd-subsection-text">
+ <mj-text padding-top="4px" css-class="rd-subsection-text">
     [[#eq shipping.mode "STORE"]]
         [[#if this.receiver.name]]
             [[this.receiver.name]]
