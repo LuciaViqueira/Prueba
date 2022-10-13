@@ -59,14 +59,12 @@
           [[#if payload.address.line]]
             <div>[[payload.address.line]]</div>
           [[/if]]
-          <div>
-            [[#if payload.address.zipCode.value]]
-              [[payload.address.zipCode.value]] - 
-            [[/if]]
-            [[#if payload.address.city.value]]
-              [[payload.address.city.value]]
-            [[/if]]
-          </div>
+          [[#if payload.address.zipCode.value]]
+            <div>[[payload.address.zipCode.value]]</div>
+          [[/if]]
+          [[#if payload.address.city.value]]
+            <div>[[payload.address.city.value]]</div>
+          [[/if]]
         </mj-text>
         <mj-divider padding-top="40px" padding-bottom="40px"/>
     <!-- Sección 5 payment -->
