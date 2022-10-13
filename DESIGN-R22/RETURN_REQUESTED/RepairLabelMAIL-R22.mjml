@@ -12,23 +12,10 @@
           [[tags.RepairLabelMAIL_Title]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-            [[#assign "orderIdsNumber"]]0[[/assign]]
-            [[#each orderIdsList]]
-              [[#assign "orderIdsNumber"]] [[#sum orderIdsNumber 1]] [[/sum]] [[/assign]]
-            [[/each]]
-            [[#eq orderIdsNumber "1"]]
-                [[tags.RepairLabelMAIL_orderNumberText]]
-            [[/eq]]
-            [[#neq orderIdsNumber "1"]]
-                [[tags.RepairLabelMAIL_multiOrderNumberText]]
-            [[/neq]]
+          [[tags.RepairLabelMAIL_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-            <p>[[tags.RepairLabelMAIL_warningText]]</p>
-            <p>[[tags.RepairLabelMAIL_labelTextMin]]</p>
-            [[#neq orderIdsNumber "1"]]
-                <p>[[tags.RepairLabelMAIL_multiOrderTextMin]]</p>
-            [[/neq]]
+            <p>[[tags.RepairLabelMAIL_instructionsQrText]]</p>
         </mj-text>
       </mj-column>
     </mj-section>
