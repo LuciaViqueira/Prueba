@@ -27,8 +27,8 @@
         <mj-raw> 
           [[#each payload.items]]
         </mj-raw>
-            <mj-text  padding-top="24px" css-class="rd-subsection-title" font-weight="bold">
-              [[tags.RepairConfirmationMAIL_product]]
+            <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
+              [[tags.RepairConfirmationMAIL_product]] [[math @index '+' 1]]
             </mj-text>
             <mj-text css-class="rd-subsection-text">
               <div style="font-weight:bold;">[[this.type]]</div>
@@ -43,58 +43,70 @@
           [[/each]]
         </mj-raw>
     <!-- Sección 3 cliente -->
-        <mj-text  padding-top="24px" css-class="rd-subsection-title" font-weight="bold">
+        <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
           [[tags.RepairConfirmationMAIL_clientData]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
-          <div>[[payload.user.name]]</div>
+          <div>[[payload.user.name]] [[payload.user.surname]]</div>
           <div>[[payload.user.email]]</div>
           <div>[[payload.user.mobilePhoneNumber]]</div>
         </mj-text>
     <!-- Sección 4 shipping -->
-        <mj-text  padding-top="24px" css-class="rd-subsection-title" font-weight="bold">
+        <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
           [[tags.RepairConfirmationMAIL_collectionDirection]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
-          <div>[[payload.address.line]] - [[payload.address.zipCode.value]], [[payload.address.city.value]]</div>
+          [[#if payload.address.line]]
+            <div>[[payload.address.line]]</div>
+          [[/if]]
+          <div>
+            [[#if payload.address.zipCode.value]]
+              [[payload.address.zipCode.value]] - 
+            [[/if]]
+            [[#if payload.address.city.value]]
+              [[payload.address.city.value]]
+            [[/if]]
+          </div>
         </mj-text>
-        <mj-divider padding-top="20px" padding-bottom="20px"/>
+        <mj-divider padding-top="40px" padding-bottom="40px"/>
     <!-- Sección 5 payment -->
-        <mj-table css-class="rd-payment-table">
-          <tr class="rd-light-font">
-            <td>[[tags.RepairConfirmationMAIL_fix]]</td>
-            <td class="rd-payment-price">[[currency payload.paymentBreakdown.arrangementPrice.value payload.paymentBreakdown.arrangementPrice.exponent payload.paymentBreakdown.arrangementPrice.currency payload.paymentBreakdown.arrangementPrice.humanReadableText]]</td>
-          </tr>
-          [[#if this.shippingPrice]]
-            <tr class="rd-light-font">
-              <td>[[tags.Payment_deliveryCostText]]</td>
-              <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+        <mj-raw>
+          [[#with payload.paymentBreakdown]]
+        </mj-raw>
+          <mj-table css-class="rd-payment-table">
+            [[#if this.arrangementPrice]]
+              <tr class="rd-light-font">
+                <td>[[tags.RepairConfirmationMAIL_fix]]</td>
+                <td class="rd-payment-price">[[currency this.arrangementPrice.value this.arrangementPrice.exponent this.arrangementPrice.currency this.arrangementPrice.humanReadableText]]</td>
+              </tr>
+            [[/if]]
+            [[#if this.shippingPrice]]
+              <tr class="rd-light-font">
+                <td>[[tags.RepairConfirmationMAIL_shipmentText]]</td>
+                <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+              </tr>
+            [[/if]]
+            <tr class="rd-payment-total rd-black-font">
+              <td>[[tags.RepairConfirmationMAIL_totalAmountText]]</td>
+              [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
+              <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
             </tr>
-          [[/if]]
-          [[#if this.shippingDiscountPrice]]
-            <tr class="rd-light-font">
-              <td>[[tags.Payment_shippingDiscountsText]]</td>
-              <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
-            </tr>
-          [[/if]]
-          <tr class="rd-payment-total rd-black-font">
-            <td>[[tags.Payment_totalAmountText]]</td>
-            [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
-            <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
-          </tr>
-          [[#ifb (compare obj.converted_amounts "!=" "")]] 
+            [[#ifb (compare obj.converted_amounts "!=" "")]] 
+              <tr>
+                <td colspan="2" class="rd-payment-include-tax-label-right">
+                  <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
+                </td>
+              </tr>
+            [[/ifb]]
             <tr>
-              <td colspan="2" class="rd-payment-include-tax-label-right">
-                <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]] </span>
+              <td colspan="2">
+                <span class="rd-payment-include-tax-label-left">*[[tags.RepairConfirmationMAIL_includeTaxText]]</span>
               </td>
             </tr>
-          [[/ifb]]
-          <tr>
-            <td colspan="2">
-              <span class="rd-payment-include-tax-label-left">*[[tags.Payment_includeTaxText]]</span>
-            </td>
-          </tr>
-        </mj-table>
+          </mj-table>
+        <mj-raw>
+          [[/with]]
+        </mj-raw>
       </mj-column>
     </mj-section>
 
@@ -110,6 +122,5 @@
       [[/ifb]]
     </mj-raw>
     <mj-include path="footer-R22" />
-
   </mj-body>
 </mjml>
