@@ -1,13 +1,4 @@
-<mj-raw>
-    [[#if collectionDirectionTitle]]
-</mj-raw>
-    <mj-text  padding-top="24px" css-class="rd-section-title">
-        [[tags.shipping_returnShippingTitle]]
-    </mj-text> 
-<mj-raw>
-    [[/if]]
-</mj-raw> 
-<mj-text padding-top="4px" css-class="rd-subsection-text">
+ <mj-text padding-top="4px" css-class="rd-subsection-text">
     [[#eq shipping.mode "STORE"]]
         [[#if this.receiver.name]]
             [[this.receiver.name]]

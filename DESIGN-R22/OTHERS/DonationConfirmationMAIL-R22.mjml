@@ -4,10 +4,6 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
-    <!-- Template configuration -->
-    <mj-raw>
-      [[#assign "collectionDirectionTitle"]]true[[/assign]]
-    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -23,31 +19,67 @@
           <p>[[tags.DonationConfirmationMAIL_infoOrganizations]]</p>
           <p>[[tags.DonationConfirmationMAIL_grateful]]</p>
         </mj-text>
-        <mj-text  padding-top="24px" css-class="rd-section-title">
-          Datos del Cliente
+    <!-- Sección 2 cliente -->
+        <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
+          [[tags.DonationConfirmationMAIL_clientData]]
         </mj-text>
-        <mj-text css-class="rd-text-info">
-          <div>[[payload.user.name]]</div>
+        <mj-text css-class="rd-subsection-text">
+          <div>[[payload.user.name]] [[payload.user.surname]]</div>
           <div>[[payload.user.email]]</div>
           <div>[[payload.user.mobilePhoneNumber]]</div>
         </mj-text>
+    <!-- Sección 3 shipping -->
+        <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
+          [[tags.DonationConfirmationMAIL_collectionDirection]]
+        </mj-text>
+        <mj-text css-class="rd-subsection-text">
+          [[#if payload.address.line]]
+            <div>[[payload.address.line]]</div>
+          [[/if]]
+          [[#if payload.address.zipCode.value]]
+            <div>[[payload.address.zipCode.value]]</div>
+          [[/if]]
+          [[#if payload.address.city.value]]
+            <div>[[payload.address.city.value]]</div>
+          [[/if]]
+        </mj-text>
+        <mj-divider padding-top="40px" padding-bottom="40px"/>
+    <!-- Sección 4 payment -->
+        <mj-raw>
+          [[#with payload.paymentBreakdown]]
+        </mj-raw>
+          <mj-table css-class="rd-payment-table">
+            [[#if this.shippingPrice]]
+              <tr class="rd-light-font">
+                <td>[[tags.DonationConfirmationMAIL_collectionAmount]]</td>
+                <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+              </tr>
+            [[/if]]
+            <tr class="rd-payment-total rd-black-font">
+              <td>[[tags.DonationConfirmationMAIL_totalAmountText]]</td>
+              [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
+              <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
+            </tr>
+            [[#ifb (compare obj.converted_amounts "!=" "")]] 
+              <tr>
+                <td colspan="2" class="rd-payment-include-tax-label-right">
+                  <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
+                </td>
+              </tr>
+            [[/ifb]]
+            <tr>
+              <td colspan="2">
+                <span class="rd-payment-include-tax-label-left">*[[tags.DonationConfirmationMAIL_includeTaxText]]</span>
+              </td>
+            </tr>
+          </mj-table>
+        <mj-raw>
+          [[/with]]
+        </mj-raw>
       </mj-column>
     </mj-section>
 
-    <!-- Sección 2 footer -->
-    <mj-raw>
-      [[#with payload.address]]
-    </mj-raw>
-    <mj-section>
-      <mj-column>
-        <mj-include path="Address-R22" />
-      </mj-column>
-    </mj-section>
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
-
-    <!-- Sección 3 footer -->
+    <!-- Sección 5 footer -->
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
