@@ -86,16 +86,8 @@
             [[/if]]
             <tr class="rd-payment-total rd-black-font">
               <td>[[tags.RepairConfirmationMAIL_totalAmountText]]</td>
-              [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
-              <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
+              <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
             </tr>
-            [[#ifb (compare obj.converted_amounts "!=" "")]] 
-              <tr>
-                <td colspan="2" class="rd-payment-include-tax-label-right">
-                  <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
-                </td>
-              </tr>
-            [[/ifb]]
             <tr>
               <td colspan="2">
                 <span class="rd-payment-include-tax-label-left">*[[tags.RepairConfirmationMAIL_includeTaxText]]</span>
