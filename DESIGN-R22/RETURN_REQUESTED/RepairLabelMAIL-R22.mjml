@@ -17,7 +17,7 @@
         <mj-text padding-top="24px" css-class="rd-text-info">
             <p>[[tags.RepairLabelMAIL_instructionsQrText]]</p>
         </mj-text>
-        <mj-image width="300px" src="cid:[[payload.attachments.fileName]]" padding-top="24px"  align="center" />
+        <mj-image width="300px" src="cid:[[payload.attachments.[0].fileName]]" padding-top="24px"  align="center" />
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
