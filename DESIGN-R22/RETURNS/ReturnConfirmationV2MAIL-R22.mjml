@@ -20,13 +20,15 @@
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[#if payload.returnInformation.uuid.prettyUuid]]
-              [[def "size" 8]][[#def "uuidSize"]][[size [[payload.returnInformation.uuid.prettyUuid]][[/def]][[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb payload.returnInformation.uuid.prettyUuid index]][[/def]]
+            [[def "size" 8]][[#def "uuidSize"]][[size payload.returnInformation.uuid.prettyUuid]][[/def]][[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb payload.returnInformation.uuid.prettyUuid index]][[/def]]
           [[else]]
-            [[#assign "returnId"]][[payload.returnInformation.uuid.uuid]][[/assign]]
+            [[def "size" 8]][[#def "uuidSize"]][[size payload.returnInformation.uuid.uuid]][[/def]][[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb payload.returnInformation.uuid.uuid index]][[/def]]
           [[/if]]
           [[#if payload.returnInformation.fromGiftTicket]]
-            [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumberSub8]]
           [[else]]
+            [[#assign "orderIdentifier"]][[payload.returnInformation.orders.[0].identifier]][[/assign]]
+            [[def "size" 8]][[#def "orderIdSize"]][[size orderIdentifier]][[/def]][[#def "index"]][[math  orderIdSize '-' size]][[/def]][[#def "orderId"]][[substringb orderIdentifier index]][[/def]]
             [[tags.ReturnConfirmationV2MAIL_returnNumberTextSub8]]
           [[/if]]
         </mj-text>
