@@ -32,15 +32,8 @@
               [[/ifb]]
           [[#if payload.returnInformation.fromGiftTicket]]
             [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
-          [[else]]
-            [[#assign "orderIdentifier"]][[payload.returnInformation.orders.[0].identifier]][[/assign]]
-            [[def "size" 8]][[#def "orderIdSize"]][[size orderIdentifier]][[/def]]
-              [[#ifb (compare orderIdSize ">" size)]]
-                [[#def "index"]][[math  orderIdSize '-' size]][[/def]][[#def "orderId"]][[substringb orderIdentifier index]][[/def]]
-              [[else]]
-                [[def "orderId" payload.returnInformation.orders.[0].identifier]]
-              [[/ifb]]
-            [[tags.ReturnConfirmationV2MAIL_returnNumberTextSub8]]
+           [[else]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
           [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
