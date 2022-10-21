@@ -59,6 +59,9 @@
           [[#if payload.address.line]]
             <div>[[payload.address.line]]</div>
           [[/if]]
+          [[#if payload.address.floor.value]]
+            <div>[[payload.address.floor.value]] </div>
+          [[/if]]
           [[#if payload.address.zipCode.value]]
             <div>[[payload.address.zipCode.value]]</div>
           [[/if]]
