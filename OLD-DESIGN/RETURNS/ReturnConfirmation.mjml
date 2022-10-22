@@ -16,14 +16,21 @@
           [[tags.ReturnConfirmation_returnConfirmationTitle]]
         </mj-text>
         <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[#assign "returnIdentifier"]][[returnInformation.identifier]][[/assign]]
+          [[def "size" 8]][[#def "uuidSize"]][[size returnIdentifier]][[/def]]
+          [[#ifb (compare uuidSize ">" size)]]
+            [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb returnIdentifier index]][[/def]]
+          [[else]]
+            [[def "returnId" returnIdentifier]]
+          [[/ifb]]
           [[#if payload.returnInformation.fromGiftTicket]]
-            [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumber]]
+            [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumberSub8]]
           [[else]]
             [[#assign "orderId"]][[returnInformation.orderList.[0].identifier]][[/assign]]
             [[#eq orderId "-1"]]
               [[#assign "orderId"]][[substring returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
             [[/eq]]
-            [[tags.ReturnConfirmation_returnNumberText]]
+            [[tags.ReturnConfirmation_returnNumberTextSub8]]
           [[/if]]
         </mj-text>
         <mj-text css-class="header-text">
