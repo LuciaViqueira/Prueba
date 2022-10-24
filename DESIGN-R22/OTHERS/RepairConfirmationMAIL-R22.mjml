@@ -21,7 +21,6 @@
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.RepairConfirmationMAIL_courierText]]</p>
           <p>[[tags.RepairConfirmationMAIL_deliveryPoint]]</p>
-          <p>[[tags.RepairConfirmationMAIL_contactForDelivery]]</p>
         </mj-text>
     <!-- Sección 2 productos -->
         <mj-raw> 
