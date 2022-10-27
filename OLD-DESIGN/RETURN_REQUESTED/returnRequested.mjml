@@ -4,6 +4,11 @@
     <mj-include path="styles" />
   </mj-head>
   <mj-body width="854px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnShippingTitle"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -12,30 +17,44 @@
           [[tags.returnRequested_acceptedRequestTitle]]
         </mj-text>
         <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
-          [[tags.returnRequested_orderNumberText]]
+          [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+          [[tags.returnRequested_orderIdText]]
         </mj-text>
         <mj-text css-class="header-text">
-          <p>
-            [[#if rma.isDropoff]]
-              [[tags.returnRequested_dropOffDescription]]
-            [[/if]]
-            [[#if rma.isHome]]
-              [[tags.returnRequested_homeDescription]]
-            [[/if]]
-          </p>
-          [[#if rma.isDropoff]]
-            <p>[[tags.returnRequested_officeDelivery]]</p>
-          [[/if]]
+          [[#eq payload.returnInformation.type "DROPOFF"]]
+              <p>[[tags.returnRequested_dropOffDescription]]</p>
+              <p>[[tags.returnRequested_officeDelivery]]</p>
+          [[else]]
+            [[#eq payload.returnInformation.type "HOME"]]
+                <p>[[tags.returnRequested_homeDescription]]</p>
+            [[/eq]]
+          [[/eq]]
         </mj-text>
         <mj-divider padding-top="20px" />
       </mj-column>
     </mj-section>
-    <!-- Sección 2 refundAddress -->
-    <mj-raw>[[#if rma.isHome]]</mj-raw>
-      <mj-include path="refundAddress" />
-    <mj-raw>[[/if]]</mj-raw>
-    <!-- Sección 3 productsList -->
-    <mj-include path="productsList" />
+
+    <!-- Sección 2 Shipping -->
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+    <mj-include path="shipping" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <!-- Sección 3 Product -->
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
     <!-- Sección 4 footer -->
     <mj-raw>
      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
