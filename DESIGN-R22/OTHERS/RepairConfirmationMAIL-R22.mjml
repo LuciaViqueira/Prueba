@@ -21,7 +21,6 @@
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.RepairConfirmationMAIL_courierText]]</p>
           <p>[[tags.RepairConfirmationMAIL_deliveryPoint]]</p>
-          <p>[[tags.RepairConfirmationMAIL_contactForDelivery]]</p>
         </mj-text>
     <!-- Sección 2 productos -->
         <mj-raw> 
@@ -31,11 +30,9 @@
               [[tags.RepairConfirmationMAIL_product]] [[math @index '+' 1]]
             </mj-text>
             <mj-text css-class="rd-subsection-text">
-              <div style="font-weight:bold;">[[this.type]]</div>
+              <div style="font-weight:bold;">[[this.type]] [[this.color]] [[this.material]]</div>
               [[#each this.arrangements]]
-                <div>[[tags.RepairConfirmationMAIL_fix]]: [[this.description]] - [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
-                      [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-                </div>
+                <div>[[tags.RepairConfirmationMAIL_fix]]: [[this.description]] - [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]</div>
                 <div>[[tags.RepairConfirmationMAIL_message]]: [[this.message]]</div>
               [[/each]]
             </mj-text>
@@ -58,6 +55,9 @@
         <mj-text css-class="rd-subsection-text">
           [[#if payload.address.line]]
             <div>[[payload.address.line]]</div>
+          [[/if]]
+          [[#if payload.address.floor.value]]
+            <div>[[payload.address.floor.value]] </div>
           [[/if]]
           [[#if payload.address.zipCode.value]]
             <div>[[payload.address.zipCode.value]]</div>
@@ -86,16 +86,8 @@
             [[/if]]
             <tr class="rd-payment-total rd-black-font">
               <td>[[tags.RepairConfirmationMAIL_totalAmountText]]</td>
-              [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
-              <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
+              <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
             </tr>
-            [[#ifb (compare obj.converted_amounts "!=" "")]] 
-              <tr>
-                <td colspan="2" class="rd-payment-include-tax-label-right">
-                  <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
-                </td>
-              </tr>
-            [[/ifb]]
             <tr>
               <td colspan="2">
                 <span class="rd-payment-include-tax-label-left">*[[tags.RepairConfirmationMAIL_includeTaxText]]</span>
