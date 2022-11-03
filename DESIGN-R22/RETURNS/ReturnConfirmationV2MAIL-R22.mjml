@@ -20,13 +20,19 @@
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[#if payload.returnInformation.uuid.prettyUuid]]
-            [[#assign "returnId"]][[payload.returnInformation.uuid.prettyUuid]][[/assign]]
+            [[#assign "returnIdentifier"]][[payload.returnInformation.uuid.prettyUuid]][[/assign]]
           [[else]]
-            [[#assign "returnId"]][[payload.returnInformation.uuid.uuid]][[/assign]]
+            [[#assign "returnIdentifier"]][[payload.returnInformation.uuid.uuid]][[/assign]]
           [[/if]]
+            [[def "size" 8]][[#def "uuidSize"]][[size returnIdentifier]][[/def]]
+              [[#ifb (compare uuidSize ">" size)]]
+                [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb returnIdentifier index]][[/def]]
+              [[else]]
+                [[def "returnId" returnIdentifier]]
+              [[/ifb]]
           [[#if payload.returnInformation.fromGiftTicket]]
             [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
-          [[else]]
+           [[else]]
             [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
           [[/if]]
         </mj-text>
