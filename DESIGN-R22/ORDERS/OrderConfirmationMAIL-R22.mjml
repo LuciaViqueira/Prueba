@@ -10,6 +10,8 @@
       [[#assign "showDeliveryDate"]]true[[/assign]]
       [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
+      
+      [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -21,9 +23,22 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderConfirmationMAIL_orderNumberText]]
         </mj-text>
-        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+        <mj-text padding-top="24px" css-class="rd-text-info">
           [[tags.OrderConfirmationMAIL_notice]]
         </mj-text>
+
+        <mj-raw>
+          [[#assign "subordersSize"]][[#size payload.orders.[0].suborders]][[/size]][[/assign]]
+          [[#assign "TRVSize"]][[#size comprobarNumDeTRVDelSuborder y a su vez si es Shareable]][[/size]][[/assign]]
+        </mj-raw>
+        <mj-text padding-bottom="10px" css-class="rd-text-info">
+          [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare subordersSize "==" 1) (compare TRVSize "==" 1) isShareableGiftCard)]]
+            [[tags.OrderConfirmationMAIL_sharedYourselfTRV]]
+          [[else]]
+
+          [[/ifb]]
+        </mj-text>
+        
        </mj-column>
     </mj-section>
 

@@ -8,6 +8,8 @@
     <mj-raw>
       [[#assign "showDeliveryDate"]]true[[/assign]]
       [[#assign "hiddenExchangeRateInProducts"]]true[[/assign]]
+
+      [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
