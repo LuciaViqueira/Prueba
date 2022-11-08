@@ -47,11 +47,15 @@
             [[/with]]
             [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
             [[#eq storeLegacyValue  "11737"]]
-              <p>1 EUR = 7.53450 KN</p>
+              <p>*1 EUR = 7.53450 KN</p>
             [[/eq]]
           [[/if]]
           [[#if isDropoff]]
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
+            <p>[[tags.returnRequestDifferentOrders_makeSureDropText]]</p>
+          [[/if]]
+          [[#if isHome]]
+            <p>[[tags.returnRequestDifferentOrders_makeSureHomeText]]</p>
           [[/if]]
         </mj-text>
         <mj-raw>
