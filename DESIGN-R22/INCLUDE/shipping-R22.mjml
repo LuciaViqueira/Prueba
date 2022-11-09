@@ -109,7 +109,7 @@
       [[/if]]
     </mj-raw>
     
-    <mj-text font-weight="bold" css-class="rd-subsection-text-light">
+    <mj-text padding-bottom="4px" font-weight="bold" css-class="rd-subsection-text-light">
       <!-- ShippingMethod -->
           [[#eq this.shipping.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
@@ -156,7 +156,7 @@
     <mj-raw>
     [[#if shipping.description]]
     </mj-raw>
-      <mj-text padding-top="4px" css-class="rd-subsection-text">
+      <mj-text css-class="rd-subsection-text">
         [[shipping.description]]
       </mj-text>
     <mj-raw>
