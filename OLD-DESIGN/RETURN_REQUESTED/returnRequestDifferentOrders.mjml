@@ -20,27 +20,15 @@
           [[tags.returnRequestDifferentOrders_orderNumberText]]
         </mj-text>
         <mj-text css-class="header-text">
-            [[#if isDropoff]]
-              <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
-              [[#if payload.returnEntity.request.courier.name ]]
-                <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
-              [[/if]]
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+            [[#if payload.returnEntity.request.courier.name ]]
+              <p>[[tags.returnRequestDifferentOrders_courierInfo]] [[tags.returnRequestDifferentOrders_makeSureText]]</p>
             [[/if]]
-            [[#if payload.returnEntity.request.type]]
-              [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
-              [[#eq requestType "STORE_DROPOFF"]]
-                [[#not payload.user.isGuest]]
-                  [[#each payload.marketingInfo.universalLinks]]
-                    [[#ifb (andb (compare this.urlName "==" "ZaraIdQrLink") (compare this.urlValue "!=" ""))]][[#assign "urlValue"]][[this.urlValue]][[/assign]][[/ifb]]
-                  [[/each]]
-                  <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
-                  <p>[[tags.returnRequestDifferentOrders_returnQrText4]]</p>
-                [[/not]]
-              [[/eq]]
-            [[/if]]
-            [[#if isHome]]
-              <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
-            [[/if]] 
+          [[/if]]
+          [[#if isHome]]
+            <p>[[tags.returnRequestDifferentOrders_homeDescription]] [[tags.returnRequestDifferentOrders_makeSureText]]</p>
+          [[/if]] 
           [[#if payload.returnEntity.request.returnCosts.[0]]]
             [[#with payload.returnEntity.request.returnCosts.[0].amount]]
               <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
@@ -52,12 +40,20 @@
           [[/if]]
           [[#if isDropoff]]
             <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
-            <p>[[tags.returnRequestDifferentOrders_makeSureDropText]]</p>
           [[/if]]
-          [[#if isHome]]
-            <p>[[tags.returnRequestDifferentOrders_makeSureHomeText]]</p>
+          [[#if payload.returnEntity.request.type]]
+            [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
+            [[#eq requestType "STORE_DROPOFF"]]
+              [[#not payload.user.isGuest]]
+                [[#each payload.marketingInfo.universalLinks]]
+                  [[#ifb (andb (compare this.urlName "==" "ZaraIdQrLink") (compare this.urlValue "!=" ""))]][[#assign "urlValue"]][[this.urlValue]][[/assign]][[/ifb]]
+                [[/each]]
+                <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
+              [[/not]]
+            [[/eq]]
           [[/if]]
         </mj-text>
+        
         <mj-raw>
           [[#and isDropoff payload.returnEntity.request.courier.name]]
         </mj-raw>

@@ -26,11 +26,10 @@
           [[#eq payload.returnInformation.type "DROPOFF"]]
               <p>[[tags.returnRequested_dropOffDescription]]</p>
               <p>[[tags.returnRequested_officeDelivery]]</p>
-              <p>[[tags.returnRequested_makeSureDropText]]</p>
+              <p>[[tags.returnRequested_makeSureText]]</p>
           [[else]]
             [[#eq payload.returnInformation.type "HOME"]]
-                <p>[[tags.returnRequested_homeDescription]]</p>
-                <p>[[tags.returnRequested_makeSureHomeText]]</p>
+                <p>[[tags.returnRequested_homeDescription]] [[tags.returnRequested_makeSureText]]</p>
             [[/eq]]
           [[/eq]]
         </mj-text>
