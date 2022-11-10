@@ -22,10 +22,10 @@
         [[payload.address.city.value]]
       [[/if]]
       [[#if payload.address.state.value]]
-        [[payload.address.state.value]]
+        <div>[[payload.address.state.value]]</div>
       [[/if]]
       [[#if payload.address.country.value]]
-        [[payload.address.country.value]]
+        <div>[[payload.address.country.value]]</div>
       [[/if]]
     </mj-text>
     <mj-text>
