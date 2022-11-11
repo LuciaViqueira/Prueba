@@ -21,13 +21,13 @@
         <mj-table padding="16px 0 0" table-layout="fixed">
           <tr>
             <td>
-              <table class="rd-product" style="margin-left: auto; margin-right: auto;">  
+              <table>  
                 <tr>
                   <td style="padding: 0;" class="rd-subsection-text-notUppercase">
                     [[#if giftCard.item.imageUrl]]
-                      <table>
+                      <table style="margin-left: auto; margin-right: auto;">
                           <tr>
-                              <td style="padding: 0 0 8px;">
+                              <td style="padding: 0 0 40px;">
                                   <img padding="0" class="rd-product-img" width="225" src="[[giftCard.item.imageUrl]]" style="width:100%; height:auto;" />
                               </td>
                           </tr>
@@ -40,32 +40,30 @@
                         <div>[[giftCard.from]]</div><br/>
                     [[/if]]
                     <div>[[tags.VirtualGiftCardMAIL_amount]]
-                          [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
-                          [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                      [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
+                      [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                     </div>
                     <div>[[tags.VirtualGiftCardMAIL_cardNumber]] [[paymentDetails.pan]]</div>
                     <div>[[tags.VirtualGiftCardMAIL_cvv]] [[paymentDetails.cvv]]</div>
-
                     [[#assign "expirationDate"]][[paymentDetails.expirationDate.dateIso]][[/assign]]
                     [[#if expirationDate]]
-                      <div style="padding-bottom:8px;">[[tags.VirtualGiftCardMAIL_expirationDate]] [[epoch expirationDate "STORE" "SHORT" "ISO8601"]]</div>
+                      <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_expirationDate]] [[epoch expirationDate "STORE" "SHORT" "ISO8601"]]</div>
                     [[else]]
-                      <div style="padding-bottom:8px;">[[tags.VirtualGiftCardMAIL_noExpirationDate]]</div>
+                      <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_noExpirationDate]]</div>
                     [[/if]]
-
                     [[#def "barcodeITF"]][[paymentDetails.barcode]][[paymentDetails.controlDigit]][[/def]]
-                    <table>
+                    <table style="width: 100%;">
                       <tr>
-                        <td style="padding: 0 24px 0 0;">
-                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="width:165px; height:auto;" />
+                        <td>
+                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="width:300px; height:auto;" />
                         </td>
-                        <td style="padding: 0;">
-                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'QR_CODE']]" style="width:50px; height:auto;" />
+                        <td>
+                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'QR_CODE']]" style="width:75px; height:auto;" />
                         </td>
                       </tr>
-                    <table>
-                    <div style="font-size:10px; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
-                    <div style="font-size:10px; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
+                    </table>
+                    <div style="font-size:12px !important; color: #666666; padding-top: 40px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
+                    <div style="font-size:12px !important; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
                   </td>
                 </tr>
               </table>
