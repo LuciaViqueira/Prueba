@@ -41,7 +41,7 @@
             </div>
             [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
             [[#eq storeLegacyValue  "11737"]]
-              <div>*1 EUR = 7.53450 KN</div>
+              <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
             [[/eq]]
           </mj-text>
         <mj-raw> 
