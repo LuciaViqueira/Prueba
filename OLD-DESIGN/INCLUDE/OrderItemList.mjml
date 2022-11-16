@@ -169,14 +169,6 @@
         [[objGift.main_amount]][[#ifb (compare objGift.converted_amounts "!=" "")]][[#each objGift.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
       [[/with]]
     </mj-text>
-    <mj-text>
-      [[#eq this.giftCard.type "VIRTUAL"]]
-        [[#ifb (andb showGiftCardDetailMessage (orb (this.isShareableGiftCard) (notb this.hasOnlyVirtualGiftCards)))]]
-          <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]:</span></div>
-        [[/ifb]]
-      [[/eq]]
-     
-    </mj-text>
     <mj-spacer height="50px" />
 
     <mj-raw>
