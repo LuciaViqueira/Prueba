@@ -35,7 +35,12 @@
           [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare subordersSize "==" 1) (compare TRVSize "==" 1) isShareableGiftCard)]]
             [[tags.OrderConfirmationMAIL_sharedYourselfTRV]]
           [[else]]
+            [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare subordersSize "==" 1) (compare TRVSize "==" 1) (notb isShareableGiftCard))]]
+              [[tags.OrderConfirmationMAIL_uniqueTRV]]
+            #else
+              [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare TRVSize ">" 1))]]
 
+            [[/ifb]]  
           [[/ifb]]
         </mj-text>
         
