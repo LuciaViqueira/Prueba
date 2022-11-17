@@ -10,8 +10,6 @@
       [[#assign "showDeliveryDate"]]true[[/assign]]
       [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
-      
-      [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -37,8 +35,20 @@
           [[else]]
             [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare subordersSize "==" 1) (compare TRVSize "==" 1) (notb isShareableGiftCard))]]
               [[tags.OrderConfirmationMAIL_uniqueTRV]]
-            #else
+            [[else]]
               [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare TRVSize ">" 1))]]
+                [[tags.OrderConfirmationMAIL_detailsTRV]]
+                [[#assign "showGiftCardDetailMessage"]]false[[/assign]]
+                [[#each recorrer las TRV]]
+                  [[#if this.isShareableGiftCard]]
+                    [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+                  [[/if]]
+                [[/each]]
+              [[else]]
+                [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare TRVSize ">" 1))]]
+                  [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+                [[/ifb]]
+              [[/ifb]]
 
             [[/ifb]]  
           [[/ifb]]
