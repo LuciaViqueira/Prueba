@@ -4,13 +4,6 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
-  <!-- Template configuration -->
-    <mj-raw>
-      [[#assign "returnShippingTitle"]]true[[/assign]]
-      [[#assign "showBlockTitle"]]true[[/assign]]
-      [[#assign "returnOrderItemTitle"]]true[[/assign]]
-      [[#assign "showExchangeRate"]]true[[/assign]]
-    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -19,42 +12,30 @@
           [[tags.returnRequested_acceptedRequestTitle]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
-          [[tags.returnRequested_orderIdText]]
+          [[tags.returnRequested_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[#eq payload.returnInformation.type "DROPOFF"]]
+            [[#if rma.isDropoff]]
               <p>[[tags.returnRequested_dropOffDescription]]</p>
-              <p>[[tags.returnRequested_officeDelivery]]</p>
-          [[else]]
-            [[#eq payload.returnInformation.type "HOME"]]
-                <p>[[tags.returnRequested_homeDescription]]</p>
-            [[/eq]]
-          [[/eq]]
+            [[/if]]
+            [[#if rma.isHome]]
+              <p>[[tags.returnRequested_homeDescription]] [[tags.returnRequested_makeSureText]]</p>
+            [[/if]]
+          [[#if rma.isDropoff]]
+            <p>[[tags.returnRequested_officeDelivery]]</p>
+            <p>[[tags.returnRequested_makeSureText]]</p>
+          [[/if]]
         </mj-text>
       </mj-column>
     </mj-section>
 
-    <!-- Sección 2 Shipping -->
-    <mj-raw>
-      [[#with payload.orders.[0] as | order |]]
-        [[#with order.suborders.[0].shipping as | shipping |]]
-    </mj-raw>
-    <mj-include path="shipping-R22" />
-    <mj-raw>
-        [[/with]]
-      [[/with]]
-    </mj-raw>
+    <!-- Sección 2 refundAddress -->
+    <mj-raw>[[#if rma.isHome]]</mj-raw>
+      <mj-include path="refundAddress-R22" />
+    <mj-raw>[[/if]]</mj-raw>
 
-    <!-- Sección 3 Product -->
-    <mj-raw>
-      [[#with payload]]
-    </mj-raw>
-    <!-- Sección 2 products -->
-      <mj-include path="OrderItemList-R22" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
+    <!-- Sección 3 productsList -->
+    <mj-include path="productsList-R22" />
 
     <!-- Sección 4 footer -->
     <mj-raw>
