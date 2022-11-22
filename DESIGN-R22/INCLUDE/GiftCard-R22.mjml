@@ -36,11 +36,11 @@
                 [[/with]]
             </div>
             <div>
-                [[#eq this.giftCard.type "VIRTUAL"]]
-                    [[#ifb (andb showGiftCardDetailMessage (orb (this.isShareableGiftCard) (notb this.hasOnlyVirtualGiftCards)))]]
-                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]:</span></div>
+                [[#if showGiftCardDetailMessage]]
+                    [[#ifb (orb (notb hasOnlyTRV) (compare this.giftCard.sendingMode "==" "SHAREABLE") )]]
+                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]</span></div>
                     [[/ifb]]
-                [[/eq]]
+                [[/if]]
             </div>
         </td>
     </tr>

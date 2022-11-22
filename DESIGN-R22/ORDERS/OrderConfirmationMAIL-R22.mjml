@@ -26,31 +26,39 @@
         </mj-text>
 
         <mj-raw>
-          [[#assign "subordersSize"]][[#size payload.orders.[0].suborders]][[/size]][[/assign]]
-          [[#assign "TRVSize"]][[#size comprobarNumDeTRVDelSuborder y a su vez si es Shareable]][[/size]][[/assign]]
+        
+          [[#def "subordersSize"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
+          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?(@.item!=null && @.giftCard==null)]"]][[/def]]
+          [[#def "TRVSize"]][[jsonNodeCounter "$..orderItems[?(@.giftCard!=null && @.giftCard.type=='VIRTUAL')]"]][[/def]]
+          [[#assign "hasOnlyTRV"]]false[[/assign]]
+          [[#ifb (andb (compare itemSize "==" 0) (compare TRVSize "!=" 0))]]
+            [[#assign "hasOnlyTRV"]]true[[/assign]]
+          [[/ifb]]
         </mj-raw>
+        
         <mj-text padding-bottom="10px" css-class="rd-text-info">
-          [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare subordersSize "==" 1) (compare TRVSize "==" 1) isShareableGiftCard)]]
-            [[tags.OrderConfirmationMAIL_sharedYourselfTRV]]
-          [[else]]
-            [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare subordersSize "==" 1) (compare TRVSize "==" 1) (notb isShareableGiftCard))]]
-              [[tags.OrderConfirmationMAIL_uniqueTRV]]
+          <p>itemSize: [[itemSize]]</p>
+          <p>TRVSize: [[TRVSize]]</p>
+          <p>hasOnlyTRV: [[hasOnlyTRV]]</p>
+          
+          [[#ifb (andb hasOnlyTRV (compare subordersSize "==" 1) (compare TRVSize "==" 1))]]
+            [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
+            [[#eq sendingMode  "SHAREABLE"]]
+              [[tags.OrderConfirmationMAIL_sharedYourselfTRV]]
             [[else]]
-              [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare TRVSize ">" 1))]]
-                [[tags.OrderConfirmationMAIL_detailsTRV]]
-                [[#assign "showGiftCardDetailMessage"]]false[[/assign]]
-                [[#each recorrer las TRV]]
-                  [[#if this.isShareableGiftCard]]
-                    [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
-                  [[/if]]
-                [[/each]]
-              [[else]]
-                [[#ifb (andb $orderInfo.hasOnlyVirtualGiftCards (compare TRVSize ">" 1))]]
-                  [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
-                [[/ifb]]
+              [[#eq sendingMode  "NOMINAL"]]
+                [[tags.OrderConfirmationMAIL_uniqueTRV]]
+              [[/eq]]
+            [[/eq]]
+          [[else]]
+            [[#ifb (andb hasOnlyTRV (compare TRVSize ">" 1))]]
+              [[tags.OrderConfirmationMAIL_detailsTRV]]
+              [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+            [[else]]
+              [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
+                [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
               [[/ifb]]
-
-            [[/ifb]]  
+            [[/ifb]]
           [[/ifb]]
         </mj-text>
         
