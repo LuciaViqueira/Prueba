@@ -19,6 +19,7 @@
           <p>[[tags.VirtualGiftCardConfirmedMAIL_infoText]]</p>
         </mj-text>
         <mj-raw> 
+          [[def "paymentDetails" payload.orders.[0].payments.[0].paymentDetails.[0]]]
           [[#each payload.orders.[0].suborders.[0].orderItems]]
         </mj-raw>
           <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-subsection-text">
@@ -34,15 +35,17 @@
               [[/if]]
             </div>
             <div>
-              [[#with this.giftCard.item.amount]]
-                [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
-                [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-              [[/with]]
-            </div>
-            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-            [[#eq storeLegacyValue  "11737"]]
-              <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
-            [[/eq]]
+              [[#if paymentDetails.balance]]
+                <div>
+                  [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
+                  <span style="text-transform: uppercase;">[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</span>
+                </div>
+                [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+                [[#eq storeLegacyValue  "11737"]]
+                  <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
+                [[/eq]]
+              [[/if]]
+            <div>
           </mj-text>
         <mj-raw> 
           [[/each]]
