@@ -22,16 +22,16 @@
           [[def "paymentDetails" payload.orders.[0].payments.[0].paymentDetails.[0]]]
           [[#each payload.orders.[0].suborders.[0].orderItems]]
         </mj-raw>
-          <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-subsection-text">
+          <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-subsection-text-notUppercase">
             <div>
               [[this.giftCard.message]]
             </div>
             <div>
               [[#if this.giftCard.receiverData.email]]
-                <div><span style="text-transform: uppercase;">[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]:</span> [[this.giftCard.receiverData.email]]</div>
+                <div>[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]: [[this.giftCard.receiverData.email]]</div>
               [[/if]]
               [[#if this.giftCard.shippingDate]]
-                <div style="text-transform: uppercase;">[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]]: [[epoch this.giftCard.shippingDate.dateIso "STORE" "SHORT" "ISO8601"]]</div>
+                <div>[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]]: [[epoch this.giftCard.shippingDate.dateIso "ISO8601"]]</div>
               [[/if]]
             </div>
             <div>
