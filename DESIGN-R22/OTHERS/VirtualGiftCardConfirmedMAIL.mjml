@@ -31,7 +31,7 @@
                 <div><span style="text-transform: uppercase;">[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]:</span> [[this.giftCard.receiverData.email]]</div>
               [[/if]]
               [[#if this.giftCard.shippingDate]]
-                <div style="text-transform: uppercase;">[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]]: [[#epoch this.giftCard.shippingDate.dateIso]] [[/epoch]]</div>
+                <div style="text-transform: uppercase;">[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]]: [[epoch this.giftCard.shippingDate.dateIso "STORE" "SHORT" "ISO8601"]]</div>
               [[/if]]
             </div>
             <div>
