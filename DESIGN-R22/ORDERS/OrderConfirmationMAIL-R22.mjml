@@ -22,8 +22,8 @@
             [[tags.OrderConfirmationMAIL_orderNumberText]]
         </mj-text>
         <mj-raw>
-          [[#def "subordersSize"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
-          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?(@.item!=null && @.giftCard==null)]"]][[/def]]
+          [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
+          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]
           [[#def "TRVSize"]][[jsonNodeCounter "$..orderItems[?(@.giftCard!=null && @.giftCard.type=='VIRTUAL')]"]][[/def]]
           [[#assign "hasOnlyTRV"]]false[[/assign]]
           [[#ifb (andb (compare itemSize "==" 0) (compare TRVSize "!=" 0))]]
@@ -32,7 +32,7 @@
         </mj-raw> 
         <mj-text padding-top="24px" css-class="rd-text-info">
           <p>[[tags.OrderConfirmationMAIL_notice]]</p>
-          [[#ifb (andb hasOnlyTRV (compare subordersSize "==" 1) (compare TRVSize "==" 1))]]
+          [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
             [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
             [[#eq sendingMode  "SHAREABLE"]]
               <p>[[tags.OrderConfirmationMAIL_sharedYourselfTRV]]</p>
