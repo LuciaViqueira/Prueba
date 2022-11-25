@@ -37,7 +37,7 @@
             </div>
             <div>
                 [[#eq this.giftCard.type "VIRTUAL"]] 
-                    [[#ifb (andb showGiftCardDetailMessage  (orb (notb hasOnlyTRV) (compare this.giftCard.sendingMode "==" "SHAREABLE") ))]]
+                    [[#ifb (andb showGiftCardDetailMessage  (orb (notb hasOnlyTRV) (compare this.giftCard.sendingMode "==" "CUSTOMER_INSTANT") ))]]
                         <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]</span></div>
                     [[/ifb]]
                 [[/eq]]
