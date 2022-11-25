@@ -23,7 +23,7 @@
         </mj-text>
         <mj-raw>
           [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
-          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?(@.item!=null && @.giftCard==null)]"]][[/def]]
+          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]
           [[#def "TRVSize"]][[jsonNodeCounter "$..orderItems[?(@.giftCard!=null && @.giftCard.type=='VIRTUAL')]"]][[/def]]
           [[#assign "hasOnlyTRV"]]false[[/assign]]
           [[#ifb (andb (compare itemSize "==" 0) (compare TRVSize "!=" 0))]]
