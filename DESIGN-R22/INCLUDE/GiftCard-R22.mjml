@@ -35,6 +35,13 @@
                     1 X [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                 [[/with]]
             </div>
+            <div>
+                [[#eq this.giftCard.type "VIRTUAL"]] 
+                    [[#ifb (andb showGiftCardDetailMessage  (orb (notb hasOnlyTRV) (compare this.giftCard.sendingMode "==" "CUSTOMER_INSTANT") ))]]
+                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]</span></div>
+                    [[/ifb]]
+                [[/eq]]
+            </div>
         </td>
     </tr>
 </table>
