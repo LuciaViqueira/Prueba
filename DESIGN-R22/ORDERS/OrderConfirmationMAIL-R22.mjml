@@ -33,12 +33,12 @@
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
             [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
-            [[#eq sendingMode  "SHAREABLE"]]
+            [[#eq sendingMode "CUSTOMER_INSTANT"]]
               <p>[[tags.OrderConfirmationMAIL_sharedYourselfTRV]]</p>
             [[else]]
-              [[#eq sendingMode  "NOMINAL"]]
+              [[#ifb (orb (compare sendingMode "==" "MERCHANT_SCHEDULED") (compare sendingMode "==" "MERCHANT_INSTANT"))]]
                 <p>[[tags.OrderConfirmationMAIL_uniqueTRV]]</p>
-              [[/eq]]
+              [[/ifb]]
             [[/eq]]
           [[else]]
             [[#ifb (andb hasOnlyTRV (compare TRVSize ">" 1))]]

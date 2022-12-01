@@ -1,0 +1,91 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-raw>
+          [[def "giftCard" payload.orders.[0].suborders.[0].orderItems.[0].giftCard]]
+          [[def "paymentDetails" payload.orders.[0].payments.[0].paymentDetails.[0]]]
+        </mj-raw> 
+        <mj-table padding="16px 0 0" table-layout="fixed">
+          <tr>
+            <td>
+              <table>  
+                <tr>
+                  <td style="padding: 0;" class="rd-subsection-text-notUppercase">
+                    [[#if giftCard.item.imageUrl]]
+                      <table style="margin-left: auto; margin-right: auto;">
+                          <tr>
+                              <td style="padding: 0 0 40px;">
+                                  <img padding="0" class="rd-product-img" width="225" src="[[giftCard.item.imageUrl]]" style="width:100%; height:auto;" />
+                              </td>
+                          </tr>
+                      </table>
+                    [[/if]]
+                    <div>
+                      [[giftCard.message]]
+                    </div>
+                    [[#if giftCard.from]]
+                        <div>[[giftCard.from]]</div><br/>
+                    [[/if]]
+                    <div>
+                      [[#if paymentDetails.balance]]
+                        <div>[[tags.VirtualGiftCardMAIL_amount]]
+                          [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
+                          <span style="text-transform: uppercase;">[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</span>
+                        </div>
+                        [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+                        [[#eq storeLegacyValue  "11737"]]
+                          <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
+                        [[/eq]]
+                      [[/if]]
+                    <div>
+                    <div>[[tags.VirtualGiftCardMAIL_cardNumber]] [[paymentDetails.pan]]</div>
+                    <div>[[tags.VirtualGiftCardMAIL_cvv]] [[paymentDetails.cvv]]</div>
+                    [[#assign "expirationDate"]][[paymentDetails.expirationDate.dateIso]][[/assign]]
+                    [[#if expirationDate]]
+                      <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_expirationDate]] [[epoch expirationDate "STORE" "SHORT" "ISO8601"]]</div>
+                    [[else]]
+                      <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_noExpirationDate]]</div>
+                    [[/if]]
+                    [[#def "barcodeITF"]][[paymentDetails.barcode]][[paymentDetails.controlDigit]][[/def]]
+                    <table style="width: 100%;">
+                      <tr>
+                        <td>
+                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="width:300px; height:auto;" />
+                        </td>
+                        <td>
+                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'QR_CODE']]" style="width:75px; height:auto;" />
+                        </td>
+                      </tr>
+                    </table>
+                    <div style="font-size:12px !important; color: #666666; padding-top: 40px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
+                    <div style="font-size:12px !important; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+
+  </mj-body>
+</mjml>
