@@ -23,8 +23,23 @@
           [[#if isDropoff]]
             <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
             [[#if payload.returnEntity.request.courier.name ]]
-              <p>[[tags.returnRequestDifferentOrders_courierInfo]]</p>
+              <p>[[tags.returnRequestDifferentOrders_courierInfo]] [[tags.returnRequestDifferentOrders_makeSureText]]</p>
             [[/if]]
+          [[/if]]
+          [[#if isHome]]
+            <p>[[tags.returnRequestDifferentOrders_homeDescription]] [[tags.returnRequestDifferentOrders_makeSureText]]</p>
+          [[/if]] 
+          [[#if payload.returnEntity.request.returnCosts.[0]]]
+            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
+              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
+            [[/with]]
+            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+            [[#eq storeLegacyValue  "11737"]]
+              <p style="font-size:13px;">*1 EUR = 7.53450 KN</p>
+            [[/eq]]
+          [[/if]]
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
           [[/if]]
           [[#if payload.returnEntity.request.type]]
             [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
@@ -34,24 +49,8 @@
                   [[#ifb (andb (compare this.urlName "==" "ZaraIdQrLink") (compare this.urlValue "!=" ""))]][[#assign "urlValue"]][[this.urlValue]][[/assign]][[/ifb]]
                 [[/each]]
                 <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
-                <p>[[tags.returnRequestDifferentOrders_returnQrText4]]</p>
               [[/not]]
             [[/eq]]
-          [[/if]]
-          [[#if isHome]]
-            <p>[[tags.returnRequestDifferentOrders_homeDescription]]</p>
-          [[/if]] 
-          [[#if payload.returnEntity.request.returnCosts.[0]]]
-            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
-              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
-            [[/with]]
-            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-            [[#eq storeLegacyValue  "11737"]]
-              <p style="font-size:13px;">1 EUR = 7.53450 KN</p>
-            [[/eq]]
-          [[/if]]
-          [[#if isDropoff]]
-            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
           [[/if]]
         </mj-text>
       </mj-column>

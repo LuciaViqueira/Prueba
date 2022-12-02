@@ -21,8 +21,36 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderConfirmationMAIL_orderNumberText]]
         </mj-text>
-        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
-          [[tags.OrderConfirmationMAIL_notice]]
+        <mj-raw>
+          [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
+          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]
+          [[#def "TRVSize"]][[jsonNodeCounter "$..orderItems[?(@.giftCard!=null && @.giftCard.type=='VIRTUAL')]"]][[/def]]
+          [[#assign "hasOnlyTRV"]]false[[/assign]]
+          [[#ifb (andb (compare itemSize "==" 0) (compare TRVSize "!=" 0))]]
+            [[#assign "hasOnlyTRV"]]true[[/assign]]
+          [[/ifb]]
+        </mj-raw> 
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[tags.OrderConfirmationMAIL_notice]]</p>
+          [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
+            [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
+            [[#eq sendingMode "CUSTOMER_INSTANT"]]
+              <p>[[tags.OrderConfirmationMAIL_sharedYourselfTRV]]</p>
+            [[else]]
+              [[#ifb (orb (compare sendingMode "==" "MERCHANT_SCHEDULED") (compare sendingMode "==" "MERCHANT_INSTANT"))]]
+                <p>[[tags.OrderConfirmationMAIL_uniqueTRV]]</p>
+              [[/ifb]]
+            [[/eq]]
+          [[else]]
+            [[#ifb (andb hasOnlyTRV (compare TRVSize ">" 1))]]
+              <p>[[tags.OrderConfirmationMAIL_detailsTRV]]</p>
+              [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+            [[else]]
+              [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
+                [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+              [[/ifb]]
+            [[/ifb]]
+          [[/ifb]]
         </mj-text>
        </mj-column>
     </mj-section>
