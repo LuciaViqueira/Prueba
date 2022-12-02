@@ -35,7 +35,11 @@
                 [[#if willReceiveTitle]]
               </mj-raw>
                   <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
-                    [[tags.shipping_shippingWillReceive]]:
+                    [[#if order.isSplitted]]
+                      [[tags.shipping_shippingWillReceiveSplitted]]:
+                    [[else]]
+                      [[tags.shipping_shippingWillReceive]]:
+                    [[/if]]
                   </mj-text>
       <mj-raw>
                 [[/if]]  
@@ -46,17 +50,29 @@
         [[#if hideTimeMethodInfo]]
         [[else]]
           [[#each order.suborders]]
-            [[#and showDeliveryDate this.deliveryDate]]
+            [[#if showDeliveryDate]]
+              [[#and order.isSplitted this.suborderId]]
       </mj-raw>
-      <mj-text css-class="rd-subsection-title" padding-bottom="32px" font-weight="bold">
-        [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-        [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-        [[readableDate minDeliveredDate maxDeliveredDate]]
-      </mj-text>
-      <mj-raw>
-          [[/and]]
-        [[/each]]
-      [[/if]]
+                <mj-text css-class="rd-subsection-title" padding-bottom="8px">
+                  [[tags.shipping_title]] [[this.suborderId]]
+                </mj-text>
+            <mj-raw>
+              [[/and]]
+              [[#if this.deliveryDate]]
+            </mj-raw>
+                <mj-text css-class="rd-subsection-title" padding-bottom="16px" font-weight="bold">
+                  [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
+                  [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
+                  [[readableDate minDeliveredDate maxDeliveredDate]]
+                </mj-text>
+        <mj-raw>
+              [[/if]]
+            [[/if]]
+          [[/each]]
+        </mj-raw>
+          <mj-spacer height="16px" />
+    <mj-raw>
+        [[/if]]
     [[else]]
     [[/if]]
       [[#if returnShippingTitle]]
