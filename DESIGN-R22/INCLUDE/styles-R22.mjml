@@ -326,6 +326,10 @@
     max-width: 230px;
 }
 
+.rd-product-col {
+    vertical-align: top;
+}
+
 .rd-product td {
     width: 100%;
     max-width: 230px;
