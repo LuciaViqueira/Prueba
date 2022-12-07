@@ -24,12 +24,12 @@
           [[tags.OrderShippedMAIL_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[#assign "shippingMode"]] [[payload.orders.[0].suborders.[0].shipping.mode]] [[/assign]]
+          [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
           [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
-          [[#ifb (andb isSplitted (compare shippingMode "==" "HOME"))]]
+          [[#ifb (andb isSplitted (compare shippingType "==" "HOME"))]]
             <div>[[tags.OrderShippedMAIL_splitDeliveriesWarehouses]]</div>
           [[/ifb]]
-          [[#eq shippingMode "STORE"]]
+          [[#eq shippingType "STORE"]]
             <div>[[tags.OrderShippedMAIL_storeNoticeOfArrival]]</div>
           [[/eq]]
         </mj-text>
@@ -49,7 +49,7 @@
     <mj-section>
       <mj-column>
         <mj-raw>
-          [[#ifb (andb isSplitted (orb (compare shippingMode "==" "STORE") (compare shippingMode "==" "HOME")))]]
+          [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME")))]]
         </mj-raw>
           <mj-text padding-top="24px" css-class="rd-text-info"> 
             <p>[[tags.OrderShippedMAIL_infoAboutDeliveries]]</p>  
