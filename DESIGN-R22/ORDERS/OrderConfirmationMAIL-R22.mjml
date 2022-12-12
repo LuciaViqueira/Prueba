@@ -10,6 +10,7 @@
       [[#assign "showDeliveryDate"]]true[[/assign]]
       [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
+      [[#assign "showShippingCharges"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
