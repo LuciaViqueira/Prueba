@@ -57,7 +57,7 @@
 
     <mj-raw>
       [[#with payload.orders.[0] as | order |]]
-        [[#with order.suborders.[0].shipping as | shipping |]]
+        [[#with order.suborders.[0].shipping as | shippingAddress |]]
     </mj-raw>
     <mj-include path="shipping-R22" />
     <mj-raw>
