@@ -1,9 +1,9 @@
 <mj-section>
-  <mj-column>
+  <mj-column padding-top="40px">
     <mj-raw> 
       [[#if showBlockTitle]]  <!-- Muestra el titulo del bloque -->
     </mj-raw>
-      <mj-text css-class="rd-section-title" padding-top="64px">
+      <mj-text css-class="rd-section-title" padding-top="24px" padding-bottom="40px">
         [[#if returnOrderItemTitle]]
           [[tags.OrderItemList_productListTitleReturnRequest]]
         [[else]]
@@ -12,8 +12,10 @@
       </mj-text>
     <mj-raw>
       [[/if]]
+      [[#if payload.orders.[0].isSplitted]]
+      [[else]]
     </mj-raw>
-      <mj-text css-class="rd-subsection-text" padding-top="40px">
+      <mj-text css-class="rd-subsection-text">
         <div class="rd-light-font"> 
           [[#if useTotalOrdersNumItems]]
             [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
@@ -30,6 +32,7 @@
         </div>   
       </mj-text>
     <mj-raw>
+      [[/if]]
       [[#if showExchangeRate]]
     </mj-raw>
       <mj-text css-class="rd-subsection-text" padding-top="4px">
@@ -52,7 +55,31 @@
       <mj-raw>
         [[/neq]]
         [[#each this.suborders]]
+          [[#if payload.orders.[0].isSplitted]]
       </mj-raw>
+            <mj-text css-class="rd-section-title">
+              [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
+              [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
+              [[readableDate minDeliveredDate maxDeliveredDate]]
+            </mj-text>
+            <mj-text css-class="rd-subsection-text" padding-top="4px">
+              [[tags.OrderItemList_devileryText]] [[this.suborderId]]
+            </mj-text>
+            <mj-text css-class="rd-subsection-text" padding-top="4px">
+              <div class="rd-light-font"> 
+                [[#assign "suborderNumItems"]] [[this.numItems]] [[/assign]]
+                [[suborderNumItems]]
+                [[#eq suborderNumItems "1"]]
+                  [[tags.OrderItemList_singleItemText]]
+                [[/eq]]
+                [[#neq suborderNumItems "1"]]
+                  [[tags.OrderItemList_multipleItemText]]
+                [[/neq]]
+              </div>   
+            </mj-text>
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
           <mj-table padding="16px 0 0" table-layout="fixed">
             [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
             [[#each orderItemsMatrix]]

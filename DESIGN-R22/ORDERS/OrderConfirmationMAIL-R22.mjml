@@ -31,7 +31,6 @@
           [[/ifb]]
         </mj-raw> 
         <mj-text padding-top="24px" css-class="rd-text-info">
-          <p>[[tags.OrderConfirmationMAIL_notice]]</p>
           [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
             [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
             [[#eq sendingMode "CUSTOMER_INSTANT"]]
@@ -46,6 +45,10 @@
               <p>[[tags.OrderConfirmationMAIL_detailsTRV]]</p>
               [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
             [[else]]
+              [[#if payload.orders.[0].isSplitted]]
+                <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
+              [[/if]]
+              <p>[[tags.OrderConfirmationMAIL_notice]]</p>
               [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
                 [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
               [[/ifb]]
