@@ -55,7 +55,14 @@
                 [[#and order.isSplitted this.suborderId]]
             </mj-raw>
                   <mj-text css-class="rd-subsection-title" padding-bottom="8px">
-                    [[tags.shipping_title]] [[this.suborderId]]
+                    [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                    [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
+                    [[#ifb (compare uuidSize ">" size)]]
+                      [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
+                    [[else]]
+                      [[def "suborderIdSub8" suborderIdentifier]]
+                    [[/ifb]]
+                    [[tags.shipping_title]] [[suborderIdSub8]]
                   </mj-text>
               <mj-raw>
                 [[/and]]
