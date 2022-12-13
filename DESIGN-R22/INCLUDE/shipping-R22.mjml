@@ -111,34 +111,34 @@
     
     <mj-text font-weight="bold" css-class="rd-subsection-text-light">
       <!-- ShippingMethod -->
-          [[#eq this.shipping.mode "EXPRESS"]]
+          [[#eq this.shippingAddress.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
           [[else]]
-            [[#eq this.shipping.mode "STANDARD"]]
+            [[#eq this.shippingAddress.mode "STANDARD"]]
               [[tags.shipping_STANDARD]]
             [[else]]
-              [[#eq this.shipping.mode "STORE"]]
+              [[#eq this.shippingAddress.mode "STORE"]]
                 [[tags.shipping_pickupStore]]
               [[else]]
-                [[#eq this.shipping.mode "DDD"]]
+                [[#eq this.shippingAddress.mode "DDD"]]
                   [[tags.shipping_DDD]]
                 [[else]]
-                  [[#eq this.shipping.mode "DROPPOINT"]]
+                  [[#eq this.shippingAddress.mode "DROPPOINT"]]
                     [[tags.shipping_DROPPOINT]]
                   [[else]]
-                    [[#eq this.shipping.mode "SAMEDAY"]]
+                    [[#eq this.shippingAddress.mode "SAMEDAY"]]
                       [[tags.shipping_SAMEDAY]]
                     [[else]]
-                      [[#eq this.shipping.mode "TRYON"]]
+                      [[#eq this.shippingAddress.mode "TRYON"]]
                         [[tags.shipping_TRYON]]
                       [[else]]
-                        [[#eq this.shipping.mode "VIRTUAL"]]
+                        [[#eq this.shippingAddress.mode "VIRTUAL"]]
                           [[tags.shipping_VIRTUAL]]
                         [[else]]
-                          [[#eq this.shipping.mode "DEFERRED_STANDARD"]]
+                          [[#eq this.shippingAddress.mode "DEFERRED_STANDARD"]]
                             [[tags.shipping_DEFERRED_STANDARD]]
                           [[else]]
-                            [[#eq this.shipping.mode "STANDARD_ASSEMBLY"]]
+                            [[#eq this.shippingAddress.mode "STANDARD_ASSEMBLY"]]
                               [[tags.shipping_STANDARD_ASSEMBLY]]
                             [[/eq]]
                           [[/eq]]
@@ -154,24 +154,24 @@
     </mj-text>
 
     <mj-raw>
-    [[#if shipping.description]]
+    [[#if shippingAddress.description]]
     </mj-raw>
       <mj-text padding-top="4px" css-class="rd-subsection-text">
-        [[shipping.description]]
+        [[shippingAddress.description]]
       </mj-text>
     <mj-raw>
       [[/if]]
-      [[#with shipping.address]]
+      [[#with shippingAddress.address]]
           </mj-raw>
             <mj-include path="Address-R22" />
           <mj-raw>
       [[else]]
-        [[#with shipping.physicalStore.address]]
+        [[#with shippingAddress.physicalStore.address]]
           </mj-raw>
             <mj-include path="Address-R22" />
           <mj-raw>
         [[else]]
-          [[#with shipping.dropPoint.address]]
+          [[#with shippingAddress.dropPoint.address]]
             </mj-raw>
               <mj-include path="Address-R22" />
             <mj-raw>
