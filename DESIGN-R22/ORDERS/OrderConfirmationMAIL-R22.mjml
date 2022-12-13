@@ -46,9 +46,11 @@
               <p>[[tags.OrderConfirmationMAIL_detailsTRV]]</p>
               [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
             [[else]]
-              [[#if payload.orders.[0].isSplitted]]
+              [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
+              [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
+              [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME")))]]
                 <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
-              [[/if]]
+              [[/ifb]]
               <p>[[tags.OrderConfirmationMAIL_notice]]</p>
               [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
                 [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
