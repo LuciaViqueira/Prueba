@@ -36,7 +36,13 @@
               </mj-raw>
                   <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
                     [[#if order.isSplitted]]
-                      [[tags.shipping_shippingWillReceiveSplitted]]:
+                      [[#assign "subordersSize"]][[#size order.suborders]][[/size]][[/assign]]
+                      [[#eq subordersSize "1"]]
+                        [[tags.shipping_shippingWillReceiveSplittedSingular]]:
+                      [[/eq]]
+                      [[#neq subordersSize "1"]]
+                        [[tags.shipping_shippingWillReceiveSplittedPlural]]:
+                      [[/neq]]
                     [[else]]
                       [[tags.shipping_shippingWillReceive]]:
                     [[/if]]
