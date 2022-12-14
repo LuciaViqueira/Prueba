@@ -22,7 +22,7 @@
                         <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
                     [[/if]]
                     [[#if this.giftCard.shippingDate]]
-                        <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.dateIso]] [[/epoch]]</div>
+                        <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.timestamp]] [[/epoch]]</div>
                     [[/if]]
                     [[#if this.giftCard.receiverData.phone]]
                         <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>

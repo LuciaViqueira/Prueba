@@ -114,6 +114,13 @@
           <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
         </tr>
       [[/if]]
+      [[def "orderDiscount" payload.orders.[0].discounts.[0].amount]]
+      [[#if orderDiscount]]
+        <tr class="rd-light-font">
+          <td>[[tags.Payment_orderDiscount]]</td>
+          <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+        </tr>
+      [[/if]]
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.Payment_totalAmountText]]</td>
         [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
