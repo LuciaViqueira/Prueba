@@ -50,6 +50,18 @@
                 </mj-text>
                 [[/each]]
             [[/if]]
+            [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
+            [[#ifb numBadPracticeItems "!=" "0"]]
+                [[#eq numBadPracticeItems "1"]]
+                    [[#eq this.quantity "1"]]
+                        <div class="rd-badPractice-text">[[tags.ReturnProductList_badPracticeUniqueItem]]</div>
+                    [[else]]
+                        <div class="rd-badPractice-text">[[tags.ReturnProductList_badPracticeVariousItemsSingular]]</div>
+                    [[/eq]]
+                [[else]]
+                    <div class="rd-badPractice-text">[[tags.ReturnProductList_badPracticeVariousItemsPlural]]</div>
+                [[/eq]]
+            [[/ifb]]
         </td>
     </tr>
 </table>

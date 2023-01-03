@@ -70,6 +70,19 @@
                 </mj-text>
                 [[/each]]
             [[/if]]
+            [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
+            [[#ifb numBadPracticeItems "!=" "0"]]
+                <div class="rd-badPractice-text"><img width="12" padding-right="8px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/Background.jpg" style="width:12px; height:auto;"/>
+                [[#eq numBadPracticeItems "1"]]
+                    [[#eq templateQuantity "1"]]
+                        [[tags.OrderItemList_badPracticeUniqueItem]]</div>
+                    [[else]]
+                        [[tags.OrderItemList_badPracticeVariousItemsSingular]]</div>
+                    [[/eq]]
+                [[else]]
+                    [[tags.OrderItemList_badPracticeVariousItemsPlural]]</div>
+                [[/eq]]
+            [[/ifb]]
         </td>
     </tr>
 </table>

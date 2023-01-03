@@ -424,4 +424,12 @@
     text-transform: uppercase;
     margin: 20px 0 0;
 }
+
+.rd-badPractice-text {
+    text-transform: none !important;
+    color: #FF930B !important;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.3px;
+}
 </mj-style>
