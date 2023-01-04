@@ -13,7 +13,14 @@
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[tags.ReturnConfirmation_returnConfirmationTitle]]
+          [[#ifb (compare returnInformation.orderList.[0].orderItems.[0].item.sku "==" "XSHIPCHGSKU")]]
+            [[#assign "skuReturnShippingCosts"]]true[[/assign]]
+          [[/ifb]]
+          [[#if skuReturnShippingCosts]]
+            [[tags.ReturnConfirmation_titleReturnShippingCosts]]
+          [[else]]
+            [[tags.ReturnConfirmation_returnConfirmationTitle]]
+          [[/if]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[#if payload.returnInformation.fromGiftTicket]]
@@ -27,6 +34,12 @@
           [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#if skuReturnShippingCosts]]
+            [[#def "returnShippingCosts"]][[def "obj" (conversionRate payload.paymentBreakdown.shippingPrice.value payload.paymentBreakdown.shippingPrice.exponent payload.paymentBreakdown.shippingPrice.currency payload.paymentBreakdown.shippingPrice.humanReadableText)]]
+                    [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+            [[/def]]
+            <p>[[tags.ReturnConfirmationV2MAIL_textReturnShippingCosts]]</p>
+          [[/if]]
           [[#neq returnInformation.refundPaymentMethod "GIFT_CARD"]]
             [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
           [[/neq]]
@@ -47,11 +60,20 @@
               <p>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</p>
             [[/if]]
           [[/eq]]
+          [[#if skuReturnShippingCosts]]
+            <p>[[tags.ReturnConfirmation_gratefulReturnShippingCosts]]</p>
+          [[/if]]
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- Sección 2 productos -->
-    <mj-include path="ReturnProductList-R22" />
+    <mj-raw>
+      [[#not skuReturnShippingCosts]]
+    </mj-raw>
+        <mj-include path="ReturnProductList-R22" />
+    <mj-raw>
+      [[/not]]
+    </mj-raw>
 
     <!-- Sección 3 pago -->
     <mj-raw>

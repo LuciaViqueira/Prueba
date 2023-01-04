@@ -16,7 +16,14 @@
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[tags.ReturnConfirmationV2MAIL_title]]
+          [[#ifb (compare payload.returnInformation.orders.[0].suborders.[0].orderItems.[0].item.sku "==" "XSHIPCHGSKU")]]
+            [[#assign "skuReturnShippingCosts"]]true[[/assign]]
+          [[/ifb]]
+          [[#if skuReturnShippingCosts]]
+            [[tags.ReturnConfirmationV2MAIL_titleReturnShippingCosts]]
+          [[else]]
+            [[tags.ReturnConfirmationV2MAIL_title]]
+          [[/if]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[#if payload.returnInformation.uuid.prettyUuid]]
@@ -37,6 +44,12 @@
           [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#if skuReturnShippingCosts]]
+            [[#def "returnShippingCosts"]][[def "obj" (conversionRate payload.paymentBreakdown.shippingPrice.value payload.paymentBreakdown.shippingPrice.exponent payload.paymentBreakdown.shippingPrice.currency payload.paymentBreakdown.shippingPrice.humanReadableText)]]
+                    [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+            [[/def]]
+            <p>[[tags.ReturnConfirmationV2MAIL_textReturnShippingCosts]]</p>
+          [[/if]]
           [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
             [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
           [[/neq]]
@@ -57,16 +70,21 @@
               
             [[/if]]
           [[/eq]]
+          [[#if skuReturnShippingCosts]]
+            <p>[[tags.ReturnConfirmationV2MAIL_gratefulReturnShippingCosts]]</p>
+          [[/if]]
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- Sección 3 productsList -->
     <mj-raw>
-      [[#with payload.returnInformation]]
+      [[#not skuReturnShippingCosts]]
+        [[#with payload.returnInformation]]
     </mj-raw>
-      <mj-include path="OrderItemList-R22" />
+        <mj-include path="OrderItemList-R22" />
     <mj-raw>
-      [[/with]]
+        [[/with]]
+      [[/not]]
     </mj-raw>
 
     <mj-raw>
