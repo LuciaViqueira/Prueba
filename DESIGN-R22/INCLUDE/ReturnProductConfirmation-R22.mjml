@@ -52,14 +52,15 @@
             [[/if]]
             [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
             [[#ifb numBadPracticeItems "!=" "0"]]
+                <div style="font-size:12px !important;" class="rd-badPractice-text"><img width="12" padding-right="2px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:12px; height:auto; padding-right:2px;"/>
                 [[#eq numBadPracticeItems "1"]]
                     [[#eq this.quantity "1"]]
-                        <div class="rd-badPractice-text">[[tags.ReturnProductList_badPracticeUniqueItem]]</div>
+                        [[tags.ReturnProductList_badPracticeUniqueItem]]</div>
                     [[else]]
-                        <div class="rd-badPractice-text">[[tags.ReturnProductList_badPracticeVariousItemsSingular]]</div>
+                        [[tags.ReturnProductList_badPracticeVariousItemsSingular]]</div>
                     [[/eq]]
                 [[else]]
-                    <div class="rd-badPractice-text">[[tags.ReturnProductList_badPracticeVariousItemsPlural]]</div>
+                    [[tags.ReturnProductList_badPracticeVariousItemsPlural]]</div>
                 [[/eq]]
             [[/ifb]]
         </td>
