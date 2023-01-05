@@ -52,16 +52,26 @@
             [[/if]]
             [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
             [[#ifb numBadPracticeItems "!=" "0"]]
-                <div style="font-size:12px !important;" class="rd-badPractice-text"><img width="12" padding-right="2px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:12px; height:auto; padding-right:2px;"/>
-                [[#eq numBadPracticeItems "1"]]
-                    [[#eq this.quantity "1"]]
-                        [[tags.ReturnProductList_badPracticeUniqueItem]]</div>
-                    [[else]]
-                        [[tags.ReturnProductList_badPracticeVariousItemsSingular]]</div>
-                    [[/eq]]
-                [[else]]
-                    [[tags.ReturnProductList_badPracticeVariousItemsPlural]]</div>
-                [[/eq]]
+                <table>
+                    <tr>
+                        <td style="width:13px; padding:0;" class="rd-product-col">
+                            <div style="width:13px; margin-top:2px;"><img width="13" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:13px; height:auto;"/></div>   
+                        </td>
+                        <td style="padding:0 0 0 8px;" class="rd-product-col">
+                            <div style="font-size:12px !important;" class="rd-badPractice-text">
+                                [[#eq numBadPracticeItems "1"]]
+                                    [[#eq this.quantity "1"]]
+                                        [[tags.ReturnProductList_badPracticeUniqueItem]]
+                                    [[else]]
+                                        [[tags.ReturnProductList_badPracticeVariousItemsSingular]]
+                                    [[/eq]]
+                                [[else]]
+                                    [[tags.ReturnProductList_badPracticeVariousItemsPlural]]
+                                [[/eq]]
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             [[/ifb]]
         </td>
     </tr>
