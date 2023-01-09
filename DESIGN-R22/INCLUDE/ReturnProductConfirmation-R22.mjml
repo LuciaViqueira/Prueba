@@ -57,7 +57,7 @@
                         <td style="width:13px; padding:0;" class="rd-product-col">
                             <div style="width:13px; margin-top:2px;"><img width="13" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:13px; height:auto;"/></div>   
                         </td>
-                        <td style="padding:0 0 0 8px;" class="rd-product-col">
+                        <td style="padding:0 0 0 10px;" class="rd-product-col">
                             <div style="font-size:12px !important;" class="rd-badPractice-text">
                                 [[#eq numBadPracticeItems "1"]]
                                     [[#eq this.quantity "1"]]
