@@ -81,10 +81,16 @@
                 </table>
                 <hr class="hrClass">
             </div>
+            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
             <table style="padding: 30px 0 0; width: 50%;">
                 <tr>
-                    <td class="alignLeft font10px"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.payments.[0].paymentDetails.[0].balance.value payload.payments.[0].paymentDetails.[0].balance.exponent payload.payments.[0].paymentDetails.[0].balance.currency payload.payments.[0].paymentDetails.[0].balance.humanReadableText]]</td>
+                    <td class="alignLeft font10px uppercase"><b>[[tags.ResendZaraCard_amount]]</b> [[def "obj" (conversionRate payload.payments.[0].paymentDetails.[0].balance.value payload.payments.[0].paymentDetails.[0].balance.exponent payload.payments.[0].paymentDetails.[0].balance.currency payload.payments.[0].paymentDetails.[0].balance.humanReadableText)]][[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
                 </tr>
+                [[#eq storeLegacyValue  "11737"]]
+                    <tr>
+                        <td class="alignLeft font10px" style="padding-left: 8px">*1 EUR = 7.53450 KN</td>
+                    </tr>
+                [[/eq]]
                 <tr>
                     <td class="alignLeft font10px" style="width: 50%; padding-top: 4px;"><b>[[tags.ResendZaraCard_cardNumber]]</b> [[payload.payments.[0].paymentDetails.[0].pan]]</td>
                     <td class="font10px" style="padding-top: 4px;"><b>[[tags.ResendZaraCard_cvv]]</b> [[payload.payments.[0].paymentDetails.[0].cvv]]</td>
