@@ -4,11 +4,12 @@
       [[tags.ReturnProductList_title]]
     </mj-text>
     <mj-text padding-top="46px" css-class="rd-subsection-text">
-        [[returnInformation.orderList.[0].totalNumItems]]
-        [[#eq returnInformation.orderList.[0].totalNumItems "1"]]
+        [[#assign "totalItems"]] [[returnInformation.orderList.[0].totalNumItems]] [[/assign]]
+        [[totalItems]]
+        [[#eq totalItems "1"]]
           [[tags.ReturnProductList_singleItemText]]
         [[/eq]]
-        [[#neq returnInformation.orderList.[0].totalNumItems "1"]]
+        [[#neq totalItems "1"]]
           [[tags.ReturnProductList_multipleItemText]]
         [[/neq]]
     </mj-text>
