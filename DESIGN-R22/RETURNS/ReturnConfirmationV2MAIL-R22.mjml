@@ -16,7 +16,8 @@
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[#ifb (compare payload.returnInformation.orders.[0].suborders.[0].orderItems.[0].item.sku "==" "XSHIPCHGSKU")]]
+          [[#assign "orderItemsSize"]][[#size payload.returnInformation.orders.[0].suborders.[0].orderItems]][[/size]][[/assign]]
+          [[#ifb (andb (compare orderItemsSize "==" 1) (compare payload.returnInformation.orders.[0].suborders.[0].orderItems.[0].item.sku "==" "XSHIPCHGSKU"))]]
             [[#assign "skuReturnShippingCosts"]]true[[/assign]]
           [[/ifb]]
           [[#if skuReturnShippingCosts]]

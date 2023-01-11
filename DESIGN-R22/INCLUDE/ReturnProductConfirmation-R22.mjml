@@ -17,7 +17,7 @@
                 [[this.item.shortDescription]]
             </div>
             <div style="color: #666666;">
-                [[this.item.color]] [[this.item.sku]]
+                [[this.item.color]][[#neq this.item.sku "XSHIPCHGSKU"]] [[this.item.sku]][[/neq]]
             </div>
             <div style="padding-top: 16px">
                 [[this.quantity]] / [[& this.price.humanReadableText]]  

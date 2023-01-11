@@ -14,7 +14,7 @@
                 [[this.item.shortDescription]]
             </div>
             <div style="color: #666666;">
-                [[this.item.colour]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
+                [[this.item.colour]][[#neq this.item.sku "XSHIPCHGSKU"]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]][[/neq]]
             </div>
             <div style="padding-top: 16px">
                 [[#if hideItemQuantity]]
