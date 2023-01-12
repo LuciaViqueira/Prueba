@@ -60,7 +60,8 @@
                         <td style="padding:0 0 0 10px;" class="rd-product-col">
                             <div style="font-size:12px !important;" class="rd-badPractice-text">
                                 [[#eq numBadPracticeItems "1"]]
-                                    [[#eq this.quantity "1"]]
+                                    [[#assign "itemQuantity"]][[this.quantity]][[/assign]]
+                                    [[#eq itemQuantity "1"]]
                                         [[tags.ReturnProductList_badPracticeUniqueItem]]
                                     [[else]]
                                         [[tags.ReturnProductList_badPracticeVariousItemsSingular]]
