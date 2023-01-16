@@ -71,6 +71,10 @@
               
             [[/if]]
           [[/eq]]
+          [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
+          [[#ifb (andb badPractice (compare badPractice "!=" "0"))]]
+            <p>[[tags.ReturnConfirmationV2MAIL_badPracticeInfo]]</p>
+          [[/ifb]]
           [[#if skuReturnShippingCosts]]
             <p>[[tags.ReturnConfirmationV2MAIL_gratefulReturnShippingCosts]]</p>
           [[/if]]
