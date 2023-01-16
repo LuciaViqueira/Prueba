@@ -47,6 +47,10 @@
               <p>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</p>
             [[/if]]
           [[/eq]]
+          [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
+          [[#ifb (andb badPractice (compare badPractice "!=" "0"))]]
+            <p>[[tags.ReturnConfirmation_badPracticeInfo]]</p>
+          [[/ifb]]
         </mj-text>
       </mj-column>
     </mj-section>
