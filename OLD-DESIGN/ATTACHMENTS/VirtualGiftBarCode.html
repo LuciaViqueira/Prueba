@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #container {
+                width:800px;
+                margin: 0 auto;
+                font-family: "custom-font";
+                font-size: 10px;
+                font-weight: bold;
+                padding: 20px;
+            }
+            @page {
+                size: 105mm 1000px;
+                border: 2px solid black;
+                border-radius: 55px;
+                padding-top: 120px;
+                margin: 10px 10px 10px 10px;
+                @top-center {
+                    content: element(pageHeader);
+                    display: block;
+                }
+            }
+            @font-face {
+                font-family: "custom-font";
+                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
+            }
+            #pageHeader{
+                position: running(pageHeader);
+                display: block;
+                width: 100%;
+                padding-top: 20px;
+            }
+            #pageBreak{
+                page-break-inside:avoid; 
+                page-break-after:auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">  
+            [[#def "barcodeITF"]][[payload.orders.[0].payments.[0].paymentDetails.[0].barcode]][[payload.orders.[0].payments.[0].paymentDetails.[0].controlDigit]][[/def]]
+            <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="width:300px; height:auto;" />
+        </div> 
+    </body>
+</html>

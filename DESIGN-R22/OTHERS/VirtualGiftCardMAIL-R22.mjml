@@ -53,17 +53,16 @@
                     [[else]]
                       <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_noExpirationDate]]</div>
                     [[/if]]
-                    [[#def "barcodeITF"]][[paymentDetails.barcode]][[paymentDetails.controlDigit]][[/def]]
                     <table style="width: 100%;">
                       <tr>
                         <td>
-                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'ITF']]" style="width:300px; height:auto;" />
+                          <img src="cid:[[payload.attachments.[0].fileName]]" style="width:300px; height:auto;" />
                         </td>
                         <td>
-                          <img src="data:image/png;base64,[[imageCodeGenerator barcodeITF 'QR_CODE']]" style="width:75px; height:auto;" />
+                          <img src="cid:[[payload.attachments.[1].fileName]]" style="width:75px; height:auto;" />
                         </td>
                       </tr>
-                    </table>
+                    </table>   
                     <div style="font-size:12px !important; color: #666666; padding-top: 40px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
                     <div style="font-size:12px !important; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
                   </td>
