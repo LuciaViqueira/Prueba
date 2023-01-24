@@ -59,7 +59,7 @@
                           <img src="cid:[[payload.attachments.[0].fileName]]" style="width:300px; height:auto;" />
                         </td>
                         <td>
-                          <img src="cid:[[payload.attachments.[1].fileName]]" style="width:75px; height:auto;" />
+                          <img src="cid:[[payload.attachments.[1].fileName]]" style="width:150px; height:auto;" />
                         </td>
                       </tr>
                     </table>   
