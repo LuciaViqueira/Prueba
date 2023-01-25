@@ -29,7 +29,7 @@
                     [[/if]]
                     <table style="width:100%;">
                       <tr>
-                        <td style="padding-bottom:35px">
+                        <td style="padding-bottom:32px">
                           <div>
                             [[giftCard.message]]
                           </div>
@@ -63,7 +63,7 @@
                         </td>
                       </tr>
                     </table>
-                    <div style="font-size:12px !important; color: #666666; padding-top: 5px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
+                    <div style="font-size:12px !important; color: #666666; padding-top: 8px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
                     <div style="font-size:12px !important; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
                   </td>
                 </tr>
