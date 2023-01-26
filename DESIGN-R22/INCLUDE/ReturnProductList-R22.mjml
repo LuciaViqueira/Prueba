@@ -4,7 +4,7 @@
       [[tags.ReturnProductList_title]]
     </mj-text>
     <mj-text padding-top="46px" css-class="rd-subsection-text">
-      [[#assign "totalItems"]] [[returnInformation.orderList.[0].totalNumItems]] [[/assign]]
+      [[#assign "totalItems"]] [[payload.returnInformation.orderList.[0].totalNumItems]] [[/assign]]
       [[totalItems]]
       [[#eq totalItems "1"]]
         [[tags.ReturnProductList_singleItemText]]
@@ -15,7 +15,7 @@
     </mj-text>
 
     <mj-raw>
-      [[#each returnInformation.orderList]]
+      [[#each payload.returnInformation.orderList]]
     </mj-raw>
       <mj-table padding="16px 0 0" table-layout="fixed">
         [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
