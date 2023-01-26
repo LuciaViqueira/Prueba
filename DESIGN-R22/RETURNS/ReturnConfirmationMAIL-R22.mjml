@@ -19,27 +19,27 @@
           [[#if payload.returnInformation.fromGiftTicket]]
             [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumber]]
           [[else]]
-            [[#assign "orderId"]][[returnInformation.orderList.[0].identifier]][[/assign]]
+            [[#assign "orderId"]][[payload.returnInformation.orderList.[0].identifier]][[/assign]]
             [[#eq orderId "-1"]]
-              [[#assign "orderId"]][[substring returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
+              [[#assign "orderId"]][[substring payload.returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
             [[/eq]]
             [[tags.ReturnConfirmation_returnNumberText]]
           [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[#neq returnInformation.refundPaymentMethod "GIFT_CARD"]]
+          [[#neq payload.returnInformation.refundPaymentMethod "GIFT_CARD"]]
             [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
           [[/neq]]
-          [[#and refundPaymentMethodNotGiftCard returnInformation.isRefundRupportedByGateway returnInformation.isAlreadyRefunded]]
+          [[#and refundPaymentMethodNotGiftCard payload.returnInformation.isRefundRupportedByGateway payload.returnInformation.isAlreadyRefunded]]
             <p>[[tags.ReturnConfirmation_alreadyRefundedInfoTitle]]</p>
           [[else]]
             <p>[[tags.ReturnConfirmation_refundInfoTitle]]</p>
           [[/and]]
-          [[#eq returnInformation.refundPaymentMethod "GIFT_CARD"]]
+          [[#eq payload.returnInformation.refundPaymentMethod "GIFT_CARD"]]
             <p>[[tags.ReturnConfirmation_refundGiftCardText]]</p>
           [[else]]
-            [[#if returnInformation.isRefundSupportedByGateway]]
-              [[#if returnInformation.isAlreadyRefunded]]
+            [[#if payload.returnInformation.isRefundSupportedByGateway]]
+              [[#if payload.returnInformation.isAlreadyRefunded]]
               [[else]]
                 <p>[[tags.ReturnConfirmation_refundSupportedByGatewayText]]</p>
               [[/if]]
@@ -59,7 +59,7 @@
 
     <!-- Sección 3 pago -->
     <mj-raw>
-      [[#assign "orderNumItems"]][[returnInformation.orderList.[0].totalNumItems]][[/assign]]
+      [[#assign "orderNumItems"]][[payload.returnInformation.orderList.[0].totalNumItems]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11737"]]
         [[#assign "showExchangeRate"]]true[[/assign]]
