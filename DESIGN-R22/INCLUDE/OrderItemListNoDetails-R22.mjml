@@ -12,7 +12,7 @@
         </mj-text>
     <mj-raw>
       [[/if]]
-      [[#if payload.orders.[0].isSplitted]]
+      [[#if payload.notification.orders.[0].isSplitted]]
       [[else]]
     </mj-raw>
         <mj-text css-class="rd-subsection-text">
@@ -43,7 +43,7 @@
       <mj-raw>
         [[/neq]]
         [[#each this.suborders]]
-          [[#if payload.orders.[0].isSplitted]]
+          [[#if payload.notification.orders.[0].isSplitted]]
       </mj-raw>
             <mj-text css-class="rd-subsection-text" padding-top="4px">
               <div class="rd-light-font"> 

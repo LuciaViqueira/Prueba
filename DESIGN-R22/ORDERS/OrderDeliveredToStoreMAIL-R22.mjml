@@ -8,6 +8,14 @@
     <mj-raw>
       [[#assign "pickupTitle"]]true[[/assign]]
     </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
+      [[#assign "isSplitted"]][[payload.notification.orders.[0].isSplitted]][[/assign]]
+      [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
+      [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -16,7 +24,7 @@
           [[tags.OrderDeliveredToStoreMAIL_titleSplitted]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[#assign "suborderIdentifier"]][[payload.orders.[0].suborders.[0].suborderId]][[/assign]]
+          [[#assign "suborderIdentifier"]][[payload.notification.orders.[0].suborders.[0].suborderId]][[/assign]]
           [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
           [[#ifb (compare uuidSize ">" size)]]
             [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
@@ -29,7 +37,7 @@
     </mj-section>
 
     <mj-raw>
-      [[#with payload.orders.[0] as | order |]]
+      [[#with payload.notification.orders.[0] as | order |]]
         [[#with order.suborders.[0].shipping as | shippingAddress |]]
     </mj-raw>
     <mj-include path="shipping-R22" />
@@ -46,7 +54,7 @@
         <mj-text css-class="rd-text-info">
           <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
           <p>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</p>
-          [[#ifb (andb payload.orders.[0].isSplitted (compare payload.orders.[0].processedSuborders "!=" payload.orders.[0].numSuborders)) ]]
+          [[#ifb (andb isSplitted (compare numDeliveriesCompleted "!=" numSuborders)) ]]
             <p>[[tags.OrderDeliveredToStoreMAIL_notUltimateDelivery]]</p>
           [[/ifb]]
         </mj-text>
@@ -57,14 +65,14 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+            href="https://www.zara.com/[[payload.notification.store.identifier.value]]/[[payload.notification.user.preferences.locale.language]]/user/order/[[orderId]]" >
           [[tags.OrderDeliveredToStoreMAIL_buttonTxt]]
         </mj-button>
       </mj-column>
     </mj-section>
 
     <mj-raw>
-      [[#with payload]]
+      [[#with payload.notification]]
     </mj-raw>
       <mj-include path="eTicket-R22" />
     <mj-raw>
@@ -72,7 +80,7 @@
     </mj-raw>
 
     <mj-raw>
-      [[#with payload]]
+      [[#with payload.notification]]
     </mj-raw>
     <!-- Sección 2 refundAddress -->
       <mj-include path="OrderItemListNoDetails-R22" />
@@ -81,7 +89,6 @@
     </mj-raw>
 
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
