@@ -32,14 +32,14 @@
       </mj-raw>
         <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
         <mj-text css-class="rd-footer-link">
-          <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+          <a href="[[payload.returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
         </mj-text>
         <mj-raw>
           [[/if]]
-          [[#if returnInformation.isGiftTicket]]
+          [[#if payload.returnInformation.isGiftTicket]]
         </mj-raw>
         <mj-text css-class="rd-footer-link">  
-          <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+          <a href="[[payload.returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
         </mj-text>
         <mj-raw>
           [[/if]]

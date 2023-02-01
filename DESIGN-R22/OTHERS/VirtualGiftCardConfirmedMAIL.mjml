@@ -18,38 +18,53 @@
         <mj-text padding-top="24px" css-class="rd-text-info">
           <p>[[tags.VirtualGiftCardConfirmedMAIL_infoText]]</p>
         </mj-text>
+        <mj-divider padding-top="24px" padding-bottom="40px" />
+        <mj-text css-class="rd-section-title">
+            [[tags.VirtualGiftCardConfirmedMAIL_eGiftCard]]
+        </mj-text>
         <mj-raw> 
           [[def "paymentDetails" payload.orders.[0].payments.[0].paymentDetails.[0]]]
           [[#each payload.orders.[0].suborders.[0].orderItems]]
         </mj-raw>
-          <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-subsection-text-notUppercase">
-            <div>
-              [[this.giftCard.message]]
-            </div>
-            <div>
-              [[#if this.giftCard.receiverData.email]]
-                <div>[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]: [[this.giftCard.receiverData.email]]</div>
-              [[/if]]
-              [[#if this.giftCard.shippingDate]]
-                <div>[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]]: [[epoch this.giftCard.shippingDate.dateIso "STORE" "LONG" "ISO8601"]]</div>
-              [[/if]]
-            </div>
-            <div>
-              [[#if paymentDetails.balance]]
+          <mj-table padding="16px 0 0"> 
+            <tr>
+              <td style="width:60px;"> 
+                <table>
+                  <tr>
+                    <td>
+                      <img width="60" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/icon-payment-visa.jpg" style="width:60px; height:auto;"/> 
+                    </td>
+                  </tr>
+                </table>              
+              </td>
+              <td style="padding-left: 16px;" class="rd-subsection-text">
                 <div>
-                  [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
-                  <span style="text-transform: uppercase;">[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</span>
+                  [[#if this.giftCard.receiverData.email]]
+                    <div>[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]: [[this.giftCard.receiverData.email]]</div>
+                  [[/if]]
+                  [[#if this.giftCard.shippingDate]]
+                    <div>[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]] [[epoch this.giftCard.shippingDate.dateIso "STORE" "LONG" "ISO8601"]]</div>
+                  [[/if]]
                 </div>
-                [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-                [[#eq storeLegacyValue  "11737"]]
-                  <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
-                [[/eq]]
-              [[/if]]
-            <div>
-          </mj-text>
+                <div>
+                  [[#if paymentDetails.balance]]
+                    <div style="font-weight: bold">[[tags.VirtualGiftCardConfirmedMAIL_amount]]
+                      [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
+                      <span style="padding-left: 8px;">[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</span>
+                    </div>
+                    [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+                    [[#eq storeLegacyValue  "11737"]]
+                      <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
+                    [[/eq]]
+                  [[/if]]
+                <div>
+              </td>                                                                                                                                 
+            </tr>
+          </mj-table>
         <mj-raw> 
           [[/each]]
         </mj-raw>
+        <mj-divider padding-top="40px" />
       </mj-column>
     </mj-section>
 

@@ -81,7 +81,7 @@
     <!-- Sección 3 pago -->
     <mj-raw>
       [[#assign "orderNumItems"]][[payload.returnInformation.orderList.[0].totalNumItems]][[/assign]]
-      [[#assign "storeLegacyValue"]][[payload.payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11737"]]
         [[#assign "showExchangeRate"]]true[[/assign]]
       [[/eq]]
