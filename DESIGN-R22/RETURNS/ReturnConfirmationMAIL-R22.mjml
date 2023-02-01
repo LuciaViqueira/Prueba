@@ -24,7 +24,7 @@
           [[/if]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[#if payload.payload.returnInformation.fromGiftTicket]]
+          [[#if payload.returnInformation.fromGiftTicket]]
             [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumber]]
           [[else]]
             [[#assign "orderId"]][[payload.returnInformation.orderList.[0].identifier]][[/assign]]
@@ -59,7 +59,7 @@
               <p>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</p>
             [[/if]]
           [[/eq]]
-          [[#assign "badPractice"]][[payload.payload.returnInformation.badPracticeTotalCounter]][[/assign]]
+          [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
           [[#ifb (andb badPractice (compare badPractice "!=" "0"))]]
             <p>[[tags.ReturnConfirmation_badPracticeInfo]]</p>
           [[/ifb]]
@@ -90,7 +90,7 @@
     
     <!-- Sección 4 footer -->
     <mj-raw>
-     [[#assign "storeLegacyValue"]][[payload.payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+     [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
        [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
       [[/eq]]
