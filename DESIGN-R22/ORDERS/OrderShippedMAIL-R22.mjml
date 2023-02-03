@@ -14,7 +14,7 @@
     <!-- Global Variables -->
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
-      [[#assign "isSplitted"]][[payload.notification.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
       [[#assign "shippingType"]][[payload.notification.orders.[0].suborders.[0].shipping.type]][[/assign]]
