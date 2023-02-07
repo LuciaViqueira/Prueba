@@ -8,15 +8,31 @@
     <mj-raw>
       
     </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.deliveredToStoreReminder.orders.[0].identifier]][[/assign]]
+      [[def "isSplitted" payload.deliveredToStoreReminder.orders.[0].isSplitted]]
+      [[#assign "numDeliveriesCompleted"]][[payload.deliveredToStoreReminder.numDeliveriesCompleted]][[/assign]]
+      [[#assign "numSuborders"]][[payload.deliveredToStoreReminder.orders.[0].numSuborders]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.deliveredToStoreReminder.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
         <mj-text css-class="rd-title" align="center">
-          [[tags.OrderDeliveredToStoreReminderMAIL_title]]
+          [[tags.OrderDeliveredToStoreReminderMAIL_titleSplitted]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[tags.OrderDeliveredToStoreReminderMAIL_orderNumberText]]
+          [[#assign "suborderIdentifier"]][[payload.deliveredToStoreReminder.orders.[0].suborders.[0].suborderId]][[/assign]]
+          [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
+          [[#ifb (compare uuidSize ">" size)]]
+            [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
+          [[else]]
+            [[def "suborderIdSub8" suborderIdentifier]]
+          [[/ifb]]
+          [[tags.OrderDeliveredToStoreReminderMAIL_orderNumberTextSplitted]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.OrderDeliveredToStoreReminderMAIL_employeePickup]]</p>
@@ -70,7 +86,6 @@
     
     <!-- Sección 5 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.deliveredToStoreReminder.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
@@ -82,5 +97,3 @@
     <mj-include path="footer-R22" />
   </mj-body>
 </mjml>
-
-    
