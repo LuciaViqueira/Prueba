@@ -34,23 +34,6 @@
           [[/ifb]]
           [[tags.OrderDeliveredToStoreMAIL_orderNumberTextSplitted]]
         </mj-text>
-        <mj-text padding-top="24px" css-class="rd-text-info">
-          [[#if numBoxes]]
-            [[#if isSplitted]]
-              [[#eq numBoxes "1"]]
-                [[tags.OrderDeliveredToStoreMAIL_singleBoxSplittedText]]
-              [[else]]
-                [[tags.OrderDeliveredToStoreMAIL_multipleBoxSplittedText]]
-              [[/eq]]
-            [[else]]
-              [[#eq numBoxes "1"]]
-                [[tags.OrderDeliveredToStoreMAIL_singleBoxText]]
-              [[else]]
-                [[tags.OrderDeliveredToStoreMAIL_multipleBoxText]]
-              [[/eq]]
-            [[/if]]
-          [[/if]]
-        </mj-text>
        </mj-column>
     </mj-section>
 
@@ -70,6 +53,21 @@
             [[tags.OrderDeliveredToStoreMAIL_instructions]]
         </mj-text>  
         <mj-text css-class="rd-text-info">
+          [[#if numBoxes]]
+            [[#if isSplitted]]
+              [[#eq numBoxes "1"]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_singleBoxSplittedText]]</p>
+              [[else]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_multipleBoxSplittedText]]</p>
+              [[/eq]]
+            [[else]]
+              [[#eq numBoxes "1"]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_singleBoxText]]</p>
+              [[else]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_multipleBoxText]]</p>
+              [[/eq]]
+            [[/if]]
+          [[/if]]
           <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
           <p>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</p>
           [[#ifb (andb isSplitted (compare numDeliveriesCompleted "!=" numSuborders)) ]]
