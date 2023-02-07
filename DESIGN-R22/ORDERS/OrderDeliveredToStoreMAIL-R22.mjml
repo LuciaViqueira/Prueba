@@ -68,8 +68,8 @@
               [[/eq]]
             [[/if]]
           [[/if]]
-          <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
           <p>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</p>
+          <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
           [[#ifb (andb isSplitted (compare numDeliveriesCompleted "!=" numSuborders)) ]]
             <p>[[tags.OrderDeliveredToStoreMAIL_notUltimateDelivery]]</p>
           [[/ifb]]
