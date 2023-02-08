@@ -121,7 +121,7 @@
           <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
         </tr>
       [[/if]]
-      [[def "returnCosts" payload.returnInformation.returnCosts.amount]]
+      [[def "returnCosts" payload.returnInformation.returnCosts.[0].amount]]
       [[#if returnCosts]]
         <tr class="rd-light-font">
           <td>[[tags.Payment_returnChargesText]]</td>
