@@ -14,6 +14,7 @@
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
+      [[#assign "numDays"]][[payload.remainingQuantity.value]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
 
@@ -36,7 +37,7 @@
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.OrderDeliveredToStoreReminderMAIL_employeePickup]]</p>
-          <p>[[tags.OrderDeliveredToStoreReminderMAIL_deadline]]</p>
+          <p>[[tags.OrderDeliveredToStoreReminderMAIL_deadlineSplitted]]</p>
         </mj-text>
       </mj-column>
     </mj-section>
