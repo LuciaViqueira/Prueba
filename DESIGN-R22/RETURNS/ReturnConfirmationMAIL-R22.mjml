@@ -8,12 +8,23 @@
     <mj-raw>
       [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
     </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "orderItemsSize"]][[#size payload.returnInformation.orderList.[0].orderItems]][[/size]][[/assign]]
+      [[#assign "orderId"]][[payload.returnInformation.orderList.[0].identifier]][[/assign]]
+      [[#assign "returnId"]][[payload.returnInformation.identifier]][[/assign]]
+      [[#eq orderId "-1"]]
+        [[#assign "orderId"]][[substring payload.returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
+      [[/eq]]
+      [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
+      [[#assign "orderNumItems"]][[payload.returnInformation.orderList.[0].totalNumItems]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[#assign "orderItemsSize"]][[#size payload.returnInformation.orderList.[0].orderItems]][[/size]][[/assign]]
           [[#ifb (andb (compare orderItemsSize "==" 1) (compare payload.returnInformation.orderList.[0].orderItems.[0].item.sku "==" "XSHIPCHGSKU"))]]
             [[#assign "skuReturnShippingCosts"]]true[[/assign]]
           [[/ifb]]
@@ -24,14 +35,14 @@
           [[/if]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[#if payload.returnInformation.fromGiftTicket]]
-            [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumber]]
+          [[#if skuReturnShippingCosts]]
+            [[tags.ReturnConfirmation_orderNumberText]]
           [[else]]
-            [[#assign "orderId"]][[payload.returnInformation.orderList.[0].identifier]][[/assign]]
-            [[#eq orderId "-1"]]
-              [[#assign "orderId"]][[substring payload.returnInformation.orderList.[0].stringIdentifier 5 16]][[/assign]]
-            [[/eq]]
-            [[tags.ReturnConfirmation_returnNumberText]]
+            [[#if payload.returnInformation.fromGiftTicket]]
+              [[tags.ReturnConfirmation_returnNumberTextWithoutOrderNumber]]
+            [[else]]
+              [[tags.ReturnConfirmation_returnNumberText]]
+            [[/if]]
           [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
@@ -59,7 +70,6 @@
               <p>[[tags.ReturnConfirmation_refundNotSupportedByGatewayText]]</p>
             [[/if]]
           [[/eq]]
-          [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
           [[#ifb (andb badPractice (compare badPractice "!=" "0"))]]
             <p>[[tags.ReturnConfirmation_badPracticeInfo]]</p>
           [[/ifb]]
@@ -80,8 +90,6 @@
 
     <!-- Sección 3 pago -->
     <mj-raw>
-      [[#assign "orderNumItems"]][[payload.returnInformation.orderList.[0].totalNumItems]][[/assign]]
-      [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11737"]]
         [[#assign "showExchangeRate"]]true[[/assign]]
       [[/eq]]
@@ -90,7 +98,6 @@
     
     <!-- Sección 4 footer -->
     <mj-raw>
-     [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
        [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
       [[/eq]]
