@@ -14,7 +14,7 @@
                 [[this.item.shortDescription]]
             </div>
             <div style="color: #666666;">
-                [[this.item.colour]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]]
+                [[this.item.colour]][[#neq this.item.sku "XSHIPCHGSKU"]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]][[/neq]]
             </div>
             <div style="padding-top: 16px">
                 [[#if hideItemQuantity]]
@@ -70,6 +70,29 @@
                 </mj-text>
                 [[/each]]
             [[/if]]
+            [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
+            [[#ifb numBadPracticeItems "!=" "0"]]
+                <table>
+                    <tr>
+                        <td style="width:13px; padding:0;" class="rd-product-col">
+                            <div style="width:13px; margin-top:2px;"><img width="13" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:13px; height:auto;"/></div>   
+                        </td>
+                        <td style="padding:0 0 0 10px;" class="rd-product-col">
+                            <div style="font-size:12px !important;" class="rd-badPractice-text">
+                                [[#eq numBadPracticeItems "1"]]
+                                    [[#eq templateQuantity "1"]]
+                                        [[tags.OrderItemList_badPracticeUniqueItem]]
+                                    [[else]]
+                                        [[tags.OrderItemList_badPracticeVariousItemsSingular]]
+                                    [[/eq]]
+                                [[else]]
+                                        [[tags.OrderItemList_badPracticeVariousItemsPlural]]
+                                [[/eq]]
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            [[/ifb]]
         </td>
     </tr>
 </table>

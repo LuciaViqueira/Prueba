@@ -7,8 +7,8 @@
   </mj-column>
 </mj-section>
 <mj-raw>
-  [[#assign "orderReturnProducts"]][[returnInformation.orderList.[0]]][[/assign]]
-  [[#each returnInformation.orderList.[0].payment.paymentDetails]]
+  [[#assign "orderReturnProducts"]][[payload.returnInformation.orderList.[0]]][[/assign]]
+  [[#each payload.returnInformation.orderList.[0].payment.paymentDetails]]
 </mj-raw>
 <mj-section padding-top="16px">
   <mj-column>
@@ -64,7 +64,7 @@
               <div> **** **** **** [[this.last4]]</div>
             [[/eq]]
           [[/if]]
-          [[#assign "numPayments"]][[#size returnInformation.orderList.[0].payment.paymentDetails]][[/size]][[/assign]]
+          [[#assign "numPayments"]][[#size payload.returnInformation.orderList.[0].payment.paymentDetails]][[/size]][[/assign]]
           [[#neq numPayments 1]]      
               <div>[[tags.returnPayment_totalAmountText]] [[& this.amount.humanReadableText]]</div>
           [[/neq]]
@@ -83,7 +83,7 @@
       [[tags.Payment_breakdown]]
     </mj-text>          
     <mj-table css-class="rd-payment-table">
-      [[#if returnInformation.totalReturnedProductPrice.humanReadableText]]
+      [[#if payload.returnInformation.totalReturnedProductPrice.humanReadableText]]
       <tr class="rd-light-font">
         <td>
           [[orderNumItems]]
@@ -94,10 +94,10 @@
             [[tags.Payment_multipleItemText]] 
           [[/neq]]
         </td>
-        <td class="rd-payment-price">-[[& returnInformation.totalReturnedProductPrice.humanReadableText]]</td>
+        <td class="rd-payment-price">-[[& payload.returnInformation.totalReturnedProductPrice.humanReadableText]]</td>
       </tr>
       [[/if]]
-      [[#each returnInformation.orderList.[0].discount]]
+      [[#each payload.returnInformation.orderList.[0].discount]]
         [[#eq this.discountType "SHIPPING"]]
           <tr class="rd-light-font">
             <td>[[tags.returnPayment_shippingDisccountText]]</td>
@@ -105,7 +105,7 @@
           </tr>
         [[/eq]]
       [[/each]]       
-      [[#each returnInformation.orderList.[0].discount]]
+      [[#each payload.returnInformation.orderList.[0].discount]]
         [[#eq this.discountType "EMPLOYEE"]]
           <tr class="rd-orange-font">
             <td>[[tags.returnPayment_employeeDisccountsText]]</td>
@@ -113,7 +113,7 @@
           </tr>
         [[/eq]]
       [[/each]]
-      [[#each returnInformation.orderList.[0].discount]]
+      [[#each payload.returnInformation.orderList.[0].discount]]
         [[#eq this.discountType "TOTAL"]]
           <tr class="rd-light-font">
             <td>[[tags.returnPayment_disccountsText]]</td>
@@ -121,13 +121,13 @@
           </tr>
         [[/eq]]
       [[/each]]
-      [[#if returnInformation.subtotal.humanReadableText]]
+      [[#if payload.returnInformation.subtotal.humanReadableText]]
         <tr class="rd-payment-total rd-black-font">
           <td><strong>[[tags.returnPayment_subtotalText]]</strong></td>
-          <td class="rd-payment-price"><strong>-[[& returnInformation.subtotal.humanReadableText]]</strong></td>
+          <td class="rd-payment-price"><strong>-[[& payload.returnInformation.subtotal.humanReadableText]]</strong></td>
         </tr>
       [[/if]]
-      [[#each returnInformation.orderList.[0].payment.vatDetails]]
+      [[#each payload.returnInformation.orderList.[0].payment.vatDetails]]
         [[#if this.amount.humanReadableText]]
           <tr class="rd-light-font">
             <td>[[this.type]] [[this.humanReadableText]] %</td>
@@ -135,32 +135,32 @@
           </tr>
         [[/if]]
       [[/each]]
-      [[#if returnInformation.salesTax.humanReadableText]]
+      [[#if payload.returnInformation.salesTax.humanReadableText]]
         <tr class="rd-light-font">
           <td>
             <strong>[[tags.returnPayment_salesTaxText]]</strong>
           </td>
           <td class="rd-payment-price">
-            <strong>-[[& returnInformation.salesTax.humanReadableText]]</strong>
+            <strong>-[[& payload.returnInformation.salesTax.humanReadableText]]</strong>
           </td>
         </tr>
       [[/if]]
-      [[#if returnInformation.hasReturnCharges]]
+      [[#if payload.returnInformation.hasReturnCharges]]
         <tr class="rd-light-font">
           <td>[[tags.returnPayment_returnChargesText]]</td>
-          [[#assign "returnCostsEscaped"]][[& returnInformation.charges.humanReadableText]][[/assign]]
+          [[#assign "returnCostsEscaped"]][[& payload.returnInformation.charges.humanReadableText]][[/assign]]
           [[#assign "first"]][[substring returnCostsEscaped 0 1]][[/assign]]
-          [[#assign "returnCosts"]][[substring returnInformation.charges.humanReadableText 1]][[/assign]]
+          [[#assign "returnCosts"]][[substring payload.returnInformation.charges.humanReadableText 1]][[/assign]]
           [[#eq first "-"]]
             <td class="rd-payment-price">[[returnCosts]]</td>
           [[else]]
-            <td class="rd-payment-price">[[& returnInformation.charges.humanReadableText]]</td>
+            <td class="rd-payment-price">[[& payload.returnInformation.charges.humanReadableText]]</td>
           [[/eq]]
         </tr>
       [[/if]]
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.returnPayment_totalAmountText]]</td>
-        <td class="rd-payment-price">[[& returnInformation.total.humanReadableText]]</td>
+        <td class="rd-payment-price">[[& payload.returnInformation.total.humanReadableText]]</td>
       </tr>
       [[#if showExchangeRate]] 
         <tr>
