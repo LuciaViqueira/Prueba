@@ -11,12 +11,27 @@
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
     </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "orderItemsSize"]][[#size payload.returnInformation.orders.[0].suborders.[0].orderItems]][[/size]][[/assign]]
+      [[#assign "orderId"]][[payload.returnInformation.orders.[0].identifier]][[/assign]]
+      [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
+      [[#assign "orderNumItems"]][[payload.returnInformation.orders.[0].numItems]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[tags.ReturnConfirmationV2MAIL_title]]
+          [[#ifb (andb (compare orderItemsSize "==" 1) (compare payload.returnInformation.orders.[0].suborders.[0].orderItems.[0].item.sku "==" "XSHIPCHGSKU"))]]
+            [[#assign "skuReturnShippingCosts"]]true[[/assign]]
+          [[/ifb]]
+          [[#if skuReturnShippingCosts]]
+            [[tags.ReturnConfirmationV2MAIL_titleReturnShippingCosts]]
+          [[else]]
+            [[tags.ReturnConfirmationV2MAIL_title]]
+          [[/if]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[#if payload.returnInformation.uuid.prettyUuid]]
@@ -24,19 +39,29 @@
           [[else]]
             [[#assign "returnIdentifier"]][[payload.returnInformation.uuid.uuid]][[/assign]]
           [[/if]]
-            [[def "size" 8]][[#def "uuidSize"]][[size returnIdentifier]][[/def]]
-              [[#ifb (compare uuidSize ">" size)]]
-                [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb returnIdentifier index]][[/def]]
-              [[else]]
-                [[def "returnId" returnIdentifier]]
-              [[/ifb]]
-          [[#if payload.returnInformation.fromGiftTicket]]
-            [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
-           [[else]]
-            [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+          [[def "size" 8]][[#def "uuidSize"]][[size returnIdentifier]][[/def]]
+          [[#ifb (compare uuidSize ">" size)]]
+            [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb returnIdentifier index]][[/def]]
+          [[else]]
+            [[def "returnId" returnIdentifier]]
+          [[/ifb]]
+          [[#if skuReturnShippingCosts]]
+            [[tags.ReturnConfirmationV2MAIL_orderNumberText]]
+          [[else]]
+            [[#if payload.returnInformation.fromGiftTicket]]
+              [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
+            [[else]]
+              [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+            [[/if]]
           [[/if]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#if skuReturnShippingCosts]]
+            [[#def "returnShippingCosts"]][[def "obj" (conversionRate payload.paymentBreakdown.shippingPrice.value payload.paymentBreakdown.shippingPrice.exponent payload.paymentBreakdown.shippingPrice.currency payload.paymentBreakdown.shippingPrice.humanReadableText)]]
+                    [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+            [[/def]]
+            <p>[[tags.ReturnConfirmationV2MAIL_textReturnShippingCosts]]</p>
+          [[/if]]
           [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
             [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
           [[/neq]]
@@ -57,24 +82,27 @@
               
             [[/if]]
           [[/eq]]
-          [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
           [[#ifb (andb badPractice (compare badPractice "!=" "0"))]]
             <p>[[tags.ReturnConfirmationV2MAIL_badPracticeInfo]]</p>
           [[/ifb]]
+          [[#if skuReturnShippingCosts]]
+            <p>[[tags.ReturnConfirmationV2MAIL_gratefulReturnShippingCosts]]</p>
+          [[/if]]
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- Sección 3 productsList -->
     <mj-raw>
-      [[#with payload.returnInformation]]
+      [[#not skuReturnShippingCosts]]
+        [[#with payload.returnInformation]]
     </mj-raw>
-      <mj-include path="OrderItemList-R22" />
+        <mj-include path="OrderItemList-R22" />
     <mj-raw>
-      [[/with]]
+        [[/with]]
+      [[/not]]
     </mj-raw>
 
     <mj-raw>
-      [[#assign "orderNumItems"]][[payload.returnInformation.orders.[0].numItems]][[/assign]]
       [[#with payload]]
         [[#with this.returnInformation.refunds as | itemsPayment |]]
     </mj-raw>
@@ -85,7 +113,6 @@
     </mj-raw>
     <!-- Sección 6 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
