@@ -90,37 +90,39 @@
       [[tags.Payment_breakdown]]
     </mj-text>
     <mj-table css-class="rd-payment-table">
-      <tr class="rd-light-font">
-        <td>
-          [[orderNumItems]]
-          [[#eq orderNumItems "1"]]
-            [[tags.Payment_singleItemText]]
-          [[/eq]]
-          [[#neq orderNumItems "1"]]
-            [[tags.Payment_multipleItemText]] 
-          [[/neq]]
-        </td>
-        <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText]]</td>
-      </tr>
-      [[#if this.shippingPrice]]
+      [[#not skuReturnShippingCosts]]
         <tr class="rd-light-font">
-          <td>[[tags.Payment_deliveryCostText]]</td>
-          <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+          <td>
+            [[orderNumItems]]
+            [[#eq orderNumItems "1"]]
+              [[tags.Payment_singleItemText]]
+            [[/eq]]
+            [[#neq orderNumItems "1"]]
+              [[tags.Payment_multipleItemText]] 
+            [[/neq]]
+          </td>
+          <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText]]</td>
         </tr>
-      [[/if]]
-      [[#if this.shippingDiscountPrice]]
-        <tr class="rd-light-font">
-          <td>[[tags.Payment_shippingDiscountsText]]</td>
-          <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
-        </tr>
-      [[/if]]
-      [[def "orderDiscount" payload.orders.[0].discounts.[0].amount]]
-      [[#if orderDiscount]]
-        <tr class="rd-light-font">
-          <td>[[tags.Payment_orderDiscount]]</td>
-          <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
-        </tr>
-      [[/if]]
+        [[#if this.shippingPrice]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_deliveryCostText]]</td>
+            <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+          </tr>
+        [[/if]]
+        [[#if this.shippingDiscountPrice]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_shippingDiscountsText]]</td>
+            <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
+          </tr>
+        [[/if]]
+        [[def "orderDiscount" payload.orders.[0].discounts.[0].amount]]
+        [[#if orderDiscount]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_orderDiscount]]</td>
+            <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+          </tr>
+        [[/if]]
+      [[/not]]
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.Payment_totalAmountText]]</td>
         [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
