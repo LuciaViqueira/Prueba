@@ -74,9 +74,15 @@
                 [[/and]]
               </mj-raw>
                 <mj-text css-class="rd-subsection-title" padding-bottom="16px" font-weight="bold">
-                  [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-                  [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-                  [[readableDate minDeliveredDate maxDeliveredDate]]
+                  [[#assign "dateType"]][[this.deliveryDate.maxDeliveredDate.dateType]][[/assign]]
+                  [[#ifb (compare dateType "==" "TIMESTAMP")]] 
+                    [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
+                    [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
+                  [[else]]
+                    [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.dateIso]][[/assign]]
+                    [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.dateIso]][[/assign]]
+                  [[/ifb]]
+                  [[readableDate minDeliveredDate maxDeliveredDate dateType]]
                   [[#if order.isSplitted]]
                     [[#ifb (andb this.shipping.amount showShippingCharges)]]
                       <div style="font-weight: normal">
