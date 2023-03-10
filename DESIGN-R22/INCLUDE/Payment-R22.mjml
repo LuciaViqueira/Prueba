@@ -101,12 +101,12 @@
               [[tags.Payment_multipleItemText]] 
             [[/neq]]
           </td>
-          <td class="rd-payment-price">[[#if showNegativeSign]]-[[/if]][[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText]]</td>
+          <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
         </tr>
         [[#if this.shippingPrice]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_deliveryCostText]]</td>
-            <td class="rd-payment-price">[[#if showNegativeSign]]-[[/if]][[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+            <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
           </tr>
         [[/if]]
         [[#if this.shippingDiscountPrice]]
