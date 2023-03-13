@@ -11,7 +11,6 @@
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
       [[def "isNegativeSymbol" true]]
-      [[#assign "showNegativeSign"]]true[[/assign]]
     </mj-raw>
     <!-- Global variables -->
     <mj-raw>

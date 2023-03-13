@@ -132,8 +132,8 @@
       [[/not]]
       <tr class="rd-payment-total rd-black-font">
         <td>[[tags.Payment_totalAmountText]]</td>
-        [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText)]]
-        <td class="rd-payment-price">[[#if showNegativeSign]]-[[/if]][[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[#if showNegativeSign]]-[[/if]][[this.human_readable_amount]][[/each]][[/ifb]]</td> 
+        [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol)]]
+        <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td> 
       </tr>
       [[#ifb (compare obj.converted_amounts "!=" "")]] 
         <tr>
