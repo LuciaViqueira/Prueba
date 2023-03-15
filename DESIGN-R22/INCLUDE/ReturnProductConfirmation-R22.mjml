@@ -20,7 +20,15 @@
                 [[this.item.color]][[#neq this.item.sku "XSHIPCHGSKU"]] [[this.item.sku]][[/neq]]
             </div>
             <div style="padding-top: 16px">
-                [[this.quantity]] / [[& this.price.humanReadableText]]  
+                [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                [[templateQuantity]]
+                [[#eq templateQuantity "1"]]
+                    [[tags.ReturnProductList_singleUnitText]]
+                [[/eq]]
+                [[#neq templateQuantity "1"]]
+                    [[tags.ReturnProductList_multipleUnitsText]]
+                [[/neq]]
+                / [[& this.price.humanReadableText]]  
             </div>
             [[#if this.item.size]]
                 <div>[[this.item.size]]</div>
@@ -29,7 +37,7 @@
                 <div>[[this.item.sizeDescription]]</div>
             [[/if]]      
             [[#if this.isPantone]]
-                <div class="rd-product-custom-warn">[[[tags.ReturnProductList_customizationsWarn]]</div>
+                <div class="rd-product-custom-warn">[[tags.ReturnProductList_customizationsWarn]]</div>
             [[/if]]
             [[#if this.isCustom]]
                 <button class="rd-product-custom">
