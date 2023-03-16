@@ -4,11 +4,14 @@
     <mj-include path="styles" />
   </mj-head>
   <mj-body width="654px">
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image align="[[#if rtl]]right[[else]]left[[/if]]" width="327px" src="[[zaraLogo]]" padding-top="100px" padding-left="20px" css-class="newsletter-logo" />
-        <mj-image src="https://static.zara.net/photos/contents/mkt/newsletters/header_ss22.png" padding-top="64px" padding-bottom="10px" />
+        <mj-image src="https://static.zara.net/photos/contents/mkt/newsletters/header_ss23.png" padding-top="64px" padding-bottom="10px" />
         <mj-text css-class="section-title" padding-bottom="25px" align="[[#if rtl]]right[[else]]left[[/if]]" text-transform="uppercase">
           [[tags.newsletterWelcome_title]]
         </mj-text>
@@ -36,7 +39,6 @@
     </mj-section>
     <!-- Sección 2 footer -->
     <mj-raw>
-     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
        [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
       [[/eq]]
