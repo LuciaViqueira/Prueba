@@ -10,7 +10,7 @@
       [[#assign "showBlockTitle"]]true[[/assign]]
       [[#assign "returnOrderItemTitle"]]true[[/assign]]
       [[#assign "showRefundPaymentTitle"]]true[[/assign]]
-      [[#assign "showNegativeSign"]]true[[/assign]]
+      [[def "isNegativeSymbol" true]]
     </mj-raw>
     <!-- Global variables -->
     <mj-raw>
