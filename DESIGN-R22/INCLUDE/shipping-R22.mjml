@@ -58,10 +58,14 @@
           [[#each order.suborders]]
             [[#if showDeliveryDate]]
               [[#if this.deliveryDate]]
-                [[#and order.isSplitted this.suborderId]]
+                [[#ifb (andb order.isSplitted (orb this.suborderId this.uuid))]]
             </mj-raw>
                   <mj-text css-class="rd-subsection-title" padding-bottom="8px">
-                    [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                    [[#if payload.notification.orders.[0].suborders.[0].uuid]]
+                      [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+                    [[else]]
+                      [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                    [[/if]]
                     [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
                     [[#ifb (compare uuidSize ">" size)]]
                       [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
@@ -71,7 +75,7 @@
                     [[tags.shipping_title]] [[suborderIdSub8]]
                   </mj-text>
               <mj-raw>
-                [[/and]]
+                [[/ifb]]
               </mj-raw>
                 <mj-text css-class="rd-subsection-title" padding-bottom="16px" font-weight="bold">
                   [[#if this.deliveryDate.maxDeliveredDate]]
