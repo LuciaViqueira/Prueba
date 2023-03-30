@@ -8,6 +8,11 @@
     <mj-raw>
       [[#assign "showOnlyUnits"]]true[[/assign]]
     </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -20,7 +25,11 @@
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.OrderStockOutMAIL_apologyText1]]</p>
-          <p>[[tags.OrderStockOutMAIL_apologyText2]]</p>
+          [[#eq paymentMethodId "1012"]]
+            <p>[[tags.OrderStockOutMAIL_goToStoreForRefund]]</p>
+          [[else]]
+            <p>[[tags.OrderStockOutMAIL_apologyText2]]</p>
+          [[/eq]]
           <p>[[tags.OrderStockOutMAIL_apologyText3]]</p>
         </mj-text>
        <mj-button css-class="rd-order-detail-btn" 
@@ -49,7 +58,6 @@
     </mj-raw>
     
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
       [[/eq]]
