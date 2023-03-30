@@ -8,6 +8,11 @@
     <mj-raw>
     [[#assign "showExchangeRate"]]true[[/assign]]
     </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "paymentMethodId"]][[payload.orderCancellation.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.orderCancellation.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -39,7 +44,11 @@
                 [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
                     <p>[[tags.OrderCancellationMAIL_helloText]]</p>
                     <p>[[tags.OrderCancellationMAIL_apologyText1Min]]</p>
-                    <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                    [[#eq paymentMethodId "1012"]]
+                      <p>[[tags.OrderCancellationMAIL_goToStoreForRefund]]</p>
+                    [[else]]
+                      <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                    [[/eq]]
                     <p>[[tags.OrderCancellationMAIL_apologyText3Min]]</p>
                     <p>[[tags.OrderCancellationMAIL_zaraTeamMin]]</p> 
                 [[else]]
@@ -63,7 +72,6 @@
     </mj-raw>
 
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.orderCancellation.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
