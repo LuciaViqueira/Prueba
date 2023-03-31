@@ -23,6 +23,10 @@
           [[tags.DeliveryAttempMAIL_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[def "obj" (formatDateISO payload.notification.orders.[0].suborders.[0].deliveryDate.minDeliveryDate.dateIso payload.notification.orders.[0].suborders.[0].deliveryDate.maxDeliveryDate.dateIso)]]
+          [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+          [[def "deliveryHour" obj.min_time]]
+
           <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
           <p>[[tags.DeliveryAttempMAIL_pressNextButton]]</p>
         </mj-text>
