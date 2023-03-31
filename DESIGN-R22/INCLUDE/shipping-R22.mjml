@@ -61,7 +61,7 @@
                 [[#ifb (andb order.isSplitted (orb this.suborderId this.uuid))]]
             </mj-raw>
                   <mj-text css-class="rd-subsection-title" padding-bottom="8px">
-                    [[#if payload.notification.orders.[0].suborders.[0].uuid]]
+                    [[#if this.uuid]]
                       [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
                     [[else]]
                       [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
