@@ -22,7 +22,7 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[tags.DeliveryAttempMAIL_orderNumberText]]
         </mj-text>
-        <mj-text padding-top="24px" css-class="rd-text-info">
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
           <p>[[tags.DeliveryAttempMAIL_pressNextButton]]</p>
         </mj-text>
