@@ -11,6 +11,7 @@
       [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
       [[#assign "showShippingCharges"]]true[[/assign]]
+      [[#assign "existsUuidUuid"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
