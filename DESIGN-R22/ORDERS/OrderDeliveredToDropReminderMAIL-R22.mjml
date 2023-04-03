@@ -26,7 +26,7 @@
           <p>[[tags.OrderDeliveredToDropReminderMAIL_rememberCourier]]</p>
           <p>[[tags.OrderDeliveredToDropReminderMAIL_pressNextButton]]</p>
         </mj-text>
-        <mj-button css-class="rd-order-detail-btn" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
@@ -38,15 +38,6 @@
         </mj-button>
       </mj-column>
     </mj-section>
-
-    <mj-raw>
-      [[#with payload.notification]]
-    </mj-raw>
-    <!-- Sección 2 refundAddress -->
-      <mj-include path="OrderItemListNoDetails-R22" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
 
     <mj-raw>
       [[#eq storeLegacyValue  "11727"]]
