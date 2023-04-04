@@ -26,11 +26,10 @@
           [[def "obj" (formatDateISO payload.notification.orders.[0].suborders.[0].deliveryDate.minDeliveryDate.dateIso payload.notification.orders.[0].suborders.[0].deliveryDate.maxDeliveryDate.dateIso)]]
           [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
           [[def "deliveryHour" obj.min_time]]
-
           <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
           <p>[[tags.DeliveryAttempMAIL_pressNextButton]]</p>
         </mj-text>
-        <mj-button css-class="rd-order-detail-btn" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
@@ -42,15 +41,6 @@
         </mj-button>
       </mj-column>
     </mj-section>
-
-    <mj-raw>
-      [[#with payload.notification]]
-    </mj-raw>
-    <!-- Sección 2 refundAddress -->
-      <mj-include path="OrderItemListNoDetails-R22" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
 
     <mj-raw>
       [[#eq storeLegacyValue  "11727"]]
