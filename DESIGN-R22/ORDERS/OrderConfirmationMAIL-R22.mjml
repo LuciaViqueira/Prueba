@@ -49,7 +49,7 @@
             [[else]]
               [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
               [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
-              [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME")))]]
+              [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
                 <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
               [[/ifb]]
               <p>[[tags.OrderConfirmationMAIL_notice]]</p>
