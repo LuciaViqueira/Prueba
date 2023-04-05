@@ -14,6 +14,7 @@
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
+      [[#assign "numBoxes"]][[payload.notification.orders.[0].suborders.[0].shipping.numBoxes]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -56,8 +57,23 @@
             [[tags.OrderDeliveredToStoreMAIL_instructions]]
         </mj-text>  
         <mj-text css-class="rd-text-info">
-          <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
+          [[#if numBoxes]]
+            [[#if isSplitted]]
+              [[#eq numBoxes "1"]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_singleBoxSplittedText]]</p>
+              [[else]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_multipleBoxSplittedText]]</p>
+              [[/eq]]
+            [[else]]
+              [[#eq numBoxes "1"]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_singleBoxText]]</p>
+              [[else]]
+                <p>[[tags.OrderDeliveredToStoreMAIL_multipleBoxText]]</p>
+              [[/eq]]
+            [[/if]]
+          [[/if]]
           <p>[[tags.OrderDeliveredToStoreMAIL_employeePickup]]</p>
+          <p>[[tags.OrderDeliveredToStoreMAIL_deadline]]</p>
           [[#ifb (andb isSplitted (compare numDeliveriesCompleted "!=" numSuborders)) ]]
             <p>[[tags.OrderDeliveredToStoreMAIL_notUltimateDelivery]]</p>
           [[/ifb]]
