@@ -4,6 +4,10 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Global variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -20,22 +24,22 @@
                 <table>
                   <tr>
                     <td>
-                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[productPictureUrl]]" href="[[productUrl]]" style="width:176px; height:auto;" />
+                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver 'ComingSoonMailURL']]" style="width:176px; height:auto;" />
                     </td>
                   </tr>   
                 </table>
             </td>
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[productUrl]]" style="color:#000; text-decoration:none; font-weight:bold;">
-                  [[productShortDescription]]
+                <a href="[[urlResolver 'ComingSoonMailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
+                  [[payload.notification.item.shortDescription]]
                 </a>
               </div>
               <div>
-                [[productSku]]
+                [[payload.notification.item.sku]]
               </div>
               <div style="font-weight:bold; padding-top:32px;">
-                [[productSize]]
+                [[payload.notification.item.size]]
               </div>
             </td>
           </tr>
@@ -47,14 +51,13 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[productUrl]]" >
+            href="[[urlResolver 'ComingSoonMailURL']]" >
           [[tags.comingSoonMail_Button]]
         </mj-button>
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
