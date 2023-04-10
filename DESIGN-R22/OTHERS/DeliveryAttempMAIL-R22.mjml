@@ -10,6 +10,7 @@
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
+      [[#assign "deliveryAttemptDate"]][[payload.deliveryAttemptDate]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -23,10 +24,14 @@
           [[tags.DeliveryAttempMAIL_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
-          [[def "obj" (formatDateISO payload.deliveryAttemptDate payload.deliveryAttemptDate)]]
-          [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
-          [[def "deliveryHour" obj.min_time]]
-          <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
+          [[#if deliveryAttemptDate]]
+            [[def "obj" (formatDateISO deliveryAttemptDate deliveryAttemptDate)]]
+            [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+            [[def "deliveryHour" obj.min_time]]
+            <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
+          [[else]]
+            <p>[[tags.DeliveryAttempMAIL_deliveryFailedNoDeliveryDateSplitted]]</p>
+          [[/if]]
           <p>[[tags.DeliveryAttempMAIL_pressNextButton]]</p>
         </mj-text>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
