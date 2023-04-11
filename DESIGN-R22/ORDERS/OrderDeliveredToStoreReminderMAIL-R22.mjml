@@ -100,7 +100,7 @@
     <mj-raw>
       [[#with payload.notification]]
     </mj-raw>
-      <mj-include path="OrderItemList-R22" />
+      <mj-include path="OrderItemListNoDetails-R22" />
     <mj-raw>
       [[/with]]
     </mj-raw>
