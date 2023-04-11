@@ -4,14 +4,17 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Global Variables -->
+    <mj-raw>
+      [[def "giftCard" payload.notification.orders.[0].suborders.[0].orderItems.[0].giftCard]]
+      [[def "paymentDetails" payload.notification.orders.[0].payments.[0].paymentDetails.[0]]]
+      [[#assign "expirationDate"]][[paymentDetails.expirationDate.dateIso]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
-        <mj-raw>
-          [[def "giftCard" payload.orders.[0].suborders.[0].orderItems.[0].giftCard]]
-          [[def "paymentDetails" payload.orders.[0].payments.[0].paymentDetails.[0]]]
-        </mj-raw> 
         <mj-table padding="16px 0 0" table-layout="fixed">
           <tr>
             <td>
@@ -42,7 +45,6 @@
                                 [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
                                 [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                               </div>
-                              [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
                               [[#eq storeLegacyValue  "11737"]]
                                 <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
                               [[/eq]]
@@ -50,16 +52,15 @@
                           <div>
                           <div style="text-transform: uppercase;">[[tags.VirtualGiftCardMAIL_cardNumber]] [[paymentDetails.pan]]</div>
                           <div style="text-transform: uppercase;">[[tags.VirtualGiftCardMAIL_cvv]] [[paymentDetails.cvv]]</div>
-                          [[#assign "expirationDate"]][[paymentDetails.expirationDate.dateIso]][[/assign]]
                           [[#if expirationDate]]
                             <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_expirationDate]] [[epoch expirationDate "STORE" "SHORT" "ISO8601"]]</div>
                           [[else]]
                             <div style="padding-bottom:16px;">[[tags.VirtualGiftCardMAIL_noExpirationDate]]</div>
                           [[/if]]
-                          <img src="cid:[[payload.attachments.[0].fileName]]" style="width:300px; height:auto;" />
+                          <img src="cid:[[payload.notification.attachments.[0].fileName]]" style="width:300px; height:auto;" />
                         </td>
                         <td style="vertical-align:bottom;">
-                          <img src="cid:[[payload.attachments.[1].fileName]]" style="width:150px; height:auto;" />
+                          <img src="cid:[[payload.notification.attachments.[1].fileName]]" style="width:150px; height:auto;" />
                         </td>
                       </tr>
                     </table>
@@ -75,7 +76,6 @@
     </mj-section>
 
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
