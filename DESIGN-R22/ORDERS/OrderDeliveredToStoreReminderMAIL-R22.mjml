@@ -15,6 +15,7 @@
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
       [[#assign "numDays"]][[payload.remainingQuantity.value]][[/assign]]
+      [[#assign "numBoxes"]][[payload.notification.orders.[0].suborders.[0].shipping.numBoxes]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
 
@@ -40,6 +41,21 @@
           [[tags.OrderDeliveredToStoreReminderMAIL_orderNumberTextSplitted]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[#if numBoxes]]
+            [[#if isSplitted]]
+              [[#eq numBoxes "1"]]
+                <p>[[tags.OrderDeliveredToStoreReminderMAIL_singleBoxSplittedText]]</p>
+              [[else]]
+                <p>[[tags.OrderDeliveredToStoreReminderMAIL_multipleBoxSplittedText]]</p>
+              [[/eq]]
+            [[else]]
+              [[#eq numBoxes "1"]]
+                <p>[[tags.OrderDeliveredToStoreReminderMAIL_singleBoxText]]</p>
+              [[else]]
+                <p>[[tags.OrderDeliveredToStoreReminderMAIL_multipleBoxText]]</p>
+              [[/eq]]
+            [[/if]]
+          [[/if]]
           <p>[[tags.OrderDeliveredToStoreReminderMAIL_employeePickup]]</p>
           <p>[[tags.OrderDeliveredToStoreReminderMAIL_deadlineSplitted]]</p>
         </mj-text>
@@ -84,7 +100,7 @@
     <mj-raw>
       [[#with payload.notification]]
     </mj-raw>
-      <mj-include path="OrderItemList-R22" />
+      <mj-include path="OrderItemListNoDetails-R22" />
     <mj-raw>
       [[/with]]
     </mj-raw>
