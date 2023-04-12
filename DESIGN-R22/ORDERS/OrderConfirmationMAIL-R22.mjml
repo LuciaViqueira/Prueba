@@ -10,6 +10,8 @@
       [[#assign "showDeliveryDate"]]true[[/assign]]
       [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
+      [[#assign "showShippingCharges"]]true[[/assign]]
+      [[#assign "existsUuidUuid"]]true[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -31,7 +33,6 @@
           [[/ifb]]
         </mj-raw> 
         <mj-text padding-top="24px" css-class="rd-text-info">
-          <p>[[tags.OrderConfirmationMAIL_notice]]</p>
           [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
             [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
             [[#eq sendingMode "CUSTOMER_INSTANT"]]
@@ -46,6 +47,12 @@
               <p>[[tags.OrderConfirmationMAIL_detailsTRV]]</p>
               [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
             [[else]]
+              [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
+              [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
+              [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
+                <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
+              [[/ifb]]
+              <p>[[tags.OrderConfirmationMAIL_notice]]</p>
               [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
                 [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
               [[/ifb]]

@@ -4,6 +4,11 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -12,7 +17,6 @@
             [[tags.VirtualGiftCardConfirmedMAIL_title]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-            [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
             [[tags.VirtualGiftCardConfirmedMAIL_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
@@ -23,8 +27,8 @@
             [[tags.VirtualGiftCardConfirmedMAIL_eGiftCard]]
         </mj-text>
         <mj-raw> 
-          [[def "paymentDetails" payload.orders.[0].payments.[0].paymentDetails.[0]]]
-          [[#each payload.orders.[0].suborders.[0].orderItems]]
+          [[def "paymentDetails" payload.notification.orders.[0].payments.[0].paymentDetails.[0]]]
+          [[#each payload.notification.orders.[0].suborders.[0].orderItems]]
         </mj-raw>
           <mj-table padding="16px 0 0"> 
             <tr>
@@ -52,7 +56,6 @@
                       [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
                       <span style="padding-left: 8px;">[[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</span>
                     </div>
-                    [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
                     [[#eq storeLegacyValue  "11737"]]
                       <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
                     [[/eq]]
@@ -69,7 +72,6 @@
     </mj-section>
 
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
