@@ -35,7 +35,17 @@
                 [[#if willReceiveTitle]]
               </mj-raw>
                   <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
-                    [[tags.shipping_shippingWillReceive]]:
+                    [[#if order.isSplitted]]
+                      [[#assign "subordersSize"]][[#size order.suborders]][[/size]][[/assign]]
+                      [[#eq subordersSize "1"]]
+                        [[tags.shipping_shippingWillReceiveSplittedSingular]]:
+                      [[/eq]]
+                      [[#neq subordersSize "1"]]
+                        [[tags.shipping_shippingWillReceiveSplittedPlural]]:
+                      [[/neq]]
+                    [[else]]
+                      [[tags.shipping_shippingWillReceive]]:
+                    [[/if]]
                   </mj-text>
       <mj-raw>
                 [[/if]]  
@@ -46,17 +56,68 @@
         [[#if hideTimeMethodInfo]]
         [[else]]
           [[#each order.suborders]]
-            [[#and showDeliveryDate this.deliveryDate]]
-      </mj-raw>
-      <mj-text css-class="rd-subsection-title" padding-bottom="32px" font-weight="bold">
-        [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-        [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-        [[readableDate minDeliveredDate maxDeliveredDate]]
-      </mj-text>
-      <mj-raw>
-          [[/and]]
-        [[/each]]
-      [[/if]]
+            [[#if showDeliveryDate]]
+              [[#if this.deliveryDate]]
+                [[#ifb (andb order.isSplitted (orb this.suborderId this.uuid))]]
+            </mj-raw>
+                  <mj-text css-class="rd-subsection-title" padding-bottom="8px">
+                    [[#if existsUuidUuid]]
+                      [[#if this.uuid.uuid]]
+                        [[#assign "suborderIdentifier"]][[this.uuid.uuid]][[/assign]]
+                      [[else]]
+                        [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                      [[/if]]
+                    [[else]]
+                      [[#if this.uuid]]
+                        [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+                      [[else]]
+                        [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                      [[/if]]
+                    [[/if]]
+                    [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
+                    [[#ifb (compare uuidSize ">" size)]]
+                      [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
+                    [[else]]
+                      [[def "suborderIdSub8" suborderIdentifier]]
+                    [[/ifb]]
+                    [[tags.shipping_title]] [[suborderIdSub8]]
+                  </mj-text>
+              <mj-raw>
+                [[/ifb]]
+              </mj-raw>
+                <mj-text css-class="rd-subsection-title" padding-bottom="16px" font-weight="bold">
+                  [[#if this.deliveryDate.maxDeliveredDate]]
+                    [[#assign "dateType"]][[this.deliveryDate.maxDeliveredDate.dateType]][[/assign]]
+                  [[else]]
+                    [[#assign "dateType"]][[this.deliveryDate.maxDeliveryDate.dateType]][[/assign]]
+                  [[/if]]
+                  [[#ifb (compare dateType "==" "TIMESTAMP")]] 
+                    [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
+                    [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
+                  [[else]]
+                    [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveryDate.dateIso]][[/assign]]
+                    [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
+                  [[/ifb]]
+                  [[readableDate minDeliveredDate maxDeliveredDate dateType]]
+                  [[#if order.isSplitted]]
+                    [[#ifb (andb this.shipping.amount showShippingCharges)]]
+                      <div style="font-weight: normal">
+                        [[#with this.shipping.amount]]
+                            [[def "obj" (conversionRate this.shipping.amount.value this.shipping.amount.exponent this.shipping.amount.currency this.shipping.amount.humanReadableText)]]
+                            [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                        [[/with]]
+                      </div>
+                    [[/ifb]]
+                  [[/if]]
+                </mj-text>
+        <mj-raw>
+              [[/if]]
+            [[/if]]
+          [[/each]]
+        </mj-raw>
+          <mj-spacer height="16px" />
+    <mj-raw>
+        [[/if]]
     [[else]]
     [[/if]]
       [[#if returnShippingTitle]]
