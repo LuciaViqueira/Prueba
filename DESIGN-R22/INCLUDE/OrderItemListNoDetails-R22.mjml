@@ -1,35 +1,38 @@
 <mj-section>
-  <mj-column>
+  <mj-column padding-top="40px">
     <mj-raw> 
       [[#if showBlockTitle]]  <!-- Muestra el titulo del bloque -->
     </mj-raw>
-      <mj-text css-class="rd-section-title" padding-top="64px">
-        [[#if returnOrderItemTitle]]
-          [[tags.OrderItemList_productListTitleReturnRequest]]
-        [[else]]
-          [[tags.OrderItemList_title]]
-        [[/if]]
-      </mj-text>
-    <mj-raw>
-    [[/if]]
-    </mj-raw>
-      <mj-text css-class="rd-subsection-text" padding-top="40px">
-        <div class="rd-light-font"> 
-          [[#if useTotalOrdersNumItems]]
-            [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+        <mj-text css-class="rd-section-title" padding-top="24px">
+          [[#if returnOrderItemTitle]]
+            [[tags.OrderItemList_productListTitleReturnRequest]]
           [[else]]
-            [[#assign "orderNumItems"]] [[this.orders.[0].numItems]] [[/assign]]
+            [[tags.OrderItemList_title]]
           [[/if]]
-          [[orderNumItems]]
-          [[#eq orderNumItems "1"]]
-            [[tags.OrderItemList_singleItemText]]
-          [[/eq]]
-          [[#neq orderNumItems "1"]]
-            [[tags.OrderItemList_multipleItemText]]
-          [[/neq]]
-        </div>   
-      </mj-text>
-    <mj-raw> 
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if payload.notification.orders.[0].isSplitted]]
+      [[else]]
+    </mj-raw>
+        <mj-text css-class="rd-subsection-text">
+          <div class="rd-light-font"> 
+            [[#if useTotalOrdersNumItems]]
+              [[#assign "orderNumItems"]] [[this.totalItems]] [[/assign]]
+            [[else]]
+              [[#assign "orderNumItems"]] [[this.orders.[0].numItems]] [[/assign]]
+            [[/if]]
+            [[orderNumItems]]
+            [[#eq orderNumItems "1"]]
+              [[tags.OrderItemList_singleItemText]]
+            [[/eq]]
+            [[#neq orderNumItems "1"]]
+              [[tags.OrderItemList_multipleItemText]]
+            [[/neq]]
+          </div>   
+        </mj-text>
+    <mj-raw>
+      [[/if]] 
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
         [[#neq ordersSize "1"]]
@@ -40,7 +43,23 @@
       <mj-raw>
         [[/neq]]
         [[#each this.suborders]]
+          [[#if payload.notification.orders.[0].isSplitted]]
       </mj-raw>
+            <mj-text css-class="rd-subsection-text" padding-top="4px">
+              <div class="rd-light-font"> 
+                [[#assign "suborderNumItems"]] [[this.numItems]] [[/assign]]
+                [[suborderNumItems]]
+                [[#eq suborderNumItems "1"]]
+                  [[tags.OrderItemList_singleItemText]]
+                [[/eq]]
+                [[#neq suborderNumItems "1"]]
+                  [[tags.OrderItemList_multipleItemText]]
+                [[/neq]]
+              </div>   
+            </mj-text>
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
           <mj-table padding="16px 0 0" table-layout="fixed">
             [[def "orderItemsMatrix" (matrix this.orderItems 3)]]
             [[#each orderItemsMatrix]]
