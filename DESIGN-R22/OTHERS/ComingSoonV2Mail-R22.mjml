@@ -6,17 +6,17 @@
   <mj-body width="535px">
     <!-- Global variables -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[tags.comingSoonMail_Title]]
+          [[tags.ComingSoonV2MAIL_Title]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-subsection-text-notUppercase">
-          [[tags.comingSoonMail_skuAvailable]]
+          [[tags.ComingSoonV2MAIL_skuAvailable]]
         </mj-text>
         <mj-table padding="24px 0 9px" css-class="rd-comingSoonProduct"> 
           <tr>
@@ -24,22 +24,22 @@
                 <table>
                   <tr>
                     <td>
-                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[productPictureUrl]]" href="[[productUrl]]" style="width:176px; height:auto;" />
+                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver 'ComingSoonMailURL']]" style="width:176px; height:auto;" />
                     </td>
                   </tr>   
                 </table>
             </td>
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[productUrl]]" style="color:#000; text-decoration:none; font-weight:bold;">
-                  [[productShortDescription]]
+                <a href="[[urlResolver 'ComingSoonMailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
+                  [[payload.notification.item.shortDescription]]
                 </a>
               </div>
               <div>
-                [[productSku]]
+                [[payload.notification.item.sku]]
               </div>
               <div style="font-weight:bold; padding-top:32px;">
-                [[productSize]]
+                [[payload.notification.item.size]]
               </div>
             </td>
           </tr>
@@ -51,8 +51,8 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[productUrl]]" >
-          [[tags.comingSoonMail_Button]]
+            href="[[urlResolver 'ComingSoonMailURL']]" >
+          [[tags.ComingSoonV2MAIL_Button]]
         </mj-button>
       </mj-column>
     </mj-section>
