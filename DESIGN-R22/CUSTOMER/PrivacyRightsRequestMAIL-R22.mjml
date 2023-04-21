@@ -1,0 +1,43 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "requestId"]][[requestId]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+            [[tags.PrivacyRightsRequestMAIL_title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+            [[tags.PrivacyRightsRequestMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          <p>[[tags.PrivacyRightsRequestMAIL_dearUser]]</p>
+          <p>[[tags.PrivacyRightsRequestMAIL_acknowledgmentOfReceipt]]</p>
+          <p>[[tags.PrivacyRightsRequestMAIL_identityVerify]]</p>
+          <p>[[tags.PrivacyRightsRequestMAIL_grateful]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
