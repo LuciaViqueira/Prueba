@@ -10,7 +10,7 @@
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
-      [[#assign "deliveryAttemptDate"]][[payload.deliveryAttemptDate]][[/assign]]
+      [[#assign "deliveryAttemptDate"]][[payload.deliveryAttemptDate.dateIso]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
