@@ -22,10 +22,10 @@
     </mj-text>
     <mj-text css-class="rd-subsection-text">
       [[#if address.zipCode]]
-        <div>[[address.zipCode]]</div>
+        [[address.zipCode]]
       [[/if]]
       [[#if address.city]]
-        <div>[[address.city]]</div>
+        [[address.city]]
       [[/if]]
       [[#if address.state]]
         <div>[[address.state]]</div>

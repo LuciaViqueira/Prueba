@@ -29,7 +29,7 @@
                 [[/eq]]
             </div>
             <div> 
-                1 / [[& this.giftCard.amount.humanReadableText]]
+                1 [[tags.ReturnProductList_singleUnitText]] / [[& this.giftCard.amount.humanReadableText]]
             </div>
         </td>
     </tr>

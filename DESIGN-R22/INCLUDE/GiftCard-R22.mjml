@@ -32,7 +32,7 @@
             <div>
                 [[#with this.giftCard.item.amount]]
                     [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
-                    1 X [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                    1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                 [[/with]]
             </div>
             <div>
