@@ -6,7 +6,7 @@
   <mj-body width="535px">
     <!-- Global Variables -->
     <mj-raw>
-      [[#assign "requestId"]][[requestId]][[/assign]]
+      [[#assign "requestId"]][[payload.requestId]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
