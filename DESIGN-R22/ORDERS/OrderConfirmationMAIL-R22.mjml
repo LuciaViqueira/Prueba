@@ -16,7 +16,7 @@
     <!-- Global Variables -->
     <mj-raw>
       [[#assign "utmMedium"]]email[[/assign]]
-      [[#assign "utmSource"]]notification[[/assign]]
+      [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]confirmacion_pedido[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplate"]]OrderConfirmationURL[[/assign]]
