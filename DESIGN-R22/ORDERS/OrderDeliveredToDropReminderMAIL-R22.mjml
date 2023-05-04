@@ -21,7 +21,18 @@
           [[tags.OrderDeliveredToDropReminderMAIL_titleSplitted]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[tags.OrderDeliveredToDropReminderMAIL_orderNumberText]]
+          [[#if payload.notification.orders.[0].suborders.[0].uuid]]
+            [[#assign "suborderIdentifier"]][[payload.notification.orders.[0].suborders.[0].uuid]][[/assign]]
+          [[else]]
+            [[#assign "suborderIdentifier"]][[payload.notification.orders.[0].suborders.[0].suborderId]][[/assign]]
+          [[/if]]
+          [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
+          [[#ifb (compare uuidSize ">" size)]]
+            [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
+          [[else]]
+            [[def "suborderIdSub8" suborderIdentifier]]
+          [[/ifb]]
+          [[tags.OrderDeliveredToDropReminderMAIL_orderNumberTextSplitted]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
           <p>[[tags.OrderDeliveredToDropReminderMAIL_rememberCourier]]</p>
