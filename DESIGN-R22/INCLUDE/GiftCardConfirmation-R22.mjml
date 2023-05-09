@@ -28,7 +28,7 @@
                 [[/if]]
             </div>
             <div> 
-                1 X [[this.price]]
+                1 [[tags.productListConfirmation_singleUnitText]] / [[this.price]]
             </div>
         </td>
     </tr>
