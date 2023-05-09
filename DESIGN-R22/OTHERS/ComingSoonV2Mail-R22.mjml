@@ -7,17 +7,24 @@
     <!-- Global variables -->
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+      [[#assign "utmMedium"]]email[[/assign]]
+      [[#assign "utmSource"]]notification_com[[/assign]]
+      [[#assign "utmCampaign"]]confirmacion_pedido[[/assign]]
+      [[#assign "utmContent"]]logo[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'ProductDetailURL']]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
           [[tags.ComingSoonV2MAIL_Title]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-subsection-text-notUppercase">
           [[tags.ComingSoonV2MAIL_skuAvailable]]
         </mj-text>
+        <mj-raw>
+          [[#assign "utmContent"]]image[[/assign]]
+        </mj-raw>
         <mj-table padding="24px 0 9px" css-class="rd-comingSoonProduct"> 
           <tr>
             <td style="padding: 0;" class="rd-comingSoonProductImgColumn">
@@ -29,6 +36,7 @@
                   </tr>   
                 </table>
             </td>
+            [[#assign "utmContent"]]text[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
                 <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
@@ -65,6 +73,7 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
+      [[#assign "utmContent"]]url_help[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
   </mj-body>
