@@ -9,7 +9,7 @@
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
-      [[#assign "utmCampaign"]]confirmacion_pedido[[/assign]]
+      [[#assign "utmCampaign"]]comingsoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
