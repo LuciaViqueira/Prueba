@@ -17,7 +17,7 @@
     <mj-raw>
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
-      [[#assign "utmCampaign"]]confirmacion_pedido[[/assign]]
+      [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
     </mj-raw>
@@ -78,7 +78,7 @@
     <mj-raw>
         [[/with]]
       [[/with]]
-      [[#assign "utmContent"]]url_detalle[[/assign]]
+      [[#assign "utmContent"]]order_detail_button[[/assign]]
     </mj-raw>
 
     <mj-section>
@@ -131,7 +131,7 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
-      [[#assign "utmContent"]]url_help[[/assign]]
+      [[#assign "utmContent"]]help_page[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
 
