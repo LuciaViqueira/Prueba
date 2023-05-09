@@ -19,7 +19,7 @@
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]confirmacion_pedido[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]OrderConfirmationURL[[/assign]]
+      [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
