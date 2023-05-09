@@ -1,0 +1,72 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
+      [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
+      [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
+      [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
+      [[#assign "deliveryAttemptDate"]][[payload.deliveryAttemptDate.dateIso]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.DeliveryAttempMAIL_titleSplitted]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+          [[#if payload.notification.orders.[0].suborders.[0].uuid]]
+            [[#assign "suborderIdentifier"]][[payload.notification.orders.[0].suborders.[0].uuid]][[/assign]]
+          [[else]]
+            [[#assign "suborderIdentifier"]][[payload.notification.orders.[0].suborders.[0].suborderId]][[/assign]]
+          [[/if]]
+          [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
+          [[#ifb (compare uuidSize ">" size)]]
+            [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
+          [[else]]
+            [[def "suborderIdSub8" suborderIdentifier]]
+          [[/ifb]]
+          [[tags.DeliveryAttempMAIL_orderNumberTextSplitted]]
+        </mj-text>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[#if deliveryAttemptDate]]
+            [[def "obj" (formatDateISO deliveryAttemptDate deliveryAttemptDate)]]
+            [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+            [[def "deliveryHour" obj.min_time]]
+            <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
+          [[else]]
+            <p>[[tags.DeliveryAttempMAIL_deliveryFailedNoDeliveryDateSplitted]]</p>
+          [[/if]]
+          <p>[[tags.DeliveryAttempMAIL_pressNextButton]]</p>
+        </mj-text>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="https://www.zara.com/[[payload.notification.store.identifier.value]]/[[payload.notification.user.preferences.locale.language]]/user/order/[[orderId]]" >
+          [[tags.DeliveryAttempMAIL_buttonTxt]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
