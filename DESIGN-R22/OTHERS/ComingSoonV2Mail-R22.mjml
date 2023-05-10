@@ -7,15 +7,12 @@
     <!-- Global variables -->
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
-      [[#assign "utmMedium"]]email[[/assign]]
-      [[#assign "utmSource"]]notification_com[[/assign]]
-      [[#assign "utmCampaign"]]comingsoon[[/assign]]
-      [[#assign "utmContent"]]logo[[/assign]]
+      [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'ProductDetailURL']]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'urlTemplate']]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
           [[tags.ComingSoonV2MAIL_Title]]
         </mj-text>
@@ -31,7 +28,7 @@
                 <table>
                   <tr>
                     <td>
-                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver 'ProductDetailURL']]" style="width:176px; height:auto;" />
+                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver 'urlTemplate']]" style="width:176px; height:auto;" />
                     </td>
                   </tr>   
                 </table>
@@ -39,7 +36,7 @@
             [[#assign "utmContent"]]text[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
+                <a href="[[urlResolver 'urlTemplate']]" style="color:#000; text-decoration:none; font-weight:bold;">
                   [[payload.notification.item.shortDescription]]
                 </a>
               </div>
@@ -59,7 +56,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ProductDetailURL']]" >
+            href="[[urlResolver 'urlTemplate']]" >
           [[tags.ComingSoonV2MAIL_Button]]
         </mj-button>
       </mj-column>
