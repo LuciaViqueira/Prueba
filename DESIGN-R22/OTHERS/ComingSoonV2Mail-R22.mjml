@@ -7,6 +7,10 @@
     <!-- Global variables -->
     <mj-raw>
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+      [[#assign "utmMedium"]]email[[/assign]]
+      [[#assign "utmSource"]]notification_com[[/assign]]
+      [[#assign "utmCampaign"]]comingsoon[[/assign]]
+      [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -20,7 +24,7 @@
           [[tags.ComingSoonV2MAIL_skuAvailable]]
         </mj-text>
         <mj-raw>
-          [[#assign "utmContent"]]image[[/assign]]
+          [[#assign "utmContent"]]product_detail_image[[/assign]]
         </mj-raw>
         <mj-table padding="24px 0 9px" css-class="rd-comingSoonProduct"> 
           <tr>
@@ -33,7 +37,7 @@
                   </tr>   
                 </table>
             </td>
-            [[#assign "utmContent"]]text[[/assign]]
+            [[#assign "utmContent"]]product_detail_description[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
                 <a href="[[urlResolver 'urlTemplate']]" style="color:#000; text-decoration:none; font-weight:bold;">
@@ -49,6 +53,9 @@
             </td>
           </tr>
         </mj-table>
+        <mj-raw>
+          [[#assign "utmContent"]]product_detail_button[[/assign]]
+        </mj-raw>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
