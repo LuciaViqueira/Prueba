@@ -9,17 +9,33 @@
     <mj-raw>
       [[/if]]
       [[#if onlyShowFooterStoreConfiguration]]
+        [[#if urlTemplate]]
     </mj-raw> 
-        <mj-text css-class="rd-footer-link">
-          <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
-        </mj-text>
-    <mj-raw>
-      [[else]]
-    </mj-raw>
-        <mj-text css-class="rd-footer-link">
-          <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
-        </mj-text>
+          <mj-text css-class="rd-footer-link">
+            <a href="[[urlResolver urlTemplate]]">[[tags.helpText]]</a>
+          </mj-text>
       <mj-raw>
+        [[else]]
+      </mj-raw> 
+          <mj-text css-class="rd-footer-link">
+            <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
+          </mj-text>
+    <mj-raw>
+        [[/if]]
+      [[else]]
+        [[#if urlTemplate]]
+    </mj-raw> 
+          <mj-text css-class="rd-footer-link">
+            <a href="[[urlResolver urlTemplate]]">[[tags.helpText]]</a>
+          </mj-text>
+      <mj-raw>
+        [[else]]
+      </mj-raw> 
+          <mj-text css-class="rd-footer-link">
+            <a href="[[footer.helpUrl]]">[[tags.helpText]]</a>
+          </mj-text>
+    <mj-raw>
+        [[/if]]
         [[#if notShowTermsConds]]
         [[else]]
       </mj-raw>
