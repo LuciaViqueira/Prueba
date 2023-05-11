@@ -120,12 +120,12 @@
           </tr>
         [[/ifb]]
         [[def "orderDiscount" payload.orders.[0].discounts.[0].amount]]
-        [[#if orderDiscount]]
+        [[#ifb (andb orderDiscount (compare orderDiscount.value "!=" 0))]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_orderDiscount]]</td>
             <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
           </tr>
-        [[/if]]
+        [[/ifb]]
         [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
         [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING"))]]
           <tr class="rd-light-font">
