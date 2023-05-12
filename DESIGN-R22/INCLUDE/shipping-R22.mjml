@@ -1,6 +1,18 @@
 <mj-section>
   <mj-column padding-top="24px" >
     <mj-raw>
+      [[#def "shippingPath"]][[jsonPath "$..suborders[?(@.shipping != null)]..shipping"]][[/def]]
+    </mj-raw>
+    <mj-text css-class="rd-subsection-title" padding-bottom="20px">
+      <p>Prueba JsonPATH: [[shippingPath]]</p>
+
+      <p>Prueba JsonPATH 2 : [[shippingPath.mode]]</p>
+
+      <p>Prueba JsonPATH 3 : shippingPath.mode</p>
+
+    </mj-text>
+
+    <mj-raw>
     [[#if showDeliveryInfo]]
     </mj-raw>
       <mj-raw>
@@ -100,10 +112,10 @@
                   [[/ifb]]
                   [[readableDate minDeliveredDate maxDeliveredDate dateType]]
                   [[#if order.isSplitted]]
-                    [[#ifb (andb this.shipping.amount showShippingCharges)]]
+                    [[#ifb (andb shippingPath.amount showShippingCharges)]]
                       <div style="font-weight: normal">
-                        [[#with this.shipping.amount]]
-                            [[def "obj" (conversionRate this.shipping.amount.value this.shipping.amount.exponent this.shipping.amount.currency this.shipping.amount.humanReadableText)]]
+                        [[#with shippingPath.amount]]
+                            [[def "obj" (conversionRate shippingPath.amount.value shippingPath.amount.exponent shippingPath.amount.currency shippingPath.amount.humanReadableText)]]
                             [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                         [[/with]]
                       </div>
@@ -169,37 +181,36 @@
         [[/if]]
       [[/if]]
     </mj-raw>
-    
     <mj-text padding-bottom="4px" font-weight="bold" css-class="rd-subsection-text-light">
       <!-- ShippingMethod -->
-          [[#eq this.shippingAddress.mode "EXPRESS"]]
+          [[#eq shippingPath.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
           [[else]]
-            [[#eq this.shippingAddress.mode "STANDARD"]]
+            [[#eq shippingPath.mode "STANDARD"]]
               [[tags.shipping_STANDARD]]
             [[else]]
-              [[#eq this.shippingAddress.mode "STORE"]]
+              [[#eq shippingPath.mode "STORE"]]
                 [[tags.shipping_pickupStore]]
               [[else]]
-                [[#eq this.shippingAddress.mode "DDD"]]
+                [[#eq shippingPath.mode "DDD"]]
                   [[tags.shipping_DDD]]
                 [[else]]
-                  [[#eq this.shippingAddress.mode "DROPPOINT"]]
+                  [[#eq shippingPath.mode "DROPPOINT"]]
                     [[tags.shipping_DROPPOINT]]
                   [[else]]
-                    [[#eq this.shippingAddress.mode "SAMEDAY"]]
+                    [[#eq shippingPath.mode "SAMEDAY"]]
                       [[tags.shipping_SAMEDAY]]
                     [[else]]
-                      [[#eq this.shippingAddress.mode "TRYON"]]
+                      [[#eq shippingPath.mode "TRYON"]]
                         [[tags.shipping_TRYON]]
                       [[else]]
-                        [[#eq this.shippingAddress.mode "VIRTUAL"]]
+                        [[#eq shippingPath.mode "VIRTUAL"]]
                           [[tags.shipping_VIRTUAL]]
                         [[else]]
-                          [[#eq this.shippingAddress.mode "DEFERRED_STANDARD"]]
+                          [[#eq shippingPath.mode "DEFERRED_STANDARD"]]
                             [[tags.shipping_DEFERRED_STANDARD]]
                           [[else]]
-                            [[#eq this.shippingAddress.mode "STANDARD_ASSEMBLY"]]
+                            [[#eq shippingPath.mode "STANDARD_ASSEMBLY"]]
                               [[tags.shipping_STANDARD_ASSEMBLY]]
                             [[/eq]]
                           [[/eq]]
@@ -215,24 +226,24 @@
     </mj-text>
 
     <mj-raw>
-    [[#if shippingAddress.description]]
+    [[#if shippingPath.description]]
     </mj-raw>
       <mj-text padding-top="4px" css-class="rd-subsection-text">
-        [[shippingAddress.description]]
+        [[shippingPath.description]]
       </mj-text>
     <mj-raw>
       [[/if]]
-      [[#with shippingAddress.address]]
+      [[#with shippingPath.address]]
           </mj-raw>
             <mj-include path="Address-R22" />
           <mj-raw>
       [[else]]
-        [[#with shippingAddress.physicalStore.address]]
+        [[#with shippingPath.physicalStore.address]]
           </mj-raw>
             <mj-include path="Address-R22" />
           <mj-raw>
         [[else]]
-          [[#with shippingAddress.dropPoint.address]]
+          [[#with shippingPath.dropPoint.address]]
             </mj-raw>
               <mj-include path="Address-R22" />
             <mj-raw>
