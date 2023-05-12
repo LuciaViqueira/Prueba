@@ -127,7 +127,7 @@
           </tr>
         [[/ifb]]
         [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
-        [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING"))]]
+        [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING") (compare returnCosts.amount.value "!=" 0))]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_returnChargesText]]</td>
             <td class="rd-payment-price">[[currency returnCosts.amount.value returnCosts.amount.exponent returnCosts.amount.currency returnCosts.amount.humanReadableText]]</td>
