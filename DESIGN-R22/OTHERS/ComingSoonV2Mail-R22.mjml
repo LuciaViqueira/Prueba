@@ -12,12 +12,12 @@
       [[#assign "utmCampaign"]]comingsoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplate"]]ProductDetailURL[[/assign]]
-      [[#assign "sku"]]payload.notification.item.sku[[/assign]]
-      [[#assign "productId"]]payload.notification.item.productId[[/assign]]
-      [[#assign "categoryId"]]payload.notification.item.categoryId[[/assign]]
-      [[#assign "season"]]payload.notification.item.season[[/assign]]
-      [[#assign "subscriptionId"]]payload.subscriptionIdentifier[[/assign]]
-      [[#assign "ssts"]]payload.ssts[[/assign]]
+      [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
+      [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
+      [[#assign "categoryId"]][[payload.notification.item.categoryId]][[/assign]]
+      [[#assign "season"]][[payload.notification.item.season]][[/assign]]
+      [[#assign "subscriptionId"]][[payload.subscriptionIdentifier]][[/assign]]
+      [[#assign "ssts"]][[payload.ssts]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -38,7 +38,7 @@
                 <table>
                   <tr>
                     <td>
-                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver 'urlTemplate']]" style="width:176px; height:auto;" />
+                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver urlTemplate]]" style="width:176px; height:auto;" />
                     </td>
                   </tr>   
                 </table>
@@ -46,7 +46,7 @@
             [[#assign "utmContent"]]product_detail_description[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[urlResolver 'urlTemplate']]" style="color:#000; text-decoration:none; font-weight:bold;">
+                <a href="[[urlResolver urlTemplate]]" style="color:#000; text-decoration:none; font-weight:bold;">
                   [[payload.notification.item.shortDescription]]
                 </a>
               </div>
@@ -69,7 +69,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'urlTemplate']]" >
+            href="[[urlResolver urlTemplate]]" >
           [[tags.ComingSoonV2MAIL_Button]]
         </mj-button>
       </mj-column>
