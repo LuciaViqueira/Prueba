@@ -11,12 +11,18 @@
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]comingsoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+      [[#assign "urlTemplate"]]ProductDetailURL[[/assign]]
+      [[#assign "sku"]]payload.notification.item.sku[[/assign]]
+      [[#assign "productId"]]payload.notification.item.productId[[/assign]]
+      [[#assign "categoryId"]]payload.notification.item.categoryId[[/assign]]
+      [[#assign "season"]]payload.notification.item.season[[/assign]]
+      [[#assign "subscriptionId"]]payload.subscriptionIdentifier[[/assign]]
+      [[#assign "ssts"]]payload.ssts[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'urlTemplate']]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'ProductDetailLogoURL']]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
           [[tags.ComingSoonV2MAIL_Title]]
         </mj-text>
