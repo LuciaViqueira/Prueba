@@ -15,6 +15,8 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
@@ -24,7 +26,7 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver urlTemplate]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver OrderDetailLogoURL]]" padding-top="48px" padding-bottom="43px" align="center"/>
         <mj-text css-class="rd-title" align="center">
             [[tags.OrderConfirmationMAIL_title]]
         </mj-text>
@@ -123,7 +125,6 @@
     </mj-raw>
 
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
