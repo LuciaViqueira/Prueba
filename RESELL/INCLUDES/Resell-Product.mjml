@@ -1,0 +1,31 @@
+<table class="rd-product"> 
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img padding="0" class="rd-product-img" width="225" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+            <div>
+                [[this.item.shortDescription]]
+            </div>
+            [[#if this.item.size]]
+                <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
+            [[/if]]
+            [[#if this.item.price]]
+                <div>
+                    [[tags.OrderItemList_price]] - 
+                    [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                    [[obj.main_amount]]
+                </div>
+            [[/if]]
+            [[#if this.item.id]]
+                <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
+            [[/if]]
+        </td>
+    </tr>
+</table>
