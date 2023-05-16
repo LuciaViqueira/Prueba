@@ -1,15 +1,10 @@
 <mj-section>
   <mj-column padding-top="24px" >
     <mj-raw>
-      [[#def "shippingPath"]][[jsonPath "$..suborders[?(@.shipping != null)]..shipping"]][[/def]]
+      [[#def "shippingPath"]][[jsonPath "$..user"]][[/def]]
     </mj-raw>
     <mj-text css-class="rd-subsection-title" padding-bottom="20px">
       <p>Prueba JsonPATH: [[shippingPath]]</p>
-
-      <p>Prueba JsonPATH 2 : [[shippingPath.mode]]</p>
-
-      <p>Prueba JsonPATH 3 : shippingPath.mode</p>
-
     </mj-text>
 
     <mj-raw>
