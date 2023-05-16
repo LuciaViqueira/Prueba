@@ -25,10 +25,11 @@
         </mj-text>
 
         <mj-raw>
-          [[#def "shippingPath"]][[jsonPath "$..user"]][[/def]]
+          [[#def "shippingPath"]][[jsonPath '$..user']][[/def]]
         </mj-raw>
         <mj-text css-class="rd-subsection-title" padding-bottom="20px">
           <p>Prueba JsonPATH: [[shippingPath]]</p>
+          <p>[[jsonPath '$..user']]</p>
         </mj-text>
 
 
