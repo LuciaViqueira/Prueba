@@ -1,13 +1,6 @@
 <mj-section>
   <mj-column padding-top="24px" >
     <mj-raw>
-      [[#def "shippingPath"]][[jsonPath "$..user"]][[/def]]
-    </mj-raw>
-    <mj-text css-class="rd-subsection-title" padding-bottom="20px">
-      <p>Prueba JsonPATH: [[shippingPath]]</p>
-    </mj-text>
-
-    <mj-raw>
     [[#if showDeliveryInfo]]
     </mj-raw>
       <mj-raw>
