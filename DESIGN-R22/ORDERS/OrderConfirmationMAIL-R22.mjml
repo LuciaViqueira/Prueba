@@ -21,7 +21,7 @@
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+      [[#assign "urlTemplate"]]FooterHelpURL[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -92,7 +92,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver urlTemplate]]" >
+            href="[[urlResolver 'OrderDetailURL']]" >
           [[tags.OrderConfirmationMAIL_buttonTxt]]
         </mj-button>
         <mj-text css-class="rd-text-info">
