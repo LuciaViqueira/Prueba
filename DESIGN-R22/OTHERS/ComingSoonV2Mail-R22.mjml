@@ -10,7 +10,7 @@
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]ComingSoon[[/assign]]
-      [[#assign "utmContent"]]logoURL[[/assign]]
+      [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplate"]]FooterHelpURL[[/assign]]
       [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
       [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
