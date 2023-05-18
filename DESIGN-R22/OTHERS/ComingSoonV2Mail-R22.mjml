@@ -11,7 +11,7 @@
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]ComingSoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]FooterHelpURL[[/assign]]
+      [[#assign "urlTemplate"]]FooterHelpWithUtmTermURL[[/assign]]
       [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
       [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
       [[#assign "categoryId"]][[payload.notification.item.categoryId]][[/assign]]
