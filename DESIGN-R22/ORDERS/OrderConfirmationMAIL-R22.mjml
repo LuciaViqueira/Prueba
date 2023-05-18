@@ -23,16 +23,6 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderConfirmationMAIL_orderNumberText]]
         </mj-text>
-
-        <mj-raw>
-          [[#def "shippingPath"]][[jsonPath '$..user']][[/def]]
-        </mj-raw>
-        <mj-text css-class="rd-subsection-title" padding-bottom="20px">
-          <p>Prueba JsonPATH: [[shippingPath]]</p>
-          <p>[[jsonPath '$..user']]</p>
-        </mj-text>
-
-
         <mj-raw>
           [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
           [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]
@@ -74,7 +64,7 @@
 
     <mj-raw>
       [[#with payload.orders.[0] as | order |]]
-        [[#with order.suborders.[0].shipping as | shippingAddress |]]
+        [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
     </mj-raw>
     <mj-include path="shipping-R22" />
     <mj-raw>
