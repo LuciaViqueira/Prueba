@@ -10,8 +10,8 @@
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]ComingSoon[[/assign]]
-      [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]ProductDetailURL[[/assign]]
+      [[#assign "utmContent"]]logoURL[[/assign]]
+      [[#assign "urlTemplate"]]FooterHelpURL[[/assign]]
       [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
       [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
       [[#assign "categoryId"]][[payload.notification.item.categoryId]][[/assign]]
@@ -38,7 +38,9 @@
                 <table>
                   <tr>
                     <td>
-                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver urlTemplate]]" style="width:176px; height:auto;" />
+                      <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none;">
+                        <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" style="width:176px; height:auto;" />
+                      </a>
                     </td>
                   </tr>   
                 </table>
@@ -46,7 +48,7 @@
             [[#assign "utmContent"]]product_detail_description[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[urlResolver urlTemplate]]" style="color:#000; text-decoration:none; font-weight:bold;">
+                <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
                   [[payload.notification.item.shortDescription]]
                 </a>
               </div>
@@ -69,7 +71,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver urlTemplate]]" >
+            href="[[urlResolver 'ProductDetailURL']]" >
           [[tags.ComingSoonV2MAIL_Button]]
         </mj-button>
       </mj-column>
@@ -83,7 +85,7 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
-      [[#assign "utmContent"]]url_help[[/assign]]
+      [[#assign "utmContent"]]help_page[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
   </mj-body>
