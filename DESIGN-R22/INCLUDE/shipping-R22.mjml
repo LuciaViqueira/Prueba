@@ -100,10 +100,10 @@
                   [[/ifb]]
                   [[readableDate minDeliveredDate maxDeliveredDate dateType]]
                   [[#if order.isSplitted]]
-                    [[#ifb (andb this.shippingAddress.amount showShippingCharges)]]
+                    [[#ifb (andb this.shipping.amount showShippingCharges)]]
                       <div style="font-weight: normal">
-                        [[#with this.shippingAddress.amount]]
-                            [[def "obj" (conversionRate this.shippingAddress.amount.value this.shippingAddress.amount.exponent this.shippingAddress.amount.currency this.shippingAddress.amount.humanReadableText)]]
+                        [[#with this.shipping.amount]]
+                            [[def "obj" (conversionRate this.shipping.amount.value this.shipping.amount.exponent this.shipping.amount.currency this.shipping.amount.humanReadableText)]]
                             [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                         [[/with]]
                       </div>
