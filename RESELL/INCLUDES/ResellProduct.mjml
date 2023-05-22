@@ -24,7 +24,7 @@
                 </div>
             [[/if]]
             [[#if this.item.id]]
-                <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
+                <div>[[tags.OrderItemList_listingId]] - [[this.item.id]]</div>
             [[/if]]
         </td>
     </tr>
