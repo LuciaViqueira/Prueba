@@ -1,0 +1,14 @@
+<mj-section>
+  <mj-column padding-top="50px">
+    <mj-text  css-class="rd-section-title">
+      <p>[[tags.Shipping_instructions]]</p>
+    </mj-text>
+    <mj-text css-class="rd-text-info">
+      <p>[[tags.Shipping_buyerRateYou]]</p>
+    </mj-text>
+    <mj-text css-class="rd-text-info">
+      <p>[[tags.Shipping_cleanIt]]</p>
+      <p>[[tags.Shipping_pack&Ship]]</p>
+    </mj-text>
+  </mj-column>
+</mj-section>
