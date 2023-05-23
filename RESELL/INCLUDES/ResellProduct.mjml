@@ -10,7 +10,7 @@
                     </tr>
                 </table>
             [[/if]]
-            <div>
+            <div style="font-weight: bold">
                 [[this.item.shortDescription]]
             </div>
             [[#if this.item.size]]

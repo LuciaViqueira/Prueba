@@ -1,9 +1,9 @@
 <mj-section>
-  <mj-column padding-top="50px">
-    <mj-text  css-class="rd-section-title">
-      <p>[[tags.Shipping_instructions]]</p>
+  <mj-column padding-top="60px">
+    <mj-text css-class="rd-section-title">
+      [[tags.Shipping_instructions]]
     </mj-text>
-    <mj-text css-class="rd-text-info">
+    <mj-text padding-bottom="13px" css-class="rd-text-info">
       <p>[[tags.Shipping_buyerRateYou]]</p>
     </mj-text>
     <mj-text css-class="rd-text-info">

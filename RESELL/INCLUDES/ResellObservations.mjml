@@ -1,22 +1,22 @@
 <mj-section>
-  <mj-column padding-top="50px">
+  <mj-column padding-top="4px">
     <mj-text  css-class="rd-section-title">
       [[tags.Observations_instructions]]
     </mj-text>
-    <mj-text css-class="rd-text-info">
-      [[tags.Observations_attachedShippingLabel]]
+    <mj-text padding-bottom="28px" css-class="rd-text-info">
+      <p>[[tags.Observations_attachedShippingLabel]]</p>
     </mj-text>
-    <mj-text padding-top="30px" css-class="rd-section-title">
+    <mj-text css-class="rd-section-title">
       [[tags.Observations_howPaymentWorks]]
     </mj-text>
-    <mj-text css-class="rd-text-info">
-      [[tags.Observations_daysToConfirmReceived]]
+    <mj-text padding-bottom="28px" css-class="rd-text-info">
+      <p>[[tags.Observations_daysToConfirmReceived]]</p>
     </mj-text>
-    <mj-text padding-top="30px" css-class="rd-section-title">
+    <mj-text css-class="rd-section-title">
       [[tags.Observations_reminder]]
     </mj-text>
-    <mj-text css-class="rd-text-info">
-      [[tags.Observations_paymentConfiguration]]
+    <mj-text padding-bottom="28px" css-class="rd-text-info">
+      <p>[[tags.Observations_paymentConfiguration]]</p>
     </mj-text>
   </mj-column>
 </mj-section>

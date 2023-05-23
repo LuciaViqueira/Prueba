@@ -1,5 +1,5 @@
 <mj-section>
-  <mj-column padding-top="40px">
+  <mj-column padding-top="8px">
     <mj-raw>
       [[#each this.orders.[0].suborders]]
     </mj-raw>
