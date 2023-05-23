@@ -10,7 +10,7 @@
                     </tr>
                 </table>
             [[/if]]
-            <div style="font-weight: bold">
+            <div style="font-weight: bold; padding: 0 0 8px;">
                 [[this.item.shortDescription]]
             </div>
             [[#if this.item.size]]
@@ -24,7 +24,7 @@
                 </div>
             [[/if]]
             [[#if this.resellExternalId]]
-                <div>[[tags.OrderItemList_listingId]] - [[this.resellExternalId]]</div>
+                <div>[[tags.OrderItemList_listingId]]: [[this.resellExternalId]]</div>
             [[/if]]
         </td>
     </tr>
