@@ -8,7 +8,7 @@
     </mj-text>
     <mj-text css-class="rd-text-info">
       <p>[[tags.Shipping_cleanIt]]</p>
-      <p>[[tags.Shipping_pack&Ship]]</p>
+      <p>[[tags.Shipping_packAndShip]]</p>
     </mj-text>
   </mj-column>
 </mj-section>

@@ -16,7 +16,7 @@
       [[tags.Observations_reminder]]
     </mj-text>
     <mj-text css-class="rd-text-info">
-      [[tags.Observations_paymentConfuration]]
-    </mj-text>     
+      [[tags.Observations_paymentConfiguration]]
+    </mj-text>
   </mj-column>
 </mj-section>

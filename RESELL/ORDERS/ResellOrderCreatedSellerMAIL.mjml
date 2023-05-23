@@ -29,6 +29,8 @@
       [[/with]]
     </mj-raw>
 
+    <mj-include path="ResellObservations" />
+
     <mj-section>
       <mj-column>
         <mj-button css-class="rd-order-detail-btn" 
@@ -43,6 +45,8 @@
         </mj-button>
       </mj-column>
     </mj-section>
+
+    <mj-include path="ResellShipping" />
 
     <mj-raw>
       [[#eq storeLegacyValue  "11727"]]
