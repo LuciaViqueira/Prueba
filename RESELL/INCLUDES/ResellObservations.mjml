@@ -1,22 +1,56 @@
 <mj-section>
   <mj-column padding-top="4px">
-    <mj-text  css-class="rd-section-title">
-      [[tags.Observations_instructions]]
-    </mj-text>
-    <mj-text padding-bottom="28px" css-class="rd-text-info">
-      <p>[[tags.Observations_attachedShippingLabel]]</p>
-    </mj-text>
-    <mj-text css-class="rd-section-title">
-      [[tags.Observations_howPaymentWorks]]
-    </mj-text>
-    <mj-text padding-bottom="28px" css-class="rd-text-info">
-      <p>[[tags.Observations_daysToConfirmReceived]]</p>
-    </mj-text>
-    <mj-text css-class="rd-section-title">
-      [[tags.Observations_reminder]]
-    </mj-text>
-    <mj-text padding-bottom="28px" css-class="rd-text-info">
-      <p>[[tags.Observations_paymentConfiguration]]</p>
-    </mj-text>
+    <mj-raw>
+      [[#if showInstructionsObservations]]
+    </mj-raw>
+        <mj-text  css-class="rd-section-title">
+          [[tags.Observations_instructions]]
+        </mj-text>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_attachedShippingLabel]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showHowPaymentWorksObservations]]
+    </mj-raw>
+        <mj-text css-class="rd-section-title">
+          [[tags.Observations_howPaymentWorks]]
+        </mj-text>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_daysToConfirmReceived]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showReminderObservations]]
+    </mj-raw>
+        <mj-text css-class="rd-section-title">
+          [[tags.Observations_reminder]]
+        </mj-text>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_paymentConfiguration]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showTrackingObservations]]
+    </mj-raw>
+        <mj-text  css-class="rd-section-title">
+          [[tags.Observations_tracking]]
+        </mj-text>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_shippingTimeLimit]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showConfirmDeliveryObservations]]
+    </mj-raw>
+        <mj-text  css-class="rd-section-title">
+          [[tags.Observations_confirmDelivery]]
+        </mj-text>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_confirmConditionsAndRate]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
   </mj-column>
 </mj-section>
