@@ -1,19 +1,25 @@
 <mj-section>
   <mj-column padding-top="40px">
-    <mj-table padding="16px 0 0" table-layout="fixed">
-      [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
-      [[#each orderItemsMatrix]]
-        <tr class="rd-product-row">
-          [[#each this]]
-            <td style="padding-bottom: 24px;" class="rd-product-col">
-              <mj-include path="ResellProduct" />
-            </td>
+    <mj-raw>
+      [[#each this.orders.[0].suborders]]
+    </mj-raw>
+        <mj-table padding="16px 0 0" table-layout="fixed">
+          [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
+          [[#each orderItemsMatrix]]
+            <tr class="rd-product-row">
+              [[#each this]]
+                <td style="padding-bottom: 24px;" class="rd-product-col">
+                  <mj-include path="ResellProduct" />
+                </td>
+              [[/each]]
+              [[#ifb (compare (length this) "==" 1)]]
+                <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+              [[/ifb]]
+            </tr>
           [[/each]]
-          [[#ifb (compare (length this) "==" 1)]]
-            <td style="padding-bottom: 24px;" class="rd-product-col"></td>
-          [[/ifb]]
-        </tr>
+        </mj-table>
+    <mj-raw>
       [[/each]]
-    </mj-table>
+    </mj-raw>
   </mj-column>
 </mj-section>

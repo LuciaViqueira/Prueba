@@ -22,17 +22,9 @@
     </mj-section>
 
     <mj-raw>
-      [[#with payload]]
+      [[#with payload.notification]]
     </mj-raw>
       <mj-include path="ResellOrderItemList" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
-
-    <mj-raw>
-      [[#with payload]]
-    </mj-raw>
-      <mj-include path="ResellObservations" />
     <mj-raw>
       [[/with]]
     </mj-raw>
@@ -52,14 +44,6 @@
       </mj-column>
     </mj-section>
 
-    <mj-raw>
-      [[#with payload]]
-    </mj-raw>
-      <mj-include path="ResellShipping" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
-  
     <mj-raw>
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
