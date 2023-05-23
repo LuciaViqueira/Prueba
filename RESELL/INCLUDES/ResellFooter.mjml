@@ -1,7 +1,6 @@
 <mj-section>
   <mj-column padding="72px 0 100px">  
-
-    <mj-text css-class="rd-section-title">
+    <mj-text padding-bottom="10px" css-class="rd-section-title">
       <a href="[[footer.]]">[[tags.Footer_company]]</a>
     </mj-text>
     <mj-text css-class="rd-footer-link">
@@ -13,8 +12,7 @@
     <mj-text css-class="rd-footer-link">
       <a href="[[footer.]]">[[tags.Footer_privacyPolicy]]</a>      
     </mj-text>
-
-    <mj-text padding-top="40px" css-class="rd-section-title">
+    <mj-text padding-top="30px" css-class="rd-section-title">
       <a href="[[footer.]]">[[tags.Footer_followUs]]</a>
     </mj-text>
 
@@ -81,7 +79,7 @@
       </tr>
     </mj-table>
 
-    <mj-text padding-top="8px" font-weight="bold" css-class="rd-dowload-app">
+    <mj-text padding-top="18px" font-weight="bold" css-class="rd-dowload-app">
        <a href="https://www.zara.com/static/go/marketplaces.html" target="_blank">[[tags.Footer_downloadOurApp]]</a>
     </mj-text>
   </mj-column>
