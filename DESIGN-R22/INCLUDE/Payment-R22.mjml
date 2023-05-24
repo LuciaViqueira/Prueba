@@ -107,12 +107,12 @@
           </td>
           <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
         </tr>
-        [[#ifb (andb shippingPrice (compare shippingPrice.value "!=" 0))]]
+        [[#if this.shippingPrice]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_deliveryCostText]]</td>
             <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
           </tr>
-        [[/ifb]]
+        [[/if]]
         [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_shippingDiscountsText]]</td>
