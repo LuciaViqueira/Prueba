@@ -122,6 +122,19 @@
         margin-top: 139%;
       }
     }
+
+    @media only screen and (min-width:480px) {
+        .mj-column-per-50:first-of-type {
+            width: 49% !important;
+            max-width: 50%;
+            margin-right: 3px !important;
+        }
+        .mj-column-per-50:last-of-type {
+            width: 49% !important;
+            max-width: 50%;
+            margin-left: 3px !important;
+        }
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
@@ -458,5 +471,10 @@
     line-height: 18px;
     letter-spacing: 0.7px;
     text-decoration: none;
+}
+
+.resell-welcome-button {
+    padding: 15px 0 0px !important;
+    font-size: 14px !important;
 }
 </mj-style>
