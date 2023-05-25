@@ -3,51 +3,116 @@
     <mj-raw>
       [[#if showInstructionsObservations]]
     </mj-raw>
-        <mj-text  css-class="rd-section-title">
-          [[tags.Observations_instructions]]
-        </mj-text>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-gift-ticket.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_instructions]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
         <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p>[[tags.Observations_attachedShippingLabel]]</p>
+          [[tags.Observations_attachedShippingLabel]]
         </mj-text>
     <mj-raw>
       [[/if]]
       [[#if showHowPaymentWorksObservations]]
     </mj-raw>
-        <mj-text css-class="rd-section-title">
-          [[tags.Observations_howPaymentWorks]]
-        </mj-text>
-        <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p>[[tags.Observations_daysToConfirmReceived]]</p>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-payment-methods.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_howPaymentWorks]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+         <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_daysToConfirmReceived]]
         </mj-text>
     <mj-raw>
       [[/if]]
       [[#if showReminderObservations]]
     </mj-raw>
-        <mj-text css-class="rd-section-title">
-          [[tags.Observations_reminder]]
-        </mj-text>
-        <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p>[[tags.Observations_paymentConfiguration]]</p>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping-restrictions.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_reminder]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+         <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_paymentConfiguration]]
         </mj-text>
     <mj-raw>
       [[/if]]
       [[#if showTrackingObservations]]
     </mj-raw>
-        <mj-text  css-class="rd-section-title">
-          [[tags.Observations_tracking]]
-        </mj-text>
-        <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p>[[tags.Observations_shippingTimeLimit]]</p>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-click-go.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_tracking]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+         <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_shippingTimeLimit]]
         </mj-text>
     <mj-raw>
       [[/if]]
       [[#if showConfirmDeliveryObservations]]
     </mj-raw>
-        <mj-text  css-class="rd-section-title">
-          [[tags.Observations_confirmDelivery]]
-        </mj-text>
-        <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p>[[tags.Observations_confirmConditionsAndRate]]</p>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping-split-orders.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_confirmDelivery]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+         <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_confirmConditionsAndRate]]
         </mj-text>
     <mj-raw>
       [[/if]]

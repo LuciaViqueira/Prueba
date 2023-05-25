@@ -1,14 +1,55 @@
 <mj-section>
   <mj-column padding-top="60px">
-    <mj-text css-class="rd-section-title">
-      [[tags.Shipping_instructions]]
+    <mj-table padding="0"> 
+      <tr>
+        <td style="width:35px;" >
+          <table>
+            <tr>
+              <td>
+                <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td class="rd-section-title">
+          <div>[[tags.Shipping_instructions]]</div>
+        </td>                                                                                                                                      
+      </tr>
+    </mj-table>
+    <mj-text padding-bottom="26px" css-class="rd-text-info">
+      [[tags.Shipping_buyerRateYou]]
     </mj-text>
-    <mj-text padding-bottom="13px" css-class="rd-text-info">
-      <p>[[tags.Shipping_buyerRateYou]]</p>
-    </mj-text>
-    <mj-text css-class="rd-text-info">
-      <p>[[tags.Shipping_cleanIt]]</p>
-      <p>[[tags.Shipping_packAndShip]]</p>
-    </mj-text>
+    <mj-table padding="0"> 
+      <tr>
+        <td style="width:25px;" >
+          <table>
+            <tr>
+              <td>
+                <img width="25" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/32-common-washer-4dots-line.jpg" style="width:25px; height:auto; padding-right:4px;"/>
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td class="rd-text-info">
+          <div>[[tags.Shipping_cleanIt]]</div>
+        </td>                                                                                                                                      
+      </tr>
+    </mj-table>
+    <mj-table padding="0"> 
+      <tr>
+        <td style="width:25px;" >
+          <table>
+            <tr>
+              <td>
+                <img width="25" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping.jpg" style="width:25px; height:auto; padding-right:4px;"/>
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td class="rd-text-info">
+          <div>[[tags.Shipping_packAndShip]]</div>
+        </td>                                                                                                                                      
+      </tr>
+    </mj-table>
   </mj-column>
 </mj-section>
