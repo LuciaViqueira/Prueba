@@ -19,7 +19,7 @@
         <mj-text css-class="rd-title" align="center">
           [[tags.WelcomeSeller_title]]
         </mj-text>
-        <mj-text padding-top="24px" css-class="rd-text-info">
+        <mj-text padding-top="24px" css-class="rd-text-info" text-transform="uppercase">
           <p>[[tags.WelcomeSeller_hello]] [[userName]]</p>
           <p>[[tags.WelcomeSeller_expectNext]]</p>
         </mj-text>
