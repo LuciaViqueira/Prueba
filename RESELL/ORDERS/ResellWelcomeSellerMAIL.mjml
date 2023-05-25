@@ -28,9 +28,9 @@
 
     <mj-include path="ResellObservationsWelcome" />
 
-    <mj-section>
+    <mj-section css-class="resell-section-double-button">
       <mj-column>
-        <mj-button css-class="resell-welcome-button" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#FFFFFF" 
             color="#000000" 
             border="1px solid #000000" 
@@ -42,7 +42,7 @@
         </mj-button>
       </mj-column>
       <mj-column>
-        <mj-button css-class="resell-welcome-button" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
