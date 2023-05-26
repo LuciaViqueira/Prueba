@@ -34,6 +34,14 @@
       [[/with]]
     </mj-raw>
 
+    <mj-section>
+      <mj-column>
+        <mj-text padding-bottom="24px" css-class="rd-text-info">
+          [[tags.OrderCreatedBuyer_expectNext]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
     <mj-include path="ResellObservations" />
 
     <mj-raw>
