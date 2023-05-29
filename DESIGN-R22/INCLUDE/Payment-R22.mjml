@@ -113,21 +113,21 @@
             <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
           </tr>
         [[/if]]
-        [[#if this.shippingDiscountPrice]]
+        [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_shippingDiscountsText]]</td>
             <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
           </tr>
-        [[/if]]
+        [[/ifb]]
         [[def "orderDiscount" payload.orders.[0].discounts.[0].amount]]
-        [[#if orderDiscount]]
+        [[#ifb (andb orderDiscount (compare orderDiscount.value "!=" 0))]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_orderDiscount]]</td>
             <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
           </tr>
-        [[/if]]
+        [[/ifb]]
         [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
-        [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING"))]]
+        [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING") (compare returnCosts.amount.value "!=" 0))]]
           <tr class="rd-light-font">
             <td>[[tags.Payment_returnChargesText]]</td>
             <td class="rd-payment-price">[[currency returnCosts.amount.value returnCosts.amount.exponent returnCosts.amount.currency returnCosts.amount.humanReadableText]]</td>
