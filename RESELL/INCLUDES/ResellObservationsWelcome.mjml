@@ -1,14 +1,12 @@
 <mj-section>
   <mj-column padding-top="30px">
-    <mj-raw>
-      <div style="border-left: thick solid #000; height:80%; left: 30%; top: 10%; position: absolute;"></div>
-    </mj-raw>
     <mj-table padding="0"> 
       <tr>
         <td style="width:60px;">
             <table>
               <tr>
-                <td>
+                <td style="position: relative;">
+                  <div style="border-left: 1px solid #DBD9D7; height:70%; left: 50%; top: 56%; position: absolute;"></div>
                   <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep1Icon.jpg" style="width:60px; height:auto; padding-bottom: 40px;"/> 
                 </td>
               </tr>
@@ -33,7 +31,8 @@
         <td style="width:60px;">
             <table>
               <tr>
-                <td>
+                <td style="position: relative;">
+                  <div style="border-left: 1px solid #DBD9D7; height:70%; left: 50%; top: 56%; position: absolute;"></div>
                   <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep2Icon.jpg" style="width:60px; height:auto; padding-bottom: 40px;"/> 
                 </td>
               </tr>
@@ -58,7 +57,8 @@
         <td style="width:60px;">
             <table>
               <tr>
-                <td>
+                <td style="position: relative;">
+                  <div style="border-left: 1px solid #DBD9D7; height:70%; left: 50%; top: 56%; position: absolute;"></div>
                   <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep3Icon.jpg" style="width:60px; height:auto; padding-bottom: 40px;"/> 
                 </td>
               </tr>
@@ -83,7 +83,8 @@
         <td style="width:60px;">
             <table>
               <tr>
-                <td>
+                <td style="position: relative;">
+                  <div style="border-left: 1px solid #DBD9D7; height:70%; left: 50%; top: 56%; position: absolute;"></div>
                   <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep4Icon.jpg" style="width:60px; height:auto; padding-bottom: 40px;"/> 
                 </td>
               </tr>
@@ -108,7 +109,8 @@
         <td style="width:60px;">
             <table>
               <tr>
-                <td>
+                <td style="position: relative;">
+                  <div style="border-left: 1px solid #DBD9D7; height:70%; left: 50%; top: 56%; position: absolute;"></div>
                   <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep5Icon.jpg" style="width:60px; height:auto; padding-bottom: 40px;"/> 
                 </td>
               </tr>
