@@ -1,0 +1,62 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="169px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.OrderDeliveredToBuyer_title]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[tags.OrderDeliveredToBuyer_confirmOk]]
+        </mj-text>
+       </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.notification]]
+    </mj-raw>
+      <mj-include path="ResellOrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[tags.OrderDeliveredToBuyer_pleaseRespond]]</p>
+        </mj-text>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+          [[tags.OrderDeliveredToBuyer_goToPurchasesButtonTxt]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="ResellFooter" />
+
+  </mj-body>
+</mjml>
