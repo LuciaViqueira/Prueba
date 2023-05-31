@@ -19,10 +19,10 @@
       <mj-column>
         <mj-image width="169px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
-          [[tags.ReminderSeller_title]]
+          [[tags.OrderShippedReminderToSeller_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.ReminderSeller_recommendToShip]]
+          [[tags.OrderShippedReminderToSeller_recommendToShip]]
         </mj-text>
        </mj-column>
     </mj-section>
