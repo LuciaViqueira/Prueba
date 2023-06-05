@@ -9,7 +9,7 @@
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
-      [[#assign "utmCampaign"]]ComingSoon[[/assign]]
+      [[#assign "utmCampaign"]]comingsoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplate"]]FooterHelpWithUtmTermURL[[/assign]]
       [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
