@@ -38,7 +38,7 @@
 
     <mj-raw>
       [[#with payload.orders.[0] as | order |]]
-        [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
+        [[#with order.suborders.[0].shipping as | shippingAddress |]]
     </mj-raw>
     <mj-include path="shipping-R22" />
     <mj-raw>
