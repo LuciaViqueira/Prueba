@@ -11,11 +11,18 @@
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]comingsoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
+      [[#assign "urlTemplate"]]FooterHelpWithUtmTermURL[[/assign]]
+      [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
+      [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
+      [[#assign "categoryId"]][[payload.notification.item.categoryId]][[/assign]]
+      [[#assign "season"]][[payload.notification.item.season]][[/assign]]
+      [[#assign "subscriptionId"]][[payload.subscriptionIdentifier]][[/assign]]
+      [[#assign "ssts"]][[payload.ssts]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'ProductDetailURL']]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'ProductDetailLogoURL']]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
           [[tags.ComingSoonV2MAIL_Title]]
         </mj-text>
@@ -23,7 +30,7 @@
           [[tags.ComingSoonV2MAIL_skuAvailable]]
         </mj-text>
         <mj-raw>
-          [[#assign "utmContent"]]image[[/assign]]
+          [[#assign "utmContent"]]product_detail_image[[/assign]]
         </mj-raw>
         <mj-table padding="24px 0 9px" css-class="rd-comingSoonProduct"> 
           <tr>
@@ -31,12 +38,14 @@
                 <table>
                   <tr>
                     <td>
-                      <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" href="[[urlResolver 'ProductDetailURL']]" style="width:176px; height:auto;" />
+                      <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none;">
+                        <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" style="width:176px; height:auto;" />
+                      </a>
                     </td>
                   </tr>   
                 </table>
             </td>
-            [[#assign "utmContent"]]text[[/assign]]
+            [[#assign "utmContent"]]product_detail_description[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
                 <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
@@ -52,6 +61,9 @@
             </td>
           </tr>
         </mj-table>
+        <mj-raw>
+          [[#assign "utmContent"]]product_detail_button[[/assign]]
+        </mj-raw>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
@@ -73,7 +85,7 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
-      [[#assign "utmContent"]]url_help[[/assign]]
+      [[#assign "utmContent"]]help_page[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
   </mj-body>

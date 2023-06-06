@@ -80,7 +80,6 @@
     <mj-raw>
         [[/with]]
       [[/with]]
-      [[#assign "utmContent"]]order_detail_button[[/assign]]
     </mj-raw>
 
     <mj-section>
@@ -132,7 +131,6 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
-      [[#assign "utmContent"]]help_page[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
 
