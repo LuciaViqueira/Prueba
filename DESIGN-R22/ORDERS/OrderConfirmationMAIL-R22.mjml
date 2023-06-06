@@ -13,18 +13,10 @@
       [[#assign "showShippingCharges"]]true[[/assign]]
       [[#assign "existsUuidUuid"]]true[[/assign]]
     </mj-raw>
-    <!-- Global Variables -->
-    <mj-raw>
-      [[#assign "utmMedium"]]email[[/assign]]
-      [[#assign "utmSource"]]notification_com[[/assign]]
-      [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
-      [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
-    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver urlTemplate]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
         <mj-text css-class="rd-title" align="center">
             [[tags.OrderConfirmationMAIL_title]]
         </mj-text>
@@ -78,7 +70,6 @@
     <mj-raw>
         [[/with]]
       [[/with]]
-      [[#assign "utmContent"]]order_detail_button[[/assign]]
     </mj-raw>
 
     <mj-section>
@@ -90,7 +81,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver urlTemplate]]" >
+            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
           [[tags.OrderConfirmationMAIL_buttonTxt]]
         </mj-button>
         <mj-text css-class="rd-text-info">
@@ -131,7 +122,6 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
-      [[#assign "utmContent"]]help_page[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
 
