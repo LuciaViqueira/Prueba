@@ -170,7 +170,7 @@
       [[/if]]
     </mj-raw>
     
-    <mj-text padding-bottom="4px" font-weight="bold" css-class="rd-subsection-text-light">
+    <mj-text font-weight="bold" css-class="rd-subsection-text-light">
       <!-- ShippingMethod -->
           [[#eq this.shippingAddress.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
