@@ -13,10 +13,20 @@
       [[#assign "showShippingCharges"]]true[[/assign]]
       [[#assign "existsUuidUuid"]]true[[/assign]]
     </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[#assign "utmMedium"]]email[[/assign]]
+      [[#assign "utmSource"]]notification_com[[/assign]]
+      [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
+      [[#assign "utmContent"]]logo[[/assign]]
+      [[#assign "urlTemplate"]]FooterHelpURL[[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'OrderDetailLogoURL']]" padding-top="48px" padding-bottom="43px" align="center"/>
         <mj-text css-class="rd-title" align="center">
             [[tags.OrderConfirmationMAIL_title]]
         </mj-text>
@@ -81,7 +91,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+            href="[[urlResolver 'OrderDetailURL']]" >
           [[tags.OrderConfirmationMAIL_buttonTxt]]
         </mj-button>
         <mj-text css-class="rd-text-info">
@@ -114,7 +124,6 @@
     </mj-raw>
 
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
