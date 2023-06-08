@@ -6,6 +6,7 @@
   <mj-body width="535px">
     <!-- Template configuration -->
     <mj-raw>
+      [[#assign "showInstructionsObservations"]]true[[/assign]]
       [[#assign "showHowPaymentWorksObservations"]]true[[/assign]]
       [[#assign "showReminderObservations"]]true[[/assign]]
     </mj-raw>
@@ -33,14 +34,6 @@
     <mj-raw>
       [[/with]]
     </mj-raw>
-
-    <mj-section>
-      <mj-column>
-        <mj-text padding-bottom="24px" css-class="rd-text-info">
-          [[tags.OrderShippedFinalReminderToSell_alreadyShipped]]
-        </mj-text>
-      </mj-column>
-    </mj-section>
 
     <mj-include path="ResellObservations" />
 
