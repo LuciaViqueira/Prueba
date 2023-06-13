@@ -35,7 +35,7 @@
 
     <mj-section>
       <mj-column>
-        <mj-divider padding-top="8px" />
+        <mj-divider />
       </mj-column>
     </mj-section>
     <mj-section padding-bottom="28px" css-class="resell-section-double-button">

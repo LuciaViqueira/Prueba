@@ -31,6 +31,7 @@
 
     <mj-section>
       <mj-column>
+        <mj-divider />
         <mj-text padding-top="24px" css-class="rd-text-info">
           <p>[[tags.OrderDeliveredToBuyer_pleaseRespond]]</p>
         </mj-text>
