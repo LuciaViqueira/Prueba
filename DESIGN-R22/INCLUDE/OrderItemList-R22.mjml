@@ -96,6 +96,19 @@
                 [[/neq]]
               </div>   
             </mj-text>
+
+        <mj-raw>
+          [[def "query" (stringFormat "$..suborders[?(@.uuid.uuid == %s%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
+          
+          [[def "itemsEdited2" (jsonPath query)]]
+        </mj-raw>
+
+          <mj-text>
+            <p>Prueba query: [[query]]</p>
+            <p>Prueba suborderIdentifier: [[suborderIdentifier]]</p>
+            <p>Prueba jsonPAth query: [[itemsEdited2]]</p>
+          </mj-text>
+
         <mj-raw>
           [[/if]]
         </mj-raw>
