@@ -37,6 +37,12 @@
 
     <mj-include path="ResellObservations" />
 
+    <mj-section>
+      <mj-column>
+        <mj-divider padding-bottom="28px" />
+      </mj-column>
+    </mj-section>
+
     <mj-include path="ResellShipping" />
 
     <mj-raw>
