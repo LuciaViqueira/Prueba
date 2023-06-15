@@ -10,10 +10,10 @@
       <a href="[[footer.]]">[[tags.Footer_termsAndConditions]]</a>      
     </mj-text>
     <mj-text css-class="resell-footer-link">
-      <a href="[[footer.]]">[[tags.Footer_privacyPolicy]]</a>      
+      <a href="[[footer.policyUrl]]">[[tags.Footer_privacyPolicy]]</a>      
     </mj-text>
     <mj-text css-class="resell-footer-link-big">
-      <a href="[[footer.]]">[[tags.Footer_followUs]]</a>
+      [[tags.Footer_followUs]]
     </mj-text>
 
     <mj-table padding="10px 0 0" line-height="0" css-class="rd-footer-rrsss-link">
