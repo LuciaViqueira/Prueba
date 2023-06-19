@@ -98,7 +98,7 @@
             </mj-text>
 
         <mj-raw>
-          [[def "query" (stringFormat "$..suborders[?(@.uuid.uuid == %s%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
+          [[def "query" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
           
           [[def "itemsEdited2" (jsonPath query)]]
         </mj-raw>
@@ -107,6 +107,7 @@
             <p>Prueba query: [[query]]</p>
             <p>Prueba suborderIdentifier: [[suborderIdentifier]]</p>
             <p>Prueba jsonPAth query: [[itemsEdited2]]</p>
+             <p>Prueba jsonPAth: [[jsonPath query]]</p>
           </mj-text>
 
         <mj-raw>
