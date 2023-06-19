@@ -6,6 +6,9 @@
   <mj-body width="535px">
     <!-- Global Variables -->
     <mj-raw>
+      [[#each payload.notification.marketingInformation.universalLinks]]
+        [[#ifb (andb (compare this.urlName "==" "GoToMyPurchasesLabelLink") (compare this.urlValue "!=" ""))]][[#assign "goToMyPurchasesButtonUrl"]][[this.urlValue]][[/assign]][[/ifb]]
+      [[/each]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -42,7 +45,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="https://www.zara.com/[[payload.store.identifier.value]]/[[payload.user.preferences.locale.language]]/user/order/[[payload.orders.[0].identifier]]" >
+            href="[[goToMyPurchasesButtonUrl]]" >
           [[tags.OrderDeliveredToBuyer_goToPurchasesButtonTxt]]
         </mj-button>
       </mj-column>
