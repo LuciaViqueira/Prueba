@@ -99,32 +99,38 @@
 
         <mj-raw>
           [[def "query" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
-          
-          [[def "itemsEdited2" (jsonPath query)]]
+          [[def "itemsEdited" (jsonPath query "MULTI_VALUE")]]
         </mj-raw>
 
           <mj-text>
-            <p>Prueba query: [[query]]</p>
-            <p>Prueba suborderIdentifier: [[suborderIdentifier]]</p>
-            <p>Prueba jsonPAth query: [[itemsEdited2]]</p>
-             <p>Prueba jsonPAth: [[jsonPath query]]</p>
+            <p>Prueba jsonPAth query: [[itemsEdited]]</p>
           </mj-text>
 
         <mj-raw>
           [[/if]]
         </mj-raw>
           <mj-table padding="16px 0 0" table-layout="fixed">
-            [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
+            [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
+            [[def "itemsEdited" (jsonPath isCustomTrue "MULTI_VALUE")]]
+            [[#each itemsEdited]]
+              <tr class="rd-product-row">
+                <mj-include path="Product-R22" />
+              </tr>
+            [[/each]]
+          </mj-table>
+          <mj-table padding="16px 0 0" table-layout="fixed">
+            [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == false)]") ]]
+            [[def "itemsNotEdited" (jsonPath isCustomFalse "MULTI_VALUE")]]
+
+            [[def "orderItemsMatrix" (matrix itemsNotEdited 2)]]
             [[#each orderItemsMatrix]]
               <tr class="rd-product-row">
                 [[#each this]]
-                  <td style="padding-bottom: 24px;" class="rd-product-col">
                     [[#if this.item]]
                       <mj-include path="Product-R22" />
                     [[else]]
                       <mj-include path="GiftCard-R22" />
                     [[/if]]
-                  </td>
                 [[/each]]
                 [[#ifb (compare (length this) "==" 1)]]
                   <td style="padding-bottom: 24px;" class="rd-product-col"></td>
