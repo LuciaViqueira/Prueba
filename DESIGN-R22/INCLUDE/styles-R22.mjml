@@ -135,6 +135,15 @@
             margin-left: 4px !important;
         }
     }
+
+    @media only screen and (max-width:480px) {
+        .resell-welcome-icon {
+            display: none;
+        }
+        .resell-welcome-icon-mobile {
+            display: block !important;
+        }
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
