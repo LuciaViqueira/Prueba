@@ -96,48 +96,43 @@
                 [[/neq]]
               </div>   
             </mj-text>
-
-        <mj-raw>
-          [[def "query" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
-          [[def "itemsEdited" (jsonPath query "MULTI_VALUE")]]
-        </mj-raw>
-
-          <mj-text>
-            <p>Prueba jsonPAth query: [[itemsEdited]]</p>
-          </mj-text>
-
         <mj-raw>
           [[/if]]
         </mj-raw>
-          <mj-table padding="16px 0 0" table-layout="fixed">
-            [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
-            [[def "itemsEdited" (jsonPath isCustomTrue "MULTI_VALUE")]]
-            [[#each itemsEdited]]
-              <tr class="rd-product-row">
-                <mj-include path="Product-R22" />
+            <mj-table padding="16px 0 0"> 
+              <tr>
+                <td>
+                  <table table-layout="fixed">
+                    [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid  == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s"  suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
+                    [[def "itemsEdited" (jsonPath isCustomTrue "MULTI_VALUE")]]
+                    [[#each itemsEdited]]
+                      <tr class="rd-product-row">
+                        <mj-include path="Product-R22" />
+                      </tr>
+                    [[/each]]
+                  </table>
+                  <table table-layout="fixed">
+                    [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == false)]") ]]
+                    [[def "itemsNotEdited" (jsonPath isCustomFalse "MULTI_VALUE")]]
+                    [[def "orderItemsMatrix" (matrix itemsNotEdited 2)]]
+                    [[#each orderItemsMatrix]]
+                      <tr class="rd-product-row">
+                        [[#each this]]
+                            [[#if this.item]]
+                              <mj-include path="Product-R22" />
+                            [[else]]
+                              <mj-include path="GiftCard-R22" />
+                            [[/if]]
+                        [[/each]]
+                        [[#ifb (compare (length this) "==" 1)]]
+                          <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+                        [[/ifb]]
+                      </tr>
+                    [[/each]]
+                  </table>
+                </td>  
               </tr>
-            [[/each]]
-          </mj-table>
-          <mj-table padding="16px 0 0" table-layout="fixed">
-            [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s'%s" suborderIdentifier ")].orderItems[?(@.isCustom == false)]") ]]
-            [[def "itemsNotEdited" (jsonPath isCustomFalse "MULTI_VALUE")]]
-
-            [[def "orderItemsMatrix" (matrix itemsNotEdited 2)]]
-            [[#each orderItemsMatrix]]
-              <tr class="rd-product-row">
-                [[#each this]]
-                    [[#if this.item]]
-                      <mj-include path="Product-R22" />
-                    [[else]]
-                      <mj-include path="GiftCard-R22" />
-                    [[/if]]
-                [[/each]]
-                [[#ifb (compare (length this) "==" 1)]]
-                  <td style="padding-bottom: 24px;" class="rd-product-col"></td>
-                [[/ifb]]
-              </tr>
-            [[/each]]
-          </mj-table>
+            </mj-table>
       <mj-raw>
         [[/each]]
       [[/each]]
