@@ -1,0 +1,1 @@
+https://[[jsonPath '$..host']][[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/preowned-resell/bank-account
