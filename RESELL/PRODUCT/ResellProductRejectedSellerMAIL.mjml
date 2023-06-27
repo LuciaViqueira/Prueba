@@ -17,10 +17,10 @@
       <mj-column>
         <mj-image width="169px" src="[[ZaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
-          [[tags.ProductCancelledSeller_title]]
+          [[tags.ProductRejectedSeller_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.ProductCancelledSeller_reviewTheNotes]]
+          [[tags.ProductRejectedSeller_reviewTheNotes]]
         </mj-text>
        </mj-column>
     </mj-section>
@@ -45,7 +45,7 @@
             text-transform="uppercase" 
             width="100%"
             href="" >
-          [[tags.ProductCancelledSeller_relistButtonTxt]]
+          [[tags.ProductRejectedSeller_relistButtonTxt]]
         </mj-button>
       </mj-column>
     </mj-section>
