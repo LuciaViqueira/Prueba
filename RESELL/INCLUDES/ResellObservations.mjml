@@ -159,7 +159,7 @@
           </tr>
         </mj-table>
          <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p>XXXXX</p>
+          <p style="text-transform: uppercase;">[[payload.rejectionReason]]</p>
         </mj-text>
     <mj-raw>
       [[/if]]
