@@ -44,7 +44,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="" >
+            href="[[VisitZaraResellURL]]" >
           [[tags.OrderCancelledBuyer_visitZaraResellButtonTxt]]
         </mj-button>
       </mj-column>
