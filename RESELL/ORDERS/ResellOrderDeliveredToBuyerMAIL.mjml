@@ -42,7 +42,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[GoToMyPurchasesURL]]" >
+            href="[[urlResolver 'GoToMyPurchasesURL']]" >
           [[tags.OrderDeliveredToBuyer_goToPurchasesButtonTxt]]
         </mj-button>
       </mj-column>
