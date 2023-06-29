@@ -15,7 +15,7 @@
             </tr>
             <tr>
               <td class="rd-text-info">
-                <div>[[tags.ObservationsWelcome_approvalText]]</div>
+                <div style="min-height:55px;">[[tags.ObservationsWelcome_approvalText]]</div>
               </td>
             </tr>
           </table> 
@@ -35,7 +35,7 @@
             </tr>
             <tr>
               <td class="rd-text-info">
-                <div>[[tags.ObservationsWelcome_saleText]]</div>
+                <div style="min-height:55px;">[[tags.ObservationsWelcome_saleText]]</div>
               </td>
             </tr>
           </table> 
@@ -55,7 +55,7 @@
             </tr>
             <tr>
               <td class="rd-text-info">
-                <div>[[tags.ObservationsWelcome_packageText]]</div>
+                <div style="min-height:55px;">[[tags.ObservationsWelcome_packageText]]</div>
               </td>
             </tr>
           </table> 
@@ -75,7 +75,7 @@
             </tr>
             <tr>
               <td class="rd-text-info">
-                <div>[[tags.ObservationsWelcome_receiveAnEmailText]]</div>
+                <div style="min-height:55px;">[[tags.ObservationsWelcome_receiveAnEmailText]]</div>
               </td>
             </tr>
           </table>
@@ -96,7 +96,7 @@
             </tr>
             <tr>
               <td class="rd-text-info">
-                <div>[[tags.ObservationsWelcome_paymentText]]</div>
+                <div style="min-height:55px;">[[tags.ObservationsWelcome_paymentText]]</div>
               </td>
             </tr>
           </table>
