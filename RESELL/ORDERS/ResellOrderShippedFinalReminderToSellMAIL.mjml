@@ -17,7 +17,7 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="169px" src="[[ZaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
           [[tags.OrderShippedFinalReminderToSell_title]]
         </mj-text>

@@ -1,1 +1,1 @@
-https://[[ResellBaseURL]][[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/preowned-resell/bank-account
+https://[[resellBaseURL]][[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/preowned-resell/bank-account
