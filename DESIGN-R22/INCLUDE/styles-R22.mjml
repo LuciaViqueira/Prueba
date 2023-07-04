@@ -491,4 +491,15 @@
     letter-spacing: 0.7px;
     text-decoration: none;
 }
+
+.resell-unit-absolute {
+      max-height: 0;
+      position: relative;
+      opacity: 0.999;
+    }
+
+.resell-unit-position {
+    display: inline-block;
+    text-align: center;
+}
 </mj-style>
