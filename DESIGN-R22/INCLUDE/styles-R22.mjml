@@ -493,13 +493,10 @@
 }
 
 .resell-unit-absolute {
-      max-height: 0;
-      position: relative;
-      opacity: 0.999;
+      position: absolute;
     }
 
-.resell-unit-position {
-    display: inline-block;
-    text-align: center;
+.resell-unit-relative {
+    position: relative;
 }
 </mj-style>
