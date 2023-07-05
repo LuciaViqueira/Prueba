@@ -19,19 +19,11 @@
         <mj-text css-class="rd-title" align="center">
           [[tags.StripeReminderSeller_title]]
         </mj-text>
-        <mj-text padding-top="24px" css-class="rd-text-info">
+        <mj-text padding-top="24px" padding-bottom="36px" css-class="rd-text-info">
           [[tags.StripeReminderSeller_setUpYourAccount]]
         </mj-text>
        </mj-column>
     </mj-section>
-
-    <mj-raw>
-      [[#with payload.notification]]
-    </mj-raw>
-      <mj-include path="ResellOrderItemList" />
-    <mj-raw>
-      [[/with]]
-    </mj-raw>
 
     <mj-include path="ResellObservations" />
 
