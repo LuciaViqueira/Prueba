@@ -3,8 +3,16 @@
     <mj-table padding="0"> 
       <tr>
         <td style="width:50px; position: relative;" class="resell-unit-absolute">
-          <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
-          <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep1Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+          <table>
+            <tr>
+              <td style="display:none;" class="resell-welcome-icon-mobile">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="visibility:width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep1Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
         </td>
         <td>
           <table>
@@ -16,7 +24,7 @@
           </table> 
         </td>                                                                                                                                 
       </tr>
-      <tr>
+      <tr style="padding-bottom:30px">
         <td>
         </td>
         <td>
@@ -29,11 +37,18 @@
           </table> 
         </td>                                                                                                                                 
       </tr>
-
       <tr>
         <td style="width:50px; position: relative;" class="resell-unit-absolute">
-          <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
-          <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep2Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+          <table>
+            <tr>
+              <td style="display:none;" class="resell-welcome-icon-mobile">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="visibility:width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep2Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
         </td>
         <td>
           <table>
@@ -45,7 +60,7 @@
           </table> 
         </td>                                                                                                                                 
       </tr>
-      <tr>
+      <tr style="padding-bottom:30px">
         <td>
         </td>
         <td>
@@ -58,11 +73,18 @@
           </table> 
         </td>                                                                                                                                 
       </tr>
-
       <tr>
         <td style="width:50px; position: relative;" class="resell-unit-absolute">
-          <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
-          <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep3Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+          <table>
+            <tr>
+              <td style="display:none;" class="resell-welcome-icon-mobile">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="visibility:width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep3Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
         </td>
         <td>
           <table>
@@ -74,7 +96,7 @@
           </table> 
         </td>                                                                                                                                 
       </tr>
-      <tr>
+      <tr style="padding-bottom:30px">
         <td>
         </td>
         <td>
@@ -89,8 +111,16 @@
       </tr>
       <tr>
         <td style="width:50px; position: relative;" class="resell-unit-absolute">
-          <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
-          <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep4Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+          <table>
+            <tr>
+              <td style="display:none;" class="resell-welcome-icon-mobile">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="visibility:width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep4Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
         </td>
         <td>
           <table>
@@ -102,7 +132,7 @@
           </table>
         </td>                                                                                                                                 
       </tr>
-      <tr>
+      <tr style="padding-bottom:30px">
         <td>
         </td>
         <td>
@@ -118,8 +148,16 @@
       <tr>
         <td style="width:50px; position: relative;" class="resell-unit-absolute">
           <div style="border-left: 1px solid #DBD9D7; height:70%; left: 43%; top: 52%; position: absolute;"></div>
-          <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
-          <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep5Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+          <table>
+            <tr>
+              <td style="display:none;" class="resell-welcome-icon-mobile">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="visibility:width:15px; height:auto; display:none; position: absolute; top: 15%; left: 25%;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep5Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
         </td>
         <td>
           <table>
@@ -131,7 +169,7 @@
           </table>
         </td>                                                                                                                                 
       </tr>
-      <tr>
+      <tr style="padding-bottom:30px">
         <td>
         </td>
         <td>
