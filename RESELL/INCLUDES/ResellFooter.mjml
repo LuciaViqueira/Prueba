@@ -4,10 +4,10 @@
       [[tags.Footer_company]]
     </mj-text>
     <mj-text css-class="resell-footer-link">
-      <a href="[[footer.]]">[[tags.Footer_help]]</a>
+      <a href="[[urlResolver 'HelpResellURL']]">[[tags.Footer_help]]</a>
     </mj-text>
     <mj-text css-class="resell-footer-link">
-      <a href="[[footer.]]">[[tags.Footer_termsAndConditions]]</a>      
+      <a href="[[footer.purchaseConditionsUrl]]">[[tags.Footer_termsAndConditions]]</a>      
     </mj-text>
     <mj-text css-class="resell-footer-link">
       <a href="[[footer.policyUrl]]">[[tags.Footer_privacyPolicy]]</a>      
