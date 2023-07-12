@@ -42,7 +42,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           [[tags.Observations_daysToConfirmReceived]]
         </mj-text>
     <mj-raw>
@@ -65,7 +65,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           [[tags.Observations_paymentConfiguration]]
         </mj-text>
     <mj-raw>
@@ -88,7 +88,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           [[tags.Observations_shippingTimeLimit]]
         </mj-text>
     <mj-raw>
@@ -111,7 +111,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           [[tags.Observations_confirmConditionsAndRate]]
         </mj-text>
     <mj-raw>
@@ -134,13 +134,18 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           <p>[[tags.Observations_updateText]]</p>
           <p>[[tags.Observations_updateText2]]</p>
         </mj-text>
     <mj-raw>
       [[/if]]
       [[#if showReasonForDenialObservations]]
+        [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+        [[def "reasonDescriptionStringFormat" (stringFormat "$..reason_description[?(@.languageCode == '%s')]" preferenceLocaleLanguage )]]
+        [[def "reasonDescription" (jsonPath reasonDescriptionStringFormat)]]
+        [[def "reasonStringFormat" (stringFormat "$..reason[?(@.languageCode == '%s')]" preferenceLocaleLanguage )]]
+        [[def "reason" (jsonPath reasonStringFormat)]]
     </mj-raw>
         <mj-table padding="0"> 
           <tr>
@@ -158,8 +163,13 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
-          <p style="text-transform: uppercase;">[[payload.rejectionReason]]</p>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[#if reason.content]]
+            <p style="text-transform: uppercase;">[[reason.content]]</p>
+          [[/if]]
+          [[#if reasonDescription.content]]
+            <p style="text-transform: uppercase;">[[reasonDescription.content]]</p>
+          [[/if]]
         </mj-text>
     <mj-raw>
       [[/if]]
@@ -181,7 +191,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           <p>[[tags.Observations_refundedText]]</p>
           <p>[[tags.Observations_refundedText2]]</p>
         </mj-text>
@@ -205,7 +215,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           <p>[[tags.Observations_connectToStripeText]]</p>
         </mj-text>
     <mj-raw>
@@ -228,7 +238,7 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-         <mj-text padding-bottom="28px" css-class="rd-text-info">
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
           <p>[[tags.Observations_paymentText]]</p>
           <p style="font-weight:bold;">[[tags.Observations_paymentText2]]</p>
         </mj-text>
