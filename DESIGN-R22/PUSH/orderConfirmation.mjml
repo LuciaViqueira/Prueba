@@ -1,0 +1,9 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"[[#assign \"orderId\"]][[payload.orders.[0].identifier]][[\/assign]]
+        [[#assign \"utmMedium\"]]push[[\/assign]]
+        [[#assign \"utmSource\"]]notification_com[[\/assign]]
+        [[#assign \"utmCampaign\"]]OrderConfirmation[[\/assign]]
+        [[urlResolver 'OrderDetailURL']]", 
+    "template":"[[tags.orderConfirmationPush]]"
+}

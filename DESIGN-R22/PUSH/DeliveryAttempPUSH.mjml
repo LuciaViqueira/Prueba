@@ -1,0 +1,28 @@
+{ 
+    "imageUrl":"",
+    "linkUrl":"[[#assign \"orderId\"]][[payload.notification.orders.[0].identifier]][[\/assign]]
+        [[#if payload.notification.orders.[0].suborders.[0].uuid]]
+            [[#assign \"suborderIdentifier\"]][[payload.notification.orders.[0].suborders.[0].uuid]][[\/assign]]
+        [[else]]
+            [[#assign \"suborderIdentifier\"]][[payload.notification.orders.[0].suborders.[0].suborderId]][[\/assign]]
+        [[\/if]]
+        [[def \"size\" 8]][[#def \"uuidSize\"]][[size suborderIdentifier]][[\/def]]
+        [[#ifb (compare uuidSize \">\" size)]]
+            [[#def \"index\"]][[math  uuidSize '-' size]][[\/def]]
+            [[#def \"suborderIdSub8\"]][[substringb suborderIdentifier index]][[\/def]]
+        [[else]]
+            [[def \"suborderIdSub8\" suborderIdentifier]]
+        [[\/ifb]]
+        [[def \"isSplitted\" payload.notification.orders.[0].isSplitted]]
+        [[#assign \"deliveryAttemptDate\"]][[payload.deliveryAttemptDate.dateIso]][[\/assign]]
+        [[def \"obj\" (formatDateISO deliveryAttemptDate deliveryAttemptDate)]]
+        [[def \"deliveryDate\" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+        [[def \"deliveryHour\" obj.min_time]]
+        [[#if payload.notification.user.isGuest]]
+            [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[\/assign]]
+            [[urlResolver 'OrderDetailGuestURL']]
+        [[else]]
+            [[urlResolver 'OrderDetailURL']]
+        [[\/if]]", 
+    "template":"[[tags.DeliveryAttempPUSHSplitted]]"
+}

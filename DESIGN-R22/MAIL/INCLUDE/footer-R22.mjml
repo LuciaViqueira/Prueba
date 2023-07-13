@@ -9,10 +9,10 @@
     <mj-raw>
       [[/if]]
       [[#if onlyShowFooterStoreConfiguration]]
-        [[#if urlTemplate]]
+        [[#if urlTemplateFooter]]
     </mj-raw> 
           <mj-text css-class="rd-footer-link">
-            <a href="[[urlResolver urlTemplate]]">[[tags.helpText]]</a>
+            <a href="[[urlResolver urlTemplateFooter]]">[[tags.helpText]]</a>
           </mj-text>
       <mj-raw>
         [[else]]
@@ -23,10 +23,10 @@
     <mj-raw>
         [[/if]]
       [[else]]
-        [[#if urlTemplate]]
+        [[#if urlTemplateFooter]]
     </mj-raw> 
           <mj-text css-class="rd-footer-link">
-            <a href="[[urlResolver urlTemplate]]">[[tags.helpText]]</a>
+            <a href="[[urlResolver urlTemplateFooter]]">[[tags.helpText]]</a>
           </mj-text>
       <mj-raw>
         [[else]]
