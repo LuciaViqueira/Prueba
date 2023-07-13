@@ -8,7 +8,7 @@
         [[#assign \"ssts\"]][[payload.ssts]][[\/assign]]
         [[#assign \"utmMedium\"]]push[[\/assign]]
         [[#assign \"utmSource\"]]notification_com[[\/assign]]
-        [[#assign \"utmCampaign\"]]comingsoon[[\/assign]]
+        [[#assign \"utmCampaign\"]]ComingSoon[[\/assign]]
         [[urlResolver 'ProductDetailURL']]", 
     "template":"[[#assign \"productShortDescription\"]][[payload.notification.item.shortDescription]][[\/assign]][[tags.ComingSoonV2PUSH]]"
 }
