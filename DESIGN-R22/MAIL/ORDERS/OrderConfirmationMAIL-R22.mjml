@@ -21,7 +21,7 @@
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
-      [[#assign "urlTemplate"]]FooterHelpURL[[/assign]]
+      [[#assign "urlTemplateFooter"]]FooterHelpURL[[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -84,6 +84,9 @@
 
     <mj-section>
       <mj-column>
+        <mj-raw>
+          [[#assign "utmContent"]]order_detail_button[[/assign]]
+        </mj-raw>
         <mj-button css-class="rd-order-detail-btn" 
             background-color="#000000" 
             color="#FFFFFF" 
@@ -131,8 +134,8 @@
       [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
+      [[#assign "utmContent"]]help_page[[/assign]]
     </mj-raw>
     <mj-include path="footer-R22" />
-
   </mj-body>
 </mjml>
