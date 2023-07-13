@@ -1,0 +1,14 @@
+{
+    "imageUrl":"[[payload.notification.item.imageUrl]]", 
+    "linkUrl":"[[#assign \"sku\"]][[payload.notification.item.sku]][[\/assign]]
+        [[#assign \"productId\"]][[payload.notification.item.productId]][[\/assign]]
+        [[#assign \"categoryId\"]][[payload.notification.item.categoryId]][[\/assign]]
+        [[#assign \"season\"]][[payload.notification.item.season]][[\/assign]]
+        [[#assign \"subscriptionId\"]][[payload.subscriptionIdentifier]][[\/assign]]
+        [[#assign \"ssts\"]][[payload.ssts]][[\/assign]]
+        [[#assign \"utmMedium\"]]push[[\/assign]]
+        [[#assign \"utmSource\"]]notification_com[[\/assign]]
+        [[#assign \"utmCampaign\"]]comingsoon[[\/assign]]
+        [[urlResolver 'ProductDetailURL']]", 
+    "template":"[[#assign \"productShortDescription\"]][[payload.notification.item.shortDescription]][[\/assign]][[tags.ComingSoonV2PUSH]]"
+}
