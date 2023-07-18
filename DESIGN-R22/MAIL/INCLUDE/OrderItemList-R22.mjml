@@ -59,7 +59,11 @@
             [[#if this.uuid.uuid]]
               [[#assign "suborderIdentifier"]][[this.uuid.uuid]][[/assign]]
             [[else]]
-              [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+              [[#if this.uuid]]
+                [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+              [[else]]
+                [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+              [[/if]]
             [[/if]]
           [[else]]
             [[#if this.uuid]]
@@ -103,7 +107,7 @@
             <tr>
               <td>
                 <table table-layout="fixed">
-                  [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == true)]") ]]
+                  [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == true && @.giftCard == null)]") ]]
                   [[def "itemsEdited" (jsonPath isCustomTrue "MULTI_VALUE")]]
                   [[#each itemsEdited]]
                     <tr class="rd-product-row">
@@ -112,7 +116,7 @@
                   [[/each]]
                 </table>
                 <table table-layout="fixed">
-                  [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == false)]") ]]
+                  [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == false || @.giftCard != null)]") ]]
                   [[def "itemsNotEdited" (jsonPath isCustomFalse "MULTI_VALUE")]]
                   [[def "orderItemsMatrix" (matrix itemsNotEdited 2)]]
                   [[#each orderItemsMatrix]]
