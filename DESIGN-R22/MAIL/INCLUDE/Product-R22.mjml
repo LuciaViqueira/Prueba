@@ -129,7 +129,7 @@
                                         <div>[[tags.OrderItemList_customizationsText]]: [[this.embroideryText]]</div>
                                         <div>[[tags.OrderItemList_customizationsArea]]: [[this.embroideryArea]]</div>
                                         <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
-                                        <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColor]]</div>
+                                        <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColour]]</div>
                                         [[#if this.serviceCost]]
                                             [[def "obj" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
                                             <div>[[tags.OrderItemList_customizationsPrice]]: [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
