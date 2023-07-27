@@ -141,11 +141,6 @@
     <mj-raw>
       [[/if]]
       [[#if showReasonForDenialObservations]]
-        [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
-        [[def "reasonDescriptionStringFormat" (stringFormat "$..reason_description[?(@.languageCode == '%s')]" preferenceLocaleLanguage )]]
-        [[def "reasonDescription" (jsonPath reasonDescriptionStringFormat)]]
-        [[def "reasonStringFormat" (stringFormat "$..reason[?(@.languageCode == '%s')]" preferenceLocaleLanguage )]]
-        [[def "reason" (jsonPath reasonStringFormat)]]
     </mj-raw>
         <mj-table padding="0"> 
           <tr>
@@ -163,15 +158,27 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-        <mj-text padding-bottom="28px" css-class="rd-text-info">
-          [[#if reason.content]]
-            <p style="text-transform: uppercase;">[[reason.content]]</p>
-          [[/if]]
-          [[#if reasonDescription.content]]
-            <p style="text-transform: uppercase;">[[reasonDescription.content]]</p>
-          [[/if]]
-        </mj-text>
+        <mj-raw>
+          [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+          [[#each payload.notification.orders.[0].suborders.[0].orderItems]]
+            [[#def "resellId"]][[this.resellExternalId]][[/def]]
+            [[def "rejectionReasonQuery" (stringFormat "$..rejection_reason['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+            [[def "rejectionReason" (jsonPath rejectionReasonQuery "MULTI_VALUE")]]
+            [[def "rejectionReasonDescriptionQuery" (stringFormat "$..rejection_reason_description['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+            [[def "rejectionReasonDescription" (jsonPath rejectionReasonDescriptionQuery "MULTI_VALUE")]]
+            [[#ifb (orb rejectionReason.[0].content rejectionReasonDescription.[0].content)]]
+        </mj-raw>
+              <mj-text padding-bottom="28px" css-class="rd-text-info">
+                [[#if rejectionReason.[0].content]]
+                  <p style="text-transform: uppercase;">[[rejectionReason.[0].content]]</p>
+                [[/if]]
+                [[#if rejectionReasonDescription.[0].content]]
+                  <p style="text-transform: uppercase;">[[rejectionReasonDescription.[0].content]]</p>
+                [[/if]]
+              </mj-text>
     <mj-raw>
+            [[/ifb]]
+          [[/each]]
       [[/if]]
       [[#if showOrderIsBeingRefundedObservations]]
     </mj-raw>
