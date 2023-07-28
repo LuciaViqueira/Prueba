@@ -162,9 +162,9 @@
           [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
           [[#each payload.notification.orders.[0].suborders.[0].orderItems]]
             [[#def "resellId"]][[this.resellExternalId]][[/def]]
-            [[def "rejectionReasonQuery" (stringFormat "$..rejection_reason['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+            [[def "rejectionReasonQuery" (stringFormat "$..rejectionReason['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
             [[def "rejectionReason" (jsonPath rejectionReasonQuery "MULTI_VALUE")]]
-            [[def "rejectionReasonDescriptionQuery" (stringFormat "$..rejection_reason_description['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+            [[def "rejectionReasonDescriptionQuery" (stringFormat "$..rejectionReasonDescription['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
             [[def "rejectionReasonDescription" (jsonPath rejectionReasonDescriptionQuery "MULTI_VALUE")]]
             [[#ifb (orb rejectionReason.[0].content rejectionReasonDescription.[0].content)]]
         </mj-raw>
