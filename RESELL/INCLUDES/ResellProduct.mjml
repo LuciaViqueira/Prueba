@@ -1,4 +1,10 @@
 <table class="rd-product"> 
+    [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+    [[#def "resellId"]][[this.resellExternalId]][[/def]]
+    [[def "sizeQuery" (stringFormat "$..size['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+    [[def "size" (jsonPath sizeQuery "MULTI_VALUE")]]
+    [[def "descriptionQuery" (stringFormat "$..description['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+    [[def "description" (jsonPath descriptionQuery "MULTI_VALUE")]]
     <tr>
         <td style="padding: 0;" class="rd-subsection-text">
             [[#if this.item.imageUrl]]
@@ -10,11 +16,13 @@
                     </tr>
                 </table>
             [[/if]]
-            <div style="font-weight: bold; padding: 0 0 8px;">
-                [[this.item.shortDescription]]
-            </div>
-            [[#if this.item.size]]
-                <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
+            [[#if description.[0].content]]
+                <div style="font-weight: bold; padding: 0 0 8px;">
+                    [[description.[0].content]]
+                </div>
+            [[/if]]
+            [[#if size.[0].content]]
+                <div>[[tags.OrderItemList_size]] - [[size.[0].content]]</div>
             [[/if]]
             [[#if this.price]]
                 <div>
