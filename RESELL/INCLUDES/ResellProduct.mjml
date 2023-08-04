@@ -16,13 +16,23 @@
                     </tr>
                 </table>
             [[/if]]
-            [[#if description.[0].content]]
+            [[#if this.item.shortDescription]]
                 <div style="font-weight: bold; padding: 0 0 8px;">
-                    [[description.[0].content]]
+                    [[this.item.shortDescription]]
                 </div>
+            [[else]]
+                [[#if description.[0].content]]
+                    <div style="font-weight: bold; padding: 0 0 8px;">
+                        [[description.[0].content]]
+                    </div>
+                [[/if]]
             [[/if]]
-            [[#if size.[0].content]]
-                <div>[[tags.OrderItemList_size]] - [[size.[0].content]]</div>
+            [[#if this.item.size]]
+                <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
+            [[else]]
+                [[#if size.[0].content]]
+                    <div>[[tags.OrderItemList_size]] - [[size.[0].content]]</div>
+                [[/if]]
             [[/if]]
             [[#if this.price]]
                 <div>
