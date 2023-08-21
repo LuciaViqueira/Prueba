@@ -1,0 +1,186 @@
+<mj-section>
+  <mj-column padding-top="30px">
+    <mj-table padding="0"> 
+      <tr>
+        <td style="width:50px; position: relative;" class="resell-unit-relative">
+          <table>
+            <tr>
+              <td style="display:none; top: 15%; left: 25%;" class="resell-welcome-icon-mobile resell-unit-absolute">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep1Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-section-title">
+                <div>[[tags.ObservationsWelcome_approval]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr style="padding-bottom:30px">
+        <td>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-text-info">
+                <div style="min-height:55px; padding-bottom:20px;">[[tags.ObservationsWelcome_approvalText]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr>
+        <td style="width:50px; position: relative;" class="resell-unit-relative">
+          <table>
+            <tr>
+              <td style="display:none; top: 15%; left: 25%;" class="resell-welcome-icon-mobile resell-unit-absolute">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep2Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-section-title">
+                <div>[[tags.ObservationsWelcome_sale]]</div>
+              </td>
+            </tr>  
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr style="padding-bottom:30px">
+        <td>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-text-info">
+                <div style="min-height:55px; padding-bottom:20px;">[[tags.ObservationsWelcome_saleText]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr>
+        <td style="width:50px; position: relative;" class="resell-unit-relative">
+          <table>
+            <tr>
+              <td style="display:none; top: 15%; left: 25%;" class="resell-welcome-icon-mobile resell-unit-absolute">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep3Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-section-title">
+                <div>[[tags.ObservationsWelcome_package]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr style="padding-bottom:30px">
+        <td>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-text-info">
+                <div style="min-height:55px; padding-bottom:20px;">[[tags.ObservationsWelcome_packageText]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr>
+        <td style="width:50px; position: relative;" class="resell-unit-relative">
+          <table>
+            <tr>
+              <td style="display:none; top: 15%; left: 25%;" class="resell-welcome-icon-mobile resell-unit-absolute">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep4Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-section-title">
+                <div>[[tags.ObservationsWelcome_receiveAnEmail]]</div>
+              </td>
+            </tr> 
+          </table>
+        </td>                                                                                                                                 
+      </tr>
+      <tr style="padding-bottom:30px">
+        <td>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-text-info">
+                <div style="min-height:55px; padding-bottom:20px;">[[tags.ObservationsWelcome_receiveAnEmailText]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+      <tr>
+        <td style="width:50px; position: relative;" class="resell-unit-relative">
+          <table>
+            <tr>
+              <td style="display:none; top: 15%; left: 25%;" class="resell-welcome-icon-mobile resell-unit-absolute">
+                <img width="15" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep0Icon.jpg" style="width:15px; height:auto; display:none;" class="resell-welcome-icon-mobile" />
+              </td>
+              <td style="padding-right:10px">
+                <img width="50" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/ResellStep5Icon.jpg" style="width:50px; height:auto; padding: 0 10px 0 0;" class="resell-welcome-icon" />
+              </td>
+            </tr>
+          </table> 
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-section-title">
+                <div>[[tags.ObservationsWelcome_payment]]</div>
+              </td>
+            </tr>
+          </table>
+        </td>                                                                                                                                 
+      </tr>
+      <tr style="padding-bottom:30px">
+        <td>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="rd-text-info">
+                <div style="min-height:55px; padding-bottom:20px;">[[tags.ObservationsWelcome_paymentText]]</div>
+              </td>
+            </tr>
+          </table> 
+        </td>                                                                                                                                 
+      </tr>
+    </mj-table>
+  </mj-column>
+</mj-section>
