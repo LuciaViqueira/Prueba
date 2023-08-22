@@ -6,8 +6,16 @@
     <mj-text css-class="resell-footer-link">
       <a href="[[urlResolver 'HelpResellURL']]">[[tags.Footer_help]]</a>
     </mj-text>
+    <mj-raw>
+      [[def "preferenceLocaleLanguage" (jsonPath '$..user.preferences.locale.language')]]
+      [[#ifb (compare preferenceLocaleLanguage "==" "fr")]]
+        [[#assign "termsAndConditionsURL"]]https://static.zara.net/static//pdfs/FR/resell-terms-and-conditions/resell-terms-and-conditions-fr_FR-20230822.pdf[[/assign]]
+      [[else]]
+        [[#assign "termsAndConditionsURL"]]https://static.zara.net/static//pdfs/FR/resell-terms-and-conditions/resell-terms-and-conditions-en_FR-20230822.pdf[[/assign]]
+      [[/ifb]]
+    </mj-raw>
     <mj-text css-class="resell-footer-link">
-      <a href="[[footer.]]">[[tags.Footer_termsAndConditions]]</a>      
+      <a href="[[termsAndConditionsURL]]">[[tags.Footer_termsAndConditions]]</a>
     </mj-text>
     <mj-text css-class="resell-footer-link">
       <a href="[[footer.policyUrl]]">[[tags.Footer_privacyPolicy]]</a>      
