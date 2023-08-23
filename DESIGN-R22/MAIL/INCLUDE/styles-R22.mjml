@@ -122,6 +122,28 @@
         margin-top: 139%;
       }
     }
+
+    @media only screen and (min-width:480px) {
+        .resell-section-double-button .mj-column-per-50:first-of-type {
+            width: 49% !important;
+            max-width: 50%;
+            margin-right: 4px !important;
+        }
+        .resell-section-double-button .mj-column-per-50:last-of-type {
+            width: 49% !important;
+            max-width: 50%;
+            margin-left: 4px !important;
+        }
+    }
+
+    @media only screen and (max-width:480px) {
+        .resell-welcome-icon {
+            display: none;
+        }
+        .resell-welcome-icon-mobile {
+            display: block !important;
+        }
+    }
 </mj-style>
 <mj-style inline="inline">
 * {
@@ -441,5 +463,50 @@
     font-size: 12px !important;
     line-height: 18px !important;
     letter-spacing: 0.3px !important;
+}
+
+.resell-footer-link-big div {
+    margin-bottom: 10px;
+}
+
+.resell-footer-link-big a {
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px !important;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+}
+
+.resell-footer-text-big div {
+    margin-bottom: 10px;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px !important;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+}
+
+.resell-footer-link div {
+    margin-bottom: 14px;
+}
+
+.resell-footer-link a {
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 13px !important;
+    line-height: 18px;
+    letter-spacing: 0.7px;
+    text-decoration: none;
+}
+
+.resell-unit-absolute {
+      position: absolute;
+    }
+
+.resell-unit-relative {
+    position: relative;
 }
 </mj-style>

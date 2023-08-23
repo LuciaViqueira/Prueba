@@ -1,0 +1,49 @@
+<table class="rd-product"> 
+    [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+    [[#def "resellId"]][[this.resellExternalId]][[/def]]
+    [[def "sizeQuery" (stringFormat "$..size['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+    [[def "size" (jsonPath sizeQuery "MULTI_VALUE")]]
+    [[def "descriptionQuery" (stringFormat "$..description['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+    [[def "description" (jsonPath descriptionQuery "MULTI_VALUE")]]
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.item.imageUrl]]
+                <table>
+                    <tr>
+                        <td style="padding: 0 0 8px;">
+                            <img padding="0" class="rd-product-img" width="225" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
+                        </td>
+                    </tr>
+                </table>
+            [[/if]]
+            [[#if this.item.shortDescription]]
+                <div style="font-weight: bold; padding: 0 0 8px;">
+                    [[this.item.shortDescription]]
+                </div>
+            [[else]]
+                [[#if description.[0].content]]
+                    <div style="font-weight: bold; padding: 0 0 8px;">
+                        [[description.[0].content]]
+                    </div>
+                [[/if]]
+            [[/if]]
+            [[#if this.item.size]]
+                <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
+            [[else]]
+                [[#if size.[0].content]]
+                    <div>[[tags.OrderItemList_size]] - [[size.[0].content]]</div>
+                [[/if]]
+            [[/if]]
+            [[#if this.price]]
+                <div>
+                    [[tags.OrderItemList_price]] - 
+                    [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                    [[obj.main_amount]]
+                </div>
+            [[/if]]
+            [[#if this.resellExternalId]]
+                <div>[[tags.OrderItemList_listingId]]: [[this.resellExternalId]]</div>
+            [[/if]]
+        </td>
+    </tr>
+</table>
