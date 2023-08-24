@@ -399,12 +399,14 @@
 }
 
 .rd-product-custom {
-    padding: 4px !important;
+    padding: 0px 8px !important;
     background-color: #000000;
-    border:1px solid #FFFFFF;
+    border:0.5px solid #FFFFFF;
     color:#FFFFFF;
-    font-weight:bold;
-    width:100%;
+    font-weight:500;
+    width: auto;
+    border-radius: 12px;
+    display: inline;
 }
 
 .rd-product-custom table {
@@ -416,14 +418,22 @@
 .rd-product-custom-lbl {
     text-transform: uppercase;
     color: #FFFFFF !important;
+    background-color: #000000 !important;
     white-space: nowrap !important;
-    line-height: 15px !important;
+    line-height: 16px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px ;
+    display: inline;
 }
 
 .rd-product-custom-warn {
     color: #ff930b !important;
-    font-style: italic;
     font-size: 9px !important;
+    line-height: 12px !important;
+    letter-spacing: 0.4px;
 }
 
 .rd-product-custom-table div {

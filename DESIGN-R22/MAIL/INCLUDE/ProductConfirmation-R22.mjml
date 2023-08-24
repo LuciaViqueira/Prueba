@@ -47,7 +47,7 @@
                     <div>[[tags.productListConfirmation_customizationsText]]: [[this.embroideryText]]</div>
                     <div>[[tags.productListConfirmation_customizationsArea]]: [[this.embroideryArea]]</div>
                     <div>[[tags.productListConfirmation_customizationsTypography]]: [[this.embroideryFont]]</div>
-                    <div>[[tags.productListConfirmation_customizationsColor]]: [[this.embroideryColor]]</div>
+                    <div>[[tags.productListConfirmation_customizationsColor]]: [[this.embroideryColour]]</div>
                     [[#if this.serviceCost]]
                         <div>[[tags.productListConfirmation_customizationsPrice]]: [[this.serviceCost]]</div>
                     [[/if]]

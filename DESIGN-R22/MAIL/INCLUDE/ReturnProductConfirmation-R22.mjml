@@ -51,7 +51,7 @@
                     <div>[[tags.ReturnProductList_customizationsText]]: [[this.embroideryText]]</div>
                     <div>[[tags.ReturnProductList_customizationsArea]]: [[this.embroideryArea]]</div>
                     <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
-                    <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
+                    <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColour]]</div>
                     [[#if this.serviceCost]]
                         <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>
                     [[/if]]

@@ -55,27 +55,26 @@
       <mj-raw>
         [[/neq]]
         [[#each this.suborders]]
+          [[#if existsUuidUuid]]
+            [[#if this.uuid.uuid]]
+              [[#assign "suborderIdentifier"]][[this.uuid.uuid]][[/assign]]
+            [[else]]
+              [[#if this.uuid]]
+                [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+              [[else]]
+                [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+              [[/if]]
+            [[/if]]
+          [[else]]
+            [[#if this.uuid]]
+              [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+            [[else]]
+              [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+            [[/if]]
+          [[/if]]
           [[#if payload.orders.[0].isSplitted]]
       </mj-raw>
-            <mj-text css-class="rd-section-title">
-              [[#assign "minDeliveredDate"]][[this.deliveryDate.minDeliveredDate.timestamp]][[/assign]]
-              [[#assign "maxDeliveredDate"]][[this.deliveryDate.maxDeliveredDate.timestamp]][[/assign]]
-              [[readableDate minDeliveredDate maxDeliveredDate]]
-            </mj-text>
             <mj-text css-class="rd-subsection-text" padding-top="4px">
-              [[#if existsUuidUuid]]
-                [[#if this.uuid.uuid]]
-                  [[#assign "suborderIdentifier"]][[this.uuid.uuid]][[/assign]]
-                [[else]]
-                  [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
-                [[/if]]
-              [[else]]
-                [[#if this.uuid]]
-                  [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
-                [[else]]
-                  [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
-                [[/if]]
-              [[/if]]
               [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
               [[#ifb (compare uuidSize ">" size)]]
                 [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
@@ -99,24 +98,39 @@
         <mj-raw>
           [[/if]]
         </mj-raw>
-          <mj-table padding="16px 0 0" table-layout="fixed">
-            [[def "orderItemsMatrix" (matrix this.orderItems 2)]]
-            [[#each orderItemsMatrix]]
-              <tr class="rd-product-row">
-                [[#each this]]
-                  <td style="padding-bottom: 24px;" class="rd-product-col">
-                    [[#if this.item]]
+          <mj-table padding="16px 0 0"> 
+            <tr>
+              <td>
+                <table table-layout="fixed">
+                  [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == true && @.giftCard == null)]") ]]
+                  [[def "itemsEdited" (jsonPath isCustomTrue "MULTI_VALUE")]]
+                  [[#each itemsEdited]]
+                    <tr class="rd-product-row">
                       <mj-include path="Product-R22" />
-                    [[else]]
-                      <mj-include path="GiftCard-R22" />
-                    [[/if]]
-                  </td>
-                [[/each]]
-                [[#ifb (compare (length this) "==" 1)]]
-                  <td style="padding-bottom: 24px;" class="rd-product-col"></td>
-                [[/ifb]]
-              </tr>
-            [[/each]]
+                    </tr>
+                  [[/each]]
+                </table>
+                <table table-layout="fixed">
+                  [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == false || @.giftCard != null)]") ]]
+                  [[def "itemsNotEdited" (jsonPath isCustomFalse "MULTI_VALUE")]]
+                  [[def "orderItemsMatrix" (matrix itemsNotEdited 2)]]
+                  [[#each orderItemsMatrix]]
+                    <tr class="rd-product-row">
+                      [[#each this]]
+                          [[#if this.item]]
+                            <mj-include path="Product-R22" />
+                          [[else]]
+                            <mj-include path="GiftCard-R22" />
+                          [[/if]]
+                      [[/each]]
+                      [[#ifb (compare (length this) "==" 1)]]
+                        <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+                      [[/ifb]]
+                    </tr>
+                  [[/each]]
+                </table>
+              </td>  
+            </tr>
           </mj-table>
       <mj-raw>
         [[/each]]
