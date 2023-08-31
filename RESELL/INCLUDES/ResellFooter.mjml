@@ -4,7 +4,7 @@
       [[tags.Footer_company]]
     </mj-text>
     <mj-text css-class="resell-footer-link">
-      <a href="[[urlResolver 'HelpResellURL']]">[[tags.Footer_help]]</a>
+      <a href="[[urlResolverWithVersion 'HelpResellURL' 1]]">[[tags.Footer_help]]</a>
     </mj-text>
     <mj-raw>
       [[def "preferenceLocaleLanguage" (jsonPath '$..user.preferences.locale.language')]]

@@ -62,7 +62,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'StripePayoutAccountURL']]" >
+            href="[[urlResolverWithVersion 'StripePayoutAccountURL' 3]]" >
           [[tags.OrderShippedToSeller_setupPaymentButtonTxt]]
         </mj-button>
       </mj-column>

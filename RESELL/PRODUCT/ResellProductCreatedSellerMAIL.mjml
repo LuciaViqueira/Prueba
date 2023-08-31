@@ -47,7 +47,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ModifyListingURL']]" >
+            href="[[urlResolverWithVersion 'ModifyListingURL' 3]]" >
           [[tags.ProductCreatedSeller_modifyListingButtonTxt]]
         </mj-button>
       </mj-column>
@@ -59,7 +59,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ListAnotherURL']]" >
+            href="[[urlResolverWithVersion 'ListAnotherURL' 3]]" >
           [[tags.ProductCreatedSeller_listAnotherButtonTxt]]
         </mj-button>
       </mj-column>
