@@ -15,6 +15,15 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[#assign "accountToken"]][[payload.user.accountToken]][[/assign]]
+      [[#if payload.user.isGuest]]
+        [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
+        [[def "urlTemplateVersion" 1]]
+      [[else]]
+        [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+        [[def "urlTemplateVersion" 5]]
+      [[/if]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
@@ -22,6 +31,7 @@
       [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplateFooter"]]FooterHelpURL[[/assign]]
+      [[def "urlTemplateFooterVersion" 5]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -94,7 +104,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'OrderDetailURL']]" >
+            href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
           [[tags.OrderConfirmationMAIL_buttonTxt]]
         </mj-button>
         <mj-text css-class="rd-text-info">
