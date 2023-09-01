@@ -1,0 +1,11 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"[[#assign \"orderId\"]][[payload.orders.[0].identifier]][[\/assign]]
+    [[#if payload.user.isGuest]]
+        [[#assign \"accountToken\"]][[payload.user.accountToken]][[\/assign]]
+        [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+    [[else]]
+        [[urlResolverWithVersion 'OrderDetailURL' 5]]
+    [[\/if]]", 
+    "template":"[[tags.dropOffReturnPUSH]]"
+}

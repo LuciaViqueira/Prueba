@@ -1,0 +1,21 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"[[#assign \"orderId\"]][[payload.orders.[0].identifier]][[/assign]]
+        [[#if payload.orders.[0].suborders.[0].uuid]]
+            [[#assign \"suborderId\"]][[payload.orders.[0].suborders.[0].uuid]][[/assign]]
+        [[else]]
+            [[#assign \"suborderId\"]][[payload.orders.[0].suborders.[0].suborderId]][[/assign]]
+        [[/if]]
+        [[#if payload.user.isGuest]]
+            [[#assign \"accountToken\"]][[payload.user.accountToken]][[/assign]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+        [[else]]
+            [[urlResolverWithVersion 'OrderDetailURL' 5]]
+        [[/if]]", 
+    "template":"
+        [[#if payload.orders.[0].isSplitted]]
+            [[tags.onDeliverySplittedPush]]
+        [[else]]
+            [[tags.onDeliveryPush]]
+        [[/if]]"
+}
