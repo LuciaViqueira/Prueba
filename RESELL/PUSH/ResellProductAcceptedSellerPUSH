@@ -1,5 +1,5 @@
 { 
     "imageUrl":"", 
-    "linkUrl":"", 
+    "linkUrl":"[[urlResolverWithVersion 'GoToMySalesURL' 1]]", 
     "template":"[[tags.ResellProductAcceptedSellerPUSH]]"
 }
