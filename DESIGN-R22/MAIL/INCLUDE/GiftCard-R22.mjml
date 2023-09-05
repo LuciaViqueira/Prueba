@@ -1,47 +1,49 @@
-<table class="rd-product">  
-    <tr>
-        <td style="padding: 0;" class="rd-subsection-text">
-            [[#if this.giftCard.item.imageUrl]]
-                <table>
-                    <tr>
-                        <td style="padding: 0 0 8px;">
-                            <img padding="0" class="rd-product-img" width="225" src="[[this.giftCard.item.imageUrl]]" style="width:100%; height:auto;" />
-                        </td>
-                    </tr>
-                </table>
-            [[/if]]
-            <div>
-                [[this.giftCard.message]]
-            </div>
-            <div>
-                [[#if this.giftCard.from]]
-                    <div><span style="text-transform: uppercase;">[[tags.OrderItemList_fromText]]:</span> [[this.giftCard.from]]</div>
+<td style="padding-bottom: 24px;" class="rd-product-col">
+    <table class="rd-product">  
+        <tr>
+            <td style="padding: 0;" class="rd-subsection-text">
+                [[#if this.giftCard.item.imageUrl]]
+                    <table>
+                        <tr>
+                            <td style="padding: 0 0 8px;">
+                                <img padding="0" class="rd-product-img" width="225" src="[[this.giftCard.item.imageUrl]]" style="width:100%; height:auto;" />
+                            </td>
+                        </tr>
+                    </table>
                 [[/if]]
-                [[#eq this.giftCard.type "VIRTUAL"]]
-                    [[#if this.giftCard.receiverData.email]]
-                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
+                <div>
+                    [[this.giftCard.message]]
+                </div>
+                <div>
+                    [[#if this.giftCard.from]]
+                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_fromText]]:</span> [[this.giftCard.from]]</div>
                     [[/if]]
-                    [[#if this.giftCard.shippingDate]]
-                        <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.timestamp]] [[/epoch]]</div>
-                    [[/if]]
-                    [[#if this.giftCard.receiverData.phone]]
-                        <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
-                    [[/if]]
-                [[/eq]]
-            </div>
-            <div>
-                [[#with this.giftCard.item.amount]]
-                    [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
-                    1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-                [[/with]]
-            </div>
-            <div>
-                [[#eq this.giftCard.type "VIRTUAL"]] 
-                    [[#ifb (andb showGiftCardDetailMessage  (orb (notb hasOnlyTRV) (compare this.giftCard.sendingMode "==" "CUSTOMER_INSTANT") ))]]
-                        <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]</span></div>
-                    [[/ifb]]
-                [[/eq]]
-            </div>
-        </td>
-    </tr>
-</table>
+                    [[#eq this.giftCard.type "VIRTUAL"]]
+                        [[#if this.giftCard.receiverData.email]]
+                            <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
+                        [[/if]]
+                        [[#if this.giftCard.shippingDate]]
+                            <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.timestamp]] [[/epoch]]</div>
+                        [[/if]]
+                        [[#if this.giftCard.receiverData.phone]]
+                            <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
+                        [[/if]]
+                    [[/eq]]
+                </div>
+                <div>
+                    [[#with this.giftCard.item.amount]]
+                        [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
+                        1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                    [[/with]]
+                </div>
+                <div>
+                    [[#eq this.giftCard.type "VIRTUAL"]] 
+                        [[#ifb (andb showGiftCardDetailMessage  (orb (notb hasOnlyTRV) (compare this.giftCard.sendingMode "==" "CUSTOMER_INSTANT") ))]]
+                            <div><span style="text-transform: uppercase;">[[tags.OrderItemList_shareTRV]]</span></div>
+                        [[/ifb]]
+                    [[/eq]]
+                </div>
+            </td>
+        </tr>
+    </table>
+</td>
