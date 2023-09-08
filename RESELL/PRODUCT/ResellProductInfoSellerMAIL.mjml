@@ -53,7 +53,7 @@
             href="[[urlResolverWithVersion 'ModifyProductURL' 1]]" >
           [[tags.ProductInfoSeller_viewProductButtonTxt]]
         </mj-button>
-        <mj-text padding-top="15px" css-class="rd-text-info">
+        <mj-text padding-top="16px" css-class="rd-text-info">
           [[tags.ProductInfoSeller_updateNewInfo]]
         </mj-text>
       </mj-column>
@@ -61,7 +61,7 @@
 
     <mj-section>
       <mj-column>
-        <mj-divider padding-top="4px" border-color="#E5E5E5" />
+        <mj-divider padding-top="16px" border-color="#E5E5E5" />
       </mj-column>
     </mj-section>
 
