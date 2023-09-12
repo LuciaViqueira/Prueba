@@ -119,13 +119,20 @@
             <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
           </tr>
         [[/ifb]]
-        [[def "orderDiscount" payload.orders.[0].discounts.[0].amount]]
-        [[#ifb (andb orderDiscount (compare orderDiscount.value "!=" 0))]]
-          <tr class="rd-light-font">
-            <td>[[tags.Payment_orderDiscount]]</td>
-            <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
-          </tr>
-        [[/ifb]]
+        [[#each payload.orders.[0].discounts]]
+          [[#ifb (andb (compare this.discountType "!=" "EMPLOYEE") (compare this.amount.value "!=" 0))]]
+            <tr class="rd-light-font">
+              <td>[[tags.Payment_orderDiscount]]</td>
+              <td class="rd-payment-price">[[currency amount.value amount.exponent amount.currency amount.humanReadableText]]</td>
+            </tr>
+          [[/ifb]]
+          [[#ifb (andb (compare this.discountType "==" "EMPLOYEE") (compare this.amount.value "!=" 0))]]
+            <tr class="rd-orange-font">
+              <td>[[tags.Payment_employeeDiscountsText]]</td>
+              <td class="rd-payment-price">[[currency amount.value amount.exponent amount.currency amount.humanReadableText]]</td>
+            </tr>
+          [[/ifb]]
+        [[/each]]
         [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
         [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING") (compare returnCosts.amount.value "!=" 0))]]
           <tr class="rd-light-font">
