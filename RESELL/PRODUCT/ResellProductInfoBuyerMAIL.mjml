@@ -10,6 +10,7 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[#assign "requestedQuestions"]][[categoriesBuyer.[0].questions]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
