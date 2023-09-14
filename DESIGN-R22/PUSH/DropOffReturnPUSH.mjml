@@ -1,6 +1,6 @@
 { 
     "imageUrl":"", 
-    "linkUrl":"[[#assign \"orderId\"]][[payload.orders.[0].identifier]][[\/assign]]
+    "linkUrl":"[[#assign \"orderId\"]][[payload.orderId]][[\/assign]]
     [[#if payload.user.isGuest]]
         [[#assign \"accountToken\"]][[payload.user.accountToken]][[\/assign]]
         [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
