@@ -1,1 +1,1 @@
-https://[[resellBaseURL]][[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/preowned-resell/product-detail/[[jsonPath '$..resellExternalId']]/ACTIVE
+https://[[resellBaseURL]][[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/preowned-resell/product-detail/[[jsonPath '$..resellExternalId']]
