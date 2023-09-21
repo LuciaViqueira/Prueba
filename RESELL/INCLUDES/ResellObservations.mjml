@@ -269,11 +269,35 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-        <mj-text padding-bottom="28px" css-class="rd-text-info">
-          [[#each requestedQuestions]]
-            <p>[[this.title]]</p>
+
+        <mj-raw>
+          [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+          [[def "arraycategories" (jsonPath '$..categoriesBuyer')]]
+          [[#each arraycategories]]
+            [[#each this.title]]
+              [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+                [[#assign "categoryName"]][[this.content]][[/assign]]
+        </mj-raw>
+                <mj-text padding-bottom="4px" css-class="rd-text-info">
+                  <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
+                    <li>[[categoryName]]:                                                                                                                                              
+        <mj-raw>     
+              [[/ifb]]
+            [[/each]]
+            [[#each this.questions]]
+              [[#each this.title]]
+                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+                [[#assign "questionName"]][[this.content]][[/assign]]
+        </mj-raw>
+                        [[questionName]]</li>
+                  </ul>                                                                                                                                     
+                </mj-text>
+        <mj-raw>     
+                [[/ifb]]
+              [[/each]]
+            [[/each]]
           [[/each]]
-        </mj-text>
+        </mj-raw>
     <mj-raw>
       [[/if]]
     </mj-raw>
