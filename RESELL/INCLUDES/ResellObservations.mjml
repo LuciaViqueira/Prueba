@@ -272,20 +272,20 @@
 
         <mj-raw>
           [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
-          [[def "arraycategories" (jsonPath '$..categoriesBuyer')]]
           [[#each arraycategories]]
             [[#each this.title]]
               [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
         </mj-raw>
                 <mj-text css-class="rd-text-info">
                   <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
-                    <li>[[this.content]]:
+                    <li>[[this.content]]: 
               [[/ifb]]
             [[/each]]
             [[#each this.questions]]
-              [[#ifb (compare @index "!=" 0)]],[[/ifb]]
+              [[#assign "comma"]][[/assign]]
+              [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
               [[#each this.title]]
-                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]][[this.content]][[/ifb]]
+                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]][[stringFormat "%s%s" this.content comma]][[/ifb]]
               [[/each]]
             [[/each]]
                     </li>

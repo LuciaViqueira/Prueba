@@ -10,7 +10,7 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
-      [[#assign "requestedQuestions"]][[categoriesBuyer.[0].questions]][[/assign]]
+      [[def "arraycategories" (jsonPath '$..categoriesBuyer')]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
