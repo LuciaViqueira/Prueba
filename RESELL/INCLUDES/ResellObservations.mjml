@@ -276,26 +276,22 @@
           [[#each arraycategories]]
             [[#each this.title]]
               [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
-                [[#assign "categoryName"]][[this.content]][[/assign]]
         </mj-raw>
-                <mj-text padding-bottom="4px" css-class="rd-text-info">
+                <mj-text css-class="rd-text-info">
                   <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
-                    <li>[[categoryName]]:                                                                                                                                              
-        <mj-raw>     
+                    <li>[[this.content]]:
               [[/ifb]]
             [[/each]]
             [[#each this.questions]]
+              [[#ifb (compare @index "!=" 0)]],[[/ifb]]
               [[#each this.title]]
-                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
-                [[#assign "questionName"]][[this.content]][[/assign]]
-        </mj-raw>
-                        [[questionName]]</li>
-                  </ul>                                                                                                                                     
-                </mj-text>
-        <mj-raw>     
-                [[/ifb]]
+                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]][[this.content]][[/ifb]]
               [[/each]]
             [[/each]]
+                    </li>
+                  </ul>                                                                                                                                     
+                </mj-text>
+        <mj-raw> 
           [[/each]]
         </mj-raw>
     <mj-raw>
