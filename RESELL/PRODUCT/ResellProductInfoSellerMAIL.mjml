@@ -10,6 +10,7 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[def "arraycategories" (jsonPath '$..categoriesSeller')]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -50,7 +51,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolverWithVersion 'ModifyProductURL' 1]]" >
+            href="[[urlResolverWithVersion 'ModifyProductActiveURL' 1]]" >
           [[tags.ProductInfoSeller_viewProductButtonTxt]]
         </mj-button>
         <mj-text padding-top="16px" css-class="rd-text-info">
