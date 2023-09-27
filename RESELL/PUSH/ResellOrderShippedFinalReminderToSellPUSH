@@ -1,0 +1,5 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"", 
+    "template":"[[tags.ResellOrderShippedFinalReminderToSellPUSH_bonjour]][[tags.ResellOrderShippedFinalReminderToSellPUSH_contactForHelp]][[tags.ResellOrderShippedFinalReminderToSellPUSH_rememberShipping]]"
+}
