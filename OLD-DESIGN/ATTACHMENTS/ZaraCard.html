@@ -5,10 +5,12 @@
             #container {
                 width:800px;
                 margin: 0 auto;
-                font-family: "custom-font";
                 font-size: 10px;
                 font-weight: bold;
                 padding: 20px;
+            }
+            body {
+                font-family: LatinFont, custom-font, JapaneseFont;
             }
             @page {
                 size: 105mm 1000px;
@@ -23,7 +25,17 @@
             }
             @font-face {
                 font-family: "custom-font";
-                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
+                src: url("static/fonts/Arimo-Regular.ttf");
+            }
+            @font-face {
+                font-family: "JapaneseFont";
+                src: url("static/fonts/MSMincho.ttf")
+                format("truetype");
+            }
+            @font-face {
+                font-family: "LatinFont";
+                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf")
+                format("truetype");
             }
             #pageHeader{
                 position: running(pageHeader);
