@@ -10,7 +10,7 @@
                 padding: 20px;
             }
             body {
-                font-family: LatinFont, custom-font, JapaneseFont;
+                font-family: LatinFont, custom-font, JapaneseFont, ArabicFont;
             }
             @page {
                 size: 105mm 1000px;
@@ -35,6 +35,11 @@
             @font-face {
                 font-family: "LatinFont";
                 src: url("static/fonts/NeueHelveticaforZara-Roman.ttf")
+                format("truetype");
+            }
+            @font-face {
+                font-family: "ArabicFont";
+                src: url("static/fonts/Scheherazade-Regular.ttf")
                 format("truetype");
             }
             #pageHeader{
