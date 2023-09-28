@@ -23,10 +23,6 @@
             }
             @font-face {
                 font-family: "custom-font";
-                src: url("static/fonts/NeueHelveticaforZara-Roman.ttf");
-            }
-            @font-face {
-                font-family: "arimo-font";
                 src: url("static/fonts/Arimo-Regular.ttf");
             }
             #pageHeader{
@@ -70,9 +66,6 @@
                 margin-bottom: 0px;
                 border-top: 2px solid black;
             }
-            .arimoFont {
-                font-family: "arimo-font";
-            }
         </style>
     </head>
     <body>
@@ -91,7 +84,7 @@
             [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
             <table style="padding: 30px 0 0; width: 50%;">
                 <tr>
-                    <td class="alignLeft font10px uppercase"><b>[[tags.ResendZaraCard_amount]]</b> <span class="arimoFont">[[def "obj" (conversionRate payload.payments.[0].paymentDetails.[0].balance.value payload.payments.[0].paymentDetails.[0].balance.exponent payload.payments.[0].paymentDetails.[0].balance.currency payload.payments.[0].paymentDetails.[0].balance.humanReadableText)]][[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</span></td>
+                    <td class="alignLeft font10px uppercase"><b>[[tags.ResendZaraCard_amount]]</b>[[def "obj" (conversionRate payload.payments.[0].paymentDetails.[0].balance.value payload.payments.[0].paymentDetails.[0].balance.exponent payload.payments.[0].paymentDetails.[0].balance.currency payload.payments.[0].paymentDetails.[0].balance.humanReadableText)]][[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
                 </tr>
                 [[#eq storeLegacyValue  "11737"]]
                     <tr>
