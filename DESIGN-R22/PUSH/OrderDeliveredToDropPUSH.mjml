@@ -16,9 +16,9 @@
         [[def \"isSplitted\" payload.notification.orders.[0].isSplitted]]
         [[#if payload.notification.user.isGuest]]
             [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[\/assign]]
-            [[urlResolver 'OrderDetailGuestURL']]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
         [[else]]
-            [[urlResolver 'OrderDetailURL']]
+            [[urlResolverWithVersion 'OrderDetailURL' 5]]
         [[\/if]]",
     "template":"[[tags.OrderDeliveredToDropPUSH]]"
 }

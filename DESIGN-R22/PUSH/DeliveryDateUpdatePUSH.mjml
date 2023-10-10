@@ -1,0 +1,30 @@
+{ 
+    "imageUrl":"",
+    "linkUrl":"[[#assign \"orderId\"]][[payload.notification.orders.[0].identifier]][[\/assign]]
+        [[def \"obj\" (formatDateISO payload.notification.orders.[0].suborders.[0].deliveryDate.minDeliveryDate.dateIso payload.notification.orders.[0].suborders.[0].deliveryDate.maxDeliveryDate.dateIso)]]
+        [[def \"readableMinDate\" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+        [[def \"readableMaxDate\" (readableDate obj.max_date obj.max_date 'ISO8601' false)]]
+        [[#if payload.notification.user.isGuest]]
+            [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[\/assign]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+        [[else]]
+            [[urlResolverWithVersion 'OrderDetailURL' 5]]
+        [[\/if]]", 
+    "template":"
+        [[#ifb (compare obj.type '==' 'DAY_RANGE')]]
+            [[#assign 'dayRange']]true[[\/assign]]
+        [[else]]
+            [[#ifb (compare obj.type '==' 'DAY')]]
+                [[#assign 'day']]true[[\/assign]]
+            [[else]]
+                [[#ifb (compare obj.type '==' 'HOUR_LIMIT')]]
+                    [[#assign 'hourLimit']]true[[\/assign]]
+                [[else]]
+                    [[#ifb (compare obj.type '==' 'HOUR_RANGE')]]
+                        [[#assign 'hourRange']]true[[\/assign]]
+                    [[\/ifb]]
+                [[\/ifb]]
+            [[\/ifb]]
+        [[\/ifb]]
+        [[tags.DeliveryDateUpdatePUSH]]"
+}
