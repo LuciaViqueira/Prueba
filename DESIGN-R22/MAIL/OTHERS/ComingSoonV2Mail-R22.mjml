@@ -12,6 +12,7 @@
       [[#assign "utmCampaign"]]ComingSoon[[/assign]]
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplateFooter"]]FooterHelpWithUtmTermURL[[/assign]]
+      [[def "urlTemplateFooterVersion" 2]]
       [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
       [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
       [[#assign "categoryId"]][[payload.notification.item.categoryId]][[/assign]]
@@ -22,7 +23,7 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolver 'ProductDetailLogoURL']]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolverWithVersion 'ProductDetailLogoURL' 2]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
           [[tags.ComingSoonV2MAIL_Title]]
         </mj-text>
@@ -38,7 +39,7 @@
                 <table>
                   <tr>
                     <td>
-                      <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none;">
+                      <a href="[[urlResolverWithVersion 'ProductDetailURL' 5]]" style="color:#000; text-decoration:none;">
                         <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" style="width:176px; height:auto;" />
                       </a>
                     </td>
@@ -48,7 +49,7 @@
             [[#assign "utmContent"]]product_detail_description[[/assign]]
             <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
               <div>
-                <a href="[[urlResolver 'ProductDetailURL']]" style="color:#000; text-decoration:none; font-weight:bold;">
+                <a href="[[urlResolverWithVersion 'ProductDetailURL' 5]]" style="color:#000; text-decoration:none; font-weight:bold;">
                   [[payload.notification.item.shortDescription]]
                 </a>
               </div>
@@ -71,7 +72,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ProductDetailURL']]" >
+            href="[[urlResolverWithVersion 'ProductDetailURL' 5]]" >
           [[tags.ComingSoonV2MAIL_Button]]
         </mj-button>
       </mj-column>
