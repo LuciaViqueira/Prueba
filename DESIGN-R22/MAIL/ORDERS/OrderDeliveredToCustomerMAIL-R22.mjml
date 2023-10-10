@@ -14,6 +14,14 @@
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
+      [[#assign "accountToken"]][[payload.notification.user.accountToken]][[/assign]]
+      [[#if payload.notification.user.isGuest]]
+        [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
+        [[def "urlTemplateVersion" 1]]
+      [[else]]
+        [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+        [[def "urlTemplateVersion" 5]]
+      [[/if]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -63,7 +71,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="https://www.zara.com/[[payload.notification.store.identifier.value]]/[[payload.notification.user.preferences.locale.language]]/user/order/[[orderId]]" >
+            href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
           [[tags.OrderDeliveredToCustomerMAIL_orderBtn]]
         </mj-button>
       </mj-column>

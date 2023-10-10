@@ -9,6 +9,6 @@
         [[#assign \"utmMedium\"]]push[[\/assign]]
         [[#assign \"utmSource\"]]notification_com[[\/assign]]
         [[#assign \"utmCampaign\"]]ComingSoon[[\/assign]]
-        [[urlResolver 'ProductDetailURL']]", 
+        [[urlResolverWithVersion 'ProductDetailURL' 5]]", 
     "template":"[[#assign \"productShortDescription\"]][[payload.notification.item.shortDescription]][[\/assign]][[tags.ComingSoonV2PUSH]]"
 }
