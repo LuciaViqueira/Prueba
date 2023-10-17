@@ -140,5 +140,14 @@
     <mj-text padding-top="8px" font-weight="bold" css-class="rd-dowload-app">
        <a href="https://www.zara.com/static/go/marketplaces.html" target="_blank">[[tags.downloadAppText]]</a>
     </mj-text>
+    <mj-raw>
+      [[#if showLITEV2LegalFooter]]
+    </mj-raw> 
+        <mj-text padding-top="16px" css-class="rd-footer-legal-message">
+          [[tags.LITEV2LegalFooter_legalText]]
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+    </mj-raw> 
   </mj-column>
 </mj-section>

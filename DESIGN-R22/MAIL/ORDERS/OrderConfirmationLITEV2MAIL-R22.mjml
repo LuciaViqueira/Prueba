@@ -12,6 +12,7 @@
       [[#assign "hideInfoTitle"]]true[[/assign]]
       [[#assign "showShippingCharges"]]true[[/assign]]
       [[#assign "existsUuidUuid"]]true[[/assign]]
+      [[#assign "showLITEV2LegalFooter"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
