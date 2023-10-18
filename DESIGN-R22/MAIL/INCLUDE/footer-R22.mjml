@@ -141,10 +141,10 @@
        <a href="https://www.zara.com/static/go/marketplaces.html" target="_blank">[[tags.downloadAppText]]</a>
     </mj-text>
     <mj-raw>
-      [[#if showLITEV2LegalFooter]]
+      [[#if showLITELegalFooter]]
     </mj-raw> 
         <mj-text padding-top="16px" css-class="rd-footer-legal-message">
-          [[tags.LITEV2LegalFooter_legalText]]
+          [[tags.LITELegalFooter_legalText]]
         </mj-text>
     <mj-raw>
       [[/if]]
