@@ -59,11 +59,11 @@
           [[tags.RepairConfirmationMAIL_collectionDirection]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
+          [[#if shippingAddress.street]]
+            <div>[[shippingAddress.street]]</div>
+          [[/if]]
           [[#if shippingAddress.line]]
             <div>[[shippingAddress.line]]</div>
-          [[/if]]
-          [[#if shippingAddress.floor.value]]
-            <div>[[shippingAddress.floor.value]] </div>
           [[/if]]
           <div>
             [[#if shippingAddress.zipCode.value]]
