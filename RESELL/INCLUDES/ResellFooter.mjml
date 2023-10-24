@@ -17,7 +17,7 @@
         [[/ifb]]
       [[else]]
         [[#eq storeLegacyValue  "10706"]]
-          [[#assign "termsAndConditionsURL"]]https://static.zara.net/static//pdfs/UK/resell-terms-and-conditions/resell-terms-and-conditions-en_UK-20231002.pdf[[/assign]]
+          [[#assign "termsAndConditionsURL"]]https://static.zara.net/static/pdfs/UK/resell-terms-and-conditions/resell-terms-and-conditions-en_UK-20231023.pdf[[/assign]]
         [[/eq]]
       [[/eq]]
     </mj-raw>
