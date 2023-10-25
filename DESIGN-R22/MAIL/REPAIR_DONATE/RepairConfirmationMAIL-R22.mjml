@@ -12,6 +12,7 @@
     <mj-raw>
       [[def "items" payload.notification.orders.[0].suborders.[0].orderItems]]
       [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]
+      [[def "discounts" payload.notification.orders.[0].suborders.[0].discounts]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -86,6 +87,15 @@
                 <td class="rd-payment-price">[[currency this.arrangementsPrice.value this.arrangementsPrice.exponent this.arrangementsPrice.currency this.arrangementsPrice.humanReadableText]]</td>
               </tr>
             [[/if]]
+            [[#each discounts]]
+              [[def "orderDiscount" this.amount]]
+              [[#ifb (andb orderDiscount (compare this.discountType "==" "OTHER") (compare orderDiscount.value "!=" 0))]]
+                <tr class="rd-light-font">
+                  <td>[[tags.RepairConfirmationMAIL_repairBonusText]]</td>
+                  <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+                </tr>
+              [[/ifb]]
+            [[/each]]
             [[#if this.shippingPrice]]
               <tr class="rd-light-font">
                 <td>[[tags.RepairConfirmationMAIL_shipmentText]]</td>
