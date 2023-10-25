@@ -25,6 +25,7 @@
         [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
         [[def "urlTemplateVersion" 5]]
       [[/if]]
+      [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
       [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
@@ -126,7 +127,7 @@
                   <p>[[tags.OrderConfirmationLITEV2MAIL_giftTicket]]</p>
               [[/if]]
 
-              [[#ifb (compare paymentMethodId "==" "SKIPPED")]]
+              [[#ifb (compare paymentStatus "==" "SKIPPED")]]
                 <p>texto a mostrar cuando es un pago offline</p>
               [[/ifb]]
               [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
