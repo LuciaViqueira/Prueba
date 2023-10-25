@@ -180,8 +180,18 @@
       [[/each]]
     </mj-raw>
     <mj-text font-weight="bold" css-class="rd-subsection-text-light">
-      [[#ifb (andb isMixedShippingMode (compare this.shippingAddress.type "==" "HOME"))]]
-        [[tags.shipping_mixedHome]]
+      [[#if isMixedShippingMode]]  
+        [[#ifb (compare this.shippingAddress.type "==" "HOME")]]
+          [[tags.shipping_mixedHome]]
+        [[else]]
+          [[#ifb (compare this.shippingAddress.type "==" "STORE")]]
+            [[tags.shipping_pickupStore]]
+          [[else]]
+            [[#ifb (compare this.shippingAddress.type "==" "DROP")]]
+              [[tags.shipping_mixedDrop]]
+            [[/ifb]]
+          [[/ifb]]
+        [[/ifb]]
       [[else]]
         [[#eq this.shippingAddress.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
@@ -222,7 +232,7 @@
               [[/eq]]
             [[/eq]]
           [[/eq]]
-      [[/ifb]]
+      [[/if]]
     </mj-text>
 
     <mj-raw>
