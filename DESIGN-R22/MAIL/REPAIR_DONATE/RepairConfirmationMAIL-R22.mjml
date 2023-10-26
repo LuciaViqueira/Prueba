@@ -13,6 +13,7 @@
       [[def "items" payload.notification.orders.[0].suborders.[0].orderItems]]
       [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]
       [[def "discounts" payload.notification.orders.[0].suborders.[0].discounts]]
+      [[def "isNegativeSymbol" true]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -92,7 +93,7 @@
               [[#ifb (andb orderDiscount (compare this.discountType "==" "OTHER") (compare orderDiscount.value "!=" 0))]]
                 <tr class="rd-light-font">
                   <td>[[tags.RepairConfirmationMAIL_repairBonusText]]</td>
-                  <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+                  <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText isNegativeSymbol]]</td>
                 </tr>
               [[/ifb]]
             [[/each]]
