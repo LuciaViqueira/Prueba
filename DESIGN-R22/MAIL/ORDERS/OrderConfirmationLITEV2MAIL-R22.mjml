@@ -140,13 +140,24 @@
           </mj-column>
         </mj-section>
 
+        <mj-text css-class="rd-text-info">
+          [[def "itemQuery" (jsonPath "$..orderItems[?(@.item && @.item.imageUrl == '')].item")]]
+          [[def "giftCardQuery" (jsonPath "$..orderItems[?(@.giftCard && @.giftCard.item && @.giftCard.item.imageUrl == '')].giftCard.item")]]
+        </mj-text>
+
         <mj-raw>
-          [[#with payload]]
+          [[#ifb (notb(orb itemQuery giftCardQuery))]] 
         </mj-raw>
-        <!-- Sección 2 products -->
-          <mj-include path="OrderItemList-R22" />
+            <mj-raw>
+              [[#with payload]]
+            </mj-raw>
+            <!-- Sección 2 products -->
+              <mj-include path="OrderItemList-R22" />
+            <mj-raw>
+              [[/with]]
+            </mj-raw>
         <mj-raw>
-          [[/with]]
+          [[/ifb]]
         </mj-raw>
 
         <mj-raw>
