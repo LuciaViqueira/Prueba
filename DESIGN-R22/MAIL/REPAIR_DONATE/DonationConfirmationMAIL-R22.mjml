@@ -4,6 +4,11 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Global Variables -->
+    <mj-raw>
+      [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -24,34 +29,34 @@
           [[tags.DonationConfirmationMAIL_clientData]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
-          <div>[[payload.user.name]] [[payload.user.surname]]</div>
-          <div>[[payload.user.email]]</div>
-          <div>[[payload.user.mobilePhoneNumber]]</div>
+          <div>[[payload.notification.user.name]] [[payload.notification.user.surname]]</div>
+          <div>[[payload.notification.user.email]]</div>
+          <div>[[payload.notification.user.mobilePhoneNumber]]</div>
         </mj-text>
     <!-- Sección 3 shipping -->
         <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
           [[tags.DonationConfirmationMAIL_collectionDirection]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
-          [[#if payload.address.line]]
-            <div>[[payload.address.line]] </div>
+          [[#if shippingAddress.street.value]]
+            <div>[[shippingAddress.street.value]]</div>
           [[/if]]
-          [[#if payload.address.floor.value]]
-            <div>[[payload.address.floor.value]] </div>
+          [[#if shippingAddress.line]]
+            <div>[[shippingAddress.line]]</div>
           [[/if]]
           <div>
-            [[#if payload.address.zipCode.value]]
-              [[payload.address.zipCode.value]]
+            [[#if shippingAddress.zipCode.value]]
+              [[shippingAddress.zipCode.value]]
             [[/if]]
-            [[#if payload.address.city.value]]
-              [[payload.address.city.value]]
+            [[#if shippingAddress.city.value]]
+              [[shippingAddress.city.value]]
             [[/if]]
           </div>
         </mj-text>
         <mj-divider padding-top="40px" padding-bottom="40px"/>
     <!-- Sección 4 payment -->
         <mj-raw>
-          [[#with payload.paymentBreakdown]]
+          [[#with payload.notification.paymentBreakdown]]
         </mj-raw>
           <mj-table css-class="rd-payment-table">
             [[#if this.shippingPrice]]
@@ -78,7 +83,6 @@
 
     <!-- Sección 5 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]

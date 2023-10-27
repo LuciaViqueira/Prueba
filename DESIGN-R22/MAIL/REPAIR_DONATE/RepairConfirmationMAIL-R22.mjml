@@ -8,6 +8,14 @@
     <mj-raw>
       [[#assign "collectionDirectionTitle"]]true[[/assign]]
     </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[def "items" payload.notification.orders.[0].suborders.[0].orderItems]]
+      [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]
+      [[def "discounts" payload.notification.orders.[0].suborders.[0].discounts]]
+      [[def "isNegativeSymbol" true]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -24,16 +32,16 @@
         </mj-text>
     <!-- Sección 2 productos -->
         <mj-raw> 
-          [[#each payload.items]]
+          [[#each items]]
         </mj-raw>
             <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
               [[tags.RepairConfirmationMAIL_product]] [[math @index '+' 1]]
             </mj-text>
             <mj-text css-class="rd-subsection-text">
-              <div style="font-weight:bold;">[[this.type]] [[this.color]] [[this.material]]</div>
+              <div style="font-weight:bold;">[[this.shortDescription]] [[this.colour]] [[this.material]]</div>
               [[#each this.arrangements]]
-                <div>[[tags.RepairConfirmationMAIL_fix]]: [[this.description]] - [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]</div>
-                <div>[[tags.RepairConfirmationMAIL_message]]: [[this.message]]</div>
+                <div>[[tags.RepairConfirmationMAIL_fix]]: [[this.arrangementDescription]] - [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                <div>[[tags.RepairConfirmationMAIL_message]]: [[this.defectDescription]]</div>
               [[/each]]
             </mj-text>
         <mj-raw> 
@@ -44,42 +52,51 @@
           [[tags.RepairConfirmationMAIL_clientData]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
-          <div>[[payload.user.name]] [[payload.user.surname]]</div>
-          <div>[[payload.user.email]]</div>
-          <div>[[payload.user.mobilePhoneNumber]]</div>
+          <div>[[payload.notification.user.name]] [[payload.notification.user.surname]]</div>
+          <div>[[payload.notification.user.email]]</div>
+          <div>[[payload.notification.user.mobilePhoneNumber]]</div>
         </mj-text>
     <!-- Sección 4 shipping -->
         <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
           [[tags.RepairConfirmationMAIL_collectionDirection]]
         </mj-text>
         <mj-text css-class="rd-subsection-text">
-          [[#if payload.address.line]]
-            <div>[[payload.address.line]]</div>
+          [[#if shippingAddress.street.value]]
+            <div>[[shippingAddress.street.value]]</div>
           [[/if]]
-          [[#if payload.address.floor.value]]
-            <div>[[payload.address.floor.value]] </div>
+          [[#if shippingAddress.line]]
+            <div>[[shippingAddress.line]]</div>
           [[/if]]
           <div>
-            [[#if payload.address.zipCode.value]]
-              [[payload.address.zipCode.value]]
+            [[#if shippingAddress.zipCode.value]]
+              [[shippingAddress.zipCode.value]]
             [[/if]]
-            [[#if payload.address.city.value]]
-              [[payload.address.city.value]]
+            [[#if shippingAddress.city.value]]
+              [[shippingAddress.city.value]]
             [[/if]]
           </div>
         </mj-text>
         <mj-divider padding-top="40px" padding-bottom="40px"/>
     <!-- Sección 5 payment -->
         <mj-raw>
-          [[#with payload.paymentBreakdown]]
+          [[#with payload.notification.paymentBreakdown]]
         </mj-raw>
           <mj-table css-class="rd-payment-table">
-            [[#if this.arrangementPrice]]
+            [[#if this.arrangementsPrice]]
               <tr class="rd-light-font">
                 <td>[[tags.RepairConfirmationMAIL_fix]]</td>
-                <td class="rd-payment-price">[[currency this.arrangementPrice.value this.arrangementPrice.exponent this.arrangementPrice.currency this.arrangementPrice.humanReadableText]]</td>
+                <td class="rd-payment-price">[[currency this.arrangementsPrice.value this.arrangementsPrice.exponent this.arrangementsPrice.currency this.arrangementsPrice.humanReadableText]]</td>
               </tr>
             [[/if]]
+            [[#each discounts]]
+              [[def "orderDiscount" this.amount]]
+              [[#ifb (andb orderDiscount (compare this.discountType "==" "OTHER") (compare orderDiscount.value "!=" 0))]]
+                <tr class="rd-light-font">
+                  <td>[[tags.RepairConfirmationMAIL_repairBonusText]]</td>
+                  <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText isNegativeSymbol]]</td>
+                </tr>
+              [[/ifb]]
+            [[/each]]
             [[#if this.shippingPrice]]
               <tr class="rd-light-font">
                 <td>[[tags.RepairConfirmationMAIL_shipmentText]]</td>
@@ -104,7 +121,6 @@
 
     <!-- Sección 6 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
