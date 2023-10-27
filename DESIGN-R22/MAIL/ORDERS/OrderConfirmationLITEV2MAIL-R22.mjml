@@ -28,7 +28,9 @@
       [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
       [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[def "itemQuery" (jsonPath "$..orderItems[?(@.item && @.item.imageUrl == '')].item")]]
+      [[def "giftCardQuery" (jsonPath "$..orderItems[?(@.giftCard && @.giftCard.item && @.giftCard.item.imageUrl == '')].giftCard.item")]]
+      [[def "paymentQuery" (jsonPath "$..paymentDetails[?(@.amount == null)]")]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-raw>
@@ -140,38 +142,31 @@
           </mj-column>
         </mj-section>
 
-        <mj-text css-class="rd-text-info">
-          [[def "itemQuery" (jsonPath "$..orderItems[?(@.item && @.item.imageUrl == '')].item")]]
-          [[def "giftCardQuery" (jsonPath "$..orderItems[?(@.giftCard && @.giftCard.item && @.giftCard.item.imageUrl == '')].giftCard.item")]]
-        </mj-text>
-
         <mj-raw>
           [[#ifb (notb(orb itemQuery giftCardQuery))]] 
+            [[#with payload]]
         </mj-raw>
-            <mj-raw>
-              [[#with payload]]
-            </mj-raw>
             <!-- Sección 2 products -->
               <mj-include path="OrderItemList-R22" />
-            <mj-raw>
-              [[/with]]
-            </mj-raw>
-        <mj-raw>
-          [[/ifb]]
-        </mj-raw>
-
-        <mj-raw>
-          [[#assign "orderNumItems"]][[payload.orders.[0].numItems]][[/assign]]
-          [[#with payload]]
-            [[#with this.orders as | itemsPayment |]]
-        </mj-raw>
-        <!-- Sección 3 payment -->
-          <mj-include path="Payment-R22" />
         <mj-raw>
             [[/with]]
-          [[/with]]
+          [[/ifb]]
         </mj-raw>
-
+     
+        <mj-raw>
+          [[#ifb (notb paymentQuery)]]
+            [[#assign "orderNumItems"]][[payload.orders.[0].numItems]][[/assign]]
+            [[#with payload]]
+              [[#with this.orders as | itemsPayment |]]
+        </mj-raw>
+          <!-- Sección 3 payment -->
+            <mj-include path="Payment-R22" />
+        <mj-raw>
+              [[/with]]
+            [[/with]]
+          [[/ifb]]
+        </mj-raw>
+        
     <mj-raw>
       [[/if]]
     </mj-raw>
