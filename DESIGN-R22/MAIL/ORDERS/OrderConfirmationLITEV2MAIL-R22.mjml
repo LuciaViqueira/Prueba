@@ -46,7 +46,12 @@
               [[tags.OrderConfirmationLITEV2MAIL_orderNumberText]]
           </mj-text>
           <mj-text padding-top="24px" css-class="rd-text-info">
-              <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+            [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
+            [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
+            [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
+              <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
+            [[/ifb]]
+            <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
           </mj-text>
         </mj-column>
       </mj-section>
@@ -233,12 +238,6 @@
       </mj-raw>
         </mj-column>
       </mj-section>
-
-
-
-
-
-
     <mj-raw>
       [[else]]
     </mj-raw>
@@ -286,6 +285,15 @@
                   [[/ifb]]
                 [[/ifb]]
               [[/ifb]]
+              [[#ifb (compare paymentStatus "==" "SKIPPED")]]
+                <p>texto a mostrar cuando es un pago offline</p>
+              [[/ifb]]
+              [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
+                <p>texto a mostrar cuando es un pago en 2 pasos</p>
+              [[/ifb]]
+              [[#eq storeLegacyValue  "11766"]]
+                <p>texto para mostrar en turquía</p>
+              [[/eq]]
             </mj-text>
           </mj-column>
         </mj-section>
@@ -316,21 +324,6 @@
               [[#if payload.orders.[0].hasGiftTicket]]
                   <p>[[tags.OrderConfirmationLITEV2MAIL_giftTicket]]</p>
               [[/if]]
-
-              [[#ifb (compare paymentStatus "==" "SKIPPED")]]
-                <p>texto a mostrar cuando es un pago offline</p>
-              [[/ifb]]
-              [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
-                <p>texto a mostrar cuando es un pago en 2 pasos</p>
-              [[/ifb]]
-              [[#eq storeLegacyValue  "11766"]]
-                <p>texto para mostrar en turquía</p>
-              [[/eq]]
-
-              <p>itemQuery: [[itemQuery]]</p>
-              <p>giftCardQuery: [[giftCardQuery]]</p>
-              <p>paymentQuery: [[paymentQuery]]</p>
-
             </mj-text>
           </mj-column>
         </mj-section>
