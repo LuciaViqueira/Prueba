@@ -4,6 +4,12 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderIdsNumber"]]0[[/assign]]
+      [[#assign "returnsUrl"]]https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[payload.returnEntity.request.identifier]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -12,7 +18,6 @@
           [[tags.returnLabel_Title]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-            [[#assign "orderIdsNumber"]]0[[/assign]]
             [[#each orderIdsList]]
               [[#assign "orderIdsNumber"]] [[#sum orderIdsNumber 1]] [[/sum]] [[/assign]]
             [[/each]]
@@ -25,16 +30,15 @@
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
             <p>[[tags.returnLabel_warningText]]</p>
-            <p>[[tags.returnLabel_labelTextMin]]</p>
             [[#neq orderIdsNumber "1"]]
                 <p>[[tags.returnLabel_multiOrderTextMin]]</p>
             [[/neq]]
+            <p>[[tags.returnLabel_labelTextMin]]</p>
         </mj-text>
       </mj-column>
     </mj-section>
     <!-- Sección 2 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
