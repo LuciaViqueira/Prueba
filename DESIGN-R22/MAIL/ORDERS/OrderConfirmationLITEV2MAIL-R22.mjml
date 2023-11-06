@@ -20,11 +20,9 @@
       [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
       [[#assign "accountToken"]][[payload.user.accountToken]][[/assign]]
       [[#if payload.user.isGuest]]
-        [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
-        [[def "urlTemplateVersion" 1]]
+        [[#def "urlTemplate"]] https://fep8-std-zaraphr.inditex[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/guest-user/order/[[orderId]]/detail?hash=[[accountToken]][[/def]]
       [[else]]
-        [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
-        [[def "urlTemplateVersion" 5]]
+        [[#def "urlTemplate"]] https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/user/order/[[orderId]][[/def]]
       [[/if]]
       [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
       [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
@@ -76,7 +74,7 @@
               font-weight="bold" 
               text-transform="uppercase" 
               width="100%"
-              href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
+              href="[[urlTemplate]]" >
             [[tags.OrderConfirmationLITEV2MAIL_buttonTxt]]
           </mj-button>
         </mj-column>
@@ -244,7 +242,7 @@
     </mj-raw>
         <mj-section>
           <mj-column>
-            <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolverWithVersion 'OrderDetailLogoURL' 4]]" padding-top="48px" padding-bottom="43px" align="center"/>
+            <mj-image width="149px" src="[[zaraLogo]]" href="https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]" padding-top="48px" padding-bottom="43px" align="center"/>
             <mj-text css-class="rd-title" align="center">
                 [[tags.OrderConfirmationLITEV2MAIL_title]]
             </mj-text>
@@ -318,7 +316,7 @@
                 font-weight="bold" 
                 text-transform="uppercase" 
                 width="100%"
-                href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
+                href="[[urlTemplate]]" >
               [[tags.OrderConfirmationLITEV2MAIL_buttonTxt]]
             </mj-button>
             <mj-text css-class="rd-text-info">
