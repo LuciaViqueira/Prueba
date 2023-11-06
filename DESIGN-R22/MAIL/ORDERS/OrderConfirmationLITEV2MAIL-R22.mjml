@@ -13,6 +13,7 @@
       [[#assign "showShippingCharges"]]true[[/assign]]
       [[#assign "existsUuidUuid"]]true[[/assign]]
       [[#assign "showLITELegalFooter"]]true[[/assign]]
+      [[#assign "deliveryPlanFallback"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
