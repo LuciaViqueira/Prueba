@@ -285,6 +285,18 @@
     text-decoration: none;
 }
 
+.rd-footer-legal-message div {
+    text-align: [[#rtl]]right[[/rtl]][[^rtl]]left[[/rtl]] !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.3px;
+    text-transform: none;
+}
+
+.rd-footer-legal-message p {
+    margin: 13px 0 0;
+}
+
 .rd-dowload-app div, .rd-dowload-app a {
     color: #000000;
     text-transform: uppercase;
