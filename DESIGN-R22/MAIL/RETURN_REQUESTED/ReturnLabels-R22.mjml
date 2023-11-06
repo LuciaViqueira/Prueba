@@ -33,6 +33,7 @@
             [[#neq orderIdsNumber "1"]]
                 <p>[[tags.returnLabel_multiOrderTextMin]]</p>
             [[/neq]]
+            <p>[[tags.returnLabel_rememberAvailable]]</p>
             <p>[[tags.returnLabel_labelTextMin]]</p>
         </mj-text>
       </mj-column>
