@@ -169,10 +169,31 @@
         [[/if]]
       [[/if]]
     </mj-raw>
-    
+
+    <mj-raw>
+      [[#assign "shippingModeGlobal"]][[this.shippingAddress.mode]][[/assign]]
+      [[#each order.suborders]]
+        [[#assign "shippingModeLocal"]][[this.shipping.mode]][[/assign]]
+        [[#ifb (compare shippingModeGlobal "!=" shippingModeLocal)]] 
+            [[#assign "isMixedShippingMode"]]true[[/assign]]
+        [[/ifb]]
+      [[/each]]
+    </mj-raw>
     <mj-text font-weight="bold" css-class="rd-subsection-text-light">
-      <!-- ShippingMethod -->
-          [[#eq this.shippingAddress.mode "EXPRESS"]]
+      [[#if isMixedShippingMode]]  
+        [[#ifb (compare this.shippingAddress.type "==" "HOME")]]
+          [[tags.shipping_mixedHome]]
+        [[else]]
+          [[#ifb (compare this.shippingAddress.type "==" "STORE")]]
+            [[tags.shipping_pickupStore]]
+          [[else]]
+            [[#ifb (compare this.shippingAddress.type "==" "DROP")]]
+              [[tags.shipping_mixedDrop]]
+            [[/ifb]]
+          [[/ifb]]
+        [[/ifb]]
+      [[else]]
+        [[#eq this.shippingAddress.mode "EXPRESS"]]
             [[tags.shipping_EXPRESS]]
           [[else]]
             [[#eq this.shippingAddress.mode "STANDARD"]]
@@ -211,7 +232,7 @@
               [[/eq]]
             [[/eq]]
           [[/eq]]
-          <!-- ShippingMethod END -->
+      [[/if]]
     </mj-text>
 
     <mj-raw>
