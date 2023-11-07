@@ -296,6 +296,34 @@
         </mj-raw>
     <mj-raw>
       [[/if]]
+      [[#if showFinancialInfoObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/askForDetails_shape_v2.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_whatIsTheDirectiveDAC7]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
+            <li>[[tags.Observations_directiveDAC7]]</li>
+            <li>[[tags.Observations_legalObligationCollectAndProvide]]</li>
+            <li>[[tags.Observations_directiveInForce]]</li>
+          </ul>  
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
     </mj-raw>
   </mj-column>
 </mj-section>
