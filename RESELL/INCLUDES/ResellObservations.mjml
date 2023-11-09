@@ -316,8 +316,8 @@
         </mj-table>
         <mj-text padding-bottom="28px" css-class="rd-text-info">
           <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
-            <li>[[tags.Observations_directiveDAC7]]</li>
-            <li>[[tags.Observations_legalObligationCollectAndProvide]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_directiveDAC7]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_legalObligationCollectAndProvide]]</li>
             <li>[[tags.Observations_directiveInForce]]</li>
           </ul>  
         </mj-text>
@@ -339,9 +339,9 @@
         </mj-table>
         <mj-text padding-bottom="28px" css-class="rd-text-info">
           <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
-            <li>[[tags.Observations_completeFormDAC7]]</li>
-            <li>[[tags.Observations_moreThanThirtySales]]</li>
-            <li>[[tags.Observations_ensureCorrectData]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_completeFormDAC7]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_moreThanThirtySales]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_ensureCorrectData]]</li>
             <li>[[tags.Observations_requestInfoVisibility]]</li>
           </ul>  
         </mj-text>
