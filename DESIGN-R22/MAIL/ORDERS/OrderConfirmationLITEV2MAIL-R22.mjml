@@ -33,7 +33,7 @@
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-raw>
-      [[#ifb (andb (orb itemQuery giftCardQuery)  paymentQuery)]]
+      [[#ifb (orb itemQuery giftCardQuery)]]
     </mj-raw>
         <mj-section>
           <mj-column>
@@ -52,10 +52,12 @@
               [[/ifb]]
               <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
               [[#ifb (compare paymentStatus "==" "SKIPPED")]]
-                <p>texto a mostrar cuando es un pago offline</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
               [[/ifb]]
               [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
-                <p>texto a mostrar cuando es un pago en 2 pasos</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
               [[/ifb]]
               [[#eq storeLegacyValue  "11766"]]
                 <p>texto para mostrar en turquía</p>
@@ -297,10 +299,12 @@
                 [[/ifb]]
               [[/ifb]]
               [[#ifb (compare paymentStatus "==" "SKIPPED")]]
-                <p>texto a mostrar cuando es un pago offline</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
               [[/ifb]]
               [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
-                <p>texto a mostrar cuando es un pago en 2 pasos</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
               [[/ifb]]
               [[#eq storeLegacyValue  "11766"]]
                 <p>texto para mostrar en turquía</p>
