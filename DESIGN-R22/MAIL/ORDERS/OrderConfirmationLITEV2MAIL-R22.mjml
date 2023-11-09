@@ -50,18 +50,25 @@
               [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
                 <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
               [[/ifb]]
-              <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
-              [[#ifb (compare paymentStatus "==" "SKIPPED")]]
-                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
-                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
-              [[/ifb]]
-              [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
-                <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
-                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
-              [[/ifb]]
               [[#eq storeLegacyValue  "11766"]]
-                <p>texto para mostrar en turquía</p>
+                [[#assign "hiddenInTurkey"]]true[[/assign]]
+                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+                <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>
+              [[else]]
+                <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
               [[/eq]]
+              [[#not hiddenInTurkey]]
+                [[#ifb (compare paymentStatus "==" "SKIPPED")]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+                  [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+                [[/ifb]]
+                [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                  [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+                [[/ifb]]
+              [[/not]]
             </mj-text>
           </mj-column>
         </mj-section>
@@ -292,23 +299,30 @@
                   [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
                     <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
                   [[/ifb]]
-                  <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+                  [[#eq storeLegacyValue  "11766"]]
+                    [[#assign "hiddenInTurkey"]]true[[/assign]]
+                    [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>
+                  [[else]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+                  [[/eq]]
                   [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
                     [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
                   [[/ifb]]
                 [[/ifb]]
               [[/ifb]]
-              [[#ifb (compare paymentStatus "==" "SKIPPED")]]
-                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
-                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
-              [[/ifb]]
-              [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
-                <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
-                [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
-              [[/ifb]]
-              [[#eq storeLegacyValue  "11766"]]
-                <p>texto para mostrar en turquía</p>
-              [[/eq]]
+              [[#not hiddenInTurkey]]
+                [[#ifb (compare paymentStatus "==" "SKIPPED")]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+                  [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+                [[/ifb]]
+                [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                  [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+                [[/ifb]]
+              [[/not]]
             </mj-text>
           </mj-column>
         </mj-section>
