@@ -24,6 +24,8 @@
       [[else]]
         [[#def "urlTemplate"]] https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/user/order/[[orderId]][[/def]]
       [[/if]]
+      [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
+      [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
       [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
       [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
@@ -58,25 +60,26 @@
                 [[tags.OrderConfirmationLITEV2MAIL_orderNumberText]]
             </mj-text>
             <mj-text padding-top="24px" css-class="rd-text-info">
-              [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
-              [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
-              [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
-                <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
-              [[/ifb]]
+              [[#if isOfflinePayment]]
+                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+              [[else]]
+                [[#if isAsyncPayment]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                [[/if]]
+              [[/if]]
+              [[#not isAsyncPayment]]
+                [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
+                [[/ifb]]
+              [[/not]]
               [[#eq storeLegacyValue  "11766"]]
                 <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
                 <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
                 <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>    
               [[else]]
-                [[#if isOfflinePayment]]
-                  <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
-                [[else]]
-                  [[#if isAsyncPayment]]
-                    <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
-                  [[else]]
+                [[#ifb (andb (notb isOfflinePayment) (notb isAsyncPayment))]]
                     <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
-                  [[/if]]
-                [[/if]]
+                [[/ifb]]  
               [[/eq]]
             </mj-text>
           </mj-column>
@@ -307,8 +310,6 @@
                   <p>[[tags.OrderConfirmationLITEV2MAIL_detailsTRV]]</p>
                   [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
                 [[else]]
-                  [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
-                  [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
                   [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
                     <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
                   [[/ifb]]
