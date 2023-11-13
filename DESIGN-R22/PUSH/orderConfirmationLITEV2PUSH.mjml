@@ -1,0 +1,23 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"[[#assign \"orderId\"]][[payload.orders.[0].identifier]][[/assign]]
+        [[#assign \"paymentStatus\"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
+        [[#assign \"paymentMethodId\"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+        [[#assign \"utmMedium\"]]push[[/assign]]
+        [[#assign \"utmSource\"]]notification_com[[/assign]]
+        [[#assign \"utmCampaign\"]]OrderConfirmation[[/assign]]
+        [[#if payload.user.isGuest]]
+            [[#assign \"accountToken\"]][[payload.user.accountToken]][[/assign]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+        [[else]]
+            [[urlResolverWithVersion 'OrderDetailURL' 5]]
+        [[/if]]
+        [[#ifb (compare paymentStatus \"==\" \"SKIPPED\")]]
+            [[#assign \"isOfflinePayment\"]]true[[/assign]]
+        [[else]]
+            [[#ifb (orb (compare paymentMethodId \"==\" \"1020\") (compare paymentMethodId \"==\" \"1021\") (compare paymentMethodId \"==\" \"1027\") (compare paymentMethodId \"==\" \"1029\") (compare paymentMethodId \"==\" \"1031\") (compare paymentMethodId \"==\" \"1032\") (compare paymentMethodId \"==\" \"1039\") (compare paymentMethodId \"==\" \"1041\") (compare paymentMethodId \"==\" \"1056\") (compare paymentMethodId \"==\" \"1059\") (compare paymentMethodId \"==\" \"1061\") (compare paymentMethodId \"==\" \"1063\") (compare paymentMethodId \"==\" \"1064\") (compare paymentMethodId \"==\" \"1065\") (compare paymentMethodId \"==\" \"1066\") (compare paymentMethodId \"==\" \"1068\"))]]
+                [[#assign \"isAsyncPayment\"]]true[[/assign]]
+            [[/ifb]]
+        [[/ifb]]", 
+    "template":"[[tags.orderConfirmationLITEV2PUSH]]"
+}
