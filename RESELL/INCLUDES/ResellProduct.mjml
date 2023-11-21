@@ -3,7 +3,7 @@
     [[#def "resellId"]][[this.resellExternalId]][[/def]]
     [[def "sizeQuery" (stringFormat "$..size['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
     [[def "size" (jsonPath sizeQuery "MULTI_VALUE")]]
-    [[def "descriptionQuery" (stringFormat "$..description['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+    [[def "descriptionQuery" (stringFormat "$..title['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
     [[def "description" (jsonPath descriptionQuery "MULTI_VALUE")]]
     <tr>
         <td style="padding: 0;" class="rd-subsection-text">

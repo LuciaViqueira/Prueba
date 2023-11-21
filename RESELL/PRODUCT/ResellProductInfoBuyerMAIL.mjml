@@ -6,10 +6,11 @@
   <mj-body width="535px">
     <!-- Template configuration -->
     <mj-raw>
-      [[#assign "showPaymentObservations"]]true[[/assign]]
+      [[#assign "showRequestedInfoObservations"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[def "arraycategories" (jsonPath '$..categoriesBuyer')]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -17,10 +18,10 @@
       <mj-column>
         <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
-          [[tags.StripeSellerMAIL_title]]
+          [[tags.ProductInfoBuyer_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.StripeSellerMAIL_setUpAccountToClaim]]
+          [[tags.ProductInfoBuyer_infoRequest]]
         </mj-text>
        </mj-column>
     </mj-section>
@@ -28,12 +29,18 @@
     <mj-raw>
       [[#with payload.notification]]
     </mj-raw>
-      <mj-include path="ResellOrderItemList" />
+        <mj-include path="ResellOrderItemList" />
     <mj-raw>
       [[/with]]
     </mj-raw>
 
     <mj-include path="ResellObservations" />
+
+    <mj-section>
+      <mj-column>
+        <mj-divider padding-top="8px" />
+      </mj-column>
+    </mj-section>
 
     <mj-section>
       <mj-column>
@@ -44,9 +51,18 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolverWithVersion 'StripePayoutAccountURL' 3]]" >
-          [[tags.StripeSellerMAIL_stripeSetupButtonTxt]]
+            href="[[urlResolverWithVersion 'ModifyProductURL' 2]]" >
+          [[tags.ProductInfoBuyer_viewProductButtonTxt]]
         </mj-button>
+        <mj-text padding-top="16px" css-class="rd-text-info">
+          [[tags.ProductInfoBuyer_updateNewInfo]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-divider padding-top="16px" border-color="#E5E5E5" />
       </mj-column>
     </mj-section>
 

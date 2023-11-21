@@ -38,7 +38,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ListAnotherURL']]" >
+            href="[[urlResolverWithVersion 'ListAnotherURL' 3]]" >
           [[tags.OrderCancelledSeller_listAnotherButtonTxt]]
         </mj-button>
       </mj-column>

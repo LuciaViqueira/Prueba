@@ -36,7 +36,7 @@
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'StripePayoutAccountURL']]" >
+            href="[[urlResolverWithVersion 'StripePayoutAccountURL' 3]]" >
           [[tags.StripeReminderSeller_getPaidButtonTxt]]
         </mj-button>
       </mj-column>
