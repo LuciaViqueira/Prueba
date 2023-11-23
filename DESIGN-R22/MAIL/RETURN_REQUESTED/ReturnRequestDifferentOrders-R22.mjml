@@ -78,9 +78,6 @@
 
     <mj-section>
       <mj-column>
-        <mj-raw>
-          [[#and isDropoff payload.returnEntity.request.courier.name]]
-        </mj-raw>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
             background-color="#000000" 
             color="#FFFFFF" 
@@ -91,9 +88,6 @@
             href="https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[requestId]]" >
             [[tags.returnRequestDifferentOrders_buttonTxt]]
         </mj-button>
-        <mj-raw>
-          [[/and]]
-        </mj-raw>
       </mj-column>
     </mj-section>
     
