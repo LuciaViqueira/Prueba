@@ -8,7 +8,7 @@
         [[#assign \"utmCampaign\"]]OrderConfirmation[[/assign]]
         [[#if payload.user.isGuest]]
             [[#assign \"accountToken\"]][[payload.user.accountToken]][[/assign]]
-            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 2]]
         [[else]]
             [[urlResolverWithVersion 'OrderDetailURL' 5]]
         [[/if]]
