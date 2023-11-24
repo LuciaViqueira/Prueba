@@ -6,7 +6,7 @@
         [[def \"readableMaxDate\" (readableDate obj.max_date obj.max_date 'ISO8601' false)]]
         [[#if payload.notification.user.isGuest]]
             [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[\/assign]]
-            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 2]]
         [[else]]
             [[urlResolverWithVersion 'OrderDetailURL' 5]]
         [[\/if]]", 

@@ -14,7 +14,7 @@
       [[#assign "accountToken"]][[payload.liveTracking.user.accountToken]][[/assign]]
       [[#if payload.liveTracking.user.isGuest]]
         [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
-        [[def "urlTemplateVersion" 1]]
+        [[def "urlTemplateVersion" 2]]
       [[else]]
         [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
         [[def "urlTemplateVersion" 5]]
