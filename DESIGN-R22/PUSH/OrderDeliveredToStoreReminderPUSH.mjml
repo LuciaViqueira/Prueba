@@ -4,7 +4,7 @@
         [[#assign \"orderId\"]][[payload.notification.orders.[0].identifier]][[/assign]]
         [[#if payload.notification.user.isGuest]]
             [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[/assign]]
-            [[urlResolverWithVersion 'OrderDetailGuestURL' 1]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 2]]
         [[else]]
             [[urlResolverWithVersion 'OrderDetailURL' 5]]
         [[/if]]", 

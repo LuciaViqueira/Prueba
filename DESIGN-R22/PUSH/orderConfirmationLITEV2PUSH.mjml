@@ -19,5 +19,5 @@
                 [[#assign \"isAsyncPayment\"]]true[[/assign]]
             [[/ifb]]
         [[/ifb]]", 
-    "template":"[[tags.orderConfirmationPush]]"
+    "template":"[[tags.orderConfirmationLITEV2PUSH]]"
 }
