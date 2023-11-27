@@ -40,27 +40,47 @@
     </mj-section>
     <mj-section padding-bottom="28px" css-class="resell-section-double-button">
       <mj-column>
-        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom resell-display-button" 
             background-color="#FFFFFF" 
             color="#000000" 
             border="1px solid #000000" 
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ModifyListingURL']]" >
+            href="[[urlResolverWithVersion 'ModifyListingURL' 3]]" >
           [[tags.ProductCreatedSeller_modifyListingButtonTxt]]
         </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+        <mj-button css-class="rd-order-detail-btn-noPadBottom resell-display-button-mobile" 
             background-color="#000000" 
             color="#FFFFFF" 
             border="1px solid #FFFFFF" 
             font-weight="bold" 
             text-transform="uppercase" 
             width="100%"
-            href="[[urlResolver 'ListAnotherURL']]" >
+            href="[[urlResolverWithVersion 'ListAnotherURL' 3]]" >
           [[tags.ProductCreatedSeller_listAnotherButtonTxt]]
+        </mj-button>
+      </mj-column>
+      <mj-column>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom resell-display-button" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion 'ListAnotherURL' 3]]" >
+          [[tags.ProductCreatedSeller_listAnotherButtonTxt]]
+        </mj-button>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom resell-display-button-mobile" 
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion 'ModifyListingURL' 3]]" >
+          [[tags.ProductCreatedSeller_modifyListingButtonTxt]]
         </mj-button>
       </mj-column>
     </mj-section>

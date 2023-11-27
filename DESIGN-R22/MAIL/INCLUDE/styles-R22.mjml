@@ -134,6 +134,12 @@
             max-width: 50%;
             margin-left: 4px !important;
         }
+        .resell-display-button {
+            display: block !important;
+        }
+        .resell-display-button-mobile {
+            display: none;
+        }
     }
 
     @media only screen and (max-width:480px) {
@@ -141,6 +147,12 @@
             display: none;
         }
         .resell-welcome-icon-mobile {
+            display: block !important;
+        }
+        .resell-display-button {
+            display: none;
+        }
+        .resell-display-button-mobile {
             display: block !important;
         }
     }
@@ -437,7 +449,7 @@
     letter-spacing: 0.7px;
     font-weight: 500;
     border: none;
-    border-radius: 12px ;
+    border-radius: 12px;
     display: inline;
 }
 
