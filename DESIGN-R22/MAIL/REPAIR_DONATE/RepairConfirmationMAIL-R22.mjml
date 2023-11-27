@@ -7,6 +7,7 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "collectionDirectionTitle"]]true[[/assign]]
+      [[#assign "repairFooterConditionsUrl"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>

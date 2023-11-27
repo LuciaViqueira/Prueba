@@ -4,6 +4,10 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "donationFooterConditionsUrl"]]true[[/assign]]
+    </mj-raw>
   <!-- Global Variables -->
     <mj-raw>
       [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]

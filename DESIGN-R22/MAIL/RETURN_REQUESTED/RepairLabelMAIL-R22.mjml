@@ -4,6 +4,14 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "repairFooterConditionsUrl"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]      
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -21,7 +29,6 @@
     </mj-section>
     <!-- Sección 2 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
