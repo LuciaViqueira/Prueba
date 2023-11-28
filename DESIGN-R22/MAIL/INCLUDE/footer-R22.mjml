@@ -40,15 +40,7 @@
         [[else]]
       </mj-raw>
           <mj-text css-class="rd-footer-link">
-            [[#if repairFooterConditionsUrl]]
-              <a href="[[footer.repairTermsAndConditionUrl]]">[[tags.purchaseConditionsText]]</a>
-            [[else]]
-              [[#if donationFooterConditionsUrl]]
-                <a href="[[footer.donateTermsAndConditionUrl]]">[[tags.purchaseConditionsText]]</a>
-              [[else]]
-                <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
-              [[/if]]
-            [[/if]] 
+            <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>      
           </mj-text>
       <mj-raw>
         [[/if]]
