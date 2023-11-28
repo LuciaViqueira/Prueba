@@ -19,7 +19,7 @@
         <mj-text css-class="rd-title" align="center">
           [[tags.SellingAbilityBlockedSeller_title]]
         </mj-text>
-        <mj-text padding-top="24px" css-class="rd-text-info">
+        <mj-text padding="24px 12px 0" css-class="rd-text-info">
           <p>[[tags.SellingAbilityBlockedSeller_congratulations]]</p>
           <p>[[tags.SellingAbilityBlockedSeller_taxRegulationDAC7]]</p>
           <p>[[tags.SellingAbilityBlockedSeller_fillOutInformation]]</p>
