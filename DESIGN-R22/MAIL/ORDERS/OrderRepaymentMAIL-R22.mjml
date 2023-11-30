@@ -15,9 +15,8 @@
     <!-- Global Variables -->
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
-      [[def "obj" (formatDateISO payload.paymentLink.expiredAt payload.paymentLink.expiredAt)]]
-      [[def "date" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
-      [[def "hour" obj.min_time]]
+      [[#assign "date"]][[epoch payload.paymentLink.expiredAt "STORE" "SHORT" "ISO8601"]][[/assign]]
+      [[#assign "hour"]][[epoch payload.paymentLink.expiredAt "HH:mm" "ISO8601"]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
