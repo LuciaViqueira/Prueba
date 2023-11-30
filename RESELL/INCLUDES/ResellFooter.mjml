@@ -6,21 +6,6 @@
     <mj-text css-class="resell-footer-link">
       <a href="[[urlResolverWithVersion 'HelpResellURL' 1]]">[[tags.Footer_help]]</a>
     </mj-text>
-    <mj-raw>
-      [[def "storeId" (jsonPath '$..store.identifier.legacyValue')]]
-      [[def "preferenceLocaleLanguage" (jsonPath '$..user.preferences.locale.language')]]
-      [[#eq storeLegacyValue  "10703"]]
-        [[#ifb (compare preferenceLocaleLanguage "==" "fr")]]
-          [[#assign "termsAndConditionsURL"]]https://static.zara.net/static//pdfs/FR/resell-terms-and-conditions/resell-terms-and-conditions-fr_FR-20230822.pdf[[/assign]]
-        [[else]]
-          [[#assign "termsAndConditionsURL"]]https://static.zara.net/static//pdfs/FR/resell-terms-and-conditions/resell-terms-and-conditions-en_FR-20230822.pdf[[/assign]]
-        [[/ifb]]
-      [[else]]
-        [[#eq storeLegacyValue  "10706"]]
-          [[#assign "termsAndConditionsURL"]]https://static.zara.net/static/pdfs/UK/resell-terms-and-conditions/resell-terms-and-conditions-en_UK-20231023.pdf[[/assign]]
-        [[/eq]]
-      [[/eq]]
-    </mj-raw>
     <mj-text css-class="resell-footer-link">
       [[#if repairFooterConditionsUrl]]
         <a href="[[footer.repairTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
@@ -28,7 +13,7 @@
         [[#if donationFooterConditionsUrl]]
           <a href="[[footer.donateTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
         [[else]]
-          <a href="[[termsAndConditionsURL]]">[[tags.Footer_termsAndConditions]]</a>
+          <a href="[[footer.resellTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
         [[/if]]
       [[/if]]
     </mj-text>
