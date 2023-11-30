@@ -1,0 +1,99 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showDeliveryDate"]]true[[/assign]]
+      [[#assign "willReceiveTitle"]]true[[/assign]]
+      [[#assign "hideInfoTitle"]]true[[/assign]]
+      [[#assign "showShippingCharges"]]true[[/assign]]
+      [[#assign "existsUuidUuid"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
+      [[def "obj" (formatDateISO payload.paymentLink.expiredAt payload.paymentLink.expiredAt)]]
+      [[def "date" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+      [[def "hour" obj.min_time]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolverWithVersion 'OrderDetailLogoURL' 4]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+            [[tags.OrderRepaymentMAIL_title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+            [[tags.OrderRepaymentMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[tags.OrderRepaymentMAIL_paymentNotProcessCorrectly]]</p> 
+        </mj-text>
+        <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[payload.paymentLink.url]]" >
+          [[tags.OrderRepaymentMAIL_buttonTxt]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.notification.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shippingAddress |]]
+    </mj-raw>
+    <mj-include path="shipping-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.OrderRepaymentMAIL_itemsWillBeReserved]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.notification]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "orderNumItems"]][[payload.notification.orders.[0].numItems]][[/assign]]
+      [[#with payload.notification]]
+        [[#with this.orders as | itemsPayment |]]
+    </mj-raw>
+    <!-- Sección 3 payment -->
+      <mj-include path="Payment-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
