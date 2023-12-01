@@ -264,16 +264,9 @@
         [[/with]]
       [[/with]]
     </mj-raw>
-    <mj-text css-class="rd-address-sign-text"> <!-- TODO: pendiente de saber las variables -->
-      [[#if shippingInfo.isSignRequided]]
-        <p>
-          [[tags.shipping_signText]]: 
-          [[#if shippingInfo.signHasBeenRequired]]
-            [[tags.shipping_signTextYes]]
-          [[else]]
-            [[tags.shipping_signTextNo]]
-          [[/if]]
-        </p>
+    <mj-text css-class="rd-address-sign-text">
+      [[#if shippingAddress.signatureRequired]]
+        <p>[[tags.shipping_signText]]: [[tags.shipping_signTextYes]]</p>
       [[/if]]
     </mj-text>
   </mj-column>
