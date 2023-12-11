@@ -477,8 +477,13 @@
 }
 
 .rd-address-sign-text p {
+    text-align: [[#rtl]]right[[/rtl]][[^rtl]]left[[/rtl]] !important;
     text-transform: uppercase;
-    margin: 20px 0 0;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.8px;
+    font-weight: bold;
+    margin: 0 !important;
 }
 
 .rd-badPractice-text {
