@@ -15,8 +15,7 @@
     <!-- Global Variables -->
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
-      [[#assign "date"]][[epoch payload.paymentLink.expiredAt "STORE" "SHORT"]][[/assign]]
-      [[#assign "hour"]][[epoch payload.paymentLink.expiredAt "HH:mm"]][[/assign]]
+      [[#assign "hours"]][[payload.paymentLink.expiredAt]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
