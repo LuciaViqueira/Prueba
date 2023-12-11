@@ -7,7 +7,15 @@
       <a href="[[urlResolverWithVersion 'HelpResellURL' 1]]">[[tags.Footer_help]]</a>
     </mj-text>
     <mj-text css-class="resell-footer-link">
-      <a href="[[footer.resellTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
+      [[#if repairFooterConditionsUrl]]
+        <a href="[[footer.repairTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
+      [[else]]
+        [[#if donationFooterConditionsUrl]]
+          <a href="[[footer.donateTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
+        [[else]]
+          <a href="[[footer.resellTermsAndConditionUrl]]">[[tags.Footer_termsAndConditions]]</a>
+        [[/if]]
+      [[/if]]
     </mj-text>
     <mj-text css-class="resell-footer-link">
       <a href="[[footer.policyUrl]]">[[tags.Footer_privacyPolicy]]</a>      

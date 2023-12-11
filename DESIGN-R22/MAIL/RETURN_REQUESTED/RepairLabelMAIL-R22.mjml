@@ -4,10 +4,18 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "repairFooterConditionsUrl"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]      
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
           [[tags.RepairLabelMAIL_Title]]
         </mj-text>
@@ -21,7 +29,6 @@
     </mj-section>
     <!-- Sección 2 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
@@ -30,6 +37,6 @@
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
     </mj-raw>
-    <mj-include path="footer-R22" />
+    <mj-include path="ResellFooter" />
   </mj-body>
 </mjml>
