@@ -119,7 +119,7 @@
             <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
           </tr>
         [[/ifb]]
-        [[#each payload.orders.[0].discounts]]
+        [[#each this.itemsPayment.[0].discounts]]
           [[def "orderDiscount" this.amount]]
           [[#ifb (andb orderDiscount (compare this.discountType "!=" "EMPLOYEE") (compare orderDiscount.value "!=" 0))]]
             <tr class="rd-light-font">
