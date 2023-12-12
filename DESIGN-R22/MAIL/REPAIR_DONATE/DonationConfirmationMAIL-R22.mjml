@@ -4,6 +4,10 @@
     <mj-include path="styles-R22" />
   </mj-head>
   <mj-body width="535px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "donationFooterConditionsUrl"]]true[[/assign]]
+    </mj-raw>
   <!-- Global Variables -->
     <mj-raw>
       [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]
@@ -12,7 +16,7 @@
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
-        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
             [[tags.DonationConfirmationMAIL_title]]
         </mj-text>
@@ -91,7 +95,7 @@
         [[#assign "hiddenTiktok"]]true[[/assign]]
       [[/ifb]]
     </mj-raw>
-    <mj-include path="footer-R22" />
+    <mj-include path="ResellFooter" />
 
   </mj-body>
 </mjml>
