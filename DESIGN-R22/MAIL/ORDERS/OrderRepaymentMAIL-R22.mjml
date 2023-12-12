@@ -55,14 +55,6 @@
       [[/with]]
     </mj-raw>
 
-    <mj-section>
-      <mj-column>
-        <mj-text css-class="rd-text-info">
-          <p>[[tags.OrderRepaymentMAIL_itemsWillBeReserved]]</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
     <mj-raw>
       [[#with payload.notification]]
     </mj-raw>
