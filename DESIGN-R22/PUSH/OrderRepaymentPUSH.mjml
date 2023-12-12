@@ -1,0 +1,44 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"
+        [[#assign \"orderId\"]][[payload.notification.orders.[0].identifier]][[\/assign]]
+        [[#if payload.notification.user.isGuest]]
+            [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[\/assign]]
+            [[urlResolverWithVersion 'OrderDetailGuestURL' 2]]
+        [[else]]
+            [[urlResolverWithVersion 'OrderDetailURL' 5]]
+        [[\/if]]", 
+    "template":"[[tags.OrderRepaymentPUSH]]"
+}
+
+{
+    "payload": {
+        "notification": {
+            "marketingInformation": {
+                "domainUrl": ".com"
+            },
+            "orders": [
+                {
+                    "identifier": 40000749640
+                }
+            ],
+            "user": {
+                "preferences": {
+                    "locale": {
+                        "language": "en",
+                        "country": "GB",
+                        "variant": ""
+                    }
+                },
+                "accountToken": "61ebf499eb088487ad8fd306ef",
+                "isGuest": true
+            },
+            "store": {
+                "identifier": {
+                    "value": "mc",
+                    "legacyValue": 10701
+                }
+            }
+        }     
+    }
+}
