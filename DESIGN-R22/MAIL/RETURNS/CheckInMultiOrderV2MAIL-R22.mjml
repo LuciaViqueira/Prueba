@@ -16,6 +16,11 @@
       [[#assign "showOnlyUnits"]]true[[/assign]]
       [[#assign "showLegalFooter"]]true[[/assign]]
     </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "isSplitted"]][[payload.orders.[0].isSplitted]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -54,7 +59,6 @@
     
     <!-- Sección 4 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]

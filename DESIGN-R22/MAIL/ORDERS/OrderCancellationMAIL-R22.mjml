@@ -11,6 +11,7 @@
     <!-- Global variables -->
     <mj-raw>
       [[#assign "paymentMethodId"]][[payload.orderCancellation.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+      [[#assign "isSplitted"]][[payload.orderCancellation.orders.[0].isSplitted]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.orderCancellation.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
