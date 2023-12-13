@@ -15,8 +15,8 @@
     <!-- Global Variables -->
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
-      [[#assign "date"]][[epoch payload.paymentLink.expiredAt "STORE" "SHORT"]][[/assign]]
-      [[#assign "hour"]][[epoch payload.paymentLink.expiredAt "HH:mm"]][[/assign]]
+      [[#assign "hours"]][[payload.paymentLink.expiredAt]][[/assign]]
+      [[#assign "isSplitted"]][[payload.notification.orders.[0].isSplitted]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -54,14 +54,6 @@
         [[/with]]
       [[/with]]
     </mj-raw>
-
-    <mj-section>
-      <mj-column>
-        <mj-text css-class="rd-text-info">
-          <p>[[tags.OrderRepaymentMAIL_itemsWillBeReserved]]</p>
-        </mj-text>
-      </mj-column>
-    </mj-section>
 
     <mj-raw>
       [[#with payload.notification]]
