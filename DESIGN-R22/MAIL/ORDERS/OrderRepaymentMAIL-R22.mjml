@@ -48,7 +48,7 @@
       [[#with payload.notification.orders.[0] as | order |]]
         [[#with order.suborders.[0].shipping as | shippingAddress |]]
     </mj-raw>
-    <mj-include path="shipping-R22" />
+    <mj-include path="shippingV2-R22" />
     <mj-raw>
         [[/with]]
       [[/with]]
