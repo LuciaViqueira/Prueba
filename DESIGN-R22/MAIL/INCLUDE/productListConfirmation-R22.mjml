@@ -8,14 +8,6 @@
       [[/if]]
     </mj-text>
     <mj-text padding-top="46px" css-class="rd-subsection-text">
-      [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
-      [[orderNumItems]]
-      [[#eq orderNumItems "1"]]
-        [[tags.productListConfirmation_singleItemText]]
-      [[/eq]]
-      [[#neq orderNumItems "1"]]
-        [[tags.productListConfirmation_multipleItemText]]
-      [[/neq]]
       [[#and isSplitted showSubordersInfo]]
         [[tags.productListConfirmation_shipmentsNumberText]]
       [[/and]]
