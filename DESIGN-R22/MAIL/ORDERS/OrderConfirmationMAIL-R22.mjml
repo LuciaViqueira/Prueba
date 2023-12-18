@@ -25,8 +25,8 @@
         [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
         [[def "urlTemplateVersion" 5]]
       [[/if]]
+      [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
-      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
       [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
@@ -69,7 +69,6 @@
               [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
             [[else]]
               [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
-              [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
               [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
                 <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
               [[/ifb]]
