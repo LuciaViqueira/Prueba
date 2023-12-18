@@ -10,7 +10,6 @@
       [[#assign "willReceiveTitle"]]true[[/assign]]
       [[#assign "hideInfoTitle"]]true[[/assign]]
       [[#assign "showShippingCharges"]]true[[/assign]]
-      [[#assign "existsUuidUuid"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
@@ -49,7 +48,7 @@
       [[#with payload.notification.orders.[0] as | order |]]
         [[#with order.suborders.[0].shipping as | shippingAddress |]]
     </mj-raw>
-    <mj-include path="shipping-R22" />
+    <mj-include path="shippingV2-R22" />
     <mj-raw>
         [[/with]]
       [[/with]]
