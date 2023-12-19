@@ -12,7 +12,7 @@
       </mj-text>
     <mj-raw>
       [[/if]]
-      [[#if payload.orders.[0].isSplitted]]
+      [[#if isSplitted]]
       [[else]]
     </mj-raw>
       <mj-text css-class="rd-subsection-text">
@@ -72,7 +72,7 @@
               [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
             [[/if]]
           [[/if]]
-          [[#if payload.orders.[0].isSplitted]]
+          [[#if isSplitted]]
       </mj-raw>
             <mj-text css-class="rd-subsection-text" padding-top="4px">
               [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]

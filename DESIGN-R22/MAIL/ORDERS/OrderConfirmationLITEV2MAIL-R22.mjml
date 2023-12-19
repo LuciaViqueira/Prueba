@@ -70,11 +70,6 @@
                   <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
                 [[/if]]
               [[/if]]
-              [[#not isAsyncPayment]]
-                [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
-                  <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
-                [[/ifb]]
-              [[/not]]
               [[#eq storeLegacyValue  "11766"]]
                 <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
                 <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
@@ -89,13 +84,15 @@
         </mj-section>
 
         <mj-raw>
-          [[#with payload.orders.[0] as | order |]]
-            [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
+          [[#not isOfflinePayment]]
+            [[#with payload.orders.[0] as | order |]]
+              [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
         </mj-raw>
-        <mj-include path="shipping-R22" />
+                <mj-include path="shipping-R22" />
         <mj-raw>
+              [[/with]]
             [[/with]]
-          [[/with]]
+          [[/not]]
         </mj-raw>
 
         <mj-section>
@@ -330,11 +327,6 @@
                   <p>[[tags.OrderConfirmationLITEV2MAIL_detailsTRV]]</p>
                   [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
                 [[else]]
-                  [[#not isAsyncPayment]]
-                    [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
-                      <p>[[tags.OrderConfirmationLITEV2MAIL_preparingDeliverySplitted]]</p> 
-                    [[/ifb]]
-                  [[/not]]
                   [[#eq storeLegacyValue  "11766"]]
                     <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
                     <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
@@ -355,13 +347,15 @@
         </mj-section>
 
         <mj-raw>
-          [[#with payload.orders.[0] as | order |]]
-            [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
+          [[#not isOfflinePayment]]
+            [[#with payload.orders.[0] as | order |]]
+              [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
         </mj-raw>
-        <mj-include path="shipping-R22" />
+                <mj-include path="shipping-R22" />
         <mj-raw>
+              [[/with]]
             [[/with]]
-          [[/with]]
+          [[/not]]
         </mj-raw>
 
         <mj-section>
