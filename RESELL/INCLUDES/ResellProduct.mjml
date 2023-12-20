@@ -20,23 +20,21 @@
                     </tr>
                 </table>
             [[/if]]
-            [[#if this.item.shortDescription]]
+            [[#ifb (orb this.item.shortDescription description.[0].content descriptionDefault.[0].content)]]
                 <div style="font-weight: bold; padding: 0 0 8px;">
-                    [[this.item.shortDescription]]
-                </div>
-            [[else]]
-                [[#if description.[0].content]]
-                    <div style="font-weight: bold; padding: 0 0 8px;">
-                        [[description.[0].content]]
-                    </div>
-                [[else]]
-                    [[#if descriptionDefault.[0].content]]
-                        <div style="font-weight: bold; padding: 0 0 8px;">
-                            [[descriptionDefault.[0].content]]
-                        </div>
+                    [[#if this.item.shortDescription]]
+                        [[this.item.shortDescription]]
+                    [[else]]
+                        [[#if description.[0].content]]
+                            [[description.[0].content]]
+                        [[else]]
+                            [[#if descriptionDefault.[0].content]]
+                                [[descriptionDefault.[0].content]]
+                            [[/if]]
+                        [[/if]]
                     [[/if]]
-                [[/if]]
-            [[/if]]
+                </div>
+            [[/ifb]]
             [[#if this.item.size]]
                 <div>[[tags.OrderItemList_size]] - [[this.item.size]]</div>
             [[else]]
