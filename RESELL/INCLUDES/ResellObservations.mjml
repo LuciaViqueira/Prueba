@@ -282,7 +282,7 @@
           [[#each arraycategories]]
             [[#each this.title]]
               [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
-              [[#assign "foundLanguage"]]true[[/assign]]
+                [[#assign "foundLanguage"]]true[[/assign]]
         </mj-raw>
                 <mj-text css-class="rd-text-info">
                   <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
@@ -299,29 +299,31 @@
                     </li>
                   </ul>                                                                                                                                     
                 </mj-text>
-          <mj-raw>
-            [[#not foundLanguage]]
+        <mj-raw> 
+          [[/each]]
+          [[#not foundLanguage]]
+            [[#each arraycategories]]
               [[#each this.title]]
                 [[#ifb (compare this.languageCode "==" "en")]]
-          </mj-raw>
+        </mj-raw>
                   <mj-text css-class="rd-text-info">
-                  <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
-                    <li>[[this.content]]: 
-              [[/ifb]]
-            [[/each]]
-            [[#each this.questions]]
-              [[#assign "comma"]][[/assign]]
-              [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
-              [[#each this.title]]
-                [[#ifb (compare this.languageCode "==" "en")]][[stringFormat "%s%s" this.content comma]][[/ifb]]
+                    <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
+                      <li>[[this.content]]: 
+                [[/ifb]]
               [[/each]]
+              [[#each this.questions]]
+                [[#assign "comma"]][[/assign]]
+                [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
+                [[#each this.title]]
+                  [[#ifb (compare this.languageCode "==" "en")]][[stringFormat "%s%s" this.content comma]][[/ifb]]
+                [[/each]]
+              [[/each]]
+                      </li>
+                    </ul>                                                                                                                                     
+                  </mj-text>
+        <mj-raw> 
             [[/each]]
-                    </li>
-                  </ul>                                                                                                                                     
-                </mj-text>
-        <mj-raw>
-            [[/not]] 
-          [[/each]]
+          [[/not]]
         </mj-raw>
     <mj-raw>
       [[/if]]
