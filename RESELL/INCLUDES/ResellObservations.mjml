@@ -164,16 +164,24 @@
             [[#def "resellId"]][[this.resellExternalId]][[/def]]
             [[def "rejectionReasonQuery" (stringFormat "$..rejectionReason['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
             [[def "rejectionReason" (jsonPath rejectionReasonQuery "MULTI_VALUE")]]
+            [[def "rejectionReasonQueryDefault" (stringFormat "$..rejectionReason['%s'][?(@.languageCode == '%s'%s" resellId 'en' ")]")]]
+            [[def "rejectionReasonDefault" (jsonPath rejectionReasonQueryDefault "MULTI_VALUE")]]
             [[def "rejectionReasonDescriptionQuery" (stringFormat "$..rejectionReasonDescription['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
             [[def "rejectionReasonDescription" (jsonPath rejectionReasonDescriptionQuery "MULTI_VALUE")]]
-            [[#ifb (orb rejectionReason.[0].content rejectionReasonDescription.[0].content)]]
+            [[def "rejectionReasonDescriptionQueryDefault" (stringFormat "$..rejectionReasonDescription['%s'][?(@.languageCode == '%s'%s" resellId 'en' ")]")]]
+            [[def "rejectionReasonDescriptionDefault" (jsonPath rejectionReasonDescriptionQueryDefault "MULTI_VALUE")]]
+            [[#ifb (orb rejectionReason.[0].content rejectionReasonDescription.[0].content rejectionReasonDefault.[0].content rejectionReasonDescriptionDefault.[0].content)]]
         </mj-raw>
               <mj-text padding-bottom="28px" css-class="rd-text-info">
                 [[#if rejectionReason.[0].content]]
                   <p style="text-transform: uppercase;">[[rejectionReason.[0].content]]</p>
+                [[else]]
+                  <p style="text-transform: uppercase;">[[rejectionReasonDefault.[0].content]]</p>
                 [[/if]]
                 [[#if rejectionReasonDescription.[0].content]]
                   <p style="text-transform: uppercase;">[[rejectionReasonDescription.[0].content]]</p>
+                [[else]]
+                  <p style="text-transform: uppercase;">[[rejectionReasonDescriptionDefault.[0].content]]</p>
                 [[/if]]
               </mj-text>
     <mj-raw>
@@ -269,29 +277,66 @@
             </td>                                                                                                                                      
           </tr>
         </mj-table>
-
         <mj-raw>
           [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
           [[#each arraycategories]]
             [[#each this.title]]
               [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+              [[#assign "foundLanguage"]]true[[/assign]]
         </mj-raw>
                 <mj-text css-class="rd-text-info">
                   <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
                     <li>[[this.content]]: 
+        <mj-raw>         
               [[/ifb]]
             [[/each]]
             [[#each this.questions]]
               [[#assign "comma"]][[/assign]]
               [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
               [[#each this.title]]
-                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]][[stringFormat "%s%s" this.content comma]][[/ifb]]
+                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+        </mj-raw>
+                  [[stringFormat "%s%s" this.content comma]]
+        <mj-raw>
+                [[/ifb]]
               [[/each]]
             [[/each]]
+            [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+        </mj-raw>
                     </li>
                   </ul>                                                                                                                                     
                 </mj-text>
-        <mj-raw> 
+          <mj-raw>
+            [[/ifb]]
+            [[#not foundLanguage]]
+              [[#each this.title]]
+                [[#ifb (compare this.languageCode "==" "en")]]
+          </mj-raw>
+                  <mj-text css-class="rd-text-info">
+                    <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
+                      <li>[[this.content]]: 
+          <mj-raw>
+                [[/ifb]]
+              [[/each]]
+              [[#each this.questions]]
+                [[#assign "comma"]][[/assign]]
+                [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
+                [[#each this.title]]
+                  [[#ifb (compare this.languageCode "==" "en")]]
+          </mj-raw>
+                    [[stringFormat "%s%s" this.content comma]]
+          <mj-raw>  
+                  [[/ifb]]
+                [[/each]]
+              [[/each]]
+              [[#ifb (compare this.languageCode "==" "en")]]
+          </mj-raw>
+                      </li>
+                    </ul>                                                                                                                                     
+                  </mj-text>
+        <mj-raw>
+              [[/ifb]]
+            [[/not]] 
           [[/each]]
         </mj-raw>
     <mj-raw>
