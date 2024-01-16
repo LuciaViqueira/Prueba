@@ -48,11 +48,7 @@
           [[tags.OrderShippedMAIL_titleSplitted]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
-          [[#ifb (andb isSplitted (notb virtualGiftCardQuery))]]
-            [[tags.OrderShippedMAIL_orderAndSuborderNumberText]]
-          [[else]]
-            [[tags.OrderShippedMAIL_orderNumberTextSplitted]]
-          [[/ifb]]
+          [[tags.OrderShippedMAIL_orderAndSuborderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[#ifb (andb isSplitted (compare shippingType "==" "HOME"))]]
