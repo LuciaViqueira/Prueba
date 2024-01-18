@@ -25,7 +25,7 @@
         [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
         [[def "urlTemplateVersion" 5]]
       [[/if]]
-      [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]

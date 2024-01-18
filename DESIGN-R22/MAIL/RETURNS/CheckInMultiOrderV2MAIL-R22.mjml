@@ -18,7 +18,7 @@
     </mj-raw>
     <!-- Global variables -->
     <mj-raw>
-      [[#assign "isSplitted"]][[payload.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->

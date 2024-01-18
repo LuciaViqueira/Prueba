@@ -18,7 +18,7 @@
       [[#assign "orderId"]][[payload.returnInformation.orders.[0].identifier]][[/assign]]
       [[#assign "badPractice"]][[payload.returnInformation.badPracticeTotalCounter]][[/assign]]
       [[#assign "orderNumItems"]][[payload.returnInformation.orders.[0].numItems]][[/assign]]
-      [[#assign "isSplitted"]][[payload.returnInformation.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.returnInformation.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->

@@ -15,7 +15,7 @@
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
       [[#assign "hours"]][[payload.paymentLink.expiredAt]][[/assign]]
-      [[#assign "isSplitted"]][[payload.notification.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
