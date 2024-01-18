@@ -6,7 +6,8 @@
   <mj-body width="535px">
     <!-- Template configuration -->
     <mj-raw>
-    [[#assign "showExchangeRate"]]true[[/assign]]
+      [[#assign "showExchangeRate"]]true[[/assign]]
+      [[#assign "quantityInOrderItemPrice"]]true[[/assign]]
     </mj-raw>
     <!-- Global variables -->
     <mj-raw>
