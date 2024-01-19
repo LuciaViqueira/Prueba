@@ -12,6 +12,7 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[#assign "shippingDeadline"]][[epoch payload.notification.shippingDate.dateIso "STORE" "LONG" "ISO8601"]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -20,6 +21,9 @@
         <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
         <mj-text css-class="rd-title" align="center">
           [[tags.OrderCreatedSeller_title]]
+        </mj-text>
+        <mj-text padding-top="8px" css-class="rd-section-title" align="center">
+          [[tags.OrderCreatedSeller_shippingDeadline]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[tags.OrderCreatedSeller_prepareToSend]]
