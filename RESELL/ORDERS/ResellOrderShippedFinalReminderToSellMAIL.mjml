@@ -22,9 +22,15 @@
         <mj-text css-class="rd-title" align="center">
           [[tags.OrderShippedFinalReminderToSell_title]]
         </mj-text>
-        <mj-text padding-top="8px" css-class="rd-section-title" align="center">
-          [[tags.OrderShippedFinalReminderToSell_shippingDeadline]]
-        </mj-text>
+        <mj-raw>
+          [[#if shippingDeadline]]
+        </mj-raw>
+          <mj-text padding-top="8px" css-class="rd-section-title" align="center">
+            [[tags.OrderShippedFinalReminderToSell_shippingDeadline]]
+          </mj-text>
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[tags.OrderShippedFinalReminderToSell_finalRemeber]]
         </mj-text>
