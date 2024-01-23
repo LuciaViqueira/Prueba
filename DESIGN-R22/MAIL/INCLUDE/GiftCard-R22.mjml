@@ -28,7 +28,7 @@
                                 [[#ifb (compare dateType "==" "TIMESTAMP")]] 
                                     [[#epoch this.giftCard.shippingDate.timestamp]][[/epoch]]
                                 [[else]]
-                                    [[#epoch this.giftCard.shippingDate.dateIso]][[/epoch]]
+                                    [[epoch this.giftCard.shippingDate.dateIso "ISO8601"]]
                                 [[/ifb]]
                             </div>
                         [[/if]]
