@@ -1,0 +1,65 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showComplaintInfoObservations"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "productTitle"]][[payload.notification.productTitle]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.ProductComplaint_title]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[tags.ProductComplaint_madeComplaint]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[tags.ProductComplaint_userName]]</p>
+          <p>[[tags.ProductComplaint_complaintReason]]</p>
+          <p>[[tags.ProductComplaint_complaintMessage]]</p>
+        </mj-text>
+        <mj-divider padding-top="24px" />
+        <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion 'ListAnotherURL' 3]]" >
+          [[tags.ProductComplaint_viewComplaintProductButtonTxt]]
+        </mj-button>
+       </mj-column>
+    </mj-section>
+
+    <mj-include path="ResellObservations" />
+
+    <mj-section>
+      <mj-column>
+        <mj-divider border-color="#E5E5E5" />
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="ResellFooter" />
+
+  </mj-body>
+</mjml>
