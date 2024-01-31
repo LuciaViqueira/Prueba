@@ -12,7 +12,7 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
-      [[#assign "shippingDeadline"]][[epoch payload.deadlineShippingAt.dateIso "STORE" "LONG" "ISO8601"]][[/assign]]
+      [[#assign "shippingDeadline"]][[epoch payload.deadlineShippingAt.dateIso "STORE" "LONG" true "ISO8601"]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
