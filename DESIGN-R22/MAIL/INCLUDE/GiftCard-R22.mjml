@@ -24,11 +24,12 @@
                         [[/if]]
                         [[#if this.giftCard.shippingDate]]
                             <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]]
-                                [[#if this.giftCard.shippingDate.timestamp]]
+                                [[#assign "dateType"]][[this.giftCard.shippingDate.dateType]][[/assign]]
+                                [[#ifb (compare dateType "==" "TIMESTAMP")]] 
                                     [[#epoch this.giftCard.shippingDate.timestamp true]][[/epoch]]
                                 [[else]]
-                                    [[#epoch this.giftCard.shippingDate.dateIso true]][[/epoch]]
-                                [[/if]]
+                                    [[epoch this.giftCard.shippingDate.dateIso true "ISO8601"]]
+                                [[/ifb]]
                             </div>
                         [[/if]]
                         [[#if this.giftCard.receiverData.phone]]
@@ -37,17 +38,10 @@
                     [[/eq]]
                 </div>
                 <div>
-                    [[#if quantityInOrderItemPrice]]
-                        [[#with this.price]]
-                            [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
-                            1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-                        [[/with]]
-                    [[else]]
-                        [[#with this.giftCard.item.amount]]
-                            [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
-                            1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-                        [[/with]]
-                    [[/if]]     
+                    [[#with this.price]]
+                        [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
+                        1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                    [[/with]]
                 </div>
                 <div>
                     [[#eq this.giftCard.type "VIRTUAL"]] 
