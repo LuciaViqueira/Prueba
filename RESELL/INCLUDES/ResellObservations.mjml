@@ -406,15 +406,14 @@
               </table> 
             </td>
             <td class="rd-section-title">
-              <div>[[tags.Observations_complaintProcess]]</div>
+              <div>[[tags.Observations_nextSteps]]</div>
             </td>                                                                                                                                      
           </tr>
         </mj-table>
         <mj-text padding-bottom="28px" css-class="rd-text-info">
           <ul style="text-transform: uppercase; margin: 0; padding: 0 12px 0 28px;">
-            <li style="padding-bottom: 4px;">[[tags.Observations_customerServiceReceiveComplaint]]</li>
-            <li style="padding-bottom: 4px;">[[tags.Observations_dependingTypeComplaint]]</li>
-            <li>[[tags.Observations_willReceiveAnEmail]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_ourTeamWillReviewIt]]</li>
+            <li>[[tags.Observations_willInformYou]]</li>
           </ul>  
         </mj-text>
     <mj-raw>

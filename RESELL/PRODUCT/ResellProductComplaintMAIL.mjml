@@ -20,11 +20,10 @@
         <mj-text css-class="rd-title" align="center">
           [[tags.ProductComplaint_title]]
         </mj-text>
-        <mj-text padding-top="24px" css-class="rd-text-info">
-          [[tags.ProductComplaint_madeComplaint]]
+        <mj-text padding-top="24px" css-class="rd-text-info" align="center">
+          [[tags.ProductComplaint_thanksForInformingUs]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          <p>[[tags.ProductComplaint_userName]]</p>
           <p>[[tags.ProductComplaint_complaintReason]]</p>
           <p>[[tags.ProductComplaint_complaintMessage]]</p>
         </mj-text>
@@ -37,7 +36,7 @@
             text-transform="uppercase" 
             width="100%"
             href="[[urlResolverWithVersion 'ModifyProductURL' 2]]" >
-          [[tags.ProductComplaint_viewComplaintProductButtonTxt]]
+          [[tags.ProductComplaint_viewReportProductButtonTxt]]
         </mj-button>
        </mj-column>
     </mj-section>
