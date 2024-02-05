@@ -33,9 +33,11 @@
               <p>[[tags.returnRequested_dropOffDescription]]</p>
               <p>[[tags.returnRequested_officeDelivery]]</p>
               <p>[[tags.returnRequested_makeSureText]]</p>
+              <p>[[tags.returnRequested_daysToArriveFromDropToTheWarehouse]]</p>
           [[else]]
             [[#eq payload.returnInformation.type "HOME"]]
                 <p>[[tags.returnRequested_homeDescription]] [[tags.returnRequested_makeSureText]]</p>
+                <p>[[tags.returnRequested_daysToArriveFromHomeToTheWarehouse]]</p>
             [[/eq]]
           [[/eq]]
         </mj-text>
