@@ -24,8 +24,8 @@
           [[tags.ProductComplaint_thanksForInformingUs]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          <p>[[tags.ProductComplaint_complaintReason]]</p>
-          <p>[[tags.ProductComplaint_complaintMessage]]</p>
+          <p>[[tags.ProductComplaint_complaintReason]] [[productTitle]]</p>
+          <p>[[tags.ProductComplaint_complaintMessage]] [[productTitle]]</p>
         </mj-text>
         <mj-divider padding-top="24px" />
         <mj-button css-class="rd-order-detail-btn" 
