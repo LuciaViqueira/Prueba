@@ -26,9 +26,9 @@
                             <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]]
                                 [[#assign "dateType"]][[this.giftCard.shippingDate.dateType]][[/assign]]
                                 [[#ifb (compare dateType "==" "TIMESTAMP")]] 
-                                    [[#epoch this.giftCard.shippingDate.timestamp]][[/epoch]]
+                                    [[#epoch this.giftCard.shippingDate.timestamp true]][[/epoch]]
                                 [[else]]
-                                    [[epoch this.giftCard.shippingDate.dateIso "ISO8601"]]
+                                    [[epoch this.giftCard.shippingDate.dateIso true "ISO8601"]]
                                 [[/ifb]]
                             </div>
                         [[/if]]

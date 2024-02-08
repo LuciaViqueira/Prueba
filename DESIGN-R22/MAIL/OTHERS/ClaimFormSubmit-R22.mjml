@@ -17,7 +17,7 @@
         </mj-text>
         <mj-text css-class="rd-text-info">
           <p>[[company_address]]</p>
-          <p><span style="font-weight: bold;">[[tags.claimFormSubmit_date]]</span> [[epoch claim_date "yyyy-MM-dd HH:mm:ss" "America/Lima"]]</p>
+          <p><span style="font-weight: bold;">[[tags.claimFormSubmit_date]]</span> [[epoch claim_date "yyyy-MM-dd HH:mm:ss" true]]</p>
           <p><span style="font-weight: bold;">[[tags.claimFormSubmit_claimNumber]]</span> [[claim_number]]</p>
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title">
