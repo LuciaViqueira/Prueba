@@ -12,6 +12,7 @@
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
+      [[#assign "shippingDeadline"]][[epoch payload.deadlineShippingAt.dateIso "STORE" "LONG" true "ISO8601"]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -21,6 +22,15 @@
         <mj-text css-class="rd-title" align="center">
           [[tags.OrderShippedReminderToSeller_title]]
         </mj-text>
+        <mj-raw>
+          [[#if shippingDeadline]]
+        </mj-raw>
+          <mj-text padding-top="8px" css-class="rd-section-title" align="center">
+            [[tags.OrderShippedReminderToSeller_shippingDeadline]]
+          </mj-text>
+        <mj-raw>
+          [[/if]]
+        </mj-raw>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[tags.OrderShippedReminderToSeller_recommendToShip]]
         </mj-text>
