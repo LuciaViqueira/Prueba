@@ -63,11 +63,13 @@
                           <img src="cid:[[payload.notification.attachments.[1].fileName]]" style="width:150px; height:auto;" />
                         </td>
                       </tr>
-                      <tr>
-                        <td style="padding: 20px 0 20px; width:207px">
-                            <img padding="0" class="rd-product-img" max-width="207px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/templates/logo_inditex.svg" style="width:100%; max-width:207px ;height:auto;" />
-                        </td>
-                      </tr>
+                      [[#ifb (orb (compare storeLegacyValue "==" "11702") (compare storeLegacyValue "==" "11703") (compare storeLegacyValue "==" "11759") (compare storeLegacyValue "==" "11737") (compare storeLegacyValue "==" "11705") (compare storeLegacyValue "==" "11706") (compare storeLegacyValue "==" "10701") (compare storeLegacyValue "==" "11707") (compare storeLegacyValue "==" "11708") (compare storeLegacyValue "==" "11709") (compare storeLegacyValue "==" "11743") (compare storeLegacyValue "==" "11710") (compare storeLegacyValue "==" "10704") (compare storeLegacyValue "==" "11711") (compare storeLegacyValue "==" "11724") (compare storeLegacyValue "==" "10702") (compare storeLegacyValue "==" "11726") (compare storeLegacyValue "==" "11729"))]]
+                        <tr>
+                          <td style="padding: 20px 0 20px; width:207px">
+                              <img padding="0" class="rd-product-img" max-width="207px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/templates/logo_inditex.svg" style="width:100%; max-width:207px ;height:auto;" />
+                          </td>
+                        </tr>
+                      [[/ifb]]
                     </table>
                     <div style="font-size:12px !important; color: #666666; padding-top: 10px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
                     <div style="font-size:12px !important; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
