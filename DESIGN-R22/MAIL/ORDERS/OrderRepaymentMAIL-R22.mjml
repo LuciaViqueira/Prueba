@@ -45,7 +45,9 @@
           [[def "secondaryCurrency" (convertBetweenCurrencies lookupPrueba price 'HRK')]] 
           <p>secondaryCurrency: [[secondaryCurrency]]</p>
           <p>secondaryCurrency2: [[convertBetweenCurrencies payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates.HRK payload.notification.orders.[0].suborders.[0].orderItems.[0].price "HRK"]]</p>
-          <p>secondaryCurrency.Amount.value: [[secondaryCurrency.Amount.value]]</p>
+          
+          <p>secondaryCurrencyLookup: [[lookup secondaryCurrency "Amount"]]</p>
+          <p>secondaryCurrency.value: [[secondaryCurrency.value]]</p>
           <p>Valor final: [[currency secondaryCurrency.Amount.value secondaryCurrency.Amount.exponent secondaryCurrency.Amount.currency secondaryCurrency.Amount.humanReadableText]]</p>
         </mj-text>
 

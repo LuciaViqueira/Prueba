@@ -74,7 +74,14 @@
                 [[/eq]]
               [[/if]]
               [[def "objPayment" (conversionRate this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText)]]
-              <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]][[#ifb (compare objPayment.converted_amounts "!=" "")]][[#each objPayment.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
+              [[#if showDoubleCurrencyInVenezuela]]
+                <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]] / [[convertBetweenCurrencies this.priceDetails.conversionRates.HRK this.price 'HRK']]</div>
+
+                  [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                  / [[obj.main_amount]] / [[convertBetweenCurrencies this.priceDetails.conversionRates.HRK this.price 'VEF']]
+              [[else]]
+                  <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]][[#ifb (compare objPayment.converted_amounts "!=" "")]][[#each objPayment.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
+              [[/if]]
             </td>                                                                                                                                 
           </tr>
         </mj-table>
