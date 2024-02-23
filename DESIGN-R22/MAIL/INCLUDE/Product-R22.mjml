@@ -34,11 +34,9 @@
                                 [[tags.OrderItemList_multipleUnitsText]]
                             [[/neq]]
                             [[#not showOnlyUnits]]
-                                prueba: [[this.priceDetails.conversionRates.HRK]]
                                 [[#if showDoubleCurrencyInVenezuela]]
                                     [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
-                                    [[def "secondaryCurrency" (convertBetweenCurrencies this.priceDetails.conversionRates.HRK this.price 'HRK')]] 
-                                    / [[obj.main_amount]] / [[secondaryCurrency]]    
+                                    / [[obj.main_amount]] / [[convertBetweenCurrencies this.priceDetails.conversionRates.HRK this.price 'HRK']]  estamos en venezuela
                                 [[else]]
                                     [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
                                     / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
