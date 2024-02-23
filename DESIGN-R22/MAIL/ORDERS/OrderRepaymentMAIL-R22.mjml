@@ -31,6 +31,23 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderRepaymentMAIL_orderNumberText]]
         </mj-text>
+
+        <mj-text padding-top="24px" css-class="rd-text-info">
+  
+          [[def "price" payload.notification.orders.[0].suborders.[0].orderItems.[0].price]]
+          <p>price: [[price]]</p>
+
+          [[def "lookupPrueba" (lookup payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates "HRK")]]
+          <p>lookupPrueba: [[lookupPrueba]]</p> 
+
+          <p>Sin lookUp: [[payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates.HRK]]</p>
+
+          [[def "secondaryCurrency" (convertBetweenCurrencies lookupPrueba price 'HRK')]] 
+          <p>secondaryCurrency: [[secondaryCurrency]]</p>
+          <p>secondaryCurrency2: [[convertBetweenCurrencies payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates.HRK payload.notification.orders.[0].suborders.[0].orderItems.[0].price "HRK"]]</p>
+        </mj-text>
+
+
         <mj-text padding-top="24px" css-class="rd-text-info">
           <p>[[tags.OrderRepaymentMAIL_paymentNotProcessCorrectly]]</p> 
         </mj-text>
