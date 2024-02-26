@@ -38,10 +38,13 @@
                     [[/eq]]
                 </div>
                 <div>
-                    [[#with this.price]]
-                        [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
+                    [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                    [[#if showDoubleCurrencyInVenezuela]]
+                        [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VED this.price 'VED')]]
+                        1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]] / [[secondaryCurrency.humanReadableText]]
+                    [[else]]
                         1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-                    [[/with]]
+                    [[/if]]
                 </div>
                 <div>
                     [[#eq this.giftCard.type "VIRTUAL"]] 

@@ -20,6 +20,7 @@
       [[#eq storeLegacyValue  "11768"]]
         [[#assign "showDoubleCurrencyInVenezuela"]]true[[/assign]]
       [[/eq]]
+      [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -34,21 +35,20 @@
 
         <mj-text padding-top="24px" css-class="rd-text-info">
   
-          [[def "price" payload.notification.orders.[0].suborders.[0].orderItems.[0].price]]
-          <p>price: [[price]]</p>
+          [[def "priceHRK" payload.notification.orders.[0].suborders.[0].orderItems.[0].price]]
+          <p>priceHRK: [[priceHRK]]</p>
 
-          [[def "lookupPrueba" (lookup payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates "HRK")]]
-          <p>lookupPrueba: [[lookupPrueba]]</p> 
+          [[def "convertBetweenCurrenciesHRK" (convertBetweenCurrencies conversionRates.HRK priceHRK 'HRK')]]
+          <p>convertBetweenCurrenciesHRK : [[convertBetweenCurrencies conversionRates.HRK priceHRK 'HRK']]</p>
+          <p>convertBetweenCurrenciesHRK.humanReadableText : [[convertBetweenCurrenciesHRK.humanReadableText]]</p>
 
-          <p>Sin lookUp: [[payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates.HRK]]</p>
+          [[def "priceUSD" payload.notification.orders.[0].suborders.[0].orderItems.[1].price]]
+          <p>priceUSD: [[priceUSD]]</p>
 
-          [[def "secondaryCurrency" (convertBetweenCurrencies lookupPrueba price 'HRK')]] 
-          <p>secondaryCurrency: [[secondaryCurrency]]</p>
-          <p>secondaryCurrency2: [[convertBetweenCurrencies payload.notification.orders.[0].suborders.[0].orderItems.[0].priceDetails.conversionRates.HRK payload.notification.orders.[0].suborders.[0].orderItems.[0].price "HRK"]]</p>
-          
-          <p>secondaryCurrencyLookup: [[lookup secondaryCurrency "Amount"]]</p>
-          <p>secondaryCurrency.value: [[secondaryCurrency.value]]</p>
-          <p>Valor final: [[currency secondaryCurrency.Amount.value secondaryCurrency.Amount.exponent secondaryCurrency.Amount.currency secondaryCurrency.Amount.humanReadableText]]</p>
+          [[def "convertBetweenCurrenciesVED" (convertBetweenCurrencies conversionRates.VED priceUSD 'VED')]]
+          <p>convertBetweenCurrenciesVED : [[convertBetweenCurrencies conversionRates.VED priceUSD 'VED']]</p>
+          <p>convertBetweenCurrenciesVED.humanReadableText : [[convertBetweenCurrenciesVED.humanReadableText]]</p>
+        
         </mj-text>
 
 
