@@ -114,12 +114,7 @@
               [[tags.Payment_multipleItemText]] 
             [[/neq]]
           </td>
-          [[#if showDoubleCurrencyInVenezuela]]
-            [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VED this.productsPrice 'VED')]]
-            <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
-          [[else]]
-            <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
-          [[/if]]
+          <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
         </tr>
         [[#if this.shippingPrice]]
           <tr class="rd-light-font">
@@ -166,13 +161,21 @@
           <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
         [[/if]]      
       </tr>
-      [[#ifb (compare obj.converted_amounts "!=" "")]] 
+      [[#if showDoubleCurrencyInVenezuela]]
         <tr>
           <td colspan="2" class="rd-payment-include-tax-label-right">
-            <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]] </span>
+            <span>* 1 USD = [[secondaryCurrency.reference]]</span>
           </td>
         </tr>
-      [[/ifb]]
+      [[else]]
+        [[#ifb (compare obj.converted_amounts "!=" "")]] 
+          <tr>
+            <td colspan="2" class="rd-payment-include-tax-label-right">
+              <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
+            </td>
+          </tr>
+        [[/ifb]]
+      [[/if]]
       <tr>
         <td colspan="2">
           <span class="rd-payment-include-tax-label-left">*[[tags.Payment_includeTaxText]]</span>
