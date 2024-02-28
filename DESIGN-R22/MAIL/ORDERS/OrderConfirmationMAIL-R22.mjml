@@ -48,25 +48,6 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderConfirmationMAIL_orderNumberText]]
         </mj-text>
-
-        <mj-text padding-top="24px" css-class="rd-text-info">
-  
-          [[def "priceHRK" payload.orders.[0].suborders.[0].orderItems.[0].price]]
-          <p>priceHRK: [[priceHRK]]</p>
-
-          [[def "convertBetweenCurrenciesHRK" (convertBetweenCurrencies conversionRates.HRK priceHRK 'HRK')]]
-          <p>convertBetweenCurrenciesHRK : [[convertBetweenCurrencies conversionRates.HRK priceHRK 'HRK']]</p>
-          <p>convertBetweenCurrenciesHRK.humanReadableText : [[convertBetweenCurrenciesHRK.humanReadableText]]</p>
-
-          [[def "priceUSD" payload.orders.[0].suborders.[0].orderItems.[1].price]]
-          <p>priceUSD: [[priceUSD]]</p>
-
-          [[def "convertBetweenCurrenciesVED" (convertBetweenCurrencies conversionRates.VED priceUSD 'VED')]]
-          <p>convertBetweenCurrenciesVED : [[convertBetweenCurrencies conversionRates.VED priceUSD 'VED']]</p>
-          <p>convertBetweenCurrenciesVED.humanReadableText : [[convertBetweenCurrenciesVED.humanReadableText]]</p>
-        
-        </mj-text>
-
         <mj-raw>
           [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
           [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]

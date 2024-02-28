@@ -32,34 +32,6 @@
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
             [[tags.OrderRepaymentMAIL_orderNumberText]]
         </mj-text>
-
-        <mj-text padding-top="24px" css-class="rd-text-info">
-          [[def "priceUSD" payload.notification.orders.[0].suborders.[0].orderItems.[0].price]]
-          <p>priceUSD: [[priceUSD]]</p>
-
-          [[def "convertBetweenCurrenciesVED" (convertBetweenCurrencies conversionRates.VED priceUSD 'VED')]]
-          <p>conversionRates.VED: [[conversionRates.VED]]</p>
-          <p>convertBetweenCurrenciesVED : [[convertBetweenCurrenciesVED]]</p>
-          <p>convertBetweenCurrenciesVED.humanReadableText : [[convertBetweenCurrenciesVED.humanReadableText]]</p>
-        
-        </mj-text>
-        <mj-divider />
-        <mj-text padding-top="24px" css-class="rd-text-info">
-          [[#each conversionRates.VED]]
-            [[#ifb (andb (compare fromCurrencyCode "==" "USD") (compare toCurrencyCode "==" "VED"))]]
-              [[#def "value"]][[this.value]][[/def]]
-              [[#def "exponent"]][[this.exponent]][[/def]]
-                <p>value dentro: [[value]]</p>
-                <p>exponent dentro: [[exponent]]</p>
-                <p>Prueba currency: [[currency this.value this.exponent this.toCurrencyCode]]</p>
-                [[def "obj" (conversionRate this.value this.exponent this.toCurrencyCode)]]
-                <p>Prueba conversionRate: [[obj.main_amount]]</p>
-                
-            [[/ifb]]
-          [[/each]]
-        </mj-text>
-        <mj-divider />
-
         <mj-text padding-top="24px" css-class="rd-text-info">
           <p>[[tags.OrderRepaymentMAIL_paymentNotProcessCorrectly]]</p> 
         </mj-text>
