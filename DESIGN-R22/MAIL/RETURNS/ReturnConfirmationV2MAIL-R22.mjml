@@ -20,6 +20,10 @@
       [[#assign "orderNumItems"]][[payload.returnInformation.orders.[0].numItems]][[/assign]]
       [[def "isSplitted" payload.returnInformation.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
+      [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -59,9 +63,15 @@
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
           [[#if skuReturnShippingCosts]]
-            [[#def "returnShippingCosts"]][[def "obj" (conversionRate payload.paymentBreakdown.shippingPrice.value payload.paymentBreakdown.shippingPrice.exponent payload.paymentBreakdown.shippingPrice.currency payload.paymentBreakdown.shippingPrice.humanReadableText)]]
-                    [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-            [[/def]]
+            [[#if showAmountWithCurrencyHelper]]
+              [[#def "returnShippingCosts"]]
+                [[currency payload.paymentBreakdown.shippingPrice.value payload.paymentBreakdown.shippingPrice.exponent payload.paymentBreakdown.shippingPrice.currency payload.paymentBreakdown.shippingPrice.humanReadableText]]
+              [[/def]]
+            [[else]]
+              [[#def "returnShippingCosts"]][[def "obj" (conversionRate payload.paymentBreakdown.shippingPrice.value payload.paymentBreakdown.shippingPrice.exponent payload.paymentBreakdown.shippingPrice.currency payload.paymentBreakdown.shippingPrice.humanReadableText)]]
+                [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+              [[/def]]
+            [[/if]]
             <p>[[tags.ReturnConfirmationV2MAIL_textReturnShippingCosts]]</p>
           [[/if]]
           [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]

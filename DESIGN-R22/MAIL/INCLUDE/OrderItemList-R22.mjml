@@ -33,7 +33,7 @@
       </mj-text>
     <mj-raw>
       [[/if]]
-      [[#if showExchangeRate]]
+      [[#ifb (andb showExchangeRate (notb showAmountWithCurrencyHelper))]]
     </mj-raw>
       <mj-text css-class="rd-subsection-text" padding-top="4px">
         <div class="rd-light-font"> 
@@ -44,7 +44,7 @@
         </div>   
       </mj-text>
     <mj-raw> 
-      [[/if]]
+      [[/ifb]]
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
         [[#neq ordersSize "1"]]

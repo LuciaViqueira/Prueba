@@ -18,7 +18,7 @@
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11768"]]
-        [[#assign "showDoubleCurrencyInVenezuela"]]true[[/assign]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
       [[/eq]]
       [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
     </mj-raw>

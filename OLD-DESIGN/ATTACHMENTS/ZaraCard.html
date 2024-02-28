@@ -99,9 +99,16 @@
                 <hr class="hrClass">
             </div>
             [[#assign "storeLegacyValue"]][[payload.returnInformation.store.identifier.legacyValue]][[/assign]]
+            [[#eq storeLegacyValue  "11768"]]
+                [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+            [[/eq]]
             <table style="padding: 30px 0 0; width: 50%;">
                 <tr>
-                    <td class="alignLeft font10px uppercase"><b>[[tags.ResendZaraCard_amount]]</b> [[def "obj" (conversionRate payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.value payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.exponent payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.currency payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.humanReadableText)]][[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>   
+                    [[#if showAmountWithCurrencyHelper]]
+                        <td class="alignLeft font10px uppercase"><b>[[tags.ResendZaraCard_amount]]</b> [[currency payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.value payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.exponent payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.currency payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.humanReadableText]]</td>   
+                    [[else]]
+                        <td class="alignLeft font10px uppercase"><b>[[tags.ResendZaraCard_amount]]</b> [[def "obj" (conversionRate payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.value payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.exponent payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.currency payload.returnInformation.refunds.[0].payments.[0].paymentDetails.[0].balance.humanReadableText)]][[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>   
+                    [[/if]]
                 </tr>
                 [[#eq storeLegacyValue  "11737"]]
                     <tr>
