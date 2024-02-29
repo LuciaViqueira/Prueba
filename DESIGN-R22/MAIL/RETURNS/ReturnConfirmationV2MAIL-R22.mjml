@@ -22,6 +22,7 @@
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11768"]]
         [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+        [[#assign "notShowDoubleCurrency"]]true[[/assign]]
       [[/eq]]
       [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
     </mj-raw>
