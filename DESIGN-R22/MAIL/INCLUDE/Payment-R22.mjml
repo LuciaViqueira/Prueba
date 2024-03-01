@@ -152,7 +152,7 @@
           [[#if notShowDoubleCurrency]]
             <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]]</td>
           [[else]]
-            [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VED this.total 'VED')]]
+            [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES')]]
             <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
           [[/if]]
         [[else]]
