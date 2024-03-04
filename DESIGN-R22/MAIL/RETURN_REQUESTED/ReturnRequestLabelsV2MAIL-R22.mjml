@@ -1,0 +1,52 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Global Variables -->
+    <mj-raw>
+      [[def "orderIdsList" (extractDistinct payload.notification.returns.[0].returnItems "orderId")]]
+      [[#assign "orderIdsListSize"]][[#size orderIdsList]][[/size]][[/assign]]
+      [[#assign "returnId"]][[payload.notification.returns.[0].uuid]][[/assign]]
+      [[#assign "returnsUrl"]][[urlResolverWithVersion 'ReturnRequestsDetailURL' 1]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.ReturnRequestLabelsV2MAIL_Title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+            [[#eq orderIdsListSize "1"]]
+                [[tags.ReturnRequestLabelsV2MAIL_orderNumberText]]
+            [[/eq]]
+            [[#neq orderIdsListSize "1"]]
+                [[tags.ReturnRequestLabelsV2MAIL_multiOrderNumberText]]
+            [[/neq]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+            <p>[[tags.ReturnRequestLabelsV2MAIL_warningText]]</p>
+            [[#neq orderIdsListSize "1"]]
+                <p>[[tags.ReturnRequestLabelsV2MAIL_multiOrderTextMin]]</p>
+            [[/neq]]
+            <p>[[tags.ReturnRequestLabelsV2MAIL_rememberAvailable]]</p>
+            <p>[[tags.ReturnRequestLabelsV2MAIL_labelTextMin]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>
