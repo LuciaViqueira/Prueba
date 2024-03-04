@@ -101,7 +101,18 @@
                     [[#assign "minDeliveryDate"]][[this.deliveryDate.minDeliveryDate.dateIso]][[/assign]]
                     [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
                   [[/ifb]]
-                  [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                  [[#if isFastSint]] 
+                    [[def "obj" (formatDateISO minDeliveryDate minDeliveryDate)]]
+                    [[def "deliveryDate" (readableDate obj.min_date obj.min_date dateType false)]]
+                    [[def "deliveryHour" obj.min_time]]
+                    [[tags.shipping_fastSintDate]]
+
+                    <p>obj: [[obj]]</p>
+                    <p>deliveryDate: [[deliveryDate]]</p>
+                    <p>deliveryHour: [[deliveryHour]]</p>
+                  [[else]]
+                    [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                  [[/if]]
                   [[#if order.isSplitted]]
                     [[#ifb (andb this.shipping.amount showShippingCharges)]]
                       <div style="font-weight: normal">
