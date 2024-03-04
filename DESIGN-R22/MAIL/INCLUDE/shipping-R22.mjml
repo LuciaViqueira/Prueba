@@ -101,15 +101,11 @@
                     [[#assign "minDeliveryDate"]][[this.deliveryDate.minDeliveryDate.dateIso]][[/assign]]
                     [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
                   [[/ifb]]
-                  [[#if isFastSint]] 
+                  [[#if isFastSint]]
                     [[def "obj" (formatDateISO minDeliveryDate minDeliveryDate)]]
-                    [[def "deliveryDate" (readableDate obj.min_date obj.min_date dateType false)]]
+                    [[def "deliveryReadableDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
                     [[def "deliveryHour" obj.min_time]]
                     [[tags.shipping_fastSintDate]]
-
-                    <p>obj: [[obj]]</p>
-                    <p>deliveryDate: [[deliveryDate]]</p>
-                    <p>deliveryHour: [[deliveryHour]]</p>
                   [[else]]
                     [[readableDate minDeliveryDate maxDeliveryDate dateType]]
                   [[/if]]
