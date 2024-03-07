@@ -137,7 +137,7 @@
         </mj-text>
       <mj-raw>
       [[else]]
-        [[#if order.isFastSint]]
+        [[#ifb (andb order.isFastSint (notb (orb pickupTitle notShowFastSintTitle)))]]
       </mj-raw>
           <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
             [[tags.shipping_fastSintTitle]]:
@@ -166,8 +166,7 @@
               <mj-raw>
               [[else]]
                 [[#ifb (not hideInfoTitle)]]
-
-                </mj-raw>
+              </mj-raw>
                   <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
                     [[tags.shipping_title]]:
                   </mj-text>
@@ -176,7 +175,7 @@
               [[/if]]
             [[/if]]
           [[/if]]
-        [[/if]]
+        [[/ifb]]
       [[/if]]
     </mj-raw>
 
