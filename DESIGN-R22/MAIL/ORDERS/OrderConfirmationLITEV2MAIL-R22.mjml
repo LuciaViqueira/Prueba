@@ -25,7 +25,7 @@
         [[#def "urlTemplate"]] https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/user/order/[[orderId]][[/def]]
       [[/if]]
       [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
-      [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
       [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
       [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
