@@ -73,6 +73,25 @@
                         </td>
                       </tr>
                     </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-raw>
+           [[#ifb (orb (compare storeLegacyValue "==" "11702") (compare storeLegacyValue "==" "11703") (compare storeLegacyValue "==" "11759") (compare storeLegacyValue "==" "11737") (compare storeLegacyValue "==" "11705") (compare storeLegacyValue "==" "11706") (compare storeLegacyValue "==" "10701") (compare storeLegacyValue "==" "11707") (compare storeLegacyValue "==" "11708") (compare storeLegacyValue "==" "11709") (compare storeLegacyValue "==" "11743") (compare storeLegacyValue "==" "11710") (compare storeLegacyValue "==" "10704") (compare storeLegacyValue "==" "11711") (compare storeLegacyValue "==" "11724") (compare storeLegacyValue "==" "10702") (compare storeLegacyValue "==" "11726") (compare storeLegacyValue "==" "11729"))]]
+        </mj-raw>     
+            <mj-image width="207px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/templates/logo-inditex.png" padding-top="20px" padding-bottom="20px"/>
+        <mj-raw>
+          [[/ifb]]
+        </mj-raw>
+        <mj-table padding="12px 0 0" table-layout="fixed">
+          <tr>
+            <td>
+              <table>  
+                <tr>
+                  <td style="padding: 0;" class="rd-subsection-text-notUppercase">
                     <div style="font-size:12px !important; color: #666666; padding-top: 10px;">[[tags.VirtualGiftCardMAIL_legalText1]]</div><br/>
                     <div style="font-size:12px !important; color: #666666;">[[tags.VirtualGiftCardMAIL_legalText2]]</div>
                   </td>

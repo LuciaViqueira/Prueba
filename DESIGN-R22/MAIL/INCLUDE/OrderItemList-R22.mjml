@@ -47,6 +47,7 @@
       [[/ifb]]
       [[#assign "ordersSize"]][[#size this.orders]][[/size]][[/assign]]
       [[#each this.orders]]
+        [[#assign "orderId"]][[this.identifier]][[/assign]]
         [[#neq ordersSize "1"]]
     </mj-raw>
           <mj-text padding-top="8px" css-class="rd-subsection-text">
@@ -102,7 +103,7 @@
             <tr>
               <td>
                 <table table-layout="fixed">
-                  [[def "isCustomTrue" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == true && @.giftCard == null)]") ]]
+                  [[def "isCustomTrue" (stringFormat "$..orders[?(@.identifier == '%s')].suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" orderId suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == true && @.giftCard == null)]") ]]                 
                   [[def "itemsEdited" (jsonPath isCustomTrue "MULTI_VALUE")]]
                   [[#each itemsEdited]]
                     <tr class="rd-product-row">
@@ -111,7 +112,7 @@
                   [[/each]]
                 </table>
                 <table table-layout="fixed">
-                  [[def "isCustomFalse" (stringFormat "$..suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == false || @.giftCard != null)]") ]]
+                  [[def "isCustomFalse" (stringFormat "$..orders[?(@.identifier == '%s')].suborders[?(@.uuid.uuid == '%s' || @.uuid == '%s' || @.suborderId == '%s'%s" orderId suborderIdentifier suborderIdentifier suborderIdentifier ")].orderItems[?(@.isCustom == false || @.giftCard != null)]") ]]
                   [[def "itemsNotEdited" (jsonPath isCustomFalse "MULTI_VALUE")]]
                   [[def "orderItemsMatrix" (matrix itemsNotEdited 2)]]
                   [[#each orderItemsMatrix]]
