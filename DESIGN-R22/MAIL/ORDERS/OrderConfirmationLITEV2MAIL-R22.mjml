@@ -47,6 +47,7 @@
       [[#eq storeLegacyValue  "11768"]]
         [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
       [[/eq]]
+      [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-raw>
