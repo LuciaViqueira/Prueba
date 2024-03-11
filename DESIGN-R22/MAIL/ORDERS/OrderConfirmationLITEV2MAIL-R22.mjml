@@ -254,7 +254,7 @@
                       <tr class="rd-payment-total rd-black-font">
                         <td>[[tags.Payment_totalAmountText]]</td>
                         [[#if showAmountWithCurrencyHelper]]
-                          [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES')]]
+                          [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES' 5)]]
                           <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
                         [[else]]
                           [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol)]]
@@ -548,7 +548,7 @@
                     <tr class="rd-payment-total rd-black-font">
                       <td>[[tags.Payment_totalAmountText]]</td>
                       [[#if showAmountWithCurrencyHelper]]
-                        [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES')]]
+                        [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES' 5)]]
                         <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
                       [[else]]
                         [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol)]]
