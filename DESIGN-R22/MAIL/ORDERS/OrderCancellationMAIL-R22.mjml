@@ -11,7 +11,8 @@
     <!-- Global variables -->
     <mj-raw>
       [[#assign "paymentMethodId"]][[payload.orderCancellation.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
-      [[#assign "isSplitted"]][[payload.orderCancellation.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.orderCancellation.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orderCancellation.orders.[0].isFastSint]]
       [[#assign "storeLegacyValue"]][[payload.orderCancellation.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -44,7 +45,11 @@
               [[else]]
                 [[#eq payload.orderCancellation.cancellationReason "STOCK_OUT"]]
                     <p>[[tags.OrderCancellationMAIL_helloText]]</p>
-                    <p>[[tags.OrderCancellationMAIL_apologyText1Min]]</p>
+                    [[#if isFastSint]]
+                      <p>[[tags.OrderCancellationMAIL_apologyText1FastSint]]</p>
+                    [[else]]
+                      <p>[[tags.OrderCancellationMAIL_apologyText1Min]]</p>
+                    [[/if]]
                     [[#eq paymentMethodId "1012"]]
                       <p>[[tags.OrderCancellationMAIL_goToStoreForRefund]]</p>
                     [[else]]

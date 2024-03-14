@@ -7,7 +7,7 @@
     <!-- Global Variables -->
     <mj-raw>
       [[#assign "orderIdsNumber"]]0[[/assign]]
-      [[#assign "returnsUrl"]]https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[payload.returnRequestDocumentsEntity.returnRequestIdentifier.identifier]][[/assign]]
+      [[#assign "returnsUrl"]]https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[payload.returnEntity.request.identifier]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
