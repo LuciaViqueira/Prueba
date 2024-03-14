@@ -13,6 +13,7 @@
       [[#assign "showShippingCharges"]]true[[/assign]]
       [[#assign "existsUuidUuid"]]true[[/assign]]
       [[#assign "deliveryPlanFallback"]]true[[/assign]]
+      [[#assign "notShowFastSintTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
@@ -25,7 +26,8 @@
         [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
         [[def "urlTemplateVersion" 5]]
       [[/if]]
-      [[#assign "isSplitted"]] [[payload.orders.[0].isSplitted]] [[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orders.[0].isFastSint]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#assign "utmMedium"]]email[[/assign]]
       [[#assign "utmSource"]]notification_com[[/assign]]
@@ -72,7 +74,11 @@
               [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
                 <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
               [[/ifb]]
-              <p>[[tags.OrderConfirmationMAIL_notice]]</p>
+              [[#ifb (andb isFastSint (compare shippingType "==" "STORE"))]]
+                <p>[[tags.OrderConfirmationMAIL_noticeFastSint]]</p>
+              [[else]]
+                <p>[[tags.OrderConfirmationMAIL_notice]]</p>
+              [[/ifb]]
               [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
                 [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
               [[/ifb]]

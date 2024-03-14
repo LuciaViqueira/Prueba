@@ -1,5 +1,5 @@
- <mj-text css-class="rd-subsection-text">
-    [[#eq shipping.mode "STORE"]]
+<mj-text css-class="rd-subsection-text">
+    [[#eq shippingAddress.mode "STORE"]]
         [[#if this.receiver.name]]
             [[this.receiver.name]]
         [[/if]]
