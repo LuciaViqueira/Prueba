@@ -23,7 +23,14 @@
                             <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
                         [[/if]]
                         [[#if this.giftCard.shippingDate]]
-                            <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]] [[#epoch this.giftCard.shippingDate.timestamp]] [[/epoch]]</div>
+                            <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]]
+                                [[#assign "dateType"]][[this.giftCard.shippingDate.dateType]][[/assign]]
+                                [[#ifb (compare dateType "==" "TIMESTAMP")]] 
+                                    [[#epoch this.giftCard.shippingDate.timestamp true]][[/epoch]]
+                                [[else]]
+                                    [[epoch this.giftCard.shippingDate.dateIso true "ISO8601"]]
+                                [[/ifb]]
+                            </div>
                         [[/if]]
                         [[#if this.giftCard.receiverData.phone]]
                             <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
@@ -31,7 +38,7 @@
                     [[/eq]]
                 </div>
                 <div>
-                    [[#with this.giftCard.item.amount]]
+                    [[#with this.price]]
                         [[def "obj" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
                         1 [[tags.OrderItemList_singleUnitText]] / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
                     [[/with]]

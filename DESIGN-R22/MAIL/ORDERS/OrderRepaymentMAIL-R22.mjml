@@ -15,7 +15,7 @@
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
       [[#assign "hours"]][[payload.paymentLink.expiredAt]][[/assign]]
-      [[#assign "isSplitted"]][[payload.notification.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
@@ -46,7 +46,7 @@
 
     <mj-raw>
       [[#with payload.notification.orders.[0] as | order |]]
-        [[#with order.suborders.[0].shipping as | shippingAddress |]]
+        [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
     </mj-raw>
     <mj-include path="shippingV2-R22" />
     <mj-raw>

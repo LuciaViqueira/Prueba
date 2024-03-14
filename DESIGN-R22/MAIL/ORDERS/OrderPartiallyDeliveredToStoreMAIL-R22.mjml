@@ -12,6 +12,7 @@
     <mj-raw>
       [[#assign "orderId"]][[payload.notification.orders.[0].identifier]][[/assign]]
       [[def "isSplitted" payload.notification.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.notification.orders.[0].isFastSint]]
       [[#assign "numDeliveriesCompleted"]][[payload.numDeliveriesCompleted]][[/assign]]
       [[#assign "numSuborders"]][[payload.notification.orders.[0].numSuborders]][[/assign]]
       [[#assign "numBoxes"]][[payload.notification.orders.[0].suborders.[0].shipping.numBoxes]][[/assign]]
@@ -30,7 +31,12 @@
       <mj-column>
         <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
         <mj-text css-class="rd-title" align="center">
-          [[tags.OrderPartiallyDeliveredToStoreMAIL_titleSplitted]]
+          
+          [[#if isFastSint]]
+            [[tags.OrderPartiallyDeliveredToStoreMAIL_fastSintTitle]]
+          [[else]]
+            [[tags.OrderPartiallyDeliveredToStoreMAIL_titleSplitted]]
+          [[/if]]
         </mj-text>
         <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
           [[#if payload.notification.orders.[0].suborders.[0].uuid]]
