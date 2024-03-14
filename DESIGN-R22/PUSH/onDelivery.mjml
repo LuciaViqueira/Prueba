@@ -1,10 +1,10 @@
 { 
     "imageUrl":"", 
-    "linkUrl":"[[#assign \"orderId\"]][[payload.order.identifier]][[/assign]]
-        [[#if payload.order.suborders.[0].uuid]]
-            [[#assign \"suborderIdNotSub8\"]][[payload.order.suborders.[0].uuid]][[/assign]]
+    "linkUrl":"[[#assign \"orderId\"]][[payload.notification.orders.[0].identifier]][[/assign]]
+        [[#if payload.notification.orders.[0].suborders.[0].uuid]]
+            [[#assign \"suborderIdNotSub8\"]][[payload.notification.orders.[0].suborders.[0].uuid]][[/assign]]
         [[else]]
-            [[#assign \"suborderIdNotSub8\"]][[payload.order.suborders.[0].suborderId]][[/assign]]
+            [[#assign \"suborderIdNotSub8\"]][[payload.notification.orders.[0].suborders.[0].suborderId]][[/assign]]
         [[/if]]
         [[def \"size\" 8]][[#def \"uuidSize\"]][[size suborderIdNotSub8]][[\/def]]
         [[#ifb (compare uuidSize \">\" size)]]
@@ -13,14 +13,14 @@
         [[else]]
             [[def \"suborderId\" suborderIdNotSub8]]
         [[\/ifb]]
-        [[#if payload.user.isGuest]]
-            [[#assign \"accountToken\"]][[payload.user.accountToken]][[/assign]]
+        [[#if payload.notification.user.isGuest]]
+            [[#assign \"accountToken\"]][[payload.notification.user.accountToken]][[/assign]]
             [[urlResolverWithVersion 'OrderDetailGuestURL' 2]]
         [[else]]
             [[urlResolverWithVersion 'OrderDetailURL' 5]]
         [[/if]]", 
     "template":"
-        [[#if payload.order.isSplitted]]
+        [[#if payload.notification.orders.[0].isSplitted]]
             [[tags.onDeliverySplittedPush]]
         [[else]]
             [[tags.onDeliveryPush]]
