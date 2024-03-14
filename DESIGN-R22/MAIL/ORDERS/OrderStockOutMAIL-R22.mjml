@@ -20,7 +20,8 @@
         [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
         [[def "urlTemplateVersion" 5]]
       [[/if]]
-      [[#assign "isSplitted"]][[payload.orders.[0].isSplitted]][[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orders.[0].isFastSint]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11768"]]
         [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
@@ -37,7 +38,11 @@
           [[tags.OrderStockOutMAIL_orderNumberText]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
-          <p>[[tags.OrderStockOutMAIL_apologyText1]]</p>
+          [[#if isFastSint]]
+            <p>[[tags.OrderStockOutMAIL_apologyText1FastSint]]</p>
+          [[else]]
+            <p>[[tags.OrderStockOutMAIL_apologyText1]]</p>
+          [[/if]]
           [[#eq paymentMethodId "1012"]]
             <p>[[tags.OrderStockOutMAIL_goToStoreForRefund]]</p>
           [[else]]

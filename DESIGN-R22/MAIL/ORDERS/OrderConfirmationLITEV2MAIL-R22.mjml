@@ -14,6 +14,7 @@
       [[#assign "existsUuidUuid"]]true[[/assign]]
       [[#assign "showLITELegalFooter"]]true[[/assign]]
       [[#assign "deliveryPlanFallback"]]true[[/assign]]
+      [[#assign "notShowFastSintTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
@@ -26,6 +27,7 @@
       [[/if]]
       [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
       [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orders.[0].isFastSint]]
       [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
       [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
@@ -80,7 +82,11 @@
                 <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>    
               [[else]]
                 [[#ifb (andb (notb isOfflinePayment) (notb isAsyncPayment))]]
+                  [[#ifb (andb isFastSint (compare shippingType "==" "STORE"))]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_noticeFastSint]]</p>
+                  [[else]]
                     <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+                  [[/ifb]]
                 [[/ifb]]  
               [[/eq]]
             </mj-text>
@@ -350,7 +356,11 @@
                     <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>    
                   [[else]]
                     [[#ifb (andb (notb isOfflinePayment) (notb isAsyncPayment))]]
+                      [[#ifb (andb isFastSint (compare shippingType "==" "STORE"))]]
+                        <p>[[tags.OrderConfirmationLITEV2MAIL_noticeFastSint]]</p>
+                      [[else]]
                         <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+                      [[/ifb]]
                     [[/ifb]]
                   [[/eq]]
                   [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]

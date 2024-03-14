@@ -101,7 +101,14 @@
                     [[#assign "minDeliveryDate"]][[this.deliveryDate.minDeliveryDate.dateIso]][[/assign]]
                     [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
                   [[/ifb]]
-                  [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                  [[#if isFastSint]]
+                    [[def "obj" (formatDateISO minDeliveryDate minDeliveryDate)]]
+                    [[def "deliveryReadableDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+                    [[def "deliveryHour" obj.min_time]]
+                    [[tags.shipping_fastSintDate]]
+                  [[else]]
+                    [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                  [[/if]]
                   [[#if order.isSplitted]]
                     [[#ifb (andb this.shipping.amount showShippingCharges)]]
                       <div style="font-weight: normal">
@@ -134,7 +141,7 @@
         </mj-text>
       <mj-raw>
       [[else]]
-        [[#if order.isFastSint]]
+        [[#ifb (andb order.isFastSint (notb (orb pickupTitle notShowFastSintTitle)))]]
       </mj-raw>
           <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
             [[tags.shipping_fastSintTitle]]:
@@ -163,8 +170,7 @@
               <mj-raw>
               [[else]]
                 [[#ifb (not hideInfoTitle)]]
-
-                </mj-raw>
+              </mj-raw>
                   <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
                     [[tags.shipping_title]]:
                   </mj-text>
@@ -173,7 +179,7 @@
               [[/if]]
             [[/if]]
           [[/if]]
-        [[/if]]
+        [[/ifb]]
       [[/if]]
     </mj-raw>
 
