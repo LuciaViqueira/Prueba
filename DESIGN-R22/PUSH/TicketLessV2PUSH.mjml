@@ -1,0 +1,6 @@
+{ 
+    "imageUrl":"", 
+    "linkUrl":"
+            [[payload.ticketless.configuration.channel.push.link]]", 
+    "template":"[[tags.TicketLessV2PUSH_purchaseReturn]]"
+}
