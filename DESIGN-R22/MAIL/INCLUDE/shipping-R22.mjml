@@ -102,7 +102,7 @@
                     [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
                   [[/ifb]]
                   [[#if isFastSint]]
-                    [[def "obj" (formatDateISO minDeliveryDate minDeliveryDate)]]
+                    [[def "obj" (formatDateISO minDeliveryDate minDeliveryDate true)]]
                     [[def "deliveryReadableDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
                     [[def "deliveryHour" obj.min_time]]
                     [[tags.shipping_fastSintDate]]
