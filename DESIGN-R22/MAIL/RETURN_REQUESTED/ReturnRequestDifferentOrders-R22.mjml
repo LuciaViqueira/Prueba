@@ -9,6 +9,10 @@
       [[#assign "returnTitle"]]true[[/assign]]
       [[#assign "showMultiOrderId"]]true[[/assign]]
     </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
       <mj-column>
@@ -35,9 +39,14 @@
           [[/if]] 
           [[#if payload.returnEntity.request.returnCosts.[0]]]
             [[#with payload.returnEntity.request.returnCosts.[0].amount]]
-              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
+              [[#eq storeLegacyValue  "11768"]]
+                [[def "returnCostsAmount" (currency this.value this.exponent this.currency this.humanReadableText)]]
+              [[else]]
+                [[def "objReturnCosts" (conversionRate this.value this.exponent this.currency this.humanReadableText)]]
+                [[#assign "returnCostsAmount"]][[objReturnCosts.main_amount]][[#ifb (compare objReturnCosts.converted_amounts "!=" "")]][[#each objReturnCosts.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]][[/assign]] 
+              [[/eq]]
+              <p>[[tags.returnRequestDifferentOrders_returnCostsText]]</p>
             [[/with]]
-            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
             [[#eq storeLegacyValue  "11737"]]
               <p style="font-size:13px;">*1 EUR = 7.53450 KN</p>
             [[/eq]]
@@ -100,7 +109,6 @@
 
     <!-- Sección 4 footer -->
     <mj-raw>
-      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11727"]]
         [[#assign "hiddenInRussia"]]true[[/assign]]
         [[#assign "hiddenTiktok"]]true[[/assign]]
