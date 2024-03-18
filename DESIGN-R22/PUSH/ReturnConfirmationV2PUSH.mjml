@@ -1,0 +1,18 @@
+{ 
+    "imageUrl":"",
+    "linkUrl":"
+        [[#assign \"returnId\"]][[payload.returnInformation.orders.[0].identifier]][[\/assign]]
+        [[#assign \"utmMedium\"]]push[[\/assign]]
+        [[#assign \"utmSource\"]]notification_com[[\/assign]]
+        [[#assign \"utmCampaign\"]]ReturnConfirmationV2[[\/assign]]
+        [[urlResolverWithVersion 'ReturnDetailURL' 3]]", 
+    "template":"
+        [[#assign \"storeLegacyValue\"]][[payload.store.identifier.legacyValue]][[/assign]]
+        [[#eq storeLegacyValue  \"11768\"]]
+            [[def \"refundsAmount\" (currency payload.returnInformation.refunds.[0].total.value payload.returnInformation.refunds.[0].total.exponent payload.returnInformation.refunds.[0].total.currency payload.returnInformation.refunds.[0].total.humanReadableText)]]
+        [[else]]
+            [[def \'obj\' (conversionRate payload.returnInformation.refunds.[0].total.value payload.returnInformation.refunds.[0].total.exponent payload.returnInformation.refunds.[0].total.currency payload.returnInformation.refunds.[0].total.humanReadableText)]]
+            [[#assign \"refundsAmount\"]][[obj.main_amount]][[#ifb (compare obj.converted_amounts \'!=\' \'\')]][[#each obj.converted_amounts]] \/ [[this.human_readable_amount]][[\/each]][[\/ifb]][[\/assign]]
+        [[\/eq]]
+        [[tags.ReturnConfirmationV2PUSH_text]]"
+}
