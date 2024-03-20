@@ -11,3 +11,45 @@
         [[\/eq]]
         [[tags.TicketLessV2PUSH_text]]"
 }
+
+{
+    "payload": { 
+        "ticketless": {
+            "order": {
+                "suborders": [
+                    {
+                        "shipping": {
+                            "physicalStore": {
+                                "address": {
+                                    "receiver": {
+                                        "name": "ZARA Compostela"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                ]
+            },
+            "amount": {
+                "value": "3500",
+                "currency": "EUR",
+                "exponent": 2,
+                "humanReadableText": ""
+            },
+            "configuration": {
+                "channel": {
+                    "push": {
+                        "link": "www.zara.com"
+                    }
+                }
+            }, 
+            "type":2
+        },
+        "store": {
+            "identifier": {
+                "legacyValue": "11768"
+            }
+        }
+    }
+}
