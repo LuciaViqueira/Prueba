@@ -16,11 +16,9 @@
           [[tags.ReplacementReminderMAIL_title]]
         </mj-text>
         <mj-text padding-top="24px" css-class="rd-text-info">
-          <p>[[tags.ReplacementReminderMAIL_helloText]]</p>
           <p>[[tags.ReplacementReminderMAIL_warningText]]</p>
           <p>[[tags.ReplacementReminderMAIL_gratefulnessText]]</p>
           <p>[[tags.ReplacementReminderMAIL_webRedirect]]</p>
-          <p>[[tags.ReplacementReminderMAIL_byeText]]</p>
         </mj-text>
       </mj-column>
     </mj-section>
