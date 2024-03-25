@@ -53,21 +53,19 @@
                     [[else]]
                       <p>[[tags.OrderCancellationMAIL_apologyText1Min]]</p>
                     [[/if]]
-
-                    [[#eq storeLegacyValue  "11768"]]
-                      [[#eq paymentMethodId "1013"]]
-                        <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
-                      [[else]]
-                        <p>[[tags.OrderCancellationMAIL_willContactYouToGiveUsBankDetails]]</p>
-                      [[/eq]]
+                    [[#eq paymentMethodId "1012"]]
+                      <p>[[tags.OrderCancellationMAIL_goToStoreForRefund]]</p>
                     [[else]]
-                      [[#eq paymentMethodId "1012"]]
-                        <p>[[tags.OrderCancellationMAIL_goToStoreForRefund]]</p>
+                      [[#eq storeLegacyValue  "11768"]]
+                        [[#eq paymentMethodId "1013"]]
+                          <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                        [[else]]
+                          <p>[[tags.OrderCancellationMAIL_willContactYouToGiveUsBankDetails]]</p>
+                        [[/eq]]
                       [[else]]
                         <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
                       [[/eq]]
                     [[/eq]]
-                    
                     <p>[[tags.OrderCancellationMAIL_apologyText3Min]]</p>
                     <p>[[tags.OrderCancellationMAIL_zaraTeamMin]]</p> 
                 [[else]]
