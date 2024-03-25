@@ -7,6 +7,7 @@
     <!-- Template configuration -->
     <mj-raw>
       [[#assign "hideInfoTitle"]]true[[/assign]]
+      [[#assign "notShowFastSintTitle"]]true[[/assign]]
     </mj-raw>
     <!-- Global Variables -->
     <mj-raw>
