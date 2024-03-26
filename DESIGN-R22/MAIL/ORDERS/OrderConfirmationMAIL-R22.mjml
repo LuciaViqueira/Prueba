@@ -35,6 +35,10 @@
       [[#assign "utmContent"]]logo[[/assign]]
       [[#assign "urlTemplateFooter"]]FooterHelpURL[[/assign]]
       [[def "urlTemplateFooterVersion" 5]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
+      [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

@@ -1,6 +1,56 @@
 { 
-    "imageUrl":"", 
-    "linkUrl":"
-            [[payload.ticketless.configuration.channel.push.link]]", 
-    "template":"[[tags.TicketLessV2PUSH_purchaseReturn]]"
+    "imageUrl":"",
+    "linkUrl":"", 
+    "template":"
+        [[#assign \"storeLegacyValue\"]][[payload.ticketless.store.identifier.legacyValue]][[/assign]]
+        [[#eq storeLegacyValue  \"11768\"]]
+            [[def \"ticketlessAmount\" (currency payload.ticketless.amount.value payload.ticketless.amount.exponent payload.ticketless.amount.currency payload.ticketless.amount.humanReadableText)]]
+        [[else]]
+            [[def \'obj\' (conversionRate payload.ticketless.amount.value payload.ticketless.amount.exponent payload.ticketless.amount.currency payload.ticketless.amount.humanReadableText)]]
+            [[#assign \"ticketlessAmount\"]][[obj.main_amount]][[#ifb (compare obj.converted_amounts \'!=\' \'\')]][[#each obj.converted_amounts]] \/ [[this.human_readable_amount]][[\/each]][[\/ifb]][[\/assign]]
+        [[\/eq]]
+        [[tags.TicketLessV2PUSH_text]]"
+}
+
+{
+    "payload": { 
+        "ticketless": {
+            "order": {
+                "suborders": [
+                    {
+                        "shipping": {
+                            "physicalStore": {
+                                "address": {
+                                    "receiver": {
+                                        "name": "ZARA Compostela"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                ]
+            },
+            "store": {
+                "identifier": {
+                    "legacyValue": "11768"
+                }
+            },
+            "amount": {
+                "value": "3500",
+                "currency": "EUR",
+                "exponent": 2,
+                "humanReadableText": ""
+            },
+            "configuration": {
+                "channel": {
+                    "push": {
+                        "link": "www.zara.com"
+                    }
+                }
+            },
+            "landingPage": "https://www.zara.com",
+            "type":2
+        }
+    }
 }

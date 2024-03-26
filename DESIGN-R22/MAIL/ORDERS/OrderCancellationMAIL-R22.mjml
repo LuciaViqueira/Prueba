@@ -14,6 +14,9 @@
       [[def "isSplitted" payload.orderCancellation.orders.[0].isSplitted]]
       [[def "isFastSint" payload.orderCancellation.orders.[0].isFastSint]]
       [[#assign "storeLegacyValue"]][[payload.orderCancellation.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -53,7 +56,15 @@
                     [[#eq paymentMethodId "1012"]]
                       <p>[[tags.OrderCancellationMAIL_goToStoreForRefund]]</p>
                     [[else]]
-                      <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                      [[#eq storeLegacyValue  "11768"]]
+                        [[#eq paymentMethodId "1013"]]
+                          <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                        [[else]]
+                          <p>[[tags.OrderCancellationMAIL_willContactYouToGiveUsBankDetails]]</p>
+                        [[/eq]]
+                      [[else]]
+                        <p>[[tags.OrderCancellationMAIL_apologyText2Min]]</p>
+                      [[/eq]]
                     [[/eq]]
                     <p>[[tags.OrderCancellationMAIL_apologyText3Min]]</p>
                     <p>[[tags.OrderCancellationMAIL_zaraTeamMin]]</p> 
