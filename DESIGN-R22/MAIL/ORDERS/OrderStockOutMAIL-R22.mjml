@@ -23,6 +23,9 @@
       [[def "isSplitted" payload.orders.[0].isSplitted]]
       [[def "isFastSint" payload.orders.[0].isFastSint]]
       [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>

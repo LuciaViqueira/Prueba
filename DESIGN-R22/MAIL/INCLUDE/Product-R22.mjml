@@ -34,8 +34,12 @@
                                 [[tags.OrderItemList_multipleUnitsText]]
                             [[/neq]]
                             [[#not showOnlyUnits]]
-                                [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
-                                / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                                [[#if showAmountWithCurrencyHelper]] 
+                                    / [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                                [[else]]
+                                    [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                                    / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                                [[/if]] 
                             [[/not]]
                         [[/if]]
                     </div>
@@ -100,8 +104,12 @@
                             [[tags.OrderItemList_multipleUnitsText]]
                         [[/neq]]
                         [[#not showOnlyUnits]]
-                            [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
-                            / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                            [[#if showAmountWithCurrencyHelper]] 
+                                / [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                            [[else]]
+                                [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                                / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                            [[/if]] 
                         [[/not]]
                     [[/if]]
                 </div>
@@ -131,8 +139,12 @@
                                         <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
                                         <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColour]]</div>
                                         [[#if this.serviceCost]]
-                                            [[def "obj" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
-                                            <div>[[tags.OrderItemList_customizationsPrice]]: [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
+                                            [[#if showAmountWithCurrencyHelper]]
+                                                <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                                            [[else]]
+                                                [[def "obj" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
+                                                <div>[[tags.OrderItemList_customizationsPrice]]: [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
+                                            [[/if]]
                                         [[/if]]
                                     </td>
                                 </tr>

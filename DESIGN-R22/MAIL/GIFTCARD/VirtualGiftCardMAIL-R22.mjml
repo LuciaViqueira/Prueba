@@ -10,6 +10,9 @@
       [[def "paymentDetails" payload.notification.orders.[0].payments.[0].paymentDetails.[0]]]
       [[#assign "expirationDate"]][[paymentDetails.expirationDate.dateIso]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
     </mj-raw>
     <!-- Sección 1 cabecera -->
     <mj-section>
@@ -41,10 +44,16 @@
                           [[/if]]
                           <div>
                             [[#if paymentDetails.balance]]
-                              <div style="text-transform: uppercase;">[[tags.VirtualGiftCardMAIL_amount]]
-                                [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
-                                [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
-                              </div>
+                              [[#if showAmountWithCurrencyHelper]]
+                                <div style="text-transform: uppercase;">[[tags.VirtualGiftCardMAIL_amount]]
+                                  [[currency paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText]]
+                                </div>
+                              [[else]]
+                                <div style="text-transform: uppercase;">[[tags.VirtualGiftCardMAIL_amount]]
+                                  [[def "obj" (conversionRate paymentDetails.balance.value paymentDetails.balance.exponent paymentDetails.balance.currency paymentDetails.balance.humanReadableText)]]
+                                  [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                                </div>
+                              [[/if]]
                               [[#eq storeLegacyValue  "11737"]]
                                 <div style="padding-left: 8px">*1 EUR = 7.53450 KN</div>
                               [[/eq]]
