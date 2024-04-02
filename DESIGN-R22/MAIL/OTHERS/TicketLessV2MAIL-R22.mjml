@@ -56,14 +56,23 @@
             <mj-text css-class="rd-text-info">
               <p>[[tags.TicketLessV2MAIL_anonymousUserIdentificationInstructions]]</p>
             </mj-text>
-        <mj-raw>
+        <mj-raw> 
           [[else]]
         </mj-raw>
             <mj-text padding-top="24px" css-class="rd-text-info">
-              <p>[[tags.TicketLessV2MAIL_remember]]</p>
-              <p>[[tags.TicketLessV2MAIL_link]]</p>
+              [[#eq userId "-1"]]
+                <p>[[tags.TicketLessV2MAIL_canViewItOnline]]</p>
+                <p>[[tags.TicketLessV2MAIL_canSaveIt]]</p>
+              [[else]]
+                [[#if pedidoIpod]]
+                  <p>[[tags.TicketLessV2MAIL_canViewItOnline]]</p>
+                [[else]]
+                  <p>[[tags.TicketLessV2MAIL_remember]]</p>
+                  <p>[[tags.TicketLessV2MAIL_link]]</p>
+                [[/if]]
+              [[/eq]]
             </mj-text>
-        <mj-raw>
+        <mj-raw>       
           [[/eq]]
           [[#eq storeLegacyValue  "11737"]]
         </mj-raw>
