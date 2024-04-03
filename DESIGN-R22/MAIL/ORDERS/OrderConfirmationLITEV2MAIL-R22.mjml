@@ -228,6 +228,13 @@
                             <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
                           </tr>
                         [[/if]]
+                        [[def "giftBox" (jsonPath '$..priceDetails.prices.TOTAL_GIFT_BOX')]]
+                        [[#if giftBox.value]]
+                          <tr class="rd-light-font">
+                            <td>[[tags.Payment_giftPackaging]]</td>
+                            <td class="rd-payment-price">[[currency giftBox.value giftBox.exponent giftBox.currency giftBox.humanReadableText]]</td>
+                          </tr>
+                        [[/if]]
                         [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
                           <tr class="rd-light-font">
                             <td>[[tags.Payment_shippingDiscountsText]]</td>
@@ -524,6 +531,13 @@
                         <tr class="rd-light-font">
                           <td>[[tags.Payment_deliveryCostText]]</td>
                           <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
+                        </tr>
+                      [[/if]]
+                      [[def "giftBox" (jsonPath '$..priceDetails.prices.TOTAL_GIFT_BOX')]]
+                      [[#if giftBox.value]]
+                        <tr class="rd-light-font">
+                          <td>[[tags.Payment_giftPackaging]]</td>
+                          <td class="rd-payment-price">[[currency giftBox.value giftBox.exponent giftBox.currency giftBox.humanReadableText]]</td>
                         </tr>
                       [[/if]]
                       [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
