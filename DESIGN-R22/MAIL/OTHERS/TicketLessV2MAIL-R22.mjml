@@ -12,6 +12,7 @@
     <mj-raw>
       [[#assign "tagName"]]TicketLessV2MAIL_purchaseReturn_[[payload.ticketless.type]][[/assign]]
       [[#assign "userId"]][[payload.ticketless.user.identifier]][[/assign]]
+      [[#assign "landingPageUrl"]][[payload.ticketless.landingPage]][[/assign]]
       [[#assign "storeLegacyValue"]][[payload.ticketless.store.identifier.legacyValue]][[/assign]]
       [[#eq storeLegacyValue  "11768"]]
         [[def "totalAmount" (currency payload.ticketless.amount.value payload.ticketless.amount.exponent payload.ticketless.amount.currency payload.ticketless.amount.humanReadableText)]]
@@ -47,7 +48,7 @@
                 font-weight="bold" 
                 text-transform="uppercase" 
                 width="100%"
-                href="[[payload.ticketless.landingPage]]">
+                href="[[landingPageUrl]]">
               [[tags.TicketLessV2MAIL_anonymousUserButtonTxt]]
             </mj-button>
             <mj-text css-class="rd-subsection-text" font-weight="bold">
