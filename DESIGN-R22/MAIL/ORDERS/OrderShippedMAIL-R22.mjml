@@ -92,6 +92,9 @@
             href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
           [[tags.OrderShippedMAIL_buttonTxt]]
         </mj-button>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.OrderShippedMAIL_importRegulations]]</p>
+        </mj-text>
       </mj-column>
     </mj-section>
 

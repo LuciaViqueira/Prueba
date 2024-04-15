@@ -43,14 +43,18 @@
           [[tags.DeliveryAttempMAIL_orderNumberTextSplitted]]
         </mj-text>
         <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
-          [[#if deliveryAttemptDate]]
-            [[def "obj" (formatDateISO deliveryAttemptDate deliveryAttemptDate)]]
-            [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
-            [[def "deliveryHour" obj.min_time]]
-            <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
+          [[#ifb (compare storeLegacyValue "!=" "32201")]]
+            [[#if deliveryAttemptDate]]
+              [[def "obj" (formatDateISO deliveryAttemptDate deliveryAttemptDate)]]
+              [[def "deliveryDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+              [[def "deliveryHour" obj.min_time]]
+              <p>[[tags.DeliveryAttempMAIL_deliveryFailedSplitted]]</p>
+            [[else]]
+              <p>[[tags.DeliveryAttempMAIL_deliveryFailedNoDeliveryDateSplitted]]</p>
+            [[/if]]
           [[else]]
-            <p>[[tags.DeliveryAttempMAIL_deliveryFailedNoDeliveryDateSplitted]]</p>
-          [[/if]]
+              <p>[[tags.DeliveryAttempMAIL_deliveryFailedNoDeliveryDateSplitted]]</p>
+          [[/ifb]]
           <p>[[tags.DeliveryAttempMAIL_pressNextButton]]</p>
         </mj-text>
         <mj-button css-class="rd-order-detail-btn-noPadBottom" 
