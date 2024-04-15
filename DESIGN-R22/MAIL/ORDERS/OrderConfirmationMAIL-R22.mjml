@@ -119,8 +119,9 @@
         </mj-button>
         <mj-text css-class="rd-text-info">
           [[#if payload.orders.[0].hasGiftTicket]]
-              [[tags.OrderConfirmationMAIL_giftTicket]]
+              <p>[[tags.OrderConfirmationMAIL_giftTicket]]</p>
           [[/if]]
+          <p>[[tags.OrderConfirmationMAIL_importRegulations]]</p>
         </mj-text>
       </mj-column>
     </mj-section>

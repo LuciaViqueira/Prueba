@@ -22,7 +22,7 @@
                         [[#if this.giftCard.receiverData.email]]
                             <div><span style="text-transform: uppercase;">[[tags.OrderItemList_receiverEmailText]]:</span> [[this.giftCard.receiverData.email]]</div>
                         [[/if]]
-                        [[#if this.giftCard.shippingDate]]
+                        [[#ifb (andb this.giftCard.shippingDate (compare storeLegacyValue "!=" "32201"))]]
                             <div style="text-transform: uppercase;">[[tags.OrderItemList_devileryDateText]]
                                 [[#assign "dateType"]][[this.giftCard.shippingDate.dateType]][[/assign]]
                                 [[#ifb (compare dateType "==" "TIMESTAMP")]] 
@@ -31,7 +31,7 @@
                                     [[epoch this.giftCard.shippingDate.dateIso true "ISO8601"]]
                                 [[/ifb]]
                             </div>
-                        [[/if]]
+                        [[/ifb]]
                         [[#if this.giftCard.receiverData.phone]]
                             <div style="text-transform: uppercase;">[[tags.OrderItemList_receiverPhoneText]]: [[this.giftCard.receiverData.phone]]</div>
                         [[/if]]
