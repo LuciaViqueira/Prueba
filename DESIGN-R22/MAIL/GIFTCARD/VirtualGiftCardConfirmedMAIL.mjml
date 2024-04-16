@@ -49,9 +49,9 @@
                   [[#if this.giftCard.receiverData.email]]
                     <div>[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]: [[this.giftCard.receiverData.email]]</div>
                   [[/if]]
-                  [[#ifb (andb this.giftCard.shippingDate (compare storeLegacyValue "!=" "32201"))]]  
+                  [[#if this.giftCard.shippingDate]] 
                     <div>[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]] [[epoch this.giftCard.shippingDate.dateIso "STORE" "LONG" true "ISO8601"]]</div>
-                  [[/ifb]]
+                  [[/if]]
                 </div>
                 <div>
                   [[#if paymentDetails.balance]]
