@@ -1,0 +1,1 @@
+https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/guest-user/order/[[orderId]]/detail?hash=[[accountToken]]&utm_medium=[[utmMedium]]&utm_source=[[utmSource]]&utm_campaign=[[utmCampaign]]&utm_content=[[utmContent]]

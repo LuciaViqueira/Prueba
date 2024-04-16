@@ -1,0 +1,171 @@
+<mj-section padding-top="41px" padding-bottom="125px">
+  <mj-column>
+    <mj-text css-class="footer-link">
+      [[#if notShowTermsConds]]
+
+      [[else]]
+        <a href="[[footer.purchaseConditionsUrl]]">[[tags.purchaseConditionsText]]</a>
+      [[/if]]      
+    </mj-text>
+    <mj-raw>[[#if showGiftCardAndGiftTicketUrl]]</mj-raw>
+      <mj-raw>[[#if marketingInfo.showGiftCardConditions]]</mj-raw>
+      <mj-text css-class="footer-link">
+        <a href="[[returnInformation.giftCardConditions]]">[[tags.giftCardConditionsText]]</a>
+      </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[#if returnInformation.isGiftTicket]]
+      </mj-raw>
+      <mj-text css-class="footer-link">  
+        <a href="[[returnInformation.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+      </mj-text>
+      <mj-raw>
+        [[/if]]
+        [[else]]
+        [[#if payload.orders.[0].hasGiftTicket]]
+      </mj-raw>
+      <mj-text css-class="footer-link">  
+        <a href="[[footer.giftTicketUrl]]">[[tags.giftTicketText]]</a>
+      </mj-text>
+      <mj-raw>[[/if]]</mj-raw>
+    <mj-raw>[[/if]]</mj-raw>
+    <mj-text css-class="footer-link"> <a href="[[footer.policyUrl]]">[[tags.policyText]]</a> </mj-text>
+    <mj-text css-class="footer-link"> <a href="[[footer.helpUrl]]">[[tags.helpText]]</a> </mj-text>
+    <mj-text padding-top="60px"> [[tags.downloadAppText]] </mj-text>
+    <mj-table padding="22px 0 63px" css-class="download-apps">
+      <tr>
+        <td style="text-align: right; padding-right: 10px;"> <a href="[[footer.androidAppUrl]]"> <img
+              src="[[footer.playStoreImg]]" /> </a> </td>
+        <td style="text-align: left; padding-left: 10px;"> <a href="[[footer.iosAppUrl]]"> <img
+              src="[[footer.appleStoreImg]]" /> </a> </td>
+      </tr>
+    </mj-table>
+    <mj-text> [[tags.followUsText]] </mj-text>
+    <mj-table padding="0" line-height="0">
+      <tr>
+        <td align="center" class="social-links" style="font-size:0px;padding:24px 0 0;word-break:break-word;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              [[#not hiddenInRussia]]
+                <td>
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                    style="float:none;display:inline-table;">
+                    <tbody>
+                      <tr>
+                        <td style="padding:0 20px 0 20px;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                            style="border-radius:0;width:20px;">
+                            <tbody>
+                              <tr>
+                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                    href="[[footer.instagramUrl]]" target="_blank"> <img height="20"
+                                      src="[[footer.instagramImg]]"
+                                      style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                      width="20"> </a> </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+                <td>
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                    style="float:none;display:inline-table;">
+                    <tbody>
+                      <tr>
+                        <td style="padding:0 20px 0 20px;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                            style="border-radius:0;width:20px;">
+                            <tbody>
+                              <tr>
+                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                    href="[[footer.facebookUrl]]" target="_blank"> <img height="20"
+                                      src="[[footer.facebookImg]]"
+                                      style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                      width="20"> </a> </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              [[/not]]
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.twitterUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.twitterImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.pinterestUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.pinterestImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  style="float:none;display:inline-table;">
+                  <tbody>
+                    <tr>
+                      <td style="padding:0 20px 0 20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          style="border-radius:0;width:20px;">
+                          <tbody>
+                            <tr>
+                              <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a
+                                  href="[[footer.youtubeUrl]]" target="_blank"> <img height="20"
+                                    src="[[footer.youtubeImg]]"
+                                    style="object-fit: contain; height: 20px; width: 20px; border-radius: 0;"
+                                    width="20"> </a> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+      </tr>
+    </mj-table>
+  </mj-column>
+</mj-section>

@@ -1,0 +1,88 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showShippingNumber"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.liveTracking.orders.[0].identifier]][[/assign]]
+      [[#assign "accountToken"]][[payload.liveTracking.user.accountToken]][[/assign]]
+      [[#if payload.liveTracking.user.isGuest]]
+        [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
+        [[def "urlTemplateVersion" 2]]
+      [[else]]
+        [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+        [[def "urlTemplateVersion" 5]]
+      [[/if]]
+      [[#assign "storeLegacyValue"]][[payload.liveTracking.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.LiveTrackingMAIL_title]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-section-title" align="center">
+          [[tags.LiveTrackingMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#if payload.liveTracking.numberOfRemainingStops]]
+            [[#assign "numberOfRemainingStops"]] [[payload.liveTracking.numberOfRemainingStops]] [[/assign]]
+              [[#neq numberOfRemainingStops "-1"]]
+                [[#eq numberOfRemainingStops "1"]]
+                  <p>[[tags.LiveTrackingMAIL_oneStop]]</p>
+                [[else]]
+                  <p>[[tags.LiveTrackingMAIL_numberOfStops]]</p>
+                [[/eq]]
+              [[/neq]]
+          [[/if]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.liveTracking.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shippingAddress |]]
+    </mj-raw>
+    <mj-include path="shipping-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[tags.LiveTrackingMAIL_deliveryTime]]</p>
+        </mj-text>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%" 
+            href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
+          [[tags.LiveTrackingMAIL_buttonTxt]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

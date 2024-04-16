@@ -1,0 +1,139 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="23px">
+      [[tags.ReturnProductList_title]]
+    </mj-text>
+    <mj-text css-class="product-counter" padding-bottom="50px">
+        [[returnInformation.orderList.[0].totalNumItems]]
+        [[#eq returnInformation.orderList.[0].totalNumItems "1"]]
+          [[tags.ReturnProductList_singleItemText]]
+        [[/eq]]
+        [[#neq returnInformation.orderList.[0].totalNumItems "1"]]
+          [[tags.ReturnProductList_multipleItemText]]
+        [[/neq]]
+    </mj-text>
+    <mj-raw>
+      [[#each returnInformation.orderList.[0].orderItems]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.item]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.item.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240" height="auto" css-class="product-img" src="[[this.item.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-size">
+      [[this.item.size]]
+    </mj-text>
+    <mj-text>
+      [[#if this.item.sizeDescription]]
+        [[this.item.sizeDescription]]
+      [[/if]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      [[this.item.shortDescription]]
+    </mj-text>
+    <mj-text color="#7f7f7f">
+       [[this.item.color]] [[this.item.sku]]
+    </mj-text>
+    <mj-text css-class="product-custom-warn">
+      <!-- #if ($rmaItem.isPantone)
+        [[tags.ReturnProductList_customizationsWarn]]
+      #end-->
+    </mj-text>
+    <mj-raw>
+      [[#if this.isCustom]]
+    </mj-raw>
+    <mj-button css-class="product-custom" background-color="#000000" color="#FFFFFF" text-transform="uppercase">
+      <span class="product-custom-lbl">[[tags.ReturnProductList_customizationsButton]]</span>
+    </mj-button>
+    <mj-text css-class="product-custom-warn">
+      [[tags.ReturnProductList_customizationsWarn]]
+    </mj-text>
+    <mj-raw>
+      [[#each this.itemCustomizations]]
+    </mj-raw>
+    <mj-text align="center" padding="10px 0" css-class="product-custom-table">
+        <div>[[tags.ReturnProductList_customizationsText]]: [[this.embroideryText]]</div>
+        <div>[[tags.ReturnProductList_customizationsArea]]: [[this.embroideryArea]]</div>
+        <div>[[tags.ReturnProductList_customizationsTypography]]: [[this.embroideryFont]]</div>
+        <div>[[tags.ReturnProductList_customizationsColor]]: [[this.embroideryColor]]</div>
+        [[#if this.serviceCost]]
+          <div>[[tags.ReturnProductList_customizationsPrice]]: [[& this.serviceCost.humanReadableText]]</div>  
+        [[/if]]
+    </mj-text>
+    <mj-raw>
+      [[/each]]
+    </mj-raw>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-unit">
+      [[this.quantity]]
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+        [[#eq this.quantity 1]]
+            [[tags.ReturnProductList_singleUnitText]]
+        [[/eq]]
+        [[#neq this.quantity 1]]
+            [[tags.ReturnProductList_multipleUnitsText]]
+        [[/neq]]
+    </mj-text>
+    <mj-text css-class="product-price">
+      [[& this.price.humanReadableText]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <!------------ -->
+    <!-- GIFT CARD -->
+    <!------------ -->
+    <mj-raw>
+      [[else]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.giftCard.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240" height="auto" css-class="product-img" src="[[this.giftCard.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text text-transform="uppercase">
+     [[this.giftCard.description]]
+    </mj-text>
+    <mj-text>
+      <div><span style="text-transform: uppercase;">[[tags.ReturnProductList_fromText]]:</span> [[this.giftCard.from]]</div>
+      [[#eq this.giftCard.type "VIRTUAL"]]
+        [[#if this.giftCard.receiverData.customerEmail]]
+          <div><span style="text-transform: uppercase;">[[tags.ReturnProductList_receiverEmailText]]:</span> [[this.giftCard.receiverData.customerEmail]]</div>
+        [[/if]]
+        [[#if this.giftCard.shippedDate]]
+          <div style="text-transform: uppercase;">[[tags.ReturnProductList_devileryDateText]] [[this.giftCard.shippedDate.dateIso]]</div>
+        [[/if]]
+      [[else]]
+        [[#if this.giftCard.receiverData.customerPhone]]
+          <div style="text-transform: uppercase;">[[tags.ReturnProductList_receiverPhoneText]]: [[this.giftCard.receiverData.customerPhone]]</div>
+        [[/if]]
+      [[/eq]]
+    </mj-text>
+    <mj-text css-class="product-unit">
+      1
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+      [[tags.ReturnProductList_singleUnitText]]
+    </mj-text>
+    <mj-text css-class="product-price">
+      [[& this.giftCard.amount.humanReadableText]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-raw>
+      [[/if]] <!--CHECK_IS_GIFT_CARD-->
+    </mj-raw>
+    <!-- END GIFT CARD-->
+    <mj-raw>
+      [[/each]]
+    </mj-raw>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>

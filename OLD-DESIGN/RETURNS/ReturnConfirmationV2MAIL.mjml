@@ -1,0 +1,91 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showGiftCardAndGiftTicketUrl"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "showRefundPaymentTitle"]]true[[/assign]]
+      [[#assign "hiddenExchangeRateInProducts"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.ReturnConfirmationV2MAIL_title]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[#if payload.returnInformation.uuid.prettyUuid]]
+            [[#assign "returnIdentifier"]][[payload.returnInformation.uuid.prettyUuid]][[/assign]]
+          [[else]]
+            [[#assign "returnIdentifier"]][[payload.returnInformation.uuid.uuid]][[/assign]]
+          [[/if]]
+          [[def "size" 8]][[#def "uuidSize"]][[size returnIdentifier]][[/def]]
+          [[#ifb (compare uuidSize ">" size)]]
+            [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "returnId"]][[substringb returnIdentifier index]][[/def]]
+          [[else]]
+            [[def "returnId" returnIdentifier]]
+          [[/ifb]]
+          [[#if payload.returnInformation.fromGiftTicket]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberTextWithoutOrderNumber]]
+          [[else]]
+            [[tags.ReturnConfirmationV2MAIL_returnNumberText]]
+          [[/if]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          [[#neq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
+            [[#assign "refundPaymentMethodNotGiftCard"]]true[[/assign]]
+          [[/neq]]
+          [[#and refundPaymentMethodNotGiftCard payload.returnInformation.refunds.[0].isRefundSupportedByGateway payload.returnInformation.refunds.[0].isAlreadyRefunded]]
+            <p>[[tags.ReturnConfirmationV2MAIL_alreadyRefundedInfoTitle]]</p>
+          [[else]]
+            <p>[[tags.ReturnConfirmationV2MAIL_refundInfoTitle]]</p>
+          [[/and]]
+          [[#eq payload.returnInformation.refunds.[0].refundPaymentMethod "GIFT_CARD"]]
+            <i>[[tags.ReturnConfirmationV2MAIL_refundGiftCardText]]</i>
+          [[else]]
+            [[#if payload.returnInformation.refunds.[0].isRefundSupportedByGateway]]
+              [[#if payload.returnInformation.refunds.[0].isAlreadyRefunded]]
+              [[else]]
+                <i>[[tags.ReturnConfirmationV2MAIL_refundSupportedByGatewayText]]</i>
+              [[/if]]
+            [[else]]
+              
+            [[/if]]
+          [[/eq]]
+        </mj-text>
+        <mj-divider padding-top="40px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 3 productsList -->
+    <mj-raw>
+      [[#with payload.returnInformation]]
+    </mj-raw>
+      <mj-include path="OrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#with payload]]
+        [[#with this.returnInformation.refunds.[0].payments as | payments |]]
+    </mj-raw>
+      <mj-include path="Payment" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+    <!-- Sección 6 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>

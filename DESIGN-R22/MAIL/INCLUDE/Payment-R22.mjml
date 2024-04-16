@@ -1,0 +1,195 @@
+<mj-raw>
+  [[#if this.itemsPayment.[0].payments]]
+</mj-raw>
+    <mj-section>
+      <mj-column padding="8px 0 0 0">
+        <mj-divider padding-bottom="40px" />
+        <mj-text css-class="rd-section-title">
+          [[#if showRefundPaymentTitle]]
+            [[tags.Payment_refundTitle]]
+          [[else]]
+            [[tags.Payment_paymentMethod]]
+          [[/if]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+    [[#each this.itemsPayment]]
+      [[#each this.payments]] 
+        [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
+        [[#each this.paymentDetails]] 
+    </mj-raw>
+    <mj-section padding-top="16px" padding-bottom="20px">
+      <mj-column>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:60px;" >
+              [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
+              [[#eq paymentMethodIcon "1013"]]
+                <table>
+                  <tr>
+                    <td>
+                      <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/icon-payment-visa.jpg" style="width:60px; height:auto;"/> 
+                    </td>
+                  </tr>
+                </table> 
+              [[else]]
+                <table>
+                  <tr>
+                    <td>
+                      <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/Background.jpg" style="width:60px; height:auto;"/> 
+                    </td>
+                  </tr>
+                </table>
+              [[/eq]]
+            </td>
+            <td style="padding-left: 16px;" class="rd-text-info-small">
+              [[#if this.cardHolderName]]
+                <div>[[this.cardHolderName]]</div>
+              [[/if]]
+              [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
+              <div>
+                [[#eq paymentMethodIdString "1001"]]
+                  VISA
+                [[else]]
+                  [[#eq paymentMethodIdString "1002"]]
+                    Mastercard
+                  [[else]]
+                    [[#eq paymentMethodIdString "1003"]]
+                      AMEX
+                    [[else]]
+                      [[#eq paymentMethodIdString "1017"]]
+                        Paypal
+                      [[else]]
+                        [[this.paymentMethodDescription]]
+                      [[/eq]]
+                    [[/eq]]
+                  [[/eq]]
+                [[/eq]]
+              </div>
+              [[#if this.last4]]
+                [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+                [[#eq last4Characters "4"]]
+                  <div> **** **** **** [[this.last4]]</div>
+                [[/eq]]
+              [[/if]]
+              [[#if showAmountWithCurrencyHelper]]
+                <div>[[tags.Payment_totalAmountText]] [[currency this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText]]</div>
+              [[else]]
+                [[def "objPayment" (conversionRate this.amount.value this.amount.exponent this.amount.currency this.amount.humanReadableText)]]
+                <div>[[tags.Payment_totalAmountText]] [[objPayment.main_amount]][[#ifb (compare objPayment.converted_amounts "!=" "")]][[#each objPayment.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
+              [[/if]]   
+            </td>                                                                                                                                 
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+<mj-raw>
+        [[/each]]
+      [[/each]]
+    [[/each]]
+  [[/if]]
+  [[#with paymentBreakdown]]
+</mj-raw>
+<mj-section>
+  <mj-column padding="8px 0 0 0">
+    <mj-divider padding-bottom="40px" />
+    <mj-text padding-bottom="16px" css-class="rd-section-title">
+      [[tags.Payment_breakdown]]
+    </mj-text>
+    <mj-table css-class="rd-payment-table">
+      [[#not skuReturnShippingCosts]]
+        <tr class="rd-light-font">
+          <td>
+            [[orderNumItems]]
+            [[#eq orderNumItems "1"]]
+              [[tags.Payment_singleItemText]]
+            [[/eq]]
+            [[#neq orderNumItems "1"]]
+              [[tags.Payment_multipleItemText]] 
+            [[/neq]]
+          </td>
+          <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
+        </tr>
+        [[#if this.shippingPrice]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_deliveryCostText]]</td>
+            <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
+          </tr>
+        [[/if]]
+        [[def "giftBox" (jsonPath '$..priceDetails.prices.TOTAL_GIFT_BOX')]]
+        [[#if giftBox.value]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_giftPackaging]]</td>
+            <td class="rd-payment-price">[[currency giftBox.value giftBox.exponent giftBox.currency giftBox.humanReadableText]]</td>
+          </tr>
+        [[/if]]
+        [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_shippingDiscountsText]]</td>
+            <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
+          </tr>
+        [[/ifb]]
+        [[#each this.itemsPayment.[0].discounts]]
+          [[def "orderDiscount" this.amount]]
+          [[#ifb (andb orderDiscount (compare this.discountType "!=" "EMPLOYEE") (compare this.discountType "!=" "SHIPPING") (compare this.discountType "!=" "TOTAL") (compare orderDiscount.value "!=" 0))]]
+            <tr class="rd-light-font">
+              <td>[[tags.Payment_orderDiscount]]</td>
+              <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+            </tr>
+          [[/ifb]]
+          [[#ifb (andb orderDiscount (compare this.discountType "==" "EMPLOYEE") (compare orderDiscount.value "!=" 0))]]
+            <tr class="rd-orange-font">
+              <td>[[tags.Payment_employeeDiscountsText]]</td>
+              <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+            </tr>
+          [[/ifb]]
+        [[/each]]
+        [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
+        [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING") (compare returnCosts.amount.value "!=" 0))]]
+          <tr class="rd-light-font">
+            <td>[[tags.Payment_returnChargesText]]</td>
+            <td class="rd-payment-price">[[currency returnCosts.amount.value returnCosts.amount.exponent returnCosts.amount.currency returnCosts.amount.humanReadableText]]</td>
+          </tr>
+        [[/ifb]]
+      [[/not]]
+      <tr class="rd-payment-total rd-black-font">
+        <td>[[tags.Payment_totalAmountText]]</td>
+        [[#if showAmountWithCurrencyHelper]]
+          [[#if notShowDoubleCurrency]]
+            <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]]</td>
+          [[else]]
+            [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES' 5)]]
+            <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
+          [[/if]]
+        [[else]]
+          [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol)]]
+          <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
+        [[/if]]
+      </tr>
+      [[#ifb (andb showAmountWithCurrencyHelper (notb notShowDoubleCurrency))]]
+        <tr>
+          <td colspan="2" class="rd-payment-include-tax-label-right">
+            <span>* 1 USD = [[secondaryCurrency.reference]]</span>
+          </td>
+        </tr>
+      [[else]]
+        [[#ifb (compare obj.converted_amounts "!=" "")]] 
+          <tr>
+            <td colspan="2" class="rd-payment-include-tax-label-right">
+              <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
+            </td>
+          </tr>
+        [[/ifb]]
+      [[/ifb]]
+      <tr>
+        <td colspan="2">
+          <span class="rd-payment-include-tax-label-left">*[[tags.Payment_includeTaxText]]</span>
+        </td>
+      </tr>
+    </mj-table>
+<mj-raw>
+  [[/with]]
+</mj-raw>
+  </mj-column>
+</mj-section>

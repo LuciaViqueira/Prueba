@@ -1,0 +1,58 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="23px">
+      [[tags.productsList_returnDataTitle]]
+    </mj-text>
+    <mj-text css-class="product-counter" padding-bottom="50px">
+        [[#assign "orderNumItems"]] [[rma.numProducts]] [[/assign]]
+        [[orderNumItems]]
+        [[#eq orderNumItems "1"]]
+          [[tags.productsList_singleItemText]]
+        [[/eq]]
+        [[#neq orderNumItems "1"]]
+          [[tags.productsList_multipleItemText]]
+        [[/neq]]
+    </mj-text>
+    <mj-raw>
+      [[#each rma.items]]
+    </mj-raw>
+    <mj-raw>
+      [[#if this.imageUrl]]
+    </mj-raw>
+    <mj-image padding="0 0 23px" width="240px" height="auto" css-class="product-img" src="[[this.imageUrl]]" />
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+    <mj-text css-class="product-size">
+      [[this.size]]
+    </mj-text>
+    <mj-text>
+      [[#if this.sizeDescription]]
+        [[this.sizeDescription]]
+      [[/if]]
+    </mj-text>
+    <mj-text text-transform="uppercase">
+      [[this.description]]
+    </mj-text>
+    <mj-text color="#7f7f7f">
+      [[this.color]] [[substring this.sku 0 1]]/[[substring this.sku 1 5]]/[[substring this.sku 5 8]]/[[substring this.sku 8 11]]/[[substring this.sku 11 13]]
+    </mj-text>
+    <mj-text css-class="product-unit">
+      [[#assign "templateQuantity"]] [[this.units]] [[/assign]]
+      [[templateQuantity]]
+    </mj-text>
+    <mj-text color="#959595" css-class="product-unit-label">
+      [[#eq templateQuantity "1"]]
+        [[tags.productsList_singleUnitText]]
+      [[/eq]]
+      [[#neq templateQuantity "1"]]
+        [[tags.productsList_multipleUnitsText]]
+      [[/neq]]
+    </mj-text>
+    <mj-spacer height="50px" />
+    <mj-raw>
+      [[/each]]
+    </mj-raw>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>

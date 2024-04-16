@@ -1,0 +1,38 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.TicketLessV2MAIL_title]]
+        </mj-text>
+        <mj-text padding-top="23px" css-class="header-text">
+          [[#assign "tagName"]]TicketLessV2MAIL_purchaseReturn_[[payload.ticketless.type]][[/assign]]
+          <p style="margin: 0 0 18px; text-transform: uppercase;">[[tagTranslate tagName]]</p>
+          <p style="margin: 0 0 18px; text-transform: uppercase;">[[tags.TicketLessV2MAIL_date]]</p>    
+          <p style="margin: 0 0 18px; text-transform: uppercase;">[[tags.TicketLessV2MAIL_amount]]</p>
+          <p style="margin: 0 0 18px; text-transform: uppercase;">[[tags.TicketLessV2MAIL_remember]]</p>
+          <p style="margin: 0 0 18px; text-transform: uppercase;">[[tags.TicketLessV2MAIL_link]]</p>
+          [[#assign "storeLegacyValue"]][[payload.ticketless.store.identifier.legacyValue]][[/assign]]
+          [[#eq storeLegacyValue  "11737"]]
+            <p style="margin: 0 0 18px; text-transform: uppercase;">1 EUR = 7.53450 KN</p>
+          [[/eq]] 
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.ticketless.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footerStore" />
+  </mj-body>
+</mjml>

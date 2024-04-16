@@ -1,0 +1,423 @@
+<mj-section>
+  <mj-column padding-top="4px">
+    <mj-raw>
+      [[#if showInstructionsObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-gift-ticket.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_instructions]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_attachedShippingLabel]]
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showHowPaymentWorksObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-payment-methods.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_howPaymentWorks]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_daysToConfirmReceived]]
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showReminderObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping-restrictions.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_reminder]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_paymentConfiguration]]
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showTrackingObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-click-go.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_tracking]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_shippingTimeLimit]]
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showConfirmDeliveryObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping-split-orders.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_confirmDelivery]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          [[tags.Observations_confirmConditionsAndRate]]
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showUpdateObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-returns.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_update]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_updateText]]</p>
+          <p>[[tags.Observations_updateText2]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showReasonForDenialObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-returns-info.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_reasonForDenial]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-raw>
+          [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+          [[#each payload.notification.orders.[0].suborders.[0].orderItems]]
+            [[#def "resellId"]][[this.resellExternalId]][[/def]]
+            [[def "rejectionReasonQuery" (stringFormat "$..rejectionReason['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+            [[def "rejectionReason" (jsonPath rejectionReasonQuery "MULTI_VALUE")]]
+            [[def "rejectionReasonQueryDefault" (stringFormat "$..rejectionReason['%s'][?(@.languageCode == '%s'%s" resellId 'en' ")]")]]
+            [[def "rejectionReasonDefault" (jsonPath rejectionReasonQueryDefault "MULTI_VALUE")]]
+            [[def "rejectionReasonDescriptionQuery" (stringFormat "$..rejectionReasonDescription['%s'][?(@.languageCode == '%s'%s" resellId preferenceLocaleLanguage ")]")]]
+            [[def "rejectionReasonDescription" (jsonPath rejectionReasonDescriptionQuery "MULTI_VALUE")]]
+            [[def "rejectionReasonDescriptionQueryDefault" (stringFormat "$..rejectionReasonDescription['%s'][?(@.languageCode == '%s'%s" resellId 'en' ")]")]]
+            [[def "rejectionReasonDescriptionDefault" (jsonPath rejectionReasonDescriptionQueryDefault "MULTI_VALUE")]]
+            [[#ifb (orb rejectionReason.[0].content rejectionReasonDescription.[0].content rejectionReasonDefault.[0].content rejectionReasonDescriptionDefault.[0].content)]]
+        </mj-raw>
+              <mj-text padding-bottom="28px" css-class="rd-text-info">
+                [[#if rejectionReason.[0].content]]
+                  <p style="text-transform: uppercase;">[[rejectionReason.[0].content]]</p>
+                [[else]]
+                  <p style="text-transform: uppercase;">[[rejectionReasonDefault.[0].content]]</p>
+                [[/if]]
+                [[#if rejectionReasonDescription.[0].content]]
+                  <p style="text-transform: uppercase;">[[rejectionReasonDescription.[0].content]]</p>
+                [[else]]
+                  <p style="text-transform: uppercase;">[[rejectionReasonDescriptionDefault.[0].content]]</p>
+                [[/if]]
+              </mj-text>
+    <mj-raw>
+            [[/ifb]]
+          [[/each]]
+      [[/if]]
+      [[#if showOrderIsBeingRefundedObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-shipping-restrictions.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_refunded]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_refundedText]]</p>
+          <p>[[tags.Observations_refundedText2]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if connectToStripeObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-payment-methods.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_connectToStripe]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_connectToStripeText]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showPaymentObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-payment-methods.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_payment]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <p>[[tags.Observations_paymentText]]</p>
+          <p style="font-weight:bold;">[[tags.Observations_paymentText2]]</p>
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showRequestedInfoObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/askForDetails_shape_v2.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_requestedInformation]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-raw>
+          [[#def "preferenceLocaleLanguage"]][[jsonPath '$..user.preferences.locale.language']][[/def]]
+          [[#each arraycategories]]
+            [[#each this.title]]
+              [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+              [[#assign "foundLanguage"]]true[[/assign]]
+        </mj-raw>
+                <mj-text css-class="rd-text-info">
+                  <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
+                    <li>[[this.content]]: 
+        <mj-raw>         
+              [[/ifb]]
+            [[/each]]
+            [[#each this.questions]]
+              [[#assign "comma"]][[/assign]]
+              [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
+              [[#each this.title]]
+                [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+        </mj-raw>
+                  [[stringFormat "%s%s" this.content comma]]
+        <mj-raw>
+                [[/ifb]]
+              [[/each]]
+            [[/each]]
+            [[#ifb (compare this.languageCode "==" preferenceLocaleLanguage)]]
+        </mj-raw>
+                    </li>
+                  </ul>                                                                                                                                     
+                </mj-text>
+          <mj-raw>
+            [[/ifb]]
+            [[#not foundLanguage]]
+              [[#each this.title]]
+                [[#ifb (compare this.languageCode "==" "en")]]
+          </mj-raw>
+                  <mj-text css-class="rd-text-info">
+                    <ul style="text-transform: uppercase; margin: 0; padding-left: 28px;">
+                      <li>[[this.content]]: 
+          <mj-raw>
+                [[/ifb]]
+              [[/each]]
+              [[#each this.questions]]
+                [[#assign "comma"]][[/assign]]
+                [[#not @last]][[#assign "comma"]],[[/assign]][[/not]]
+                [[#each this.title]]
+                  [[#ifb (compare this.languageCode "==" "en")]]
+          </mj-raw>
+                    [[stringFormat "%s%s" this.content comma]]
+          <mj-raw>  
+                  [[/ifb]]
+                [[/each]]
+              [[/each]]
+              [[#ifb (compare this.languageCode "==" "en")]]
+          </mj-raw>
+                      </li>
+                    </ul>                                                                                                                                     
+                  </mj-text>
+        <mj-raw>
+              [[/ifb]]
+            [[/not]] 
+          [[/each]]
+        </mj-raw>
+    <mj-raw>
+      [[/if]]
+      [[#if showFinancialInfoObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/24-help-gift-ticket.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_whatIsTheDirectiveDAC7]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <ul style="text-transform: uppercase; margin: 0; padding: 0 12px 0 28px;">
+            <li style="padding-bottom: 4px;">[[tags.Observations_directiveDAC7]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_legalObligationCollectAndProvide]]</li>
+            <li>[[tags.Observations_directiveInForce]]</li>
+          </ul>  
+        </mj-text>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/askForDetails_shape_v2.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_ruleApplication]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <ul style="text-transform: uppercase; margin: 0; padding: 0 12px 0 28px;">
+            <li style="padding-bottom: 4px;">[[tags.Observations_completeFormDAC7]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_moreThanThirtySales]]</li>
+            <li style="padding-bottom: 4px;">[[tags.Observations_ensureCorrectData]]</li>
+            <li>[[tags.Observations_requestInfoVisibility]]</li>
+          </ul>  
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#if showComplaintInfoObservations]]
+    </mj-raw>
+        <mj-table padding="0"> 
+          <tr>
+            <td style="width:35px;" >
+              <table>
+                <tr>
+                  <td>
+                    <img width="35" padding-right="4px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/askForDetails_shape_v2.jpg" style="width:35px; height:auto; padding-right:4px;"/>
+                  </td>
+                </tr>
+              </table> 
+            </td>
+            <td class="rd-section-title">
+              <div>[[tags.Observations_nextSteps]]</div>
+            </td>                                                                                                                                      
+          </tr>
+        </mj-table>
+        <mj-text padding-bottom="28px" css-class="rd-text-info">
+          <ul style="text-transform: uppercase; margin: 0; padding: 0 12px 0 28px;">
+            <li style="padding-bottom: 4px;">[[tags.Observations_ourTeamWillReviewIt]]</li>
+            <li>[[tags.Observations_willInformYou]]</li>
+          </ul>  
+        </mj-text>
+    <mj-raw>
+      [[/if]]
+    </mj-raw>
+  </mj-column>
+</mj-section>

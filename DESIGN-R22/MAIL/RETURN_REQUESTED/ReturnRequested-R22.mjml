@@ -1,0 +1,83 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnShippingTitle"]]true[[/assign]]
+      [[#assign "showBlockTitle"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+      [[#assign "showExchangeRate"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.returnRequested_acceptedRequestTitle]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+          [[tags.returnRequested_orderIdText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#eq payload.returnInformation.type "DROPOFF"]]
+              <p>[[tags.returnRequested_dropOffDescription]]</p>
+              <p>[[tags.returnRequested_officeDelivery]]</p>
+              <p>[[tags.returnRequested_makeSureText]]</p>
+              <p>[[tags.returnRequested_daysToArriveFromDropToTheWarehouse]]</p>
+          [[else]]
+            [[#eq payload.returnInformation.type "HOME"]]
+                <p>[[tags.returnRequested_homeDescription]]</p>
+                <p>[[tags.returnRequested_makeSureText]]</p>
+                <p>[[tags.returnRequested_daysToArriveFromHomeToTheWarehouse]]</p>
+            [[/eq]]
+          [[/eq]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 2 Shipping -->
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shippingAddress |]]
+    </mj-raw>
+    <mj-include path="shipping-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <!-- Sección 3 Product -->
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <!-- Sección 4 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

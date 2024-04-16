@@ -1,0 +1,99 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "onlyShowFooterStoreConfiguration"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "tagName"]]TicketLessV2MAIL_purchaseReturn_[[payload.ticketless.type]][[/assign]]
+      [[#assign "userId"]][[payload.ticketless.user.identifier]][[/assign]]
+      [[#assign "paymentId"]][[payload.ticketless.order.payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+      [[#assign "landingPageUrl"]][[payload.ticketless.landingPage]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.ticketless.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[def "totalAmount" (currency payload.ticketless.amount.value payload.ticketless.amount.exponent payload.ticketless.amount.currency payload.ticketless.amount.humanReadableText)]]
+      [[else]]
+        [[def "objTotalAmount" (conversionRate payload.ticketless.amount.value payload.ticketless.amount.exponent payload.ticketless.amount.currency payload.ticketless.amount.humanReadableText)]]
+        [[#assign "totalAmount"]][[objTotalAmount.main_amount]][[#ifb (compare objTotalAmount.converted_amounts "!=" "")]][[#each objTotalAmount.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]][[/assign]] 
+      [[/eq]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.TicketLessV2MAIL_title]]
+        </mj-text>
+        <mj-text padding-top="23px" css-class="rd-subsection-title" font-weight="bold">
+          <div>[[tagTranslate tagName]]</div>
+          <div>[[tags.TicketLessV2MAIL_date]]</div>    
+        </mj-text>
+        <mj-text css-class="rd-subsection-text" font-weight="bold">
+           <div>[[tags.TicketLessV2MAIL_amountText]]</div>
+        </mj-text>
+        <mj-raw>
+          [[#eq userId "0"]]
+        </mj-raw>
+            <mj-text padding-top="24px" css-class="rd-text-info">
+              <p>[[tags.TicketLessV2MAIL_anonymousUserDigitalTicket]]</p>
+            </mj-text>
+            <mj-button css-class="rd-order-detail-btn"
+                background-color="#000000" 
+                color="#FFFFFF" 
+                border="1px solid #FFFFFF" 
+                font-weight="bold" 
+                text-transform="uppercase" 
+                width="100%"
+                href="[[landingPageUrl]]">
+              [[tags.TicketLessV2MAIL_anonymousUserButtonTxt]]
+            </mj-button>
+            <mj-text css-class="rd-subsection-text" font-weight="bold">
+              [[tags.TicketLessV2MAIL_anonymousUserTitle]]
+            </mj-text>
+            <mj-text css-class="rd-text-info">
+              <p>[[tags.TicketLessV2MAIL_anonymousUserIdentificationInstructions]]</p>
+            </mj-text>
+        <mj-raw> 
+          [[else]]
+        </mj-raw>
+            <mj-text padding-top="24px" css-class="rd-text-info">
+              [[#eq userId "-1"]]
+                <p>[[tags.TicketLessV2MAIL_canViewItOnline]]</p>
+                [[#neq paymentId "1012"]]
+                  <p>[[tags.TicketLessV2MAIL_canSaveIt]]</p>
+                [[/neq]]
+              [[else]]
+                <p>[[tags.TicketLessV2MAIL_remember]]</p>
+                <p>[[tags.TicketLessV2MAIL_link]]</p>
+              [[/eq]]
+            </mj-text>
+        <mj-raw>       
+          [[/eq]]
+          [[#eq storeLegacyValue  "11737"]]
+        </mj-raw>
+            <mj-text css-class="rd-text-info">
+              <p style="font-size:13px;">1 EUR = 7.53450 KN</p>
+            </mj-text>
+        <mj-raw>
+          [[/eq]]
+        </mj-raw>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

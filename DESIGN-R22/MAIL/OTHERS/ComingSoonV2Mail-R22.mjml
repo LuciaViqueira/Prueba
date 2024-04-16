@@ -1,0 +1,93 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+      [[#assign "utmMedium"]]email[[/assign]]
+      [[#assign "utmSource"]]notification_com[[/assign]]
+      [[#assign "utmCampaign"]]ComingSoon[[/assign]]
+      [[#assign "utmContent"]]logo[[/assign]]
+      [[#assign "urlTemplateFooter"]]FooterHelpWithUtmTermURL[[/assign]]
+      [[def "urlTemplateFooterVersion" 2]]
+      [[#assign "sku"]][[payload.notification.item.sku]][[/assign]]
+      [[#assign "productId"]][[payload.notification.item.productId]][[/assign]]
+      [[#assign "categoryId"]][[payload.notification.item.categoryId]][[/assign]]
+      [[#assign "season"]][[payload.notification.item.season]][[/assign]]
+      [[#assign "subscriptionId"]][[payload.subscriptionIdentifier]][[/assign]]
+      [[#assign "ssts"]][[payload.ssts]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolverWithVersion 'ProductDetailLogoURL' 2]]" padding-top="48px" padding-bottom="43px" align="center" />
+        <mj-text css-class="rd-title" align="center">
+          [[tags.ComingSoonV2MAIL_Title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-subsection-text-notUppercase">
+          [[tags.ComingSoonV2MAIL_skuAvailable]]
+        </mj-text>
+        <mj-raw>
+          [[#assign "utmContent"]]product_detail_image[[/assign]]
+        </mj-raw>
+        <mj-table padding="24px 0 9px" css-class="rd-comingSoonProduct"> 
+          <tr>
+            <td style="padding: 0;" class="rd-comingSoonProductImgColumn">
+                <table>
+                  <tr>
+                    <td>
+                      <a href="[[urlResolverWithVersion 'ProductDetailURL' 5]]" style="color:#000; text-decoration:none;">
+                        <img width="176" padding="0" class="rd-comingSoon-img" src="[[payload.notification.item.imageUrl]]" style="width:176px; height:auto;" />
+                      </a>
+                    </td>
+                  </tr>   
+                </table>
+            </td>
+            [[#assign "utmContent"]]product_detail_description[[/assign]]
+            <td style="padding-left: 16px; vertical-align:top;" class="rd-subsection-text">
+              <div>
+                <a href="[[urlResolverWithVersion 'ProductDetailURL' 5]]" style="color:#000; text-decoration:none; font-weight:bold;">
+                  [[payload.notification.item.shortDescription]]
+                </a>
+              </div>
+              <div>
+                [[payload.notification.item.sku]]
+              </div>
+              <div style="font-weight:bold; padding-top:32px;">
+                [[payload.notification.item.size]]
+              </div>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-raw>
+          [[#assign "utmContent"]]product_detail_button[[/assign]]
+        </mj-raw>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion 'ProductDetailURL' 5]]" >
+          [[tags.ComingSoonV2MAIL_Button]]
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+      [[#assign "utmContent"]]help_page[[/assign]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

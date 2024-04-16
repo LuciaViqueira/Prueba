@@ -1,0 +1,85 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showOnlyUnits"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global variables -->
+    <mj-raw>
+      [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[#assign "accountToken"]][[payload.user.accountToken]][[/assign]]
+      [[#if payload.user.isGuest]]
+        [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
+        [[def "urlTemplateVersion" 2]]
+      [[else]]
+        [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+        [[def "urlTemplateVersion" 5]]
+      [[/if]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orders.[0].isFastSint]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.OrderStockOutMAIL_title]]
+        </mj-text>
+       <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+          [[tags.OrderStockOutMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          [[#if isFastSint]]
+            <p>[[tags.OrderStockOutMAIL_apologyText1FastSint]]</p>
+          [[else]]
+            <p>[[tags.OrderStockOutMAIL_apologyText1]]</p>
+          [[/if]]
+          [[#eq paymentMethodId "1012"]]
+            <p>[[tags.OrderStockOutMAIL_goToStoreForRefund]]</p>
+          [[else]]
+            <p>[[tags.OrderStockOutMAIL_apologyText2]]</p>
+          [[/eq]]
+          <p>[[tags.OrderStockOutMAIL_apologyText3]]</p>
+        </mj-text>
+       <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
+          [[tags.OrderStockOutMAIL_orderInsufficientBtn]]
+        </mj-button>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.OrderStockOutMAIL_contentRemoved]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+    
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

@@ -1,0 +1,42 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "repairFooterConditionsUrl"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]      
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.RepairLabelMAIL_Title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+          [[tags.RepairLabelMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+            <p>[[tags.RepairLabelMAIL_instructionsQrText]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="ResellFooter" />
+  </mj-body>
+</mjml>

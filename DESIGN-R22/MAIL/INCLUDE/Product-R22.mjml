@@ -1,0 +1,191 @@
+<td style="padding-bottom: 24px;" class="rd-product-col">
+    <table class="rd-product"> 
+        <tr>
+            <td style="padding: 0;" class="rd-subsection-text">
+                [[#if this.item.imageUrl]]
+                    <table>
+                        <tr>
+                            <td style="padding: 0 0 8px;">
+                                <img padding="0" class="rd-product-img" width="225" src="[[this.item.imageUrl]]" style="width:100%; height:auto;" />
+                            </td>
+                        </tr>
+                    </table>
+                [[/if]]
+                [[#not this.isCustom]]
+                    <div>
+                        [[this.item.shortDescription]]
+                    </div>
+                    <div style="color: #666666;">
+                        [[this.item.colour]][[#neq this.item.sku "XSHIPCHGSKU"]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]][[/neq]]
+                    </div>
+                    <div style="padding-top: 16px">
+                        [[#if hideItemQuantity]]
+                        [[else]]
+                            [[#if usePreviousQuantity]]
+                                [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+                            [[else]]
+                                [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                            [[/if]]
+                            [[templateQuantity]]
+                            [[#eq templateQuantity "1"]]
+                                [[tags.OrderItemList_singleUnitText]]
+                            [[/eq]]
+                            [[#neq templateQuantity "1"]]
+                                [[tags.OrderItemList_multipleUnitsText]]
+                            [[/neq]]
+                            [[#not showOnlyUnits]]
+                                [[#if showAmountWithCurrencyHelper]] 
+                                    / [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                                [[else]]
+                                    [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                                    / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                                [[/if]] 
+                            [[/not]]
+                        [[/if]]
+                    </div>
+                    [[#if this.item.size]]
+                        <div>[[this.item.size]]</div>
+                    [[/if]]
+                    [[#if this.item.sizeDescription]]
+                        <div>[[this.item.sizeDescription]]</div>
+                    [[/if]]
+                    [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
+                    [[#ifb numBadPracticeItems "!=" "0"]]
+                        <table>
+                            <tr>
+                                <td style="width:13px; padding:0;" class="rd-product-col">
+                                    <div style="width:13px; margin-top:2px;"><img width="13" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:13px; height:auto;"/></div>   
+                                </td>
+                                <td style="padding:0 0 0 10px;" class="rd-product-col">
+                                    <div style="font-size:12px !important;" class="rd-badPractice-text">
+                                        [[#eq numBadPracticeItems "1"]]
+                                            [[#eq templateQuantity "1"]]
+                                                [[tags.OrderItemList_badPracticeUniqueItem]]
+                                            [[else]]
+                                                [[tags.OrderItemList_badPracticeVariousItemsSingular]]
+                                            [[/eq]]
+                                        [[else]]
+                                                [[tags.OrderItemList_badPracticeVariousItemsPlural]]
+                                        [[/eq]]
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    [[/ifb]]
+                [[/not]]
+            </td>  
+        </tr>
+    </table>
+</td>
+[[#if this.isCustom]]
+    <td style="padding-bottom: 24px;" class="rd-product-col">
+        <table class="rd-product"> 
+            <tr>
+            <td style="padding: 0;" class="rd-subsection-text">
+                <div>
+                    [[this.item.shortDescription]]
+                </div>
+                <div style="color: #666666;">
+                    [[this.item.colour]][[#neq this.item.sku "XSHIPCHGSKU"]] [[substring this.item.sku 0 1]]/[[substring this.item.sku 1 5]]/[[substring this.item.sku 5 8]]/[[substring this.item.sku 8 11]]/[[substring this.item.sku 11 13]][[/neq]]
+                </div>
+                <div style="padding-top: 16px">
+                    [[#if hideItemQuantity]]
+                    [[else]]
+                        [[#if usePreviousQuantity]]
+                            [[#assign "templateQuantity"]] [[this.previousQuantity]] [[/assign]]
+                        [[else]]
+                            [[#assign "templateQuantity"]] [[this.quantity]] [[/assign]]
+                        [[/if]]
+                        [[templateQuantity]]
+                        [[#eq templateQuantity "1"]]
+                            [[tags.OrderItemList_singleUnitText]]
+                        [[/eq]]
+                        [[#neq templateQuantity "1"]]
+                            [[tags.OrderItemList_multipleUnitsText]]
+                        [[/neq]]
+                        [[#not showOnlyUnits]]
+                            [[#if showAmountWithCurrencyHelper]] 
+                                / [[currency this.price.value this.price.exponent this.price.currency this.price.humanReadableText]]
+                            [[else]]
+                                [[def "obj" (conversionRate this.price.value this.price.exponent this.price.currency this.price.humanReadableText)]]
+                                / [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                            [[/if]] 
+                        [[/not]]
+                    [[/if]]
+                </div>
+                [[#if this.item.size]]
+                    <div>[[this.item.size]]</div>
+                [[/if]]
+                [[#if this.item.sizeDescription]]
+                    <div>[[this.item.sizeDescription]]</div>
+                [[/if]]
+                [[#if this.isCustom]]
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <span class="rd-product-custom">
+                                        <span class="rd-product-custom-lbl">[[tags.OrderItemList_customizationsButton]]</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                        [[#each this.customizations]]
+                            <table css-class="rd-product-custom-table">
+                                <tr>
+                                    <td style="padding-top: 4px">
+                                        <div>[[tags.OrderItemList_customizationsText]]: [[this.embroideryText]]</div>
+                                        <div>[[tags.OrderItemList_customizationsArea]]: [[this.embroideryArea]]</div>
+                                        <div>[[tags.OrderItemList_customizationsTypography]]: [[this.embroideryFont]]</div>
+                                        <div>[[tags.OrderItemList_customizationsColor]]: [[this.embroideryColour]]</div>
+                                        [[#if this.serviceCost]]
+                                            [[#if showAmountWithCurrencyHelper]]
+                                                <div>[[tags.OrderItemList_customizationsPrice]]: [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                                            [[else]]
+                                                [[def "obj" (conversionRate this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText)]]
+                                                <div>[[tags.OrderItemList_customizationsPrice]]: [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</div>
+                                            [[/if]]
+                                        [[/if]]
+                                    </td>
+                                </tr>
+                            </table>
+                        [[/each]]
+                        <table css-class="rd-product-custom-table">
+                            <tr>
+                                <td style="padding-top: 4px">
+                                    <div class="rd-product-custom-warn" style="text-transform: none;">
+                                        [[tags.OrderItemList_customizationsWarn]]
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>  
+                    </div>
+                [[/if]]
+                [[#assign "numBadPracticeItems"]][[this.badPracticeItemsCounter]][[/assign]]
+                [[#ifb numBadPracticeItems "!=" "0"]]
+                    <table>
+                        <tr>
+                            <td style="width:13px; padding:0;" class="rd-product-col">
+                                <div style="width:13px; margin-top:2px;"><img width="13" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/communication/shape.jpg" style="width:13px; height:auto;"/></div>   
+                            </td>
+                            <td style="padding:0 0 0 10px;" class="rd-product-col">
+                                <div style="font-size:12px !important;" class="rd-badPractice-text">
+                                    [[#eq numBadPracticeItems "1"]]
+                                        [[#eq templateQuantity "1"]]
+                                            [[tags.OrderItemList_badPracticeUniqueItem]]
+                                        [[else]]
+                                            [[tags.OrderItemList_badPracticeVariousItemsSingular]]
+                                        [[/eq]]
+                                    [[else]]
+                                            [[tags.OrderItemList_badPracticeVariousItemsPlural]]
+                                    [[/eq]]
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                [[/ifb]]
+            </td>
+            </tr>
+        </table>  
+    </td>
+[[/if]]

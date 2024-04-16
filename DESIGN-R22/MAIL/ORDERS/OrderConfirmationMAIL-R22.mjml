@@ -1,0 +1,162 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showDeliveryInfo"]]true[[/assign]]
+      [[#assign "showDeliveryDate"]]true[[/assign]]
+      [[#assign "willReceiveTitle"]]true[[/assign]]
+      [[#assign "hideInfoTitle"]]true[[/assign]]
+      [[#assign "showShippingCharges"]]true[[/assign]]
+      [[#assign "existsUuidUuid"]]true[[/assign]]
+      [[#assign "deliveryPlanFallback"]]true[[/assign]]
+      [[#assign "notShowFastSintTitle"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[#assign "accountToken"]][[payload.user.accountToken]][[/assign]]
+      [[#if payload.user.isGuest]]
+        [[#assign "urlTemplate"]]OrderDetailGuestURL[[/assign]]
+        [[def "urlTemplateVersion" 2]]
+      [[else]]
+        [[#assign "urlTemplate"]]OrderDetailURL[[/assign]]
+        [[def "urlTemplateVersion" 5]]
+      [[/if]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orders.[0].isFastSint]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#assign "utmMedium"]]email[[/assign]]
+      [[#assign "utmSource"]]notification_com[[/assign]]
+      [[#assign "utmCampaign"]]OrderConfirmation[[/assign]]
+      [[#assign "utmContent"]]logo[[/assign]]
+      [[#assign "urlTemplateFooter"]]FooterHelpURL[[/assign]]
+      [[def "urlTemplateFooterVersion" 5]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
+      [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" href="[[urlResolverWithVersion 'OrderDetailLogoURL' 4]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+            [[tags.OrderConfirmationMAIL_title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+            [[tags.OrderConfirmationMAIL_orderNumberText]]
+        </mj-text>
+        <mj-raw>
+          [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
+          [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]
+          [[#def "TRVSize"]][[jsonNodeCounter "$..orderItems[?(@.giftCard!=null && @.giftCard.type=='VIRTUAL')]"]][[/def]]
+          [[#assign "hasOnlyTRV"]]false[[/assign]]
+          [[#ifb (andb (compare itemSize "==" 0) (compare TRVSize "!=" 0))]]
+            [[#assign "hasOnlyTRV"]]true[[/assign]]
+          [[/ifb]]
+        </mj-raw> 
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
+            [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
+            [[#eq sendingMode "CUSTOMER_INSTANT"]]
+              <p>[[tags.OrderConfirmationMAIL_sharedYourselfTRV]]</p>
+            [[else]]
+              [[#ifb (orb (compare sendingMode "==" "MERCHANT_SCHEDULED") (compare sendingMode "==" "MERCHANT_INSTANT"))]]
+                <p>[[tags.OrderConfirmationMAIL_uniqueTRV]]</p>
+              [[/ifb]]
+            [[/eq]]
+          [[else]]
+            [[#ifb (andb hasOnlyTRV (compare TRVSize ">" 1))]]
+              <p>[[tags.OrderConfirmationMAIL_detailsTRV]]</p>
+              [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+            [[else]]
+              [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
+              [[#ifb (andb isSplitted (orb (compare shippingType "==" "STORE") (compare shippingType "==" "HOME") (compare shippingType "==" "DROP")))]]
+                <p>[[tags.OrderConfirmationMAIL_preparingDeliverySplitted]]</p> 
+              [[/ifb]]
+              [[#ifb (andb isFastSint (compare shippingType "==" "STORE"))]]
+                <p>[[tags.OrderConfirmationMAIL_noticeFastSint]]</p>
+              [[else]]
+                <p>[[tags.OrderConfirmationMAIL_notice]]</p>
+              [[/ifb]]
+              [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
+                [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+              [[/ifb]]
+            [[/ifb]]
+          [[/ifb]]
+        </mj-text>
+       </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
+    </mj-raw>
+    <mj-include path="shipping-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-section>
+      <mj-column>
+        <mj-raw>
+          [[#assign "utmContent"]]order_detail_button[[/assign]]
+        </mj-raw>
+        <mj-button css-class="rd-order-detail-btn" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion urlTemplate urlTemplateVersion]]" >
+          [[tags.OrderConfirmationMAIL_buttonTxt]]
+        </mj-button>
+        <mj-text css-class="rd-text-info">
+          [[#if payload.orders.[0].hasGiftTicket]]
+              <p>[[tags.OrderConfirmationMAIL_giftTicket]]</p>
+          [[/if]]
+          <p>[[tags.OrderConfirmationMAIL_importRegulations]]</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList-R22" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "orderNumItems"]][[payload.orders.[0].numItems]][[/assign]]
+      [[#with payload]]
+        [[#with this.orders as | itemsPayment |]]
+    </mj-raw>
+    <!-- Sección 3 payment -->
+      <mj-include path="Payment-R22" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+      [[#assign "utmContent"]]help_page[[/assign]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

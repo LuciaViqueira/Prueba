@@ -1,0 +1,105 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnTitle"]]true[[/assign]]
+      [[#assign "showMultiOrderId"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.returnRequestDifferentOrders_acceptedRequestTitle]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[tags.returnRequestDifferentOrders_orderNumberText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_dropOffDescription]]</p>
+            [[#if payload.returnEntity.request.courier.name ]]
+              <p>[[tags.returnRequestDifferentOrders_courierInfo]] [[tags.returnRequestDifferentOrders_makeSureText]]</p>
+            [[/if]]
+          [[/if]]
+          [[#if isHome]]
+            <p>[[tags.returnRequestDifferentOrders_homeDescription]] [[tags.returnRequestDifferentOrders_makeSureText]]</p>
+          [[/if]] 
+          [[#if payload.returnEntity.request.returnCosts.[0]]]
+            [[#with payload.returnEntity.request.returnCosts.[0].amount]]
+              <p>[[tags.returnRequestDifferentOrders_returnCosts]]</p>
+            [[/with]]
+            [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+            [[#eq storeLegacyValue  "11737"]]
+              <p>*1 EUR = 7.53450 KN</p>
+            [[/eq]]
+          [[/if]]
+          [[#if isDropoff]]
+            <p>[[tags.returnRequestDifferentOrders_officeDelivery]]</p>
+          [[/if]]
+          [[#if payload.returnEntity.request.type]]
+            [[#assign "requestType"]] [[payload.returnEntity.request.type]] [[/assign]]
+            [[#eq requestType "STORE_DROPOFF"]]
+              [[#not payload.user.isGuest]]
+                [[#each payload.marketingInfo.universalLinks]]
+                  [[#ifb (andb (compare this.urlName "==" "ZaraIdQrLink") (compare this.urlValue "!=" ""))]][[#assign "urlValue"]][[this.urlValue]][[/assign]][[/ifb]]
+                [[/each]]
+                <p>[[tags.returnRequestDifferentOrders_returnQrText3]]</p>
+              [[/not]]
+            [[/eq]]
+          [[/if]]
+        </mj-text>
+        
+        <mj-raw>
+          [[#and isDropoff payload.returnEntity.request.courier.name]]
+        </mj-raw>
+        <mj-button css-class="order-detail-btn" 
+            background-color="#FFFFFF" 
+            color="#000000" 
+            border="1px solid #000000" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            href="https://www.zara.com/[[substring payload.store.identifier.value 5 7]]/[[payload.user.preferences.locale.language]]/user/return-requests/[[requestId]]" >
+            [[tags.returnRequestDifferentOrders_buttonTxt]]
+        </mj-button>
+        <mj-raw>
+          [[/and]]
+        </mj-raw>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 refundAddress -->
+    <mj-raw>
+      [[#if isHome]]
+        [[#assign "addressIdentifier"]] [[payload.address.identifier]] [[/assign]]
+        [[#neq addressIdentifier "0"]] [[#assign "addressIdentifierZERO"]]true[[/assign]][[/neq]]
+        [[#neq addressIdentifier "-1"]] [[#assign "addressIdentifierONE"]]true[[/assign]][[/neq]]
+        [[#and addressIdentifierZERO addressIdentifierONE]]
+          </mj-raw>
+            <mj-include path="refundAddress" />
+          <mj-raw>
+        [[else]]
+          [[#if payload.address.address]]
+            </mj-raw>
+              <mj-include path="SODAddress" />
+            <mj-raw>
+          [[/if]]
+        [[/and]]
+      [[/if]]
+    </mj-raw>
+    <!-- Sección 3 productsList -->
+    <mj-include path="productListConfirmation" />
+    <!-- Sección 4 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>

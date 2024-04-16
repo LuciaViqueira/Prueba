@@ -1,0 +1,36 @@
+<table class="rd-product">  
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.giftCard.imageUrl]]
+            <table>
+                <tr>
+                    <td style="padding: 0 0 8px;">
+                        <img padding="0" class="rd-product-img" width="225" src="[[this.giftCard.imageUrl]]" style="width:100%; height:auto;" />
+                    </td>
+                </tr>
+            </table>
+            [[/if]]
+            <div>
+                [[this.giftCard.description]]
+            </div>
+            <div><span style="text-transform: uppercase;">[[tags.ReturnProductList_fromText]]:</span> [[this.giftCard.from]]</div>
+            <div>
+                [[#eq this.giftCard.type "VIRTUAL"]]
+                    [[#if this.giftCard.receiverData.customerEmail]]
+                    <div><span style="text-transform: uppercase;">[[tags.ReturnProductList_receiverEmailText]]:</span> [[this.giftCard.receiverData.customerEmail]]</div>
+                    [[/if]]
+                    [[#if this.giftCard.shippedDate]]
+                    <div style="text-transform: uppercase;">[[tags.ReturnProductList_devileryDateText]] [[this.giftCard.shippedDate.dateIso]]</div>
+                    [[/if]]
+                [[else]]
+                    [[#if this.giftCard.receiverData.customerPhone]]
+                    <div style="text-transform: uppercase;">[[tags.ReturnProductList_receiverPhoneText]]: [[this.giftCard.receiverData.customerPhone]]</div>
+                    [[/if]]
+                [[/eq]]
+            </div>
+            <div> 
+                1 [[tags.ReturnProductList_singleUnitText]] / [[& this.giftCard.amount.humanReadableText]]
+            </div>
+        </td>
+    </tr>
+</table>

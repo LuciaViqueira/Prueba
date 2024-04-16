@@ -1,0 +1,50 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "userName"]][[payload.notification.user.name]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.WelcomeSeller_title]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info" text-transform="uppercase">
+          <p>[[tags.WelcomeSeller_hello]] [[userName]]</p>
+          <p>[[tags.WelcomeSeller_expectNext]]</p>
+        </mj-text>
+       </mj-column>
+    </mj-section>
+
+    <mj-include path="ResellObservationsWelcome" />
+
+    <mj-section css-class="resell-section-double-button">
+      <mj-column>
+        <mj-text padding-top="40px" css-class="rd-text-info" text-transform="uppercase">
+          [[tags.WelcomeSeller_thanksForJoin]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="ResellFooter" />
+  </mj-body>
+</mjml>

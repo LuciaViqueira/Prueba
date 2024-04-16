@@ -1,0 +1,98 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="rd-section-title" padding-top="64px">
+      [[#if returnTitle]]
+        [[tags.productListConfirmation_productListTitleReturnRequest]]
+      [[else]]
+        [[tags.productListConfirmation_productListTitle]]
+      [[/if]]
+    </mj-text>
+    <mj-text padding-top="46px" css-class="rd-subsection-text">
+      [[#assign "orderNumItems"]] [[numProducts]] [[/assign]]
+      [[orderNumItems]]
+      [[#eq orderNumItems "1"]]
+        [[tags.productListConfirmation_singleItemText]]
+      [[/eq]]
+      [[#neq orderNumItems "1"]]
+        [[tags.productListConfirmation_multipleItemText]]
+      [[/neq]]
+      [[#and isSplitted showSubordersInfo]]
+        [[tags.productListConfirmation_shipmentsNumberText]]
+      [[/and]]
+      [[#assign "giftedCustomer"]] [[payload.returnEntity.fromGiftTicket]] [[/assign]]
+      [[#ifb (andb numOrders (notb giftedCustomer))]]
+        [[#assign "orderNumOrders"]] [[numOrders]] [[/assign]]
+        [[#eq orderNumOrders "1"]]
+          [[tags.productListConfirmation_singleOrderNumberText]]
+        [[/eq]]
+        [[#neq orderNumOrders "1"]]
+          [[tags.productListConfirmation_ordersNumberText]]
+        [[/neq]]
+      [[/ifb]]
+    </mj-text>
+    <mj-raw>
+      [[#each suborders]]
+        [[#ifb (notb giftedCustomer)]]
+    </mj-raw>
+      <mj-text padding-top="8px" padding-bottom="8px" css-class="rd-subsection-text">  
+        <div class="rd-light-font">
+          [[#and isSplitted showSubordersInfo]]
+            [[tags.productListConfirmation_shipmentText]] [[this.suborderId]]
+          [[/and]]
+          [[#if showMultiOrderId]]
+            [[tags.productListConfirmation_orderTextR22]] [[this.suborderId]]
+          [[/if]]
+          [[#if this.cancelDate]]
+            - [[tags.productListConfirmation_cancelDateText]]
+          [[/if]]
+        </div>
+      </mj-text>
+      <mj-raw>
+        [[/ifb]]
+      </mj-raw>
+      <mj-table padding="16px 0 0" table-layout="fixed">
+        [[def "orderItemsMatrix" (matrix this.items 2)]]
+        [[#each orderItemsMatrix]]
+          <tr class="product-row">
+            [[#each this]]
+              <td style="padding-bottom: 24px;" class="rd-product-col">
+                  <mj-include path="ProductConfirmation-R22" />
+              </td>
+            [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
+          </tr>
+        [[/each]]
+        [[def "giftCardsMatrix" (matrix this.giftCards 2)]]
+        [[#each giftCardsMatrix]]
+          <tr class="product-row">
+            [[#each this]]
+              <td style="padding-bottom: 24px;" class="rd-product-col">
+                  <mj-include path="GiftCardConfirmation-R22" />
+              </td>
+            [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
+          </tr>
+        [[/each]]
+        [[def "virtualGiftCardsMatrix" (matrix this.virtualGiftCards 2)]]
+        [[#each virtualGiftCardsMatrix]]
+          <tr class="product-row">
+            [[#each this]]
+              <td style="padding-bottom: 24px;" class="rd-product-col">
+                  <mj-include path="GiftCardConfirmation-R22" />
+              </td>
+            [[/each]]
+            [[#ifb (compare (length this) "==" 1)]]
+              <td style="padding-bottom: 24px;" class="rd-product-col"></td>
+            [[/ifb]]
+          </tr>
+        [[/each]]
+      </mj-table>
+      <mj-raw>
+      [[/each]]
+    </mj-raw>    
+  </mj-column>
+</mj-section>

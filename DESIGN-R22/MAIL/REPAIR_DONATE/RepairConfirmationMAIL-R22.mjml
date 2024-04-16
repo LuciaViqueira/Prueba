@@ -1,0 +1,135 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "collectionDirectionTitle"]]true[[/assign]]
+      [[#assign "repairFooterConditionsUrl"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[def "items" payload.notification.orders.[0].suborders.[0].orderItems]]
+      [[def "shippingAddress" payload.notification.orders.[0].suborders.[0].shipping.address]]
+      [[def "discounts" payload.notification.orders.[0].suborders.[0].discounts]]
+      [[def "isNegativeSymbol" true]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+            [[tags.RepairConfirmationMAIL_title]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+            [[tags.RepairConfirmationMAIL_orderNumberText]]
+        </mj-text>
+        <mj-text padding-top="24px" padding-bottom="10px" css-class="rd-text-info">
+          <p>[[tags.RepairConfirmationMAIL_courierText]]</p>
+          <p>[[tags.RepairConfirmationMAIL_deliveryPoint]]</p>
+        </mj-text>
+    <!-- Sección 2 productos -->
+        <mj-raw> 
+          [[#each items]]
+        </mj-raw>
+            <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
+              [[tags.RepairConfirmationMAIL_product]] [[math @index '+' 1]]
+            </mj-text>
+            <mj-text css-class="rd-subsection-text">
+              <div style="font-weight:bold;">[[this.shortDescription]] [[this.colour]] [[this.material]]</div>
+              [[#each this.arrangements]]
+                <div>[[tags.RepairConfirmationMAIL_fix]]: [[this.arrangementDescription]] - [[currency this.serviceCost.value this.serviceCost.exponent this.serviceCost.currency this.serviceCost.humanReadableText]]</div>
+                <div>[[tags.RepairConfirmationMAIL_message]]: [[this.defectDescription]]</div>
+              [[/each]]
+            </mj-text>
+        <mj-raw> 
+          [[/each]]
+        </mj-raw>
+    <!-- Sección 3 cliente -->
+        <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
+          [[tags.RepairConfirmationMAIL_clientData]]
+        </mj-text>
+        <mj-text css-class="rd-subsection-text">
+          <div>[[payload.notification.user.name]] [[payload.notification.user.surname]]</div>
+          <div>[[payload.notification.user.email]]</div>
+          <div>[[payload.notification.user.mobilePhoneNumber]]</div>
+        </mj-text>
+    <!-- Sección 4 shipping -->
+        <mj-text  padding-top="24px" padding-bottom="4px" css-class="rd-subsection-title" font-weight="bold">
+          [[tags.RepairConfirmationMAIL_collectionDirection]]
+        </mj-text>
+        <mj-text css-class="rd-subsection-text">
+          [[#if shippingAddress.street.value]]
+            <div>[[shippingAddress.street.value]]</div>
+          [[/if]]
+          [[#if shippingAddress.line]]
+            <div>[[shippingAddress.line]]</div>
+          [[/if]]
+          <div>
+            [[#if shippingAddress.zipCode.value]]
+              [[shippingAddress.zipCode.value]]
+            [[/if]]
+            [[#if shippingAddress.city.value]]
+              [[shippingAddress.city.value]]
+            [[/if]]
+          </div>
+        </mj-text>
+        <mj-divider padding-top="40px" padding-bottom="40px"/>
+    <!-- Sección 5 payment -->
+        <mj-raw>
+          [[#with payload.notification.paymentBreakdown]]
+        </mj-raw>
+          <mj-table css-class="rd-payment-table">
+            [[#if this.arrangementsPrice]]
+              <tr class="rd-light-font">
+                <td>[[tags.RepairConfirmationMAIL_fix]]</td>
+                <td class="rd-payment-price">[[currency this.arrangementsPrice.value this.arrangementsPrice.exponent this.arrangementsPrice.currency this.arrangementsPrice.humanReadableText]]</td>
+              </tr>
+            [[/if]]
+            [[#each discounts]]
+              [[def "orderDiscount" this.amount]]
+              [[#ifb (andb orderDiscount (compare this.discountType "==" "OTHER") (compare orderDiscount.value "!=" 0))]]
+                <tr class="rd-light-font">
+                  <td>[[tags.RepairConfirmationMAIL_repairBonusText]]</td>
+                  <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText isNegativeSymbol]]</td>
+                </tr>
+              [[/ifb]]
+            [[/each]]
+            [[#if this.shippingPrice]]
+              <tr class="rd-light-font">
+                <td>[[tags.RepairConfirmationMAIL_shipmentText]]</td>
+                <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText]]</td>
+              </tr>
+            [[/if]]
+            <tr class="rd-payment-total rd-black-font">
+              <td>[[tags.RepairConfirmationMAIL_totalAmountText]]</td>
+              <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText]]</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="rd-payment-include-tax-label-left">*[[tags.RepairConfirmationMAIL_includeTaxText]]</span>
+              </td>
+            </tr>
+          </mj-table>
+        <mj-raw>
+          [[/with]]
+        </mj-raw>
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 6 footer -->
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="ResellFooter" />
+  </mj-body>
+</mjml>

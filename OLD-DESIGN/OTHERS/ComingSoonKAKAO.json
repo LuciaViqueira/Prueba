@@ -1,0 +1,13 @@
+{
+    "name": "ComingSoon",
+    "body": "",
+    "version": "1",
+    "channel": "KAKAO",
+    "requiredParameters": [
+        "productSize",
+        "productSku",
+        "productShortDescription",
+        "comingSoonKakao_urlMobile"
+    ],
+    "optionalParameters": []
+}

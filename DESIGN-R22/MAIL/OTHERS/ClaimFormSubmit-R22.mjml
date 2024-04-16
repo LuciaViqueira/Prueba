@@ -1,0 +1,52 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.claimFormSubmit_claimFormSubmitTitle]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          <p>[[company_name]]</p>
+          <p>[[tags.claimFormSubmit_RUC]] [[company_ruc]]</p>
+        </mj-text>
+        <mj-text css-class="rd-text-info">
+          <p>[[company_address]]</p>
+          <p><span style="font-weight: bold;">[[tags.claimFormSubmit_date]]</span> [[epoch claim_date "yyyy-MM-dd HH:mm:ss" true]]</p>
+          <p><span style="font-weight: bold;">[[tags.claimFormSubmit_claimNumber]]</span> [[claim_number]]</p>
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+          <div>[[tags.claimFormSubmit_clientInformation]]</div>
+        </mj-text>
+        <mj-text>
+          <div style="font-weight: bold; margin-top: 15px">[[tags.claimFormSubmit_Name]]</div> <div>[[user_firstName]] [[user_lastName]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_DNI]]</div> <div>[[user_nif]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_address]]</div> <div>[[user_address]], [[user_state]], [[user_city]] [[user_district]], [[user_country]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_phoneNumber]]</div> <div>[[user_phone]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_Email]]</div> <div><a href="mailto:[[decrypt user_email]]">[[decrypt user_email]]</a></div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_OrderId]]</div> <div>[[claim_orderId]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_articles]]</div> <div>[[claim_itemsDescription]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_amount]]</div> <div>[[claim_ammount]]</div>
+          <div style="font-weight: bold; margin-top: 10px">[[tags.claimFormSubmit_message]]</div> <div>[[claim_message]]</div>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

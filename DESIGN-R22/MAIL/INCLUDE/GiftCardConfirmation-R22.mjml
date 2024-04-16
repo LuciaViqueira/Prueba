@@ -1,0 +1,35 @@
+<table class="rd-product">  
+    <tr>
+        <td style="padding: 0;" class="rd-subsection-text">
+            [[#if this.imageUrl]]
+            <table>
+                <tr>
+                    <td style="padding: 0 0 8px;">
+                        <img padding="0" class="rd-product-img" width="225" src="[[this.imageUrl]]" style="width:100%; height:auto;" />
+                    </td>
+                </tr>
+            </table>
+            [[/if]]
+            <div>
+                [[this.description]]
+            </div>
+            <div>
+                [[#if this.from]]
+                    <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_fromText]]</span>: [[this.from]]</div>
+                [[/if]]
+                [[#if this.receiverPhone]]
+                    <div style="text-transform: uppercase;">[[tags.productListConfirmation_receiverPhoneText]]: [[this.receiverPhone]]</div>
+                [[/if]]
+                [[#if this.receiverEmail]]
+                    <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_receiverEmailText]]:</span> [[this.receiverEmail]]</div>
+                [[/if]]
+                [[#if this.deliveryDate]]
+                    <div><span style="text-transform: uppercase;">[[tags.productListConfirmation_devileryDateText]] [[this.deliveryDate]]</div>
+                [[/if]]
+            </div>
+            <div> 
+                1 [[tags.productListConfirmation_singleUnitText]] / [[this.price]]
+            </div>
+        </td>
+    </tr>
+</table>

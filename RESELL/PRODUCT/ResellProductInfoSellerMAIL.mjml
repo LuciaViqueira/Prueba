@@ -1,0 +1,80 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showRequestedInfoObservations"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[def "arraycategories" (jsonPath '$..categoriesSeller')]]
+      [[#assign "storeLegacyValue"]][[payload.notification.store.identifier.legacyValue]][[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="169px" src="[[zaraResellImg]]" padding-top="48px" padding-bottom="32px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          [[tags.ProductInfoSeller_title]]
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[tags.ProductInfoSeller_infoRequest]]
+        </mj-text>
+       </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#with payload.notification]]
+    </mj-raw>
+        <mj-include path="ResellOrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <mj-include path="ResellObservations" />
+
+    <mj-section>
+      <mj-column>
+        <mj-divider padding-top="8px" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-button css-class="rd-order-detail-btn-noPadBottom" 
+            background-color="#000000" 
+            color="#FFFFFF" 
+            border="1px solid #FFFFFF" 
+            font-weight="bold" 
+            text-transform="uppercase" 
+            width="100%"
+            href="[[urlResolverWithVersion 'ModifyProductActiveURL' 1]]" >
+          [[tags.ProductInfoSeller_viewProductButtonTxt]]
+        </mj-button>
+        <mj-text padding-top="16px" css-class="rd-text-info">
+          [[tags.ProductInfoSeller_updateNewInfo]]
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-divider padding-top="16px" border-color="#E5E5E5" />
+      </mj-column>
+    </mj-section>
+
+    <mj-raw>
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="ResellFooter" />
+  </mj-body>
+</mjml>

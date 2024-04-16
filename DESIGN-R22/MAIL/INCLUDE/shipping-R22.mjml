@@ -1,0 +1,289 @@
+<mj-section>
+  <mj-column padding-top="24px" >
+    <mj-raw>
+    [[#if showDeliveryInfo]]
+      [[#ifb (andb deliveryPlanFallback (compare payload.orders.[0].suborders.[0].deliveryDate "==" null))]]
+      [[else]]
+    </mj-raw>
+        <mj-raw>
+          [[#if returnShippingTitle]]
+        </mj-raw>
+            <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+              [[tags.shipping_returnShippingTitle]]:
+            </mj-text>
+          <mj-raw>
+          [[else]]
+            [[#if order.isFastSint]]
+          </mj-raw>
+              <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                [[tags.shipping_fastSintTitle]]:
+              </mj-text>
+            <mj-raw>
+            [[else]]
+              [[#if checkinTitle]]
+            </mj-raw>
+                <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                  [[tags.shipping_addressTitleCheckin]]
+                </mj-text>
+              <mj-raw>
+              [[else]]
+                [[#if newDirectionTitle]]
+              </mj-raw>
+                  <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                    [[tags.shipping_newDirectionTitle]]:
+                  </mj-text>
+                <mj-raw>
+                [[else]]
+                  [[#if willReceiveTitle]]
+                </mj-raw>
+                    <mj-text css-class="rd-subsection-text-light" padding-bottom="24px" font-weight="bold">
+                      [[#if order.isSplitted]]
+                        [[#assign "subordersSize"]][[#size order.suborders]][[/size]][[/assign]]
+                        [[#eq subordersSize "1"]]
+                          [[tags.shipping_shippingWillReceiveSplittedSingular]]:
+                        [[/eq]]
+                        [[#neq subordersSize "1"]]
+                          [[tags.shipping_shippingWillReceiveSplittedPlural]]:
+                        [[/neq]]
+                      [[else]]
+                        [[tags.shipping_shippingWillReceive]]:
+                      [[/if]]
+                    </mj-text>
+      <mj-raw>
+                  [[/if]]  
+                [[/if]]
+              [[/if]]
+            [[/if]]
+          [[/if]]
+        [[/ifb]]
+        [[#if hideTimeMethodInfo]]
+        [[else]]
+          [[#each order.suborders]]
+            [[#if showDeliveryDate]]
+              [[#if this.deliveryDate]]
+                [[#ifb (andb order.isSplitted (orb this.suborderId this.uuid))]]
+            </mj-raw>
+                  <mj-text css-class="rd-subsection-title" padding-bottom="8px">
+                    [[#if existsUuidUuid]]
+                      [[#if this.uuid.uuid]]
+                        [[#assign "suborderIdentifier"]][[this.uuid.uuid]][[/assign]]
+                      [[else]]
+                        [[#if this.uuid]]
+                          [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+                        [[else]]
+                          [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                        [[/if]]
+                      [[/if]]
+                    [[else]]
+                      [[#if this.uuid]]
+                        [[#assign "suborderIdentifier"]][[this.uuid]][[/assign]]
+                      [[else]]
+                        [[#assign "suborderIdentifier"]][[this.suborderId]][[/assign]]
+                      [[/if]]
+                    [[/if]]
+                    [[def "size" 8]][[#def "uuidSize"]][[size suborderIdentifier]][[/def]]
+                    [[#ifb (compare uuidSize ">" size)]]
+                      [[#def "index"]][[math  uuidSize '-' size]][[/def]][[#def "suborderIdSub8"]][[substringb suborderIdentifier index]][[/def]]
+                    [[else]]
+                      [[def "suborderIdSub8" suborderIdentifier]]
+                    [[/ifb]]
+                    [[tags.shipping_title]] [[suborderIdSub8]]
+                  </mj-text>
+              <mj-raw>
+                [[/ifb]]
+              </mj-raw>
+                <mj-text css-class="rd-subsection-title" padding-bottom="16px" font-weight="bold">
+                  [[#assign "dateType"]][[this.deliveryDate.maxDeliveryDate.dateType]][[/assign]]
+                  [[#ifb (compare dateType "==" "TIMESTAMP")]] 
+                    [[#assign "minDeliveryDate"]][[this.deliveryDate.minDeliveryDate.timestamp]][[/assign]]
+                    [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.timestamp]][[/assign]]
+                  [[else]]
+                    [[#assign "minDeliveryDate"]][[this.deliveryDate.minDeliveryDate.dateIso]][[/assign]]
+                    [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
+                  [[/ifb]]
+                  [[#ifb (compare storeLegacyValue "!=" "32201")]]
+                    [[#if isFastSint]]
+                      [[def "obj" (formatDateISO minDeliveryDate minDeliveryDate true)]]
+                      [[def "deliveryReadableDate" (readableDate obj.min_date obj.min_date 'ISO8601' false)]]
+                      [[def "deliveryHour" obj.min_time]]
+                      [[tags.shipping_fastSintDate]]
+                    [[else]]
+                      [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                    [[/if]]
+                  [[/ifb]] 
+                  [[#if order.isSplitted]]
+                    [[#ifb (andb this.shipping.amount showShippingCharges)]]
+                      <div style="font-weight: normal">
+                        [[#with this.shipping.amount]]
+                          [[#if showAmountWithCurrencyHelper]]
+                            [[currency this.shipping.amount.value this.shipping.amount.exponent this.shipping.amount.currency this.shipping.amount.humanReadableText]]
+                          [[else]]
+                            [[def "obj" (conversionRate this.shipping.amount.value this.shipping.amount.exponent this.shipping.amount.currency this.shipping.amount.humanReadableText)]]
+                            [[obj.main_amount]][[#ifb (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]
+                          [[/if]]
+                        [[/with]]
+                      </div>
+                    [[/ifb]]
+                  [[/if]]
+                </mj-text>
+        <mj-raw>
+              [[/if]]
+            [[/if]]
+          [[/each]]
+        </mj-raw>
+          <mj-spacer height="16px" />
+    <mj-raw>
+        [[/if]]
+    [[else]]
+    [[/if]]
+      [[#if returnShippingTitle]]
+    </mj-raw>
+        <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+          [[tags.shipping_returnShippingTitle]]:
+        </mj-text>
+      <mj-raw>
+      [[else]]
+        [[#ifb (andb order.isFastSint (notb (orb pickupTitle notShowFastSintTitle)))]]
+      </mj-raw>
+          <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+            [[tags.shipping_fastSintTitle]]:
+          </mj-text>
+        <mj-raw>
+        [[else]]
+          [[#if checkinTitle]]
+        </mj-raw>
+            <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+              [[tags.shipping_addressTitleCheckin]]
+            </mj-text>
+          <mj-raw>
+          [[else]]
+            [[#if newDirectionTitle]]
+          </mj-raw>
+              <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+                [[tags.shipping_newDirectionTitle]]:
+              </mj-text>
+            <mj-raw>
+            [[else]]
+              [[#if pickupTitle]]
+            </mj-raw>
+                <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+                  [[tags.shipping_pickupInfoTitle]]:
+                </mj-text>
+              <mj-raw>
+              [[else]]
+                [[#ifb (not hideInfoTitle)]]
+              </mj-raw>
+                  <mj-text padding-top="0" padding-bottom="8px" css-class="rd-section-title">
+                    [[tags.shipping_title]]:
+                  </mj-text>
+    <mj-raw>
+                 [[/ifb]] 
+              [[/if]]
+            [[/if]]
+          [[/if]]
+        [[/ifb]]
+      [[/if]]
+    </mj-raw>
+
+    <mj-raw>
+      [[#assign "shippingModeGlobal"]][[this.shippingAddress.mode]][[/assign]]
+      [[#each order.suborders]]
+        [[#assign "shippingModeLocal"]][[this.shipping.mode]][[/assign]]
+        [[#ifb (compare shippingModeGlobal "!=" shippingModeLocal)]] 
+            [[#assign "isMixedShippingMode"]]true[[/assign]]
+        [[/ifb]]
+      [[/each]]
+    </mj-raw>
+    <mj-text font-weight="bold" css-class="rd-subsection-text-light">
+      [[#if isMixedShippingMode]]  
+        [[#ifb (compare this.shippingAddress.type "==" "HOME")]]
+          [[tags.shipping_mixedHome]]
+        [[else]]
+          [[#ifb (compare this.shippingAddress.type "==" "STORE")]]
+            [[tags.shipping_pickupStore]]
+          [[else]]
+            [[#ifb (compare this.shippingAddress.type "==" "DROP")]]
+              [[tags.shipping_mixedDrop]]
+            [[/ifb]]
+          [[/ifb]]
+        [[/ifb]]
+      [[else]]
+        [[#eq this.shippingAddress.mode "EXPRESS"]]
+            [[tags.shipping_EXPRESS]]
+          [[else]]
+            [[#eq this.shippingAddress.mode "STANDARD"]]
+              [[tags.shipping_STANDARD]]
+            [[else]]
+              [[#eq this.shippingAddress.mode "STORE"]]
+                [[tags.shipping_pickupStore]]
+              [[else]]
+                [[#eq this.shippingAddress.mode "DDD"]]
+                  [[tags.shipping_DDD]]
+                [[else]]
+                  [[#eq this.shippingAddress.mode "DROPPOINT"]]
+                    [[tags.shipping_DROPPOINT]]
+                  [[else]]
+                    [[#eq this.shippingAddress.mode "DROP_POINT"]]
+                      [[tags.shipping_DROPPOINT]]
+                    [[else]]
+                      [[#eq this.shippingAddress.mode "SAMEDAY"]]
+                        [[tags.shipping_SAMEDAY]]
+                      [[else]]
+                        [[#eq this.shippingAddress.mode "TRYON"]]
+                          [[tags.shipping_TRYON]]
+                        [[else]]
+                          [[#eq this.shippingAddress.mode "VIRTUAL"]]
+                            [[tags.shipping_VIRTUAL]]
+                          [[else]]
+                            [[#eq this.shippingAddress.mode "DEFERRED_STANDARD"]]
+                              [[tags.shipping_DEFERRED_STANDARD]]
+                            [[else]]
+                              [[#eq this.shippingAddress.mode "STANDARD_ASSEMBLY"]]
+                                [[tags.shipping_STANDARD_ASSEMBLY]]
+                              [[/eq]]    
+                            [[/eq]]
+                          [[/eq]]
+                        [[/eq]]
+                      [[/eq]]
+                    [[/eq]]
+                  [[/eq]]
+                [[/eq]]
+              [[/eq]]
+            [[/eq]]
+          [[/eq]]
+      [[/if]]
+    </mj-text>
+
+    <mj-raw>
+    [[#if shippingAddress.description]]
+    </mj-raw>
+      <mj-text padding-top="4px" css-class="rd-subsection-text">
+        [[shippingAddress.description]]
+      </mj-text>
+    <mj-raw>
+      [[/if]]
+      [[#with shippingAddress.address]]
+          </mj-raw>
+            <mj-include path="Address-R22" />
+          <mj-raw>
+      [[else]]
+        [[#with shippingAddress.physicalStore.address]]
+          </mj-raw>
+            <mj-include path="Address-R22" />
+          <mj-raw>
+        [[else]]
+          [[#with shippingAddress.dropPoint.address]]
+            </mj-raw>
+              <mj-include path="Address-R22" />
+            <mj-raw>
+          [[/with]]
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+    <mj-text css-class="rd-address-sign-text">
+      [[#if shippingAddress.signatureRequired]]
+        <p>[[tags.shipping_signText]]: [[tags.shipping_signTextYes]]</p>
+      [[/if]]
+    </mj-text>
+  </mj-column>
+</mj-section>

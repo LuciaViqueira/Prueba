@@ -1,0 +1,50 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+        <mj-text css-class="rd-title" align="center">
+          <p>[[tags.PersonalInformationNoticeMAIL_title]]</p>
+        </mj-text>
+        <mj-text padding-top="24px" css-class="rd-text-info">
+          [[tags.PersonalInformationNoticeMAIL_notification]]
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+          [[tags.PersonalInformationNoticeMAIL_text1]]
+        </mj-text>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext1]]</p>
+          <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext2]]</p>
+          <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext3]]</p>
+          <p>[[tags.PersonalInformationNoticeMAIL_text1Subtext4]]</p>
+        </mj-text>
+        <mj-text  padding-top="24px" css-class="rd-section-title">
+           [[tags.PersonalInformationNoticeMAIL_text2]]
+        </mj-text>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.PersonalInformationNoticeMAIL_none]]</p>
+        </mj-text>
+        <mj-text css-class="rd-text-info">
+          <p>[[tags.PersonalInformationNoticeMAIL_policy]]</p>  
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- Sección 2 footer -->
+    <mj-raw>
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/eq]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+        [[#assign "hiddenTiktok"]]true[[/assign]]
+      [[/ifb]]
+    </mj-raw>
+    <mj-include path="footer-R22" />
+  </mj-body>
+</mjml>

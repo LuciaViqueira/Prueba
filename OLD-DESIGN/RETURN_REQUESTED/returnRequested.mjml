@@ -1,0 +1,68 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles" />
+  </mj-head>
+  <mj-body width="854px">
+  <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "returnShippingTitle"]]true[[/assign]]
+      [[#assign "returnOrderItemTitle"]]true[[/assign]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-section>
+      <mj-column>
+        <mj-image width="149px" src="[[zaraLogo]]" padding-top="100px" padding-bottom="10px" />
+        <mj-text css-class="section-title">
+          [[tags.returnRequested_acceptedRequestTitle]]
+        </mj-text>
+        <mj-text padding-top="23px" padding-bottom="62px" css-class="order-number">
+          [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+          [[tags.returnRequested_orderIdText]]
+        </mj-text>
+        <mj-text css-class="header-text">
+          [[#eq payload.returnInformation.type "DROPOFF"]]
+              <p>[[tags.returnRequested_dropOffDescription]]</p>
+              <p>[[tags.returnRequested_officeDelivery]]</p>
+              <p>[[tags.returnRequested_makeSureText]]</p>
+          [[else]]
+            [[#eq payload.returnInformation.type "HOME"]]
+                <p>[[tags.returnRequested_homeDescription]] [[tags.returnRequested_makeSureText]]</p>
+            [[/eq]]
+          [[/eq]]
+        </mj-text>
+        <mj-divider padding-top="20px" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Sección 2 Shipping -->
+    <mj-raw>
+      [[#with payload.orders.[0] as | order |]]
+        [[#with order.suborders.[0].shipping as | shipping |]]
+    </mj-raw>
+    <mj-include path="shipping" />
+    <mj-raw>
+        [[/with]]
+      [[/with]]
+    </mj-raw>
+
+    <!-- Sección 3 Product -->
+    <mj-raw>
+      [[#with payload]]
+    </mj-raw>
+    <!-- Sección 2 products -->
+      <mj-include path="OrderItemList" />
+    <mj-raw>
+      [[/with]]
+    </mj-raw>
+
+    <!-- Sección 4 footer -->
+    <mj-raw>
+     [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+       [[#eq storeLegacyValue  "11727"]]
+        [[#assign "hiddenInRussia"]]true[[/assign]]
+      [[/eq]]
+    </mj-raw>
+    <mj-include path="footer" />
+  </mj-body>
+</mjml>

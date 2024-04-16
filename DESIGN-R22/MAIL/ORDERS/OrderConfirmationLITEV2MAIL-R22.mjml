@@ -1,0 +1,627 @@
+<mjml>
+  <mj-head>
+    <mj-title>ZARA</mj-title>
+    <mj-include path="styles-R22" />
+  </mj-head>
+  <mj-body width="535px">
+    <!-- Template configuration -->
+    <mj-raw>
+      [[#assign "showDeliveryInfo"]]true[[/assign]]
+      [[#assign "showDeliveryDate"]]true[[/assign]]
+      [[#assign "willReceiveTitle"]]true[[/assign]]
+      [[#assign "hideInfoTitle"]]true[[/assign]]
+      [[#assign "showShippingCharges"]]true[[/assign]]
+      [[#assign "existsUuidUuid"]]true[[/assign]]
+      [[#assign "showLITELegalFooter"]]true[[/assign]]
+      [[#assign "deliveryPlanFallback"]]true[[/assign]]
+      [[#assign "notShowFastSintTitle"]]true[[/assign]]
+    </mj-raw>
+    <!-- Global Variables -->
+    <mj-raw>
+      [[#assign "orderId"]][[payload.orders.[0].identifier]][[/assign]]
+      [[#assign "accountToken"]][[payload.user.accountToken]][[/assign]]
+      [[#if payload.user.isGuest]]
+        [[#def "urlTemplate"]] https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/guest-user/order/[[orderId]]/detail?hash=[[accountToken]][[/def]]
+      [[else]]
+        [[#def "urlTemplate"]] https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]/user/order/[[orderId]][[/def]]
+      [[/if]]
+      [[#assign "shippingType"]] [[payload.orders.[0].suborders.[0].shipping.type]] [[/assign]]
+      [[def "isSplitted" payload.orders.[0].isSplitted]]
+      [[def "isFastSint" payload.orders.[0].isFastSint]]
+      [[#assign "paymentStatus"]][[payload.orders.[0].payments.[0].paymentStatus]][[/assign]]
+      [[#assign "paymentMethodId"]][[payload.orders.[0].payments.[0].paymentDetails.[0].paymentMethodId]][[/assign]]
+      [[#assign "storeLegacyValue"]][[payload.store.identifier.legacyValue]][[/assign]]
+      [[def "itemQuery" (jsonPath "$..orderItems[?(@.item && @.item.imageUrl == '')].item")]]
+      [[def "giftCardQuery" (jsonPath "$..orderItems[?(@.giftCard && @.giftCard.item && @.giftCard.item.imageUrl == '')].giftCard.item")]]
+      [[def "paymentQuery" (jsonPath "$..paymentDetails[?(@.amount == null)]")]]
+      [[#ifb (compare paymentStatus "==" "SKIPPED")]]
+       [[#assign "isOfflinePayment"]]true[[/assign]]
+      [[/ifb]]
+      [[#ifb (orb (compare paymentMethodId "==" "1020") (compare paymentMethodId "==" "1021") (compare paymentMethodId "==" "1027") (compare paymentMethodId "==" "1029") (compare paymentMethodId "==" "1031") (compare paymentMethodId "==" "1032") (compare paymentMethodId "==" "1039") (compare paymentMethodId "==" "1041") (compare paymentMethodId "==" "1056") (compare paymentMethodId "==" "1059") (compare paymentMethodId "==" "1061") (compare paymentMethodId "==" "1063") (compare paymentMethodId "==" "1064") (compare paymentMethodId "==" "1065") (compare paymentMethodId "==" "1066") (compare paymentMethodId "==" "1068"))]]
+        [[#assign "isAsyncPayment"]]true[[/assign]]
+      [[/ifb]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11766") isOfflinePayment isAsyncPayment)]]
+        [[#assign "subjectForOffLineAndAsync"]]true[[/assign]]
+      [[/ifb]]
+      [[#ifb (orb (compare storeLegacyValue "==" "11719") (compare storeLegacyValue "==" "11715") (compare storeLegacyValue "==" "11731") (compare storeLegacyValue "==" "24701") (compare storeLegacyValue "==" "11744") (compare storeLegacyValue "==" "16201") (compare storeLegacyValue "==" "22701"))]]
+        [[#assign "hiddenPaymentBlock"]]true[[/assign]]
+      [[/ifb]]
+      [[#eq storeLegacyValue  "11768"]]
+        [[#assign "showAmountWithCurrencyHelper"]]true[[/assign]]
+      [[/eq]]
+      [[def "conversionRates" (jsonPath "$..priceDetails.conversionRates")]]
+    </mj-raw>
+    <!-- Sección 1 cabecera -->
+    <mj-raw>
+      [[#ifb (orb itemQuery giftCardQuery)]]
+    </mj-raw>
+        <mj-section>
+          <mj-column>
+            <mj-image width="149px" src="[[zaraLogo]]" padding-top="48px" padding-bottom="43px" align="center"/>
+            <mj-text css-class="rd-title" align="center">
+              [[#if subjectForOffLineAndAsync]]
+                [[tags.OrderConfirmationLITEV2MAIL_offLineOrAsyncTitle]]
+              [[else]]
+                [[tags.OrderConfirmationLITEV2MAIL_title]]
+              [[/if]]
+            </mj-text>
+            <mj-text padding-top="24px" css-class="rd-section-title" align="center">
+                [[tags.OrderConfirmationLITEV2MAIL_orderNumberText]]
+            </mj-text>
+            <mj-text padding-top="24px" css-class="rd-text-info">
+              [[#if isOfflinePayment]]
+                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+              [[else]]
+                [[#if isAsyncPayment]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                [[/if]]
+              [[/if]]
+              [[#eq storeLegacyValue  "11766"]]
+                <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
+                <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>    
+              [[else]]
+                [[#ifb (andb (notb isOfflinePayment) (notb isAsyncPayment))]]
+                  [[#ifb (andb isFastSint (compare shippingType "==" "STORE"))]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_noticeFastSint]]</p>
+                  [[else]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+                  [[/ifb]]
+                [[/ifb]]  
+              [[/eq]]
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-raw>
+          [[#not isOfflinePayment]]
+            [[#with payload.orders.[0] as | order |]]
+              [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
+        </mj-raw>
+                <mj-include path="shipping-R22" />
+        <mj-raw>
+              [[/with]]
+            [[/with]]
+          [[/not]]
+        </mj-raw>
+
+        <mj-section>
+          <mj-column>
+            <mj-button css-class="rd-order-detail-btn" 
+                background-color="#000000" 
+                color="#FFFFFF" 
+                border="1px solid #FFFFFF" 
+                font-weight="bold" 
+                text-transform="uppercase" 
+                width="100%"
+                href="[[urlTemplate]]" >
+              [[tags.OrderConfirmationLITEV2MAIL_buttonTxt]]
+            </mj-button>
+          </mj-column>
+        </mj-section>
+
+        <mj-raw> 
+          [[#with payload]]
+        </mj-raw>
+            <!-- Sección 2 products -->
+            <mj-include path="OrderItemList-R22" />
+        <mj-raw>
+          [[/with]]
+        </mj-raw>
+
+        <mj-raw>
+          [[#not hiddenPaymentBlock]]
+        </mj-raw>
+            <mj-section>
+              <mj-column padding="8px 0 0 0">
+                <mj-divider padding-bottom="40px" />
+                <mj-text css-class="rd-section-title">
+                    [[tags.Payment_paymentMethod]]
+                </mj-text>
+              </mj-column>
+            </mj-section>
+            <mj-raw>
+            [[#each payload.orders]]
+              [[#each this.payments]] 
+                [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
+                [[#each this.paymentDetails]] 
+            </mj-raw>
+            <mj-section padding-top="16px" padding-bottom="20px">
+              <mj-column>
+                <mj-table padding="0"> 
+                  <tr>
+                    <td style="width:60px;" >
+                      [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
+                      [[#eq paymentMethodIcon "1013"]]
+                        <table>
+                          <tr>
+                            <td>
+                              <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/icon-payment-visa.jpg" style="width:60px; height:auto;"/> 
+                            </td>
+                          </tr>
+                        </table> 
+                      [[else]]
+                        <table>
+                          <tr>
+                            <td>
+                              <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/Background.jpg" style="width:60px; height:auto;"/> 
+                            </td>
+                          </tr>
+                        </table>
+                      [[/eq]]
+                    </td>
+                    <td style="padding-left: 16px;" class="rd-text-info-small">
+                      [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
+                      <div>
+                        [[#eq paymentMethodIdString "1001"]]
+                          VISA
+                        [[else]]
+                          [[#eq paymentMethodIdString "1002"]]
+                            Mastercard
+                          [[else]]
+                            [[#eq paymentMethodIdString "1003"]]
+                              AMEX
+                            [[else]]
+                              [[#eq paymentMethodIdString "1017"]]
+                                Paypal
+                              [[else]]
+                                [[this.paymentMethodDescription]]
+                              [[/eq]]
+                            [[/eq]]
+                          [[/eq]]
+                        [[/eq]]
+                      </div>
+                    </td>                                                                                                                                 
+                  </tr>
+                </mj-table>
+              </mj-column>
+            </mj-section>
+            <mj-raw>
+                    [[/each]]
+                  [[/each]]
+                [[/each]]
+              [[#with payload.paymentBreakdown]]
+            </mj-raw>
+                <mj-section>
+                  <mj-column padding="8px 0 0 0">
+                    <mj-divider padding-bottom="40px" />
+                    <mj-text padding-bottom="16px" css-class="rd-section-title">
+                      [[tags.Payment_breakdown]]
+                    </mj-text>
+                    <mj-table css-class="rd-payment-table">
+                      [[#not skuReturnShippingCosts]]
+                        <tr class="rd-light-font">
+                          <td>
+                            [[orderNumItems]]
+                            [[#eq orderNumItems "1"]]
+                              [[tags.Payment_singleItemText]]
+                            [[/eq]]
+                            [[#neq orderNumItems "1"]]
+                              [[tags.Payment_multipleItemText]] 
+                            [[/neq]]
+                          </td>
+                            <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
+                        </tr>
+                        [[#if this.shippingPrice]]
+                          <tr class="rd-light-font">
+                            <td>[[tags.Payment_deliveryCostText]]</td>
+                            <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
+                          </tr>
+                        [[/if]]
+                        [[def "giftBox" (jsonPath '$..priceDetails.prices.TOTAL_GIFT_BOX')]]
+                        [[#if giftBox.value]]
+                          <tr class="rd-light-font">
+                            <td>[[tags.Payment_giftPackaging]]</td>
+                            <td class="rd-payment-price">[[currency giftBox.value giftBox.exponent giftBox.currency giftBox.humanReadableText]]</td>
+                          </tr>
+                        [[/if]]
+                        [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
+                          <tr class="rd-light-font">
+                            <td>[[tags.Payment_shippingDiscountsText]]</td>
+                            <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
+                          </tr>
+                        [[/ifb]]
+                        [[#each payload.orders.[0].discounts]]
+                          [[def "orderDiscount" this.amount]]
+                          [[#ifb (andb orderDiscount (compare this.discountType "!=" "EMPLOYEE") (compare orderDiscount.value "!=" 0))]]
+                            <tr class="rd-light-font">
+                              <td>[[tags.Payment_orderDiscount]]</td>
+                              <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+                            </tr>
+                          [[/ifb]]
+                          [[#ifb (andb orderDiscount (compare this.discountType "==" "EMPLOYEE") (compare orderDiscount.value "!=" 0))]]
+                            <tr class="rd-orange-font">
+                              <td>[[tags.Payment_employeeDiscountsText]]</td>
+                              <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+                            </tr>
+                          [[/ifb]]
+                        [[/each]]
+                        [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
+                        [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING") (compare returnCosts.amount.value "!=" 0))]]
+                          <tr class="rd-light-font">
+                            <td>[[tags.Payment_returnChargesText]]</td>
+                            <td class="rd-payment-price">[[currency returnCosts.amount.value returnCosts.amount.exponent returnCosts.amount.currency returnCosts.amount.humanReadableText]]</td>
+                          </tr>
+                        [[/ifb]]
+                      [[/not]]
+                      <tr class="rd-payment-total rd-black-font">
+                        <td>[[tags.Payment_totalAmountText]]</td>
+                        [[#if showAmountWithCurrencyHelper]]
+                          [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES' 5)]]
+                          <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
+                        [[else]]
+                          [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol)]]
+                          <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
+                        [[/if]]      
+                      </tr>
+                      [[#if showAmountWithCurrencyHelper]]
+                        <tr>
+                          <td colspan="2" class="rd-payment-include-tax-label-right">
+                            <span>* 1 USD = [[secondaryCurrency.reference]]</span>
+                          </td>
+                        </tr>
+                      [[else]]
+                        [[#ifb (compare obj.converted_amounts "!=" "")]] 
+                          <tr>
+                            <td colspan="2" class="rd-payment-include-tax-label-right">
+                              <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
+                            </td>
+                          </tr>
+                        [[/ifb]]
+                      [[/if]]
+                      <tr>
+                        <td colspan="2">
+                          <span class="rd-payment-include-tax-label-left">*[[tags.Payment_includeTaxText]]</span>
+                        </td>
+                      </tr>
+                    </mj-table>
+                  </mj-column>
+                </mj-section>
+        <mj-raw>
+              [[/with]]
+          [[/not]]
+        </mj-raw>
+
+        <mj-section>
+          <mj-column padding="8px 0 0 0">
+            <mj-text padding-top="16px" css-class="rd-footer-legal-message">
+              [[tags.LITELegalFooter_legalText]]
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+    <mj-raw>
+      [[else]]
+    </mj-raw>
+        <mj-section>
+          <mj-column>
+            <mj-image width="149px" src="[[zaraLogo]]" href="https://www.zara[[jsonPath '$..marketingInformation.domainUrl']]/[[jsonPath '$..store.identifier.value']]/[[jsonPath '$..user.preferences.locale.language']]" padding-top="48px" padding-bottom="43px" align="center"/>
+            <mj-text css-class="rd-title" align="center">
+              [[#if subjectForOffLineAndAsync]]
+                [[tags.OrderConfirmationLITEV2MAIL_offLineOrAsyncTitle]]
+              [[else]]
+                [[tags.OrderConfirmationLITEV2MAIL_title]]
+              [[/if]]
+            </mj-text>
+            <mj-text  padding-top="24px" css-class="rd-section-title" align="center">
+              [[tags.OrderConfirmationLITEV2MAIL_orderNumberText]]
+            </mj-text>
+            <mj-raw>
+              [[#def "numSuborders"]][[#size payload.orders.[0].suborders]][[/size]][[/def]]
+              [[#def "itemSize"]][[jsonNodeCounter "$..orderItems[?((@.item!=null && @.giftCard==null) || (@.item==null && @.giftCard.type!='VIRTUAL'))]"]][[/def]]
+              [[#def "TRVSize"]][[jsonNodeCounter "$..orderItems[?(@.giftCard!=null && @.giftCard.type=='VIRTUAL')]"]][[/def]]
+              [[#assign "hasOnlyTRV"]]false[[/assign]]
+              [[#ifb (andb (compare itemSize "==" 0) (compare TRVSize "!=" 0))]]
+                [[#assign "hasOnlyTRV"]]true[[/assign]]
+              [[/ifb]]
+            </mj-raw> 
+            <mj-text padding-top="24px" css-class="rd-text-info">
+              [[#if isOfflinePayment]]
+                <p>[[tags.OrderConfirmationLITEV2MAIL_offlinePayment]]</p>
+              [[else]]
+                [[#if isAsyncPayment]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_asyncPayment]]</p>
+                [[/if]]
+              [[/if]]
+              [[#ifb (andb hasOnlyTRV (compare numSuborders "==" 1) (compare TRVSize "==" 1))]]
+                [[#assign "sendingMode"]][[payload.orders.[0].suborders.[0].orderItems.[0].giftCard.sendingMode]][[/assign]]
+                [[#eq sendingMode "CUSTOMER_INSTANT"]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_sharedYourselfTRV]]</p>
+                [[else]]
+                  [[#ifb (orb (compare sendingMode "==" "MERCHANT_SCHEDULED") (compare sendingMode "==" "MERCHANT_INSTANT"))]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_uniqueTRV]]</p>
+                  [[/ifb]]
+                [[/eq]]
+              [[else]]
+                [[#ifb (andb hasOnlyTRV (compare TRVSize ">" 1))]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_detailsTRV]]</p>
+                  [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+                [[else]]
+                  [[#eq storeLegacyValue  "11766"]]
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_beAdvised]]</p>
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_willReceive]]</p>
+                    <p>[[tags.OrderConfirmationLITEV2MAIL_canSeeDetails]]</p>    
+                  [[else]]
+                    [[#ifb (andb (notb isOfflinePayment) (notb isAsyncPayment))]]
+                      [[#ifb (andb isFastSint (compare shippingType "==" "STORE"))]]
+                        <p>[[tags.OrderConfirmationLITEV2MAIL_noticeFastSint]]</p>
+                      [[else]]
+                        <p>[[tags.OrderConfirmationLITEV2MAIL_notice]]</p>
+                      [[/ifb]]
+                    [[/ifb]]
+                  [[/eq]]
+                  [[#ifb (andb (notb hasOnlyTRV) (compare TRVSize "==" 1))]]
+                    [[#assign "showGiftCardDetailMessage"]]true[[/assign]]
+                  [[/ifb]]
+                [[/ifb]]
+              [[/ifb]]
+              
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-raw>
+          [[#not isOfflinePayment]]
+            [[#with payload.orders.[0] as | order |]]
+              [[#with (jsonPath "$..suborders[?(@.shipping != null)]..shipping") as | shippingAddress |]]
+        </mj-raw>
+                <mj-include path="shipping-R22" />
+        <mj-raw>
+              [[/with]]
+            [[/with]]
+          [[/not]]
+        </mj-raw>
+
+        <mj-section>
+          <mj-column>
+            <mj-button css-class="rd-order-detail-btn" 
+                background-color="#000000" 
+                color="#FFFFFF" 
+                border="1px solid #FFFFFF" 
+                font-weight="bold" 
+                text-transform="uppercase" 
+                width="100%"
+                href="[[urlTemplate]]" >
+              [[tags.OrderConfirmationLITEV2MAIL_buttonTxt]]
+            </mj-button>
+            <mj-text css-class="rd-text-info">
+              [[#if payload.orders.[0].hasGiftTicket]]
+                  <p>[[tags.OrderConfirmationLITEV2MAIL_giftTicket]]</p>
+              [[/if]]
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-raw>
+          [[#ifb (notb (orb itemQuery giftCardQuery))]] 
+            [[#with payload]]
+        </mj-raw>
+            <!-- Sección 2 products -->
+              <mj-include path="OrderItemList-R22" />
+        <mj-raw>
+            [[/with]]
+          [[/ifb]]
+        </mj-raw>
+     
+        <mj-raw>
+          [[#not hiddenPaymentBlock]]
+            [[#assign "orderNumItems"]][[payload.orders.[0].numItems]][[/assign]]
+            [[#ifb (notb paymentQuery)]]
+              [[#with payload]]
+                [[#with this.orders as | itemsPayment |]]
+        </mj-raw>
+            <!-- Sección 3 payment -->
+              <mj-include path="Payment-R22" />
+          <mj-raw>
+                [[/with]]
+              [[/with]]
+            [[else]]
+          </mj-raw>
+              <mj-section>
+                <mj-column padding="8px 0 0 0">
+                  <mj-divider padding-bottom="40px" />
+                  <mj-text css-class="rd-section-title">
+                      [[tags.Payment_paymentMethod]]
+                  </mj-text>
+                </mj-column>
+              </mj-section>
+              <mj-raw>
+              [[#each payload.orders]]
+                [[#each this.payments]] 
+                  [[#assign "numPayments"]][[#size this.paymentDetails]][[/size]][[/assign]]
+                  [[#each this.paymentDetails]] 
+              </mj-raw>
+              <mj-section padding-top="16px" padding-bottom="20px">
+                <mj-column>
+                  <mj-table padding="0"> 
+                    <tr>
+                      <td style="width:60px;" >
+                        [[#assign "paymentMethodIcon"]][[this.paymentMethodId]][[/assign]]
+                        [[#eq paymentMethodIcon "1013"]]
+                          <table>
+                            <tr>
+                              <td>
+                                <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/icon-payment-visa.jpg" style="width:60px; height:auto;"/> 
+                              </td>
+                            </tr>
+                          </table> 
+                        [[else]]
+                          <table>
+                            <tr>
+                              <td>
+                                <img width="60" padding-left="10px" src="https://sttc-stage-zaraphr.inditex.com/photos/contents/apps/Background.jpg" style="width:60px; height:auto;"/> 
+                              </td>
+                            </tr>
+                          </table>
+                        [[/eq]]
+                      </td>
+                      <td style="padding-left: 16px;" class="rd-text-info-small">
+                        [[#assign "paymentMethodIdString"]][[this.paymentMethodId]][[/assign]]
+                        <div>
+                          [[#eq paymentMethodIdString "1001"]]
+                            VISA
+                          [[else]]
+                            [[#eq paymentMethodIdString "1002"]]
+                              Mastercard
+                            [[else]]
+                              [[#eq paymentMethodIdString "1003"]]
+                                AMEX
+                              [[else]]
+                                [[#eq paymentMethodIdString "1017"]]
+                                  Paypal
+                                [[else]]
+                                  [[this.paymentMethodDescription]]
+                                [[/eq]]
+                              [[/eq]]
+                            [[/eq]]
+                          [[/eq]]
+                        </div>
+                      </td>                                                                                                                                 
+                    </tr>
+                  </mj-table>
+                </mj-column>
+              </mj-section>
+              <mj-raw>
+                      [[/each]]
+                    [[/each]]
+                  [[/each]]
+                [[#with payload.paymentBreakdown]]
+              </mj-raw>
+              <mj-section>
+                <mj-column padding="8px 0 0 0">
+                  <mj-divider padding-bottom="40px" />
+                  <mj-text padding-bottom="16px" css-class="rd-section-title">
+                    [[tags.Payment_breakdown]]
+                  </mj-text>
+                  <mj-table css-class="rd-payment-table">
+                    [[#not skuReturnShippingCosts]]
+                      <tr class="rd-light-font">
+                        <td>
+                          [[orderNumItems]]
+                          [[#eq orderNumItems "1"]]
+                            [[tags.Payment_singleItemText]]
+                          [[/eq]]
+                          [[#neq orderNumItems "1"]]
+                            [[tags.Payment_multipleItemText]] 
+                          [[/neq]]
+                        </td>
+                          <td class="rd-payment-price">[[currency this.productsPrice.value this.productsPrice.exponent this.productsPrice.currency this.productsPrice.humanReadableText isNegativeSymbol]]</td>
+                      </tr>
+                      [[#if this.shippingPrice]]
+                        <tr class="rd-light-font">
+                          <td>[[tags.Payment_deliveryCostText]]</td>
+                          <td class="rd-payment-price">[[currency this.shippingPrice.value this.shippingPrice.exponent this.shippingPrice.currency this.shippingPrice.humanReadableText isNegativeSymbol]]</td>
+                        </tr>
+                      [[/if]]
+                      [[def "giftBox" (jsonPath '$..priceDetails.prices.TOTAL_GIFT_BOX')]]
+                      [[#if giftBox.value]]
+                        <tr class="rd-light-font">
+                          <td>[[tags.Payment_giftPackaging]]</td>
+                          <td class="rd-payment-price">[[currency giftBox.value giftBox.exponent giftBox.currency giftBox.humanReadableText]]</td>
+                        </tr>
+                      [[/if]]
+                      [[#ifb (andb shippingDiscountPrice (compare shippingDiscountPrice.value "!=" 0))]]
+                        <tr class="rd-light-font">
+                          <td>[[tags.Payment_shippingDiscountsText]]</td>
+                          <td class="rd-payment-price">[[currency this.shippingDiscountPrice.value this.shippingDiscountPrice.exponent this.shippingDiscountPrice.currency this.shippingDiscountPrice.humanReadableText]]</td>
+                        </tr>
+                      [[/ifb]]
+                      [[#each payload.orders.[0].discounts]]
+                        [[def "orderDiscount" this.amount]]
+                        [[#ifb (andb orderDiscount (compare this.discountType "!=" "EMPLOYEE") (compare orderDiscount.value "!=" 0))]]
+                          <tr class="rd-light-font">
+                            <td>[[tags.Payment_orderDiscount]]</td>
+                            <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+                          </tr>
+                        [[/ifb]]
+                        [[#ifb (andb orderDiscount (compare this.discountType "==" "EMPLOYEE") (compare orderDiscount.value "!=" 0))]]
+                          <tr class="rd-orange-font">
+                            <td>[[tags.Payment_employeeDiscountsText]]</td>
+                            <td class="rd-payment-price">[[currency orderDiscount.value orderDiscount.exponent orderDiscount.currency orderDiscount.humanReadableText]]</td>
+                          </tr>
+                        [[/ifb]]
+                      [[/each]]
+                      [[def "returnCosts" payload.returnInformation.refunds.[0].returnCosts.[0]]]
+                      [[#ifb (andb returnCosts.amount (compare returnCosts.type "==" "SHIPPING") (compare returnCosts.amount.value "!=" 0))]]
+                        <tr class="rd-light-font">
+                          <td>[[tags.Payment_returnChargesText]]</td>
+                          <td class="rd-payment-price">[[currency returnCosts.amount.value returnCosts.amount.exponent returnCosts.amount.currency returnCosts.amount.humanReadableText]]</td>
+                        </tr>
+                      [[/ifb]]
+                    [[/not]]
+                    <tr class="rd-payment-total rd-black-font">
+                      <td>[[tags.Payment_totalAmountText]]</td>
+                      [[#if showAmountWithCurrencyHelper]]
+                        [[def "secondaryCurrency" (convertBetweenCurrencies conversionRates.VES this.total 'VES' 5)]]
+                        <td class="rd-payment-price">[[currency this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol]] / [[secondaryCurrency.humanReadableText]]</td>
+                      [[else]]
+                        [[def "obj" (conversionRate this.total.value this.total.exponent this.total.currency this.total.humanReadableText isNegativeSymbol)]]
+                        <td class="rd-payment-price">[[obj.main_amount]][[#ifb  (compare obj.converted_amounts "!=" "")]][[#each obj.converted_amounts]] / [[this.human_readable_amount]][[/each]][[/ifb]]</td>
+                      [[/if]]      
+                    </tr>
+                    [[#if showAmountWithCurrencyHelper]]
+                      <tr>
+                        <td colspan="2" class="rd-payment-include-tax-label-right">
+                          <span>* 1 USD = [[secondaryCurrency.reference]]</span>
+                        </td>
+                      </tr>
+                    [[else]]
+                      [[#ifb (compare obj.converted_amounts "!=" "")]] 
+                        <tr>
+                          <td colspan="2" class="rd-payment-include-tax-label-right">
+                            <span>[[#each obj.converted_amounts]]* 1 EUR = 7.53450 KN[[/each]]</span>
+                          </td>
+                        </tr>
+                      [[/ifb]]
+                    [[/if]]
+                    <tr>
+                      <td colspan="2">
+                        <span class="rd-payment-include-tax-label-left">*[[tags.Payment_includeTaxText]]</span>
+                      </td>
+                    </tr>
+                  </mj-table>
+              <mj-raw>
+                [[/with]]
+              </mj-raw>
+                </mj-column>
+              </mj-section>
+        <mj-raw>
+            [[/ifb]]
+          [[/not]]
+        </mj-raw>
+
+      <mj-raw>
+        [[#eq storeLegacyValue  "11727"]]
+          [[#assign "hiddenInRussia"]]true[[/assign]]
+          [[#assign "hiddenTiktok"]]true[[/assign]]
+        [[/eq]]
+        [[#ifb (orb (compare storeLegacyValue "==" "11716") (compare storeLegacyValue "==" "11744"))]]
+          [[#assign "hiddenTiktok"]]true[[/assign]]
+        [[/ifb]]
+      </mj-raw>
+      <mj-include path="footer-R22" />
+    <mj-raw>
+      [[/ifb]]
+    </mj-raw>
+  </mj-body>
+</mjml>

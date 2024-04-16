@@ -1,0 +1,124 @@
+<mj-section>
+  <mj-column>
+    <mj-text css-class="section-title" padding-bottom="47px">
+      [[tags.returnPayment_title]]
+    </mj-text>
+    <mj-text padding-bottom="30px" css-class="payment-methods">
+        [[#assign "orderReturnProducts"]][[returnInformation.orderList.[0]]][[/assign]]
+        [[#each returnInformation.orderList.[0].payment.paymentDetails]]
+
+            [[#if this.cardHolderName]]
+                <p class="payment-name">
+                    [[this.cardHolderName]]
+                </p>
+            [[/if]]
+            <p>
+                [[this.paymentMethodDescription]]
+                [[#assign "last4Characters"]][[#size this.last4]][[/size]][[/assign]]
+                [[#eq last4Characters "4"]]
+                    **** **** **** [[this.last4]]
+                [[/eq]]
+                <br />
+                [[#assign "numPayments"]][[#size returnInformation.orderList.[0].payment.paymentDetails]][[/size]][[/assign]]
+                [[#neq numPayments 1]]      
+                    [[& this.amount.humanReadableText]]
+                [[/neq]]
+            </p>
+        [[/each]]
+    </mj-text>
+    <mj-table css-class="payment-table">
+      [[#if returnInformation.totalReturnedProductPrice.humanReadableText]]
+      <tr>
+        <td>[[tags.returnPayment_totalProductsAmountText]]</td>
+        <td class="payment-price">-[[& returnInformation.totalReturnedProductPrice.humanReadableText]]</td>
+      </tr>
+      [[/if]]
+
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "SHIPPING"]]
+          <tr>
+            <td>[[tags.returnPayment_shippingDisccountText]]</td>
+            <td class="payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq ]]
+      [[/each]]
+     
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "EMPLOYEE"]]
+   
+          <tr>
+            <td>[[tags.returnPayment_employeeDisccountsText]]</td>
+            <td class="payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq ]]
+      [[/each]]
+     
+      [[#each returnInformation.orderList.[0].discount]]
+        [[#eq this.discountType "TOTAL"]]
+          <tr>
+            <td>[[tags.returnPayment_disccountsText]]</td>
+            <td class="payment-price">[[& this.amount.humanReadableText]]</td>
+          </tr>
+        [[/eq ]]
+      [[/each]]
+
+      [[#if returnInformation.subtotal.humanReadableText]]
+      <tr>
+        <td><strong>[[tags.returnPayment_subtotalText]]</strong></td>
+        <td class="payment-price"><strong>-[[& returnInformation.subtotal.humanReadableText]]</strong></td>
+      </tr>
+      [[/if]]
+
+      [[#each returnInformation.orderList.[0].payment.vatDetails]]
+        [[#if this.amount.humanReadableText]]
+          <tr>
+            <td>[[this.type]] [[this.humanReadableText]] %</td>
+            <td class="payment-price">
+              -[[& this.amount.humanReadableText]]
+            </td>
+          </tr>
+        [[/if]]
+      [[/each]]
+      [[#if returnInformation.salesTax.humanReadableText]]
+      <tr>
+        <td>
+          <strong>[[tags.returnPayment_salesTaxText]]</strong>
+        </td>
+        <td class="payment-price">
+          <strong>-[[& returnInformation.salesTax.humanReadableText]]</strong>
+        </td>
+      </tr>
+      [[/if]]
+      [[#if returnInformation.hasReturnCharges]]
+      <tr>
+        <td>[[tags.returnPayment_returnChargesText]]</td>
+        [[#assign "returnCostsEscaped"]][[& returnInformation.charges.humanReadableText]][[/assign]]
+        [[#assign "first"]][[substring returnCostsEscaped 0 1]][[/assign]]
+        [[#assign "returnCosts"]][[substring returnInformation.charges.humanReadableText 1]][[/assign]]
+        [[#eq first "-"]]
+          <td class="payment-price">[[returnCosts]]</td>
+        [[else]]
+          <td class="payment-price">[[& returnInformation.charges.humanReadableText]]</td>
+        [[/eq]]
+      </tr>
+      [[/if]]
+      <tr class="payment-total">
+        <td>[[tags.returnPayment_totalAmountText]]</td>
+        <td class="payment-price">[[& returnInformation.total.humanReadableText]]</td>
+      </tr>
+      [[#if showExchangeRate]] 
+        <tr>
+          <td class="payment-price" colspan="2">
+            <span class="payment-include-tax-label" style="text-transform: uppercase;">* 1 EUR = 7.53450 KN</span>
+          </td>
+        </tr>
+      [[/if]]
+      <tr>
+        <td class="payment-price" colspan="2">
+          <span class="payment-include-tax-label">[[tags.returnPayment_includeTaxText]]</span>
+        </td>
+      </tr>
+    </mj-table>
+    <mj-divider padding-top="50px" />
+  </mj-column>
+</mj-section>
