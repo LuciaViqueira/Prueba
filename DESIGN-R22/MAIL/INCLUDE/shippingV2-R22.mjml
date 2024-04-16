@@ -101,7 +101,9 @@
                     [[#assign "minDeliveryDate"]][[this.deliveryDate.minDeliveryDate.dateIso]][[/assign]]
                     [[#assign "maxDeliveryDate"]][[this.deliveryDate.maxDeliveryDate.dateIso]][[/assign]]
                   [[/ifb]]
-                  [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                  [[#ifb (compare storeLegacyValue "!=" "32201")]]
+                    [[readableDate minDeliveryDate maxDeliveryDate dateType]]
+                  [[/ifb]] 
                   [[#if order.isSplitted]]
                     [[#ifb (andb this.shipping.amount showShippingCharges)]]
                       <div style="font-weight: normal">

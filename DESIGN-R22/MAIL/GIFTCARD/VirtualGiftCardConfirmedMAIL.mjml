@@ -49,7 +49,7 @@
                   [[#if this.giftCard.receiverData.email]]
                     <div>[[tags.VirtualGiftCardConfirmedMAIL_receiverText]]: [[this.giftCard.receiverData.email]]</div>
                   [[/if]]
-                  [[#if this.giftCard.shippingDate]]
+                  [[#if this.giftCard.shippingDate]] 
                     <div>[[tags.VirtualGiftCardConfirmedMAIL_devileryDateText]] [[epoch this.giftCard.shippingDate.dateIso "STORE" "LONG" true "ISO8601"]]</div>
                   [[/if]]
                 </div>
